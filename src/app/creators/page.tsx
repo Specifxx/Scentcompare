@@ -44,19 +44,19 @@ const FAQS: [string, string][] = [
 // "partner" in their own content, not "sponsor": we don't pay them for a mention.
 const WORK_WITH_US = [
   { title: "Link us", body: `Put ${SITE.domain} in your bio, video description or a story link. That's the one thing that helps most.` },
-  { title: "Shout us out", body: `In the content you already make, a quick line: “check out our partner ${SITE.name}” while you walk through a routine, review a serum or share a haul.` },
+  { title: "Shout us out", body: `In the content you already make, a quick line: “check out our partner ${SITE.name}” while you review a bottle, rank your collection or share a haul.` },
   { title: "Show how it works", body: "A short walkthrough or honest review: look up a product, compare the stores, find who has it cheapest. Say what you really think." },
 ];
 
 const PERKS = [
   { title: "A spotlight card, free", body: "Your avatar, what you make and every channel you're on, here and in the creators bubble on our homepage." },
   { title: "A “Buy them a coffee” button", body: "Straight to your own Ko-fi, Patreon or tip page. Fans support you directly; we never touch the money." },
-  { title: "fragrance shoppers, not random traffic", body: "Shoppers visit every day to price cleansers, serums and sunscreens before they buy: the people who watch fragrance content." },
+  { title: "Fragrance shoppers, not random traffic", body: "Shoppers visit every day to price perfumes and colognes before they buy: the people who watch fragrance content." },
   { title: "Shout-outs and real numbers", body: "We share your new videos on our socials, and tell you how many clicks your listing sent you." },
 ];
 
 const APPLY_HREF = `mailto:${SITE.email}?subject=${encodeURIComponent(`${SITE.name} creator feature`)}&body=${encodeURIComponent(
-  "Hi! I make fragrance / fragrance content and I'd like to be featured.\n\nName / channel:\nWhat I make:\nLinks (YouTube, TikTok, Instagram, X, Threads…):\nTip page (Ko-fi, Patreon…), if any:\nWhere I'm based:\n",
+  "Hi! I make fragrance content and I'd like to be featured.\n\nName / channel:\nWhat I make:\nLinks (YouTube, TikTok, Instagram, X, Threads…):\nTip page (Ko-fi, Patreon…), if any:\nWhere I'm based:\n",
 )}`;
 
 export default function CreatorsPage() {

@@ -118,7 +118,7 @@ export function amazonSearchUrl(query: string, region: RegionCode, sub: string):
  * programs or a network (FragranceX and Sobelia on CJ, Notino on CJ, The Scent
  * Store, Parfumdreams, LOOKFANTASTIC and Cult Beauty on Awin, Adore Beauty on
  * Commission Factory, Sephora and FragranceNet on FlexOffers, YesStyle's own
- * program; the one KaeYoung partner left out is Stylevana and Olive Young,
+ * program; KaeYoung's Stylevana and Olive Young are left out (no fragrance range),
  * which sell no designer fragrance). None has a price feed we read yet, so
  * each is a labelled search link pinned above the stores, shown ONLY once its
  * env var holds our tracking link template, set after the program accepts us

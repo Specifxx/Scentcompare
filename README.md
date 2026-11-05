@@ -1,7 +1,8 @@
 # ScentCompare
 
-**Stay young.** Compare Korean skincare and K-beauty prices across real K-beauty stores in the US, UK, Canada,
-Australia, New Zealand and Europe. Matched by the barcode on the box, size by size, checked every day.
+**Smell expensive. Pay less.** Compare perfume and cologne prices across real fragrance stores in the US, UK,
+Canada, Australia, New Zealand and Europe: women's, men's and unisex. Matched by the barcode on the box, bottle size
+by bottle size, checked every day. Built on KaeYoung's static engine (`Specifxx/Kaeyoung`), 2026-11-05.
 Live at **scentcompare.app**.
 
 ## How it works
@@ -9,8 +10,8 @@ Live at **scentcompare.app**.
 ```
 GitHub Actions, daily 06:11 UTC (import.yml)
   every store in src/content/stores.ts (Shopify products.json, 2 at a time, ~1 request a second)
-  → one listing per variant with a Korean EAN-13 (880…) (src/lib/ean.ts, src/lib/import/shopify.ts)
-  → refuse testers, short-dated, damaged, bundles (src/lib/title.ts); category, size, brand
+  → one listing per variant with a valid EAN-13 or UPC (src/lib/ean.ts, src/lib/import/shopify.ts)
+  → refuse testers, unboxed, decants, samples, dupes, bundles (src/lib/title.ts); section, size, house
   → one product per barcode, kept when 2+ stores in a region sell it (src/lib/merge.ts)
   → eBay Browse by GTIN, budgeted (scripts/ebay-import.ts; 2,500 calls a day, off until the keyset exists)
   → data/public/{products,history,ebay,meta}.json, data/state/*
@@ -29,8 +30,7 @@ GitHub Actions, daily 06:11 UTC (import.yml)
 ## Pages
 
 Home, `/popular`, `/product/<slug>` (with ratings and reviews) (every store's price per region, pinned eBay/Amazon/retailer rows, price history, FAQ,
-Product + FAQ JSON-LD, phone buy bar), `/<category>` (cleansers, toners, serums, moisturisers, sunscreen, masks,
-eye-care, lip-care, makeup, body-hair, other; paged), `/brands`, `/brands/<slug>`, `/guides` and
+Product + FAQ JSON-LD, phone buy bar), `/<section>` (women, men, unisex, sets, minis, body, other; paged), `/brands`, `/brands/<slug>`, `/guides` and
 `/guides/<slug>` (live-data price guides per category and per country), `/deals`, `/new`, `/stores`, `/search`,
 `/about`, `/disclosure`, `/privacy`, `/terms`, `sitemap.xml`, `robots.txt`.
 

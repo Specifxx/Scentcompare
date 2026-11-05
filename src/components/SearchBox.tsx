@@ -151,7 +151,7 @@ export function SearchBox({ big = false }: { big?: boolean }) {
             </div>
           )}
           {rows && !empty && nq.length < 2 && <p className="px-3 py-2 text-sm text-soft">Keep typing…</p>}
-          {rows && nq.length > 1 && !items.length && <p className="px-3 py-2 text-sm text-soft">Nothing matches yet. Try the brand&apos;s name or a step like toner.</p>}
+          {rows && nq.length > 1 && !items.length && <p className="px-3 py-2 text-sm text-soft">Nothing matches yet. Try the house&apos;s name or a word like cologne.</p>}
           {(brandHits.length > 0 || stepHits.length > 0) && (
             <ul className="border-b border-line pb-1">
               {brandHits.map((b) => (

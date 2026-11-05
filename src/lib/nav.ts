@@ -43,7 +43,7 @@ export function navGroups(counts: Record<CatKey, number>, topBrands: { slug: str
   ];
 }
 
-/** The current page is this link, or inside it ("/serums/page/2" is in Serums). */
+/** The current page is this link, or inside it ("/men/page/2" is in Men's cologne). */
 export function isActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }

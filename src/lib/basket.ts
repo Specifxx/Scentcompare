@@ -1,4 +1,4 @@
-// The basket (a visitor's question, 2026-10-30: "the lowest price on one toner
+// The basket (a visitor's question, 2026-10-30: "the lowest price on one bottle
 // may not be the lowest total on a three-item order"): which single store
 // sells everything in it for the least, with each store's own delivery quote
 // added. Client-safe: runs in the browser over /basket-data/<region>.

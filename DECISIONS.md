@@ -2,6 +2,10 @@
 
 Newest at the bottom. Why K Young is the way it is.
 
+> **Forked from KaeYoung on 2026-11-05.** Every entry before "2026-11-05: ScentCompare" below is KaeYoung's
+> (`Specifxx/Kaeyoung`), the engine this site runs, with the site name substituted; its K-beauty specifics (the
+> 880 barcode rule, the skincare steps, the Korean brand list) no longer apply here, the rest still does.
+
 ## Launch shape — 2026-10-30
 
 **Owner:** "a K-beauty price comparison website … use all the playbooks … you don't need that sign up feature …
@@ -697,3 +701,35 @@ The request is filed as a `suggest-store` report with `issue: "owner"`; RiftComp
 those first and asks for a reply within two days. No email is asked for (the reports branch is public); no pop-up,
 no cold email. RiftCompare and OP Compare keep their `/stores/suggest` page (now the owner pitch) and redirect
 `/list-your-store` to it.
+
+## 2026-11-05: ScentCompare, a fragrance site on KaeYoung's engine, for everyone
+
+The owner: "make a scentcompare.app website … use KaeYoung's engine and make the theme similar but also you will
+have a male cologne and unisex section so it's not mainly targeting women but all genders. We want to use all
+affiliates that KaeYoung is using plus any other opportunities in this space … we only use 2500 eBay API calls a
+day and prioritise the popular items and price rows should follow the same strategy as KaeYoung."
+
+- **A copy, not a sister.** The repo is a copy of KaeYoung's engine at 2026-11-05 with the game-specific parts
+  rewritten; nothing is synced back. A fix found here that KaeYoung needs is ported by hand, and the other way.
+- **Any valid barcode.** Perfume is bottled in France, Spain, Italy, the UAE and the US, so a listing matches on
+  any EAN-13 (or UPC-A padded to 13) with a correct check digit outside the internal, book and coupon ranges
+  (`src/lib/ean.ts` `isProductEan`), never the Korean 880 rule. Still never a title: a 100 ml and a 50 ml, a
+  tester and a boxed bottle, an EDT and an EDP all share a name.
+- **Testers, unboxed, decants, samples and dupes are refused** (`src/lib/title.ts`): they are different products
+  at different prices, and a tester under a boxed bottle's barcode would be a false "cheapest". House gift sets
+  are kept (the house's own barcode); store-made bundles are not.
+- **Sections, not steps:** women's perfume, men's cologne, unisex (including most niche houses), gift sets,
+  travel and minis (15 ml and under), body mists and more. The homepage leads with women's, men's and unisex in
+  that order, so nobody is a footnote. The title decides the section (for women / pour homme / unisex), then a
+  list of houses that sell only unisex scents, then the store's own kind.
+- **Affiliates:** everything KaeYoung earns from (eBay Partner Network, Amazon in five countries, YesStyle,
+  LOOKFANTASTIC, Cult Beauty) except Stylevana and Olive Young (no fragrance range), plus the fragrance
+  programs: FragranceX and FragranceNet (shown always: a search link earns nothing until the program accepts us,
+  and both stock almost everything), Perfumania, Sephora (US/CA and AU/NZ), Notino (UK and EU), Scent Store,
+  Parfumdreams, Sobelia and Adore Beauty. Each row appears only once its `AFF_*` template is set.
+- **eBay:** its own keyset (the owner is creating it), 2,500 calls a day, the engine's popularity tiers
+  (products visitors open and the most-stocked first), local sellers only, never CN/HK (where counterfeit
+  perfume comes from). Price rows are KaeYoung's: eBay, then Amazon, then the partner rows, then the stores
+  sorted by price; none of the paid rows is ever "the cheapest".
+- **The theme is KaeYoung's** (blush, rose, pastels, Fraunces and Inter) at the owner's request; the mark is a
+  perfume flacon instead of the K.

@@ -27,7 +27,7 @@ async function main() {
     const left = budget.lookups;
     try {
       const r = await readShopify(s, cache, budget);
-      console.log(`✓ ${s.id}: ${r.listings.length} variants with a Korean barcode, ${r.noEan} without`);
+      console.log(`✓ ${s.id}: ${r.listings.length} variants with a barcode, ${r.noEan} without`);
     } catch (e) {
       console.log(`✗ ${s.id}: ${(e as Error).message}`);
     }

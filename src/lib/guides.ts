@@ -1,6 +1,6 @@
 // The price guides: pages written from the day's data, never by hand, so
 // every number on them is a real store price (the Compare Empire AU guide
-// playbook). Two kinds: per category ("Korean sunscreen prices compared") and
+// playbook). Two kinds: per section ("Cheapest men's cologne today") and
 // per region ("Where to buy perfume in Australia").
 import { CATEGORIES, REGIONS, type CatKey, type RegionCode } from "@/site";
 
@@ -22,7 +22,7 @@ export const GUIDES: Guide[] = [
   ),
   ...REGIONS.map(
     (r): Guide => ({
-      slug: `buy-korean-fragrance-${COUNTRY[r.code].replace(/^the /, "").toLowerCase().replace(/\s+/g, "-")}`,
+      slug: `buy-perfume-${COUNTRY[r.code].replace(/^the /, "").toLowerCase().replace(/\s+/g, "-")}`,
       kind: "region",
       region: r.code,
       title: `Where to buy perfume in ${COUNTRY[r.code]}`,

@@ -58,7 +58,7 @@ export function sortOffers(offers: Offer[]): Offer[] {
 /**
  * Drop prices that cannot be the same new product: with three or more stores,
  * anything under 40% or over 250% of the median is a misfiled listing (a
- * single sheet mask filed under the box's barcode), a bundle or a reseller
+ * single 10 ml filed under the 100 ml's barcode), a bundle or a reseller
  * markup. With two, nothing can be judged, so
  * both stay.
  */

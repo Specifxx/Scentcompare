@@ -24,7 +24,7 @@ function Snippet({ html }: { html: string }) {
 
 export default function Widgets() {
   const p = popular(1)[0];
-  const cats = CATEGORIES.filter((c) => ["cleansers", "moisturisers", "sunscreen"].includes(c.key));
+  const cats = CATEGORIES.filter((c) => ["women", "men", "unisex"].includes(c.key));
   return (
     <div className="mx-auto max-w-3xl px-4 pb-16">
       <PageHead

@@ -11,12 +11,12 @@ export const FORUM_SITE: ForumSite = {
   intro: "Swap fragrance wardrobes, product finds and good prices with other fragrance lovers.",
   categories: [
     {
-      "key": "routines",
-      "name": "Routines & recommendations",
-      "blurb": "Your routine, what to try next and what actually worked.",
+      "key": "wardrobe",
+      "name": "Scents & recommendations",
+      "blurb": "Your signature scent, what to try next and what got the compliments.",
       "prompts": [
-        "Your current morning routine?",
-        "A product you would repurchase forever?"
+        "Your signature scent right now?",
+        "A bottle you would repurchase forever?"
       ]
     },
     {
@@ -25,25 +25,25 @@ export const FORUM_SITE: ForumSite = {
       "blurb": "Good prices you spotted, store experiences and shipping times.",
       "prompts": [
         "Which store shipped fastest to you?",
-        "Best sunscreen price you found this month"
+        "Best perfume price you found this month"
       ]
     },
     {
-      "key": "concerns",
-      "name": "Skin concerns",
-      "blurb": "Oily, dry, sensitive or acne-prone: what helped you (not medical advice).",
+      "key": "men",
+      "name": "Men's cologne",
+      "blurb": "Office scents, date-night bottles, summer and winter picks.",
       "prompts": [
-        "What helped your sensitive skin settle?",
-        "Gentle cleanser picks for oily skin?"
+        "Best cologne for the office that won't choke the room?",
+        "A winter scent that lasts all day?"
       ]
     },
     {
-      "key": "suncare",
-      "name": "Sunscreen talk",
-      "blurb": "Finishes, white cast and favourites for every skin tone.",
+      "key": "niche",
+      "name": "Niche & Arabic houses",
+      "blurb": "Creed, MFK, Le Labo, Lattafa, Armaf and the rest: worth the money, or not?",
       "prompts": [
-        "No-white-cast picks for deeper skin tones?",
-        "Best sunscreen under makeup?"
+        "Which Lattafa is actually worth it?",
+        "Is a niche bottle ever worth three designer ones?"
       ]
     },
     {
@@ -55,5 +55,5 @@ export const FORUM_SITE: ForumSite = {
       ]
     }
   ],
-  reserved: ["kyoung", "k young", "scentcompare"],
+  reserved: ["scentcompare", "scent compare"],
 };

@@ -14,7 +14,7 @@ export default function BasketPage() {
       <PageHead
         eyebrow="Basket"
         title="Compare a whole basket"
-        sub="The cheapest store for one toner isn't always the cheapest for three items once delivery is added. Add what you want to buy and see each store's total, with its own delivery cost and free-delivery threshold."
+        sub="The cheapest store for one bottle isn't always the cheapest for three items once delivery is added. Add what you want to buy and see each store's total, with its own delivery cost and free-delivery threshold."
       />
       <Basket />
     </div>

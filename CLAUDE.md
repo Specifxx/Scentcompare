@@ -1,9 +1,10 @@
 # Working in this repo
 
-ScentCompare (scentcompare.app, tagline "Stay young.") compares Korean skincare and K-beauty prices across real K-beauty stores in the
-US, UK, Canada, Australia, New Zealand and Europe. A sister site of RiftCompare (`Specifxx/TCGEmpire`) and FigureCompare,
-built on FigureCompare's static engine, but carrying **no Compare branding** (owner, 2026-10-30). Read `README.md`, then
-`DECISIONS.md`.
+ScentCompare (scentcompare.app, "Smell expensive. Pay less.") compares perfume and cologne prices across real
+fragrance stores in the US, UK, Canada, Australia, New Zealand and Europe: women's, men's and unisex, for everyone
+(owner, 2026-11-05). A copy of KaeYoung's static engine (`Specifxx/Kaeyoung`), itself built on FigureCompare's, and
+a sister site of RiftCompare (`Specifxx/TCGEmpire`). It is a copy, not a synced sister: port fixes by hand. Read
+`README.md`, then `DECISIONS.md` (the entries before 2026-11-05 are KaeYoung's).
 
 ## A fully static site: data in GitHub, pages on Vercel's CDN
 
@@ -38,60 +39,59 @@ Production builds only a commit whose SUBJECT carries `[deploy]` (`scripts/verce
 the next release; use *Production deploy* (or `[deploy]`) only when the owner says it is urgent, and say so.
 Previews build only with `[preview]`, when the owner asks. `claude/*` and `ccr-*` branches never deploy (`vercel.json`).
 
-## Matching: the Korean barcode or nothing
+## Matching: the barcode on the box or nothing
 
-- A listing is matched ONLY by its EAN-13 with Korea's GS1 prefix 880 (`src/lib/ean.ts`), read from the variant
-  barcode, the SKU or a labelled "EAN:" in a single-variant description. No barcode, no listing. Never match on a
-  title: sizes, refills, old and new packaging, a single sheet and a box of ten look alike.
-- Every Shopify variant is its own listing (a 30 ml and a 100 ml are two products). `products.json` has no barcode,
+- A listing is matched ONLY by a valid EAN-13 or UPC-A (`src/lib/ean.ts` `isProductEan`: a correct check digit,
+  outside the internal, book and coupon ranges), read from the variant barcode, the SKU or a labelled "EAN:" in a
+  single-variant description. No barcode, no listing. Never match on a title: a 50 ml and a 100 ml, an EDT and an
+  EDP, a tester and a boxed bottle, and a fake all share a name.
+- Every Shopify variant is its own listing (a 50 ml and a 100 ml are two products). `products.json` has no barcode,
   so `/products/<handle>.json` is read once per product and cached in `data/state/barcodes.json`
-  (`fill-barcodes.yml` does big fills on 16 runners). In `mixed` stores only known Korean brands are looked up.
-- The title decides only whether a listing belongs (`src/lib/title.ts`): testers, samples, short-dated, damaged,
-  pre-owned, store-made bundles and mystery boxes are refused; it also gives the category and size. Every rule
-  changed gets a store title in `tests/title.test.ts`. Never refuse " + " (real names: "Rice + Probiotics").
+  (`fill-barcodes.yml` does big fills on 16 runners). In `mixed` stores only fragrance-worded products are looked up.
+- The title decides only whether a listing belongs (`src/lib/title.ts`): testers, unboxed, decants, samples, vials,
+  dupes and "inspired by", pre-owned, damaged, store-made bundles and mystery boxes are refused; a house's own gift
+  set is kept. It also gives the section (women, men, unisex, sets, minis, body) and the size (ml, g, oz only).
+  Every rule changed gets a store title in `tests/title.test.ts`.
 - A product gets a page only when 2+ stores in one region sell it (`SITE.minStoresPerRegion`). With 3+ stores,
   prices under 40% or over 250% of the median are dropped. Mirrors (one stock, two domains) count once.
-- The brand is the Shopify vendor, folded by `src/lib/brand.ts` (a vendor that is the store's own name falls back
-  to a known brand in the title).
+- The house is the Shopify vendor, folded by `src/lib/brand.ts` (aliases: YSL, Rabanne, MFK, Dolce & Gabbana…).
 - Real stores only, never marketplaces (counterfeits). Stores live in `src/content/stores.ts`; read two at a time;
   a 403, 429 or captcha stops that store (never worked around). Prices are never converted between currencies; a
   store whose own currency is not its region's is skipped. Slugs are kept forever (`data/state/slugs.json`).
-- No Korea region (DECISIONS.md, 2026-10-30).
 
 ## Money
 
-- Affiliate tags are added at build (`src/lib/affiliate.ts`): `ky-<region>-<placement>-<ean>` in EPN `customid`,
+- Affiliate tags are added at build (`src/lib/affiliate.ts`): `sc-<region>-<placement>-<ean>` in EPN `customid`,
   Amazon `ascsubtag` and the retailers' `{sub}`; stores get `utm_source=scentcompare.app`.
-- **No banner ads** (owner, 2026-10-30: "cut down on the banner ads … a really nice website"): no eBay strips, no
-  AdSense, no nav ad boxes. Paid links live only in a product's price table, pinned above the stores, drawn like a store row (owner, 2026-11-01) and labelled:
-  eBay, Amazon (hard-coded tags: US `riftcompare-20`, AU `compareempire-22`, UK `compareempi03-21`, CA `compareempire-20`, EU `compareempire-21`), and the beauty
-  retailers in `PARTNERS` (YesStyle, Stylevana, Olive Young Global, iHerb, LOOKFANTASTIC, Cult Beauty), each shown
-  only once its `AFF_*` tracking template is set in Vercel. None is ever counted as a store or "the cheapest";
-  commission never decides order. `tests/site.test.ts` pins it.
+- **No banner ads** (owner, 2026-10-30, inherited): no eBay strips, no AdSense, no nav ad boxes. Paid links live
+  only in a product's price table, pinned above the stores, drawn like a store row and labelled: eBay, Amazon
+  (hard-coded tags: US `riftcompare-20`, AU `scentcompare-22`, UK `compareempi03-21`, CA `compareempire-20`, EU
+  `compareempire-21`), and the retailers in `PARTNERS` (FragranceX, FragranceNet, Perfumania, Sephora, Notino, Scent
+  Store, LOOKFANTASTIC, Cult Beauty, Parfumdreams, Sobelia, Adore Beauty, YesStyle), each shown only once its `AFF_*`
+  tracking template is set in Vercel (FragranceX and FragranceNet always, as plain searches until then). None is
+  ever counted as a store or "the cheapest"; commission never decides order. `tests/site.test.ts` pins it.
 - eBay listings come only from `scripts/ebay-import.ts` in GitHub Actions (Browse API by GTIN, new, Buy It Now,
-  never from CN/HK sellers, 60%–300% of the store median). ScentCompare's keyset is the owner's new third one (pending
-  eBay approval, 2026-10-30), shared with CamCompare: 2,500 calls a day each, so `EBAY_DAILY_CAP` defaults to
-  2,500 and the pass is a no-op until `EBAY_CLIENT_ID`/`EBAY_CLIENT_SECRET` exist. Never point it at a sister's
-  keyset or raise the cap without the owner.
-- No pop-ups, no interstitials, no sign-up or accounts (owner, 2026-10-30).
+  local sellers only, never from CN/HK sellers, 60%–300% of the store median). ScentCompare has its OWN keyset
+  (owner, 2026-11-05): `EBAY_DAILY_CAP` is 2,500 and the pass is a no-op until `EBAY_CLIENT_ID`/`EBAY_CLIENT_SECRET`
+  exist. Popular products first (the engine's tiers). Never point it at a sister's keyset or raise the cap without
+  the owner.
+- No pop-ups, no interstitials, no sign-up or accounts.
 
 ## Design
 
-Pretty, colourful and light (owner, 2026-10-30: "more colorful and pretty … like Korean sites", light by default; it
-first asked for "very professional"): blush-white page, white cards with soft pink hairlines, rose (`--accent`) for
-prices and buttons, a pastel set (`--peach`, `--lavender`, `--mint`, `--butter`, `--sky`) for step tiles and washes,
-green only for savings, Fraunces headings and Inter text, no emoji decoration. Flat SVG drawings of generic bottles,
-jars and tubes (`src/components/Art.tsx`), never a brand's own packaging. Light theme unless the visitor picks night.
-A DexCompare-style side panel flush to the left edge from `lg` up (`SideNav`, `src/lib/nav.ts`), the same groups in
-the phone menu. **No sister-site or family links** (owner, 2026-10-30: "this is just Korean beauty"). Product photos
-are the stores' own, hotlinked. Icons and the share image come from `scripts/og/render.mjs`; look at them before
-committing.
+KaeYoung's theme, kept similar on purpose (owner, 2026-11-05), for women, men and everyone: blush-white page, white
+cards with soft pink hairlines, rose (`--accent`) for prices and buttons, a pastel set (`--peach`, `--lavender`,
+`--mint`, `--butter`, `--sky`) for section tiles and washes, green only for savings, Fraunces headings and Inter text
+(self-hosted through fontsource), no emoji decoration. Flat SVG drawings of generic bottles (`src/components/Art.tsx`),
+never a house's own flacon. Light theme unless the visitor picks night. The side panel (`SideNav`, `src/lib/nav.ts`)
+from `lg` up, the same groups in the phone menu. Product photos are the stores' own, hotlinked. Icons and the share
+image come from `scripts/og/render.mjs`; look at them before committing.
 
 ## Blog
 
 `src/content/blog.ts` lists the posts; `src/app/blog/[slug]/page.tsx` writes each one around live blocks drawn from
 the day's prices at build, so every number is a real store price. A post answers one question the data answers; it
-never repeats a step hub or a price guide.
+never repeats a section hub or a price guide.
 
 ## The site watches itself
 

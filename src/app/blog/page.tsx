@@ -7,7 +7,7 @@ import { niceDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "fragrance price blog",
-  description: "perfume prices, read closely: brand stores against fragrance shops, routines priced, sunscreen, and the biggest price gaps, from today's store prices.",
+  description: "perfume prices, read closely: brand stores against fragrance shops, men's and women's bestsellers priced, gift sets, and the biggest price gaps, from today's store prices.",
   alternates: { canonical: "/blog" },
 };
 
@@ -17,7 +17,7 @@ export default function Blog() {
       <PageHead
         eyebrow="Blog"
         title="The fragrance price blog"
-        sub="Questions the prices answer: are brands' own stores cheaper, what a routine really costs, where sunscreen is cheapest. Every number comes from today's store prices."
+        sub="Questions the prices answer: are brands' own stores cheaper, what the bestsellers really cost, where gift sets are cheapest. Every number comes from today's store prices."
       />
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {LIVE_POSTS.map((p) => (

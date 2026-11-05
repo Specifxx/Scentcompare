@@ -7,12 +7,12 @@ import { PageHead } from "@/components/Section";
 import { pctText, regionStats, reportMonth, typicalPrice } from "@/lib/price-report";
 
 // The self-updating monthly price report (DECISIONS.md, "Self-updating price report", 2026-11-02): prerendered at
-// the daily build from that day's prices, one URL kept for good. What outreach offers beauty writers to quote.
+// the daily build from that day's prices, one URL kept for good. What outreach offers fragrance writers to quote.
 export function generateMetadata(): Metadata {
   const month = reportMonth(getMeta()?.updatedAt);
   return {
-    title: `fragrance price report, ${month}: how much stores differ`,
-    description: "How much the same perfume product costs from store to store this month, region by region, and what a typical cleanser, moisturiser or sunscreen costs. Free to cite.",
+    title: `Fragrance price report, ${month}: how much stores differ`,
+    description: "How much the same perfume product costs from store to store this month, region by region, and what a typical women's perfume, men's cologne or gift set costs. Free to cite.",
     alternates: { canonical: "/price-report" },
   };
 }
@@ -23,13 +23,13 @@ export default function PriceReport() {
   const month = reportMonth(meta?.updatedAt);
   const asOf = meta?.updatedAt ? new Date(meta.updatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) : null;
   const regions = REGIONS.map((r) => ({ r, s: regionStats(products, r.code) })).filter((x) => x.s.orderable > 0);
-  const cats = CATEGORIES.filter((c) => ["cleansers", "toners", "serums", "moisturisers", "sunscreen", "masks"].includes(c.key));
-  const citation = `${SITE.name}, "fragrance price report, ${month}", ${SITE.url}/price-report`;
+  const cats = CATEGORIES.filter((c) => ["women", "men", "unisex", "sets", "minis", "body"].includes(c.key));
+  const citation = `${SITE.name}, "Fragrance price report, ${month}", ${SITE.url}/price-report`;
   return (
     <div className="mx-auto max-w-4xl px-4 pb-16">
       <PageHead
         eyebrow="Updated with every day's prices"
-        title={`fragrance price report, ${month}`}
+        title={`Fragrance price report, ${month}`}
         sub={<>The same perfume product, matched by its barcode, at real fragrance stores in each region: how far apart the stores are, and what things typically cost.{asOf ? ` Last updated ${asOf}.` : ""} Free to quote with a link.</>}
       />
       <section>
