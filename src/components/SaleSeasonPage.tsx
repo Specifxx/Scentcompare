@@ -15,8 +15,8 @@ const PLACES = listRegions(REGIONS.map((r) => r.phrase.replace(/^(in|from) /, ""
 export function saleMetadata(slug: SaleSlug): Metadata {
   const y = year(slug);
   return {
-    title: `K-beauty ${saleHeading(slug, y)}`,
-    description: `${SALE_SEASONS[slug].name} ${y} Korean skincare deals: in stock today where the cheapest store is at least 10% under the dearest. Same barcode, same size, per region, updated daily.`,
+    title: `fragrance ${saleHeading(slug, y)}`,
+    description: `${SALE_SEASONS[slug].name} ${y} perfume deals: in stock today where the cheapest store is at least 10% under the dearest. Same barcode, same size, per region, updated daily.`,
     alternates: { canonical: `/${slug}` },
   };
 }
@@ -27,7 +27,7 @@ export function SaleSeasonPage({ slug }: { slug: SaleSlug }) {
     <div className="mx-auto max-w-6xl px-4">
       <PageHead
         eyebrow={SALE_SEASONS[slug].name}
-        title={`K-beauty ${saleHeading(slug, y)}`}
+        title={`fragrance ${saleHeading(slug, y)}`}
         sub={
           <>
             {saleIntro(slug, y, PLACES)} These are
@@ -45,7 +45,7 @@ export function SaleSeasonPage({ slug }: { slug: SaleSlug }) {
         );
       })}
       <p className="mt-8 text-sm text-soft">
-        <Link prefetch={false} href="/black-friday" className="underline">Black Friday deals</Link> · <Link prefetch={false} href="/deals" className="underline">K-beauty deals today</Link> · <Link prefetch={false} href="/popular" className="underline">Popular products</Link> ·{" "}
+        <Link prefetch={false} href="/black-friday" className="underline">Black Friday deals</Link> · <Link prefetch={false} href="/deals" className="underline">fragrance deals today</Link> · <Link prefetch={false} href="/popular" className="underline">Popular products</Link> ·{" "}
         <Link prefetch={false} href="/stores" className="underline">Stores we compare</Link>
       </p>
     </div>

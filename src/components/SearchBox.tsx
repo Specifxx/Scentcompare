@@ -2,7 +2,7 @@
 // Search-as-you-type over /search-index.json (lib/browse.ts): one static file
 // built with each release, fetched the first time the box is focused; photos
 // follow from /search-images.json. A keystroke never reaches a server.
-// Suggestions in three groups, like RiftCompare's: brands, routine steps and
+// Suggestions in three groups, like RiftCompare's: brands, sections and
 // products (photo, brand, stars, price), then "see every result".
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { CATEGORIES } from "@/site";
@@ -13,18 +13,14 @@ import { Stars } from "./reviews/Stars";
 
 export { norm, searchRows, type IndexRow };
 
-/** Words that point at a routine step. */
+/** Words that point at a section. */
 const STEP_WORDS: Record<string, string[]> = {
-  cleansers: ["cleanser", "cleansing", "foam", "balm", "double cleanse", "face wash"],
-  toners: ["toner", "pad", "mist"],
-  serums: ["serum", "essence", "ampoule"],
-  moisturisers: ["moisturiser", "moisturizer", "cream", "lotion", "emulsion"],
-  sunscreen: ["sunscreen", "sun", "spf", "suncream", "sun stick"],
-  masks: ["mask", "sheet"],
-  "eye-care": ["eye"],
-  "lip-care": ["lip"],
-  makeup: ["makeup", "cushion", "tint", "bb", "foundation", "primer"],
-  "body-hair": ["body", "hair", "shampoo", "hand cream"],
+  women: ["women", "womens", "for her", "ladies", "femme", "perfume for women"],
+  men: ["men", "mens", "for him", "cologne", "homme", "aftershave", "men's cologne"],
+  unisex: ["unisex", "niche", "oud", "for all"],
+  sets: ["gift set", "set", "gift", "coffret"],
+  minis: ["mini", "travel", "travel spray", "miniature", "small"],
+  body: ["body mist", "mist", "lotion", "shower gel", "deodorant", "hair mist"],
 };
 
 type Brand = { name: string; slug: string; count: number; key: string };
@@ -121,8 +117,8 @@ export function SearchBox({ big = false }: { big?: boolean }) {
             }
             if (e.key === "Escape") setOpen(false);
           }}
-          placeholder={big ? "Search a brand, product or ingredient…" : "Search K-beauty…"}
-          aria-label="Search Korean skincare"
+          placeholder={big ? "Search a house, a scent or a barcode…" : "Search fragrance…"}
+          aria-label="Search perfume"
           aria-expanded={open}
           aria-controls={listId}
           aria-autocomplete="list"
@@ -171,7 +167,7 @@ export function SearchBox({ big = false }: { big?: boolean }) {
                 <li key={c.key}>
                   <a href={`/${c.key}`} onMouseEnter={() => setActive(idx(`/${c.key}`))} className={rowCls(`/${c.key}`)}>
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg tint-mint text-base" aria-hidden>✦</span>
-                    <span className="min-w-0 flex-1 truncate text-sm"><b className="font-semibold">{c.name}</b> <span className="text-soft">· every {c.plural.replace(/^Korean /, "")} compared</span></span>
+                    <span className="min-w-0 flex-1 truncate text-sm"><b className="font-semibold">{c.name}</b> <span className="text-soft">· every one of the {c.plural} compared</span></span>
                   </a>
                 </li>
               ))}

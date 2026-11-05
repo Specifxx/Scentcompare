@@ -1,6 +1,6 @@
 // Every outbound link is tagged here, at build time (there is no /go route:
 // a click costs no function). Tag format, as on every sister site:
-// `ky-<region>-<placement>-<ean>` in EPN's `customid` and Amazon's
+// `sc-<region>-<placement>-<ean>` in EPN's `customid` and Amazon's
 // `ascsubtag`, so the earnings reports split by site, market and placement.
 // Store links get utm_source so a store sees what we send it (the start of a
 // partner-code conversation).
@@ -8,7 +8,7 @@ import { REGION_BY_CODE, SITE, type RegionCode } from "@/site";
 import { STORE_BY_ID } from "@/content/stores";
 
 /** One EPN campaign for every site in the family, hard-coded (owner,
- *  2026-10-30); no variable overrides it. The customid tag (`ky-…`) tells the
+ *  2026-10-30); no variable overrides it. The customid tag (`sc-…`) tells the
  *  sites apart in the reports. */
 export const EBAY_CAMPAIGN_ID = "5339155912";
 
@@ -18,7 +18,7 @@ export const EBAY_CAMPAIGN_ID = "5339155912";
 export function amazonTag(region: RegionCode): string | null {
   const tags: Partial<Record<RegionCode, string>> = {
     US: "riftcompare-20",
-    AU: "kaeyoung-22",
+    AU: "scentcompare-22",
     UK: "compareempi03-21",
     CA: "compareempire-20",
     EU: "compareempire-21",
@@ -114,16 +114,19 @@ export function amazonSearchUrl(query: string, region: RegionCode, sub: string):
 }
 
 /**
- * Beauty retailers that sell the same products and pay through their own
- * programs or a network (YesStyle, Stylevana, Olive Young Global, iHerb,
- * LOOKFANTASTIC, Cult Beauty). None has a price feed we can read, so each is
- * a labelled search link pinned above the stores, shown ONLY once its env var
- * holds our tracking link template, set after the program accepts us (see
- * the Chrome setup prompt). The template carries {url} (the encoded search
- * URL, for network deep links) or {q} (the encoded query, for programs that
- * take a search URL plus a code):
+ * Fragrance retailers that sell the same bottles and pay through their own
+ * programs or a network (FragranceX and Sobelia on CJ, Notino on CJ, The Scent
+ * Store, Parfumdreams, LOOKFANTASTIC and Cult Beauty on Awin, Adore Beauty on
+ * Commission Factory, Sephora and FragranceNet on FlexOffers, YesStyle's own
+ * program; the one KaeYoung partner left out is Stylevana and Olive Young,
+ * which sell no designer fragrance). None has a price feed we read yet, so
+ * each is a labelled search link pinned above the stores, shown ONLY once its
+ * env var holds our tracking link template, set after the program accepts us
+ * (see the Chrome setup prompt). The template carries {url} (the encoded
+ * search URL, for network deep links) or {q} (the encoded query, for programs
+ * that take a search URL plus a code):
+ *   AFF_FRAGRANCEX="https://www.anrdoezrs.net/click-XXXX-YYYY?url={url}"
  *   AFF_YESSTYLE="https://www.yesstyle.com/en/list.html?q={q}&rco=OURCODE"
- *   AFF_OLIVEYOUNG="https://invol.co/aff_m?offer_id=…&aff_id=…&url={url}"
  */
 export interface Partner {
   key: string;
@@ -133,18 +136,26 @@ export interface Partner {
   search: (q: string) => string;
   note: string;
   /** Shown in every region it ships to even before its program accepts us,
-   *  as a plain unpaid search link (a visitor's request, 2026-10-30: YesStyle
-   *  and Stylevana are where K-beauty buyers check first). */
+   *  as a plain unpaid search link (the two discounters fragrance buyers
+   *  check first; the same rule KaeYoung used for YesStyle and Stylevana). */
   always?: boolean;
 }
 
 export const PARTNERS: Partner[] = [
-  { key: "yesstyle", name: "YesStyle", envVar: "AFF_YESSTYLE", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.yesstyle.com/en/list.html?q=${q}`, note: "ships from Hong Kong", always: true },
-  { key: "stylevana", name: "Stylevana", envVar: "AFF_STYLEVANA", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.stylevana.com/en_US/catalogsearch/result/?q=${q}`, note: "ships worldwide", always: true },
-  { key: "oliveyoung", name: "Olive Young Global", envVar: "AFF_OLIVEYOUNG", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://global.oliveyoung.com/display/search?query=${q}`, note: "ships from Korea" },
-  { key: "iherb", name: "iHerb", envVar: "AFF_IHERB", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.iherb.com/search?kw=${q}`, note: "ships worldwide" },
-  { key: "lookfantastic", name: "LOOKFANTASTIC", envVar: "AFF_LOOKFANTASTIC", regions: ["UK"], search: (q) => `https://www.lookfantastic.com/search?q=${q}`, note: "UK retailer" },
+  { key: "fragrancex", name: "FragranceX", envVar: "AFF_FRAGRANCEX", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.fragrancex.com/search/search_results?stext=${q}`, note: "ships worldwide from the US", always: true },
+  { key: "fragrancenet", name: "FragranceNet", envVar: "AFF_FRAGRANCENET", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.fragrancenet.com/search?q=${q}`, note: "ships worldwide from the US", always: true },
+  { key: "perfumania", name: "Perfumania", envVar: "AFF_PERFUMANIA", regions: ["US"], search: (q) => `https://www.perfumania.com/search?q=${q}`, note: "US discounter" },
+  { key: "sephora", name: "Sephora", envVar: "AFF_SEPHORA", regions: ["US", "CA"], search: (q) => `https://www.sephora.com/search?keyword=${q}`, note: "US retailer" },
+  { key: "notino-uk", name: "Notino", envVar: "AFF_NOTINO_UK", regions: ["UK"], search: (q) => `https://www.notino.co.uk/search/?q=${q}`, note: "UK discounter" },
+  { key: "notino-eu", name: "Notino", envVar: "AFF_NOTINO_EU", regions: ["EU"], search: (q) => `https://www.notino.de/search/?q=${q}`, note: "European discounter" },
+  { key: "scentstore", name: "The Scent Store", envVar: "AFF_SCENTSTORE", regions: ["UK"], search: (q) => `https://www.thescentstore.co.uk/search?q=${q}`, note: "UK discounter" },
+  { key: "lookfantastic", name: "LOOKFANTASTIC", envVar: "AFF_LOOKFANTASTIC", regions: ["UK", "US", "AU"], search: (q) => `https://www.lookfantastic.com/search?q=${q}`, note: "UK retailer" },
   { key: "cultbeauty", name: "Cult Beauty", envVar: "AFF_CULTBEAUTY", regions: ["UK"], search: (q) => `https://www.cultbeauty.co.uk/search?q=${q}`, note: "UK retailer" },
+  { key: "parfumdreams", name: "Parfumdreams", envVar: "AFF_PARFUMDREAMS", regions: ["EU"], search: (q) => `https://www.parfumdreams.de/search?q=${q}`, note: "German discounter" },
+  { key: "sobelia", name: "Sobelia", envVar: "AFF_SOBELIA", regions: ["EU", "UK"], search: (q) => `https://www.sobelia.com/en/search?q=${q}`, note: "ships across Europe" },
+  { key: "adorebeauty", name: "Adore Beauty", envVar: "AFF_ADOREBEAUTY", regions: ["AU", "NZ"], search: (q) => `https://www.adorebeauty.com.au/search?q=${q}`, note: "Australian retailer" },
+  { key: "sephora-au", name: "Sephora", envVar: "AFF_SEPHORA_AU", regions: ["AU", "NZ"], search: (q) => `https://www.sephora.com.au/search?q=${q}`, note: "Australian retailer" },
+  { key: "yesstyle", name: "YesStyle", envVar: "AFF_YESSTYLE", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.yesstyle.com/en/list.html?q=${q}`, note: "ships from Hong Kong" },
 ];
 
 /** A partner's tracked search link for a query, or null while its template is unset. */

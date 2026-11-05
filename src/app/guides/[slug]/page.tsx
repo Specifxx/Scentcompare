@@ -77,7 +77,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
       <PageHead
         eyebrow="Price guide"
         title={g.title}
-        sub={`${stores.length} specialist K-beauty stores sell in ${countryName(g.region)} in ${r.currency}. Here is who they are, which is cheapest for the best-known products, and today's biggest price gaps${updated ? `, as of ${updated}` : ""}.`}
+        sub={`${stores.length} specialist fragrance stores sell in ${countryName(g.region)} in ${r.currency}. Here is who they are, which is cheapest for the best-known products, and today's biggest price gaps${updated ? `, as of ${updated}` : ""}.`}
       />
       <section className="mb-10">
         <h2 className="h-display mb-3 text-xl">The stores</h2>

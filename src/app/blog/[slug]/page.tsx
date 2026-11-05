@@ -108,15 +108,12 @@ function PerRegion({ render }: { render: (r: RegionCode) => ReactNode }) {
 type BodyProps = { asOf: string | null };
 
 const BODIES: Record<string, (p: BodyProps) => ReactNode> = {
-  "brand-stores-vs-kbeauty-shops": BrandStores,
-  "korean-skincare-routine-priced": Routine,
-  "korean-sunscreen-where-cheapest": Sunscreen,
+  "brand-stores-vs-fragrance-shops": BrandStores,
   "same-product-different-price": Gaps,
-  "cosrx-beauty-of-joseon-anua-prices": ThreeBrands,
-  "avoid-fake-kbeauty": AvoidFakes,
+  "avoid-fake-perfume": AvoidFakes,
 };
 
-// ---- Brand stores vs K-beauty shops -------------------------------------
+// ---- Brand stores vs fragrance shops -------------------------------------
 
 type Duel = { f: Product; official: { s: string; p: number; u: string }; shop: { s: string; p: number; u: string } };
 
@@ -137,8 +134,8 @@ function BrandStores() {
   return (
     <>
       <P>
-        Most of the big Korean skincare brands now sell from their own online stores: COSRX, Beauty of Joseon, Anua, SKIN1004, Torriden, TIRTIR, Klairs and more. It is natural to assume the brand&apos;s own store is the safe, fair-price choice. We
-        checked that against every specialist K-beauty shop that sells the same product, matched by the barcode on the box, so the size and version are identical.
+        Some fragrance houses sell from their own online stores as well as through the shops that stock them. It is natural to assume the brand&apos;s own store is the safe, fair-price choice. We
+        checked that against every specialist fragrance shop that sells the same product, matched by the barcode on the box, so the size and version are identical.
       </P>
       <PerRegion
         render={(r) => {
@@ -152,7 +149,7 @@ function BrandStores() {
             <>
               <H2>What the prices say</H2>
               <P>
-                Of the {d.length} products both a brand store and a K-beauty shop have in stock, a shop is cheaper for <b>{cheaper}</b>
+                Of the {d.length} products both a brand store and a fragrance shop have in stock, a shop is cheaper for <b>{cheaper}</b>
                 {same ? `, the price is the same for ${same}` : ""} and the brand&apos;s own store is cheaper for {d.length - cheaper - same}.
                 {savings.length ? ` When a shop is cheaper, the typical saving is ${pct(median)} off the brand's own price.` : ""} Brand stores often run their own sales and
                 bundles, so check both before you buy; and remember shipping, which brand stores sometimes make free above a lower threshold.
@@ -197,107 +194,8 @@ function BrandStores() {
       />
       <P>
         <span className="mt-6 block">
-          Every product page on KaeYoung lists the brand&apos;s own store alongside the shops when it sells there, so you never have to check twice. Start with the <A href="/deals">deals list</A> or search for your product at the top.
+          Every product page on ScentCompare lists the brand&apos;s own store alongside the shops when it sells there, so you never have to check twice. Start with the <A href="/deals">deals list</A> or search for your product at the top.
         </span>
-      </P>
-    </>
-  );
-}
-
-// ---- A routine, priced ---------------------------------------------------
-
-const STEPS: { cat: CatKey; label: string; why: string }[] = [
-  { cat: "cleansers", label: "Cleanser", why: "removes sunscreen, makeup and the day" },
-  { cat: "toners", label: "Toner", why: "rebalances and preps the skin" },
-  { cat: "serums", label: "Serum or essence", why: "the targeted step: hydration, brightening or calming" },
-  { cat: "moisturisers", label: "Moisturiser", why: "seals it all in" },
-  { cat: "sunscreen", label: "Sunscreen", why: "every morning, the step that matters most" },
-];
-
-function Routine() {
-  return (
-    <>
-      <P>
-        Korean skincare has a reputation for ten-step routines, but most people do five: cleanse, tone, treat, moisturise and protect. Below is each step&apos;s most widely stocked product (the one the most stores carry, usually the safest
-        place to start) at the cheapest store in your country today, and what the five cost together.
-      </P>
-      <PerRegion
-        render={(r) => {
-          const picks = STEPS.map((s) => {
-            const f = popularIn(r, 1, productsOfCat(s.cat).filter((x) => bestIn(x, r)?.offer.st === "in"))[0];
-            return { s, f, b: f ? bestIn(f, r) : null };
-          });
-          const have = picks.filter((x) => x.b);
-          if (have.length < 3) return <Empty region={r} />;
-          const total = have.reduce((n, x) => n + x.b!.offer.p, 0);
-          return (
-            <>
-              <ol className="mt-6 space-y-3">
-                {picks.map(({ s, f, b }, i) => (
-                  <li key={s.cat} className="card flex flex-wrap items-center gap-4 p-4">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-subtle">
-                      <CatIcon cat={s.cat} size={36} />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="eyebrow">
-                        Step {i + 1} · {s.label}
-                      </p>
-                      {f && b ? (
-                        <Link prefetch={false} href={`/product/${f.slug}`} className="font-medium hover:underline">
-                          {f.name}
-                        </Link>
-                      ) : (
-                        <p className="text-soft">No product in stock here today</p>
-                      )}
-                      <p className="text-xs text-soft">It {s.why}.</p>
-                    </div>
-                    {b && (
-                      <div className="text-right">
-                        <p className="text-lg font-semibold tabular-nums text-accent-deep">{money(b.offer.p, r)}</p>
-                        <p className="text-xs text-soft">at {storeName(b.offer.s)}</p>
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ol>
-              <p className="mt-4 rounded-2xl bg-accent-pale px-5 py-4 text-[16px]">
-                The {have.length} steps together: <b className="tabular-nums">{money(total, r)}</b> before shipping, each at its own cheapest store. Buying all of them at one store usually costs a little more but saves on shipping.
-              </p>
-            </>
-          );
-        }}
-      />
-      <H2>Cheaper still</H2>
-      <P>
-        Every step has cheaper choices than the best-stocked one. Each step&apos;s page lists every product we compare, and the price guides show the cheapest of the popular ones: <A href="/guides/cheapest-cleansers">cleansers</A>,{" "}
-        <A href="/guides/cheapest-toners">toners</A>, <A href="/guides/cheapest-serums">serums</A>, <A href="/guides/cheapest-moisturisers">moisturisers</A> and <A href="/guides/cheapest-sunscreen">sunscreen</A>.
-      </P>
-    </>
-  );
-}
-
-// ---- Sunscreen -------------------------------------------------------------
-
-function Sunscreen() {
-  const list = productsOfCat("sunscreen");
-  return (
-    <>
-      <P>
-        Korean sunscreens are some of the most-bought K-beauty products abroad, and some of the most widely stocked, so prices for the same tube differ a lot between stores. These are the sunscreens the most stores in your country carry, cheapest
-        first, with the cheapest store and how much less it charges than the dearest one.
-      </P>
-      <PerRegion
-        render={(r) => (
-          <>
-            <H2>Korean sunscreen prices {REGIONS.find((x) => x.code === r)!.phrase}</H2>
-            <PriceList region={r} products={popularIn(r, 20, list)} />
-          </>
-        )}
-      />
-      <H2>One thing to check</H2>
-      <P>
-        Sunscreen rules differ by country, so a sunscreen sold in one country can be labelled or formulated differently in another. KaeYoung only ever compares the exact same barcode, so the stores in each row sell the identical product; check
-        the store&apos;s listing for the SPF and PA rating you want. Every sunscreen we compare is in <A href="/sunscreen">Sunscreen</A>.
       </P>
     </>
   );
@@ -309,7 +207,7 @@ function Gaps() {
   return (
     <>
       <P>
-        The same product, the same size, the same barcode, and one store charges far more than another. That is the whole reason KaeYoung exists. Here are today&apos;s widest gaps in your country among products at least two stores have in stock,
+        The same product, the same size, the same barcode, and one store charges far more than another. That is the whole reason ScentCompare exists. Here are today&apos;s widest gaps in your country among products at least two stores have in stock,
         with the cheapest store first.
       </P>
       <PerRegion
@@ -334,61 +232,34 @@ function Gaps() {
   );
 }
 
-// ---- Three brands ------------------------------------------------------------
-
-const BRANDS = ["COSRX", "Beauty of Joseon", "Anua"];
-
-function ThreeBrands() {
-  const all = getBrands();
-  const found = BRANDS.map((n) => all.find((b) => b.name.toLowerCase() === n.toLowerCase())).filter((b): b is NonNullable<typeof b> => !!b);
-  return (
-    <>
-      <P>
-        COSRX, Beauty of Joseon and Anua are three of the most-searched Korean skincare brands outside Korea, and almost every K-beauty store sells them. That makes them the easiest products to overpay for. For each brand, here are its
-        best-stocked products in your country, cheapest first, with the store that has the lowest price today.
-      </P>
-      {found.map((b) => (
-        <section key={b.slug}>
-          <H2>{b.name}</H2>
-          <PerRegion render={(r) => (orderableIn(r, b.products).length ? <PriceList region={r} products={popularIn(r, 12, b.products)} /> : <Empty region={r} />)} />
-          <p className="mt-2 text-sm">
-            <A href={`/brands/${b.slug}`}>Every {b.name} product we compare</A>
-          </p>
-        </section>
-      ))}
-      {!found.length && <P>These brands appear here once the day&apos;s prices are in.</P>}
-    </>
-  );
-}
-
 // ---- Avoiding fakes ------------------------------------------------------------
 
 function AvoidFakes() {
   return (
     <>
       <P>
-        Popular Korean skincare is copied. Counterfeits turn up most on open marketplaces, where anyone can list a product, and they can look very close to the real thing. A fake is not just a waste of money: you do not know what is in it.
+        Popular perfume is copied. Counterfeits turn up most on open marketplaces, where anyone can list a product, and they can look very close to the real thing. A fake is not just a waste of money: you do not know what is in it.
         Here is what we check, and what you can.
       </P>
       <H2>1. Buy from a store, not a stranger</H2>
       <P>
-        Specialist K-beauty stores and the brands&apos; own stores buy their stock from the brand or its distributors. Many brands publish a list of authorised sellers on their website; if a shop is on it, that is a good sign. Every store KaeYoung
+        Specialist fragrance stores and the brands&apos; own stores buy their stock from the brand or its distributors. Many brands publish a list of authorised sellers on their website; if a shop is on it, that is a good sign. Every store ScentCompare
         compares is a real shop selling new, sealed products; open marketplaces and second-hand sellers are never part of the store comparison. You can see all of them on <A href="/stores">Stores we compare</A>. We do show an eBay and an Amazon row
         above the stores on product pages, labelled as ads and kept out of the &quot;cheapest&quot; ranking; on either site, buy from the brand&apos;s official shop or a seller with a long record.
       </P>
       <H2>2. Be wary of a price far below everyone else&apos;s</H2>
       <P>
-        Real stores price within a fairly narrow band of each other. When one listing is a fraction of what every store charges, ask why. When three or more stores sell a product, KaeYoung drops any price far below the others, so a price that looks too
+        Real stores price within a fairly narrow band of each other. When one listing is a fraction of what every store charges, ask why. When three or more stores sell a product, ScentCompare drops any price far below the others, so a price that looks too
         good to be true doesn&apos;t become the &quot;cheapest&quot;.
       </P>
       <H2>3. Check the box when it arrives</H2>
       <P>
-        Compare the packaging with the brand&apos;s own photos: fonts, colours, the seal and the batch or expiry code printed on the box and the container. Real products have a batch code that matches between box and bottle. A texture, smell or
-        colour unlike what you have used before is a reason to stop and contact the seller.
+        Compare the packaging with the brand&apos;s own photos: fonts, colours, the seal and the batch or expiry code printed on the box and the container. Real bottles have a batch code that matches between box and bottle, a cleanly glued box, a cap that fits and a sprayer that mists evenly. A colour, a scent that fades in minutes or a juice
+        unlike what you have worn before is a reason to stop and contact the seller.
       </P>
       <H2>4. What a barcode does and doesn&apos;t tell you</H2>
       <P>
-        KaeYoung matches every listing by the barcode printed on the box (Korean products&apos; barcodes start with 880), which is how we know two stores sell the identical product and size. A barcode alone does not prove a product is genuine,
+        ScentCompare matches every listing by the barcode printed on the box, which is how we know two stores sell the identical bottle and size. A barcode alone does not prove a product is genuine,
         because a counterfeit can copy it; that is why we also only list real stores.
       </P>
       <P>
@@ -458,8 +329,7 @@ function Advice({ sections }: { post: Post; sections: Section[] }) {
         );
       })}
       <P>
-        Picks are the products the most stores in your country stock, shown cheapest first, so the table changes as stores restock and reprice. Nothing here is medical advice: patch test new products, and see a dermatologist for skin problems that
-        don&apos;t settle. <A href="/blog">More from the blog</A>.
+        Picks are the products the most stores in your country stock, shown cheapest first, so the table changes as stores restock and reprice. How a fragrance smells on you is the one thing no price can tell you: wear a sample before you buy a big bottle. <A href="/blog">More from the blog</A>.
       </P>
     </>
   );

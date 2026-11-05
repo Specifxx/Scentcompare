@@ -14,7 +14,7 @@ export interface Offer {
 }
 
 export interface Product {
-  /** EAN-13 barcode, Korean prefix 880 */
+  /** EAN-13 barcode (any country) */
   ean: string;
   slug: string;
   name: string;
@@ -22,7 +22,7 @@ export interface Product {
   /** brand slug, for /brands/<slug> */
   b: string;
   cat: CatKey;
-  /** "50ml", "120g", "10 sheets" when the titles say it */
+  /** "100ml", "3.4 oz" when the titles say it */
   size: string | null;
   /** a store's own product photo, hotlinked */
   img: string | null;

@@ -7,8 +7,8 @@ import { TileGrid } from "@/components/ProductTile";
 import { PageHead, Section } from "@/components/Section";
 
 export const metadata: Metadata = {
-  title: "Popular Korean skincare: the most-loved K-beauty, compared",
-  description: "The K-beauty products the most stores stock and shoppers rate highest, with every store's price side by side in the US, UK, Canada, Australia, New Zealand and Europe.",
+  title: "Popular perfume: the most-loved fragrance, compared",
+  description: "The fragrances the most stores stock and shoppers rate highest, with every store's price side by side in the US, UK, Canada, Australia, New Zealand and Europe.",
   alternates: { canonical: "/popular" },
 };
 
@@ -19,8 +19,8 @@ export default function Popular() {
     <div className="mx-auto max-w-6xl px-4">
       <PageHead
         eyebrow="Popular"
-        title="Popular Korean skincare"
-        sub="The products the most K-beauty shops keep in stock, lifted by what KaeYoung shoppers rate them. Prices show for your region; change it at the top."
+        title="Popular perfume"
+        sub="The products the most fragrance shops keep in stock, lifted by what ScentCompare shoppers rate them. Prices show for your region; change it at the top."
       />
       {REGIONS.map((r) => {
         const list = popularNow(r.code, 24);

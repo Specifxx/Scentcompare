@@ -1,465 +1,300 @@
-// Advice and opinion posts (owner, 2026-10-30: "a lot of these blog posts
-// offering opinions, advice, and ideas for K-beauty"). Written as data and
-// drawn by the advice layout in src/app/blog/[slug]/page.tsx, so every pick is
-// a live price table for the reader's own country.
+// Advice and opinion posts, written as data and drawn by the advice layout in
+// src/app/blog/[slug]/page.tsx, so every pick is a live price table for the
+// reader's own country.
 //
 // Rules (DECISIONS.md "Advice posts"): one question per post; opinions rest on
-// what a product's own name says it contains, how widely it is stocked and what
-// it costs, never on medical claims; skin-condition posts say patch test and
-// see a dermatologist; written as the KaeYoung team, no invented reviewers.
+// what a product's own name says it is, how widely it is stocked and what it
+// costs, never on invented reviews or figures we have not measured; written as
+// the ScentCompare team, for anyone who wears fragrance.
 import type { Post } from "./blog";
 
 export const ADVICE_POSTS: Post[] = [
   {
-    slug: "pdrn-skincare-guide",
-    title: "PDRN skincare, explained: what it is, who sells it and where it is cheapest",
-    short: "PDRN skincare guide",
-    description: "PDRN went from Korean clinics to serums, creams and lip masks in two years. What the letters mean, what the products do and don't promise, and the most-stocked PDRN products priced at the cheapest store in your country.",
+    slug: "mens-colognes-every-store-stocks-priced",
+    title: "The men's colognes every store stocks, priced at the cheapest one",
+    short: "Men's colognes, priced",
+    description: "Sauvage, Bleu de Chanel, Aventus, Eros, Le Male, 1 Million, Acqua di Giò: the men's fragrances the most stores carry, at the cheapest store in your country today, and how far the same bottle's price spreads.",
     date: "2026-11-05",
-    sources: [
-      { title: "Polydeoxyribonucleotide (PDRN): a review of its use in dermatology", by: "National Library of Medicine (PubMed Central)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10006900/" },
-      { title: "How to test skin care products before use", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products" },
-    ],
-    art: "serums",
-    image: { src: "/blog/pdrn-skincare-guide.jpg", alt: "PDRN skincare, explained: serums, creams and masks priced at the cheapest store" },
+    art: "men",
     sections: [
       {
         p: [
-          "PDRN stands for polydeoxyribonucleotide, a DNA fragment that in Korea started as an injectable used in clinics (the salmon-DNA \"skin booster\" you may have read about) and is now the most fashionable ingredient on K-beauty shelves. In our data it appears in the names of well over two hundred products, from serums and creams to eye patches, toner pads and overnight lip masks, across almost every brand that matters: medicube, Anua, Abib, VT, Tirtir and more.",
-          "What it is in a cream is a different thing from what it is in a clinic. Topical PDRN cannot do what an injection does, and no over-the-counter product should promise it. The published research on PDRN is mostly on the injectable and wound-healing use (see the review in the sources); for serums the honest claim is hydration, a smoother feel and, in the formulas that pair it with niacinamide or peptides, a brightening or firming routine you would get from those partners anyway. Our view: buy a PDRN product because you like the texture and the price, not for the letters. Patch test anything new and see a dermatologist for anything medical.",
+          "A handful of men's fragrances account for most of what fragrance stores sell, and because every store stocks them, they are also the bottles with the widest price gaps. The same 100 ml of Sauvage, matched by the barcode on the box, can cost a third more at one shop than at another on the same day. This post lists the bestsellers the most stores in your country stock, cheapest store first, and refreshes every day.",
+          "Two things to check before you buy. The concentration: Sauvage alone comes as an eau de toilette, an eau de parfum, a parfum and an elixir, and they are different products at different prices, so make sure the row you click is the one you want. And the size: a 60 ml is rarely a better deal per millilitre than a 100 ml, but it is the right buy if you own ten bottles already.",
         ],
       },
       {
-        h: "PDRN serums and ampoules",
-        p: ["This is where the category started: thin, fast-absorbing serums, usually sold in 30 to 50 ml bottles and often paired with collagen, niacinamide or hyaluronic acid. The table shows the ones the most stores in your country stock, cheapest first; the price spread between stores for the same bottle is often wider than the difference between brands."],
-        picks: { title: "PDRN serums and ampoules {region}", match: "pdrn", cat: "serums", limit: 10 },
+        h: "The designer bestsellers",
+        p: ["The names people type into our search most: Dior, Chanel, Versace, Jean Paul Gaultier, Rabanne, Armani and Yves Saint Laurent. Each row is the exact bottle at every store that has it in stock."],
+        picks: { title: "The men's bestsellers {region}", match: "sauvage|bleu de chanel|eros|le male|1 million|one million|acqua di gi|dylan blue|stronger with you|spicebomb|invictus|the one|\\by\\b.*(edp|eau de parfum)|bad boy|phantom|le beau|wanted|code|boss bottled|allure homme|terre d'hermes|man in black", cat: "men", limit: 12 },
       },
       {
-        h: "PDRN creams and moisturisers",
-        p: ["The cream versions are the better value for a first try: a 50 to 80 ml tube lasts months and the texture is where the \"glass skin\" marketing actually comes from."],
-        picks: { title: "PDRN creams {region}", match: "pdrn", cat: "moisturisers", limit: 8 },
+        h: "The niche men's favourites",
+        p: ["Creed Aventus, Parfums de Marly Layton and Herod, Xerjoff Naxos and Tom Ford's Oud Wood are the ones that make a cheaper store worth finding: at this price, a 10% gap is real money. Many of these are sold for anyone, so the ones labelled unisex are in the [unisex section](/unisex)."],
+        picks: { title: "Niche favourites for men {region}", match: "aventus|layton|herod|naxos|oud wood|green irish tweed|percival|althair|pegasus|erba pura|tobacco vanille|ombre leather", limit: 10 },
       },
       {
-        h: "PDRN toner pads, masks and eye patches",
-        p: ["The 2026 wave: pre-soaked pads and hydrogel patches that make the ingredient a two-minute step. These are the products most often on sale, so check the table before you pay full price anywhere."],
-        picks: { title: "PDRN pads, masks and patches {region}", match: "pdrn", cat: "masks", limit: 6 },
-      },
-      {
-        h: "PDRN lip and eye care",
-        p: ["Lip masks and eye patches were the quickest way for brands to add PDRN to a range. They are small, cheap and the easiest place to start if you are curious. Our [K-beauty price map](/blog/kbeauty-price-map-november-2026) shows how far the same PDRN barcode's price spreads between stores, and [is snail mucin worth it](/blog/is-snail-mucin-worth-it) is the same honest look at the ingredient that came before it."],
-        picks: { title: "PDRN lip and eye care {region}", match: "pdrn", cat: "lip-care", limit: 6 },
+        h: "Aftershave and the rest of the line",
+        p: ["An aftershave balm or lotion from the same house is usually the cheapest way into a scent, and the deodorant and shower gel are where a gift set earns its price. Those are in the [body section](/body); the houses' boxed sets are in [gift sets](/sets)."],
+        picks: { title: "Aftershaves and balms {region}", match: "aftershave|after shave", limit: 8 },
       },
     ],
   },
   {
-    slug: "korean-retinol-retinal-guide",
-    title: "Korean retinol and retinal: how to start, and where the gentle ones are cheapest",
-    short: "Korean retinol and retinal",
-    description: "Korean brands sell retinol and retinal in low, beginner-friendly strengths wrapped in soothing bases. How the two differ, how to start without a flaky week, and the most-stocked products at the cheapest store in your country.",
-    date: "2026-11-08",
-    sources: [
-      { title: "Retinoid or retinol?", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/retinoid-retinol" },
-      { title: "How to test skin care products before use", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products" },
-    ],
-    art: "serums",
-    image: { src: "/blog/korean-retinol-retinal-guide.jpg", alt: "Korean retinol and retinal: how to start, priced at the cheapest store" },
-    sections: [
-      {
-        p: [
-          "Retinol and retinal (retinaldehyde) are vitamin A derivatives, the over-the-counter cousins of the prescription retinoids that dermatologists have used for decades. Retinal is one conversion step closer to the active form than retinol, so a given percentage of retinal is generally stronger; Korean brands sell both in low strengths, often 0.1% or below, inside bases built around peptides, panthenol or heartleaf to soften the adjustment period. That gentleness is the reason to shop Korean for a first retinoid.",
-          "Our view: start with a retinol or a low retinal, two nights a week, a pea-sized amount after moisturiser (the \"sandwich\" method), and build up over a month. Use sunscreen every morning, do not combine it with strong acids on the same night, and skip it entirely if you are pregnant or breastfeeding. Dry, flaky skin in the first weeks is normal; stinging or a rash is not, so patch test first and see a dermatologist if it persists.",
-        ],
-      },
-      {
-        h: "Retinol serums and creams",
-        p: ["The starting point. Many of these list the strength in the name; if yours does not, assume it is low. The table shows the products the most stores stock in your country, cheapest first."],
-        picks: { title: "Retinol products {region}", match: "retinol", limit: 10 },
-      },
-      {
-        h: "Retinal serums and creams",
-        p: ["A step up for skin that has already tolerated retinol. Korean retinal products are a 2025 and 2026 arrival and are stocked by far fewer stores, so the spread between the cheapest and dearest store is wide: it is worth checking."],
-        picks: { title: "Retinal products {region}", match: "retinal", limit: 10 },
-      },
-      {
-        h: "Retinol and retinal eye care",
-        p: ["Eye creams and patches are the gentlest way in, because the concentration is lowest and the base richest. Pair any of them with the sunscreen step in [Korean sunscreen: where the favourites are cheapest](/blog/korean-sunscreen-where-cheapest), and if your skin is on the dry side read [our routine for dry skin](/blog/korean-skincare-routine-dry-skin) first."],
-        picks: { title: "Retinol and retinal eye care {region}", match: "retinol|retinal", cat: "eye-care", limit: 8 },
-      },
-    ],
-  },
-  {
-    slug: "korean-skincare-routine-oily-skin",
-    title: "A Korean skincare routine for oily skin, at the cheapest stores",
-    short: "Routine for oily skin",
-    description: "Oily skin does well on light layers, not fewer of them. Our picks for each step, with BHA, niacinamide and gel textures, priced at the cheapest store in your country.",
-    date: "2026-10-30",
-    updated: "2026-10-30",
-    sources: [
-      { title: "Face washing 101", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-basics/care/face-washing-101" },
-      { title: "How to test skin care products before use", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products" },
-    ],
-    art: "toners",
-    sections: [
-      {
-        p: [
-          "The most common mistake with oily skin is stripping it: harsh foaming cleansers and no moisturiser leave skin tight in the morning and shiny again by lunch. The Korean approach is the opposite. Cleanse gently, use thin watery layers, and keep a light moisturiser even when you feel you don't need one.",
-          "Our view: if you only change one thing, swap a squeaky-clean foam for a low pH gel cleanser and add a BHA or niacinamide step a few evenings a week. Start slowly with exfoliating products, and patch test anything new.",
-        ],
-      },
-      {
-        h: "Step 1: an oil cleanser at night",
-        p: ["It sounds backwards, but an oil cleanser dissolves sunscreen and makeup that a foam alone can leave behind, then emulsifies and rinses off. Many people with oily skin find it leaves their face less tight than a second round of foam. This is our view, not a rule: if a cleansing oil seems to clog your pores, drop it."],
-        picks: { title: "Cleansing oils and balms {region}", match: "cleansing (oil|balm)|melting balm|clean(sing)? balm", cat: "cleansers", limit: 8 },
-      },
-      {
-        h: "Step 2: a gentle gel or low pH cleanser",
-        p: ["Look for \"low pH\", \"gel\" or \"gentle\" on the label. If your face feels tight after rinsing, the cleanser is too strong."],
-        picks: { title: "Gentle cleansers {region}", match: "low ?ph|gel cleanser|gentle", cat: "cleansers", limit: 8 },
-      },
-      {
-        h: "Step 3: BHA or niacinamide",
-        p: [
-          "BHA (salicylic acid) works inside pores; niacinamide is the gentler everyday option many people use for shine and uneven tone. Pick one to start, not both at once.",
-        ],
-        picks: { title: "BHA and niacinamide {region}", match: "\\bbha\\b|salicylic|niacinamide", limit: 10 },
-      },
-      {
-        h: "Step 4: a light moisturiser and daily sunscreen",
-        p: [
-          "Gel creams and \"watery\" sunscreens are where Korean brands shine for oily skin. Our full sunscreen comparison is in [Korean sunscreen: where the favourites are cheapest](/blog/korean-sunscreen-where-cheapest).",
-        ],
-        picks: { title: "Gel moisturisers {region}", match: "\\bgel\\b|water ?cream|aqua|watery", cat: "moisturisers", limit: 8 },
-      },
-    ],
-  },
-  {
-    slug: "korean-skincare-routine-dry-skin",
-    title: "A Korean skincare routine for dry skin: layer, don't scrub",
-    short: "Routine for dry skin",
-    description: "Dry skin needs water first and something to hold it in. A layered routine with hydrating toners, ceramides and rich creams, priced at the cheapest store near you.",
-    date: "2026-11-03",
-    sources: [
-      { title: "Face washing 101", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-basics/care/face-washing-101" },
-      { title: "How to test skin care products before use", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products" },
-    ],
-    art: "moisturisers",
-    sections: [
-      {
-        p: [
-          "Dry skin is short on oil; dehydrated skin is short on water. Most people with dry skin have a bit of both, which is why the Korean habit of several thin hydrating layers, sealed with a cream, works so well for them.",
-          "Our view: skip strong exfoliation for a few weeks, layer a hydrating toner two or three times, and judge a cream by how your skin feels the next morning rather than right after applying it.",
-        ],
-      },
-      {
-        h: "Hydrating toners and essences",
-        p: ["Pat a hydrating toner in with your hands, let it sink in, then repeat. Hyaluronic acid and glycerin-rich toners are the classic choice."],
-        picks: { title: "Hydrating toners {region}", match: "hyaluronic|hydrat|moist|essence toner", cat: "toners", limit: 8 },
-      },
-      {
-        h: "Barrier creams",
-        p: ["Ceramides, panthenol and \"barrier\" creams are the step that holds the water in. A richer texture at night, a lighter one in the morning, is a sensible split."],
-        picks: { title: "Ceramide and barrier creams {region}", match: "ceramide|barrier|panthenol|rich|moist", cat: "moisturisers", limit: 10 },
-      },
-      {
-        h: "Sleeping masks, once or twice a week",
-        p: ["A sleeping mask is a thick last layer you leave on overnight. It is a treat, not a requirement."],
-        picks: { title: "Sleeping masks {region}", match: "sleeping (mask|pack)|overnight", cat: "masks", limit: 8 },
-      },
-    ],
-  },
-  {
-    slug: "korean-skincare-sensitive-skin",
-    title: "Korean skincare for sensitive skin: a short, calm routine",
-    short: "Sensitive skin",
-    description: "Fewer products, soothing ingredients like centella, heartleaf and panthenol, and how to introduce anything new. Our picks, priced at the cheapest store in your country.",
-    date: "2026-11-17",
-    sources: [
-      { title: "How to test skin care products before use", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products" },
-      { title: "Face washing 101", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-basics/care/face-washing-101" },
-    ],
-    art: "serums",
-    sections: [
-      {
-        p: [
-          "Sensitive skin is the case where the famous ten-step routine is the worst idea. Every extra product is another chance of a reaction, so the best routine is short: a gentle cleanser, one soothing serum or toner, a plain moisturiser and sunscreen.",
-          "Add one new product at a time, patch test it first: the American Academy of Dermatology suggests a small spot on the inner arm, twice a day for seven to ten days, and keep a product only if your skin stays calm. If redness, stinging or breakouts persist, see a dermatologist: no product list replaces that.",
-        ],
-      },
-      {
-        h: "Soothing toners and serums",
-        p: ["Korean brands lean on centella (cica), madecassoside, heartleaf and panthenol for calming products. Read more in our [centella guide](/blog/centella-cica-skincare-guide)."],
-        picks: { title: "Soothing toners and serums {region}", match: "cica|centella|madecassoside|heartleaf|panthenol|soothing|calming", limit: 10 },
-      },
-      {
-        h: "Plain, calming moisturisers",
-        p: ["Fewer fragrance notes and fewer active ingredients is usually kinder. Many sensitive-skin creams say \"fragrance free\" on the label."],
-        picks: { title: "Calming creams {region}", match: "cica|centella|soothing|calming|fragrance ?free|sensitive", cat: "moisturisers", limit: 8 },
-      },
-    ],
-  },
-  {
-    slug: "centella-cica-skincare-guide",
-    title: "Centella (cica) in Korean skincare: what it is and the best-stocked picks",
-    short: "Centella and cica",
-    description: "Cica, centella asiatica, madecassoside and tiger grass are one plant. What Korean brands use it for, and where the most-stocked centella products are cheapest.",
-    date: "2026-11-10",
-    sources: [
-      { title: "Centella asiatica in cosmetology (Bylka et al., Advances in Dermatology and Allergology, 2013)", by: "Termedia", url: "https://www.termedia.pl/Review-paper-Centella-asiatica-in-cosmetology,7,20289,0,1.html" },
-    ],
-    art: "serums",
-    sections: [
-      {
-        p: [
-          "Centella asiatica goes by many names on labels: cica, tiger grass, gotu kola, and its extracts madecassoside and asiaticoside. In Korean it is 병풀. It is one of the most common ingredients in Korean soothing products, usually aimed at skin that feels irritated, red or stressed. Its compounds have been studied for wound healing and skin repair (see the review in the sources below), which is where its soothing reputation comes from.",
-          "Our view: centella is a gentle, low-risk ingredient to try if your skin is easily upset, but a high percentage on the label does not guarantee a better product. Texture and what else is in the bottle matter as much. On KaeYoung you can search \"cica\" or \"centella\" and both find the same products.",
-        ],
-      },
-      {
-        h: "Centella toners and serums",
-        p: [],
-        picks: { title: "Centella toners and serums {region}", match: "cica|centella|madecassoside|madeca", limit: 12 },
-      },
-      {
-        h: "Centella creams",
-        p: [],
-        picks: { title: "Centella creams {region}", match: "cica|centella|madecassoside|madeca", cat: "moisturisers", limit: 8 },
-      },
-    ],
-  },
-  {
-    slug: "heartleaf-skincare-guide",
-    title: "Heartleaf (houttuynia) skincare: why it went viral and where it costs least",
-    short: "Heartleaf skincare",
-    description: "Heartleaf, houttuynia cordata or 어성초: the soothing plant behind some of K-beauty's best-known toners. What it is, and where each heartleaf product is cheapest today.",
-    date: "2026-11-24",
-    sources: [
-      { title: "Pharmacological Effects of Houttuynia cordata Thunb: A Comprehensive Review (Rafiq et al., Pharmaceuticals, 2022)", by: "MDPI", url: "https://www.mdpi.com/1424-8247/15/9/1079" },
-    ],
-    art: "toners",
-    sections: [
-      {
-        p: [
-          "Heartleaf (houttuynia cordata, 어성초 in Korean) is a plant brands use in products sold as calming and oil-balancing. Lab studies report anti-inflammatory and antioxidant activity in its extracts (see the review in the sources below); good studies of heartleaf skincare on people are still scarce, so judge a product by how your skin takes it. It became famous abroad through heartleaf toners that sold out again and again, and now nearly every big brand has a heartleaf line.",
-          "Our view: the hype is mostly about texture. Heartleaf toners are usually watery and light, which suits oily and combination skin that wants something calming without heaviness. Because they are stocked everywhere, prices vary a lot, so check the table before you buy.",
-        ],
-      },
-      {
-        h: "Heartleaf products",
-        p: [],
-        picks: { title: "Heartleaf products {region}", match: "heartleaf|houttuynia", limit: 14 },
-      },
-    ],
-  },
-  {
-    slug: "is-snail-mucin-worth-it",
-    title: "Is snail mucin worth it? An honest look, with prices",
-    short: "Is snail mucin worth it?",
-    description: "Snail secretion filtrate is one of K-beauty's most famous ingredients. What it does well, what it doesn't, and where the most-stocked snail products are cheapest.",
-    date: "2026-10-30",
-    updated: "2026-10-30",
-    sources: [
-      { title: "Snail mucin: what it is and what the research actually shows", by: "Jane Yoo, MD, board-certified dermatologist", url: "https://www.janeyoomd.com/k-beauty/snail-mucin-what-it-is-and-what-the-research-actually-shows-2026-update/" },
-    ],
-    art: "serums",
-    sections: [
-      {
-        p: [
-          "Snail mucin (snail secretion filtrate on an ingredient list, 달팽이 in Korean) is the ingredient that introduced many people to Korean skincare. Its reputation is for hydration and a smooth, bouncy feel.",
-          "What the evidence supports: most snail research is small, early or industry-funded, so treat it as a hydrating, skin-barrier-friendly ingredient rather than a fix for wrinkles or dark spots (see the dermatologist's summary in the sources below). Our honest take: it is a good hydrating ingredient with a pleasant, slightly slippery texture, not a miracle. If you like the feel, it is an easy daily step. If you are vegan or dislike the texture, a hyaluronic acid or glycerin serum does a similar hydrating job. And because the most famous snail essence is sold by almost every store, it is one of the products where comparing prices pays off most.",
-        ],
-      },
-      {
-        h: "Snail essences, serums and creams",
-        p: [],
-        picks: { title: "Snail products {region}", match: "\\bsnail\\b", limit: 14 },
-      },
-    ],
-  },
-  {
-    slug: "double-cleansing-guide",
-    title: "Double cleansing, explained: who needs it and what to buy",
-    short: "Double cleansing",
-    description: "An oil cleanser, then a water-based one. When double cleansing is worth it, when it isn't, and the cleansers that are cheapest in your country today.",
-    date: "2026-11-13",
-    sources: [
-      { title: "Face washing 101", by: "American Academy of Dermatology", url: "https://www.aad.org/public/everyday-care/skin-care-basics/care/face-washing-101" },
-    ],
-    art: "cleansers",
-    sections: [
-      {
-        p: [
-          "Double cleansing means two cleansers at night: an oil or balm to dissolve sunscreen, makeup and sebum, then a gentle water-based cleanser to rinse the rest. It is the step most associated with Korean skincare.",
-          "Our view: if you wear sunscreen or makeup every day, double cleansing at night is worth it. If you don't, one gentle cleanser is enough, and in the morning a splash of water or a mild cleanser does the job. Massage the oil onto dry skin, add a little water until it turns milky, then rinse.",
-        ],
-      },
-      {
-        h: "First cleanse: oils and balms",
-        p: [],
-        picks: { title: "Cleansing oils and balms {region}", match: "cleansing (oil|balm)|melting balm|clean(sing)? balm|oil cleanser", cat: "cleansers", limit: 10 },
-      },
-      {
-        h: "Second cleanse: gentle foams and gels",
-        p: [],
-        picks: { title: "Water-based cleansers {region}", match: "foam|gel cleanser|low ?ph|cleansing gel", cat: "cleansers", limit: 10 },
-      },
-    ],
-  },
-  {
-    slug: "sheet-masks-worth-it",
-    title: "Sheet masks: worth it, and should you buy singles or a box?",
-    short: "Sheet masks: singles or a box?",
-    description: "What a sheet mask actually does, how often to use one, and why the same mask's price swings so much between stores and pack sizes.",
-    date: "2026-11-27",
-    art: "masks",
-    sections: [
-      {
-        p: [
-          "A sheet mask is a serum-soaked sheet you leave on for 15 to 20 minutes. It gives an immediate plumped, hydrated look, which is why people use them before an event. It is a treat for a few days of glow, not a long-term treatment.",
-          "Our view: buy a box of a mask you already know you like, and singles to try new ones. One warning from our own data: stores sometimes list a single sheet and a box of ten under the same barcode. KaeYoung leaves those listings out rather than show you a misleading price, so every row below is the same pack.",
-        ],
-      },
-      {
-        h: "The most-stocked sheet masks",
-        p: [],
-        picks: { title: "Sheet masks {region}", match: "sheet mask|mask sheet", cat: "masks", limit: 14 },
-      },
-    ],
-  },
-  {
-    slug: "how-to-read-korean-skincare-labels",
-    title: "How to read a Korean skincare label: PA ratings, functional cosmetics and dates",
-    short: "Reading Korean labels",
-    description: "PA++++, 기능성 화장품, 사용기한 and 제조일자: the Korean words and marks on the box, what they mean and why they matter when you buy abroad.",
-    date: "2026-11-20",
-    sources: [
-      { title: "Measuring UVA protection: the PA rating", by: "Jane Yoo, MD, board-certified dermatologist", url: "https://www.janeyoomd.com/measuring-uva-protection-pa-rating/" },
-      { title: "South Korea functional cosmetic regulation", by: "ChemLinked", url: "https://cosmetic.chemlinked.com/cosmepedia/south-korea-functional-cosmetic-regulation" },
-    ],
-    art: "sunscreen",
-    sections: [
-      {
-        p: ["Even products sold in English often carry Korean text on the box. A few words are worth knowing, because they tell you what the product is approved for and how fresh it is."],
-      },
-      {
-        h: "The words worth knowing",
-        p: [
-          "PA+ to PA++++: the UVA protection grade on Korean (and Japanese) sunscreens. The system was developed in Japan from a lab test called PPD; PA++++ means a PPD of 16 or more. More plus signs mean more UVA protection; SPF is mainly about UVB.",
-          "기능성 화장품 (functional cosmetic): the product has been reviewed or reported to Korea's Ministry of Food and Drug Safety (MFDS) for a specific function, such as brightening, wrinkle care or UV protection.",
-          "미백 (brightening), 주름 개선 (wrinkle care), 자외선 차단 (UV protection): the functions it is registered for.",
-          "제조일자 (made on) and 사용기한 or 유통기한 (use by): the dates. Check them on arrival, especially on sale or outlet stock.",
-          "개봉 후 12개월 (12 months after opening): how long it keeps once opened, often shown as an open jar symbol with 12M.",
-          "병풀 (centella), 어성초 (heartleaf), 달팽이 (snail), 쌀 (rice): ingredient names you will see on fronts of boxes. Our search understands them too.",
-        ],
-      },
-      {
-        h: "Korean sunscreens by PA rating",
-        p: ["Every sunscreen we compare, cheapest first in your country:"],
-        picks: { title: "Sunscreens {region}", match: "pa\\+{3,4}|spf", cat: "sunscreen", limit: 12 },
-      },
-    ],
-  },
-  {
-    slug: "kbeauty-gift-sets",
-    title: "K-beauty gift sets and kits worth giving this year",
-    short: "K-beauty gift sets",
-    description: "Brand-made gift sets, trial kits and holiday editions from Korean brands, priced at the cheapest store in your country. Our picks for every budget.",
+    slug: "womens-perfumes-every-store-stocks-priced",
+    title: "The women's perfumes every store stocks, priced at the cheapest one",
+    short: "Women's perfumes, priced",
+    description: "J'adore, Coco Mademoiselle, Good Girl, La Vie Est Belle, Black Opium, Libre, Miss Dior, Flowerbomb: the women's fragrances the most stores carry, at the cheapest store in your country today.",
     date: "2026-11-06",
-    art: "lip-care",
+    art: "women",
     sections: [
       {
         p: [
-          "A brand's own gift set or trial kit is the easiest K-beauty present: it looks good, lets someone try a line without committing, and usually costs less than the full sizes. We only list sets the brand makes, with their own barcode, never a store's homemade bundle.",
-          "Our view: for someone new to K-beauty, a trial kit from a well-known skincare line beats a makeup set, because it doesn't depend on guessing their shade. Holiday editions sell out, so the earlier the better.",
+          "The women's bestsellers are the bottles with the most stores competing on them, so they are where comparing pays most. We match every listing by the barcode printed on the box, so each row below is the exact concentration and size at every store that has it in stock, cheapest first, in your own currency and never converted.",
+          "The concentrations matter more here than anywhere: Coco Mademoiselle exists as an eau de toilette, an eau de parfum, an intense and a parfum; Black Opium has a dozen flankers. Read the row's name, not just the brand.",
         ],
       },
       {
-        h: "Gift sets and kits",
-        p: [],
-        picks: { title: "Gift sets and kits {region}", match: "gift set|holiday|christmas|trial kit|starter kit|travel kit|discovery|mini (kit|set)|special set", limit: 16 },
+        h: "The designer bestsellers",
+        p: ["Dior, Chanel, Carolina Herrera, Lancôme, Yves Saint Laurent, Viktor & Rolf, Marc Jacobs and Mugler: the names the most stores stock in every country we compare."],
+        picks: { title: "The women's bestsellers {region}", match: "j'adore|jadore|coco mademoiselle|good girl|la vie est belle|black opium|libre|miss dior|chance|flowerbomb|daisy|alien|my way|\\bs[iì]\\b|olymp[eé]a|light blue|idole|idôle|la nuit tr[eé]sor|mon guerlain|scandal|paradoxe|bombshell|cloud|angel", cat: "women", limit: 12 },
+      },
+      {
+        h: "The niche favourites",
+        p: ["Baccarat Rouge 540, Delina, Lost Cherry, Gypsy Water and the Jo Malone colognes are where a cheaper store saves the most, and many are sold for anyone, so look in the [unisex section](/unisex) too."],
+        picks: { title: "Niche favourites {region}", match: "baccarat rouge|delina|lost cherry|gypsy water|bal d'afrique|jo malone|santal 33|another 13|rose prick|valaya|oriana|cassili", limit: 10 },
+      },
+      {
+        h: "Body mists and the rest of the line",
+        p: ["The same scent as a body mist, lotion or hair mist is a fraction of the price of the eau de parfum, and it is what most people actually wear every day. Those are in the [body section](/body)."],
+        picks: { title: "Mists and lotions {region}", match: "body mist|body lotion|hair mist|body cream|shower gel", cat: "body", limit: 8 },
       },
     ],
   },
   {
-    slug: "rice-skincare-guide",
-    title: "Rice skincare: the Korean ingredient behind the glow",
-    short: "Rice skincare",
-    description: "Rice water, rice bran and fermented rice in Korean skincare: what they are used for, and where the most-stocked rice products are cheapest today.",
-    date: "2026-12-01",
-    art: "cleansers",
+    slug: "eau-de-parfum-vs-eau-de-toilette",
+    title: "Eau de parfum or eau de toilette: which one to buy, and what each costs",
+    short: "EDP vs EDT",
+    description: "The difference between parfum, eau de parfum, eau de toilette and eau de cologne is concentration, not quality. Which lasts longer, which is better value, and the same scents in both, priced at the cheapest store in your country.",
+    date: "2026-11-08",
+    art: "unisex",
     sections: [
       {
         p: [
-          "Rice (쌀) has a long history in Korean beauty, from rice water rinses to fermented rice extracts. Today it appears in cleansers, toners, sunscreens and creams, usually for a softer, brighter-looking finish.",
-          "Our view: rice products tend to be gentle and pleasant to use, which makes them a good first step into K-beauty. Some of the most popular sunscreens of the last few years are rice-based, and they are widely stocked, so prices differ a lot from store to store.",
+          "The letters on a box describe how much fragrance oil is in the alcohol. Roughly: an eau de cologne is the lightest, an eau de toilette (EDT) sits around five to fifteen per cent, an eau de parfum (EDP) around fifteen to twenty, and a parfum or extrait above that. Houses do not publish exact figures and the ranges overlap, so treat them as a ladder, not a measurement.",
+          "What that means for you: an EDP usually lasts longer on skin and projects less sharply than the EDT of the same name, and it costs more per bottle. But an EDT is not a watered-down EDP. Many houses write a different formula for each (Dior's Sauvage EDT and EDP are noticeably different scents), so the one you like is the one to buy, whatever its letters.",
+          "On price, the honest rule is per millilitre: a 100 ml EDT often costs about what a 50 ml EDP does. If you wear one scent every day, the bigger EDT bottle is better value; if you wear a scent for an evening, the EDP's longevity is what you are paying for.",
         ],
       },
       {
-        h: "Rice products",
-        p: [],
-        picks: { title: "Rice products {region}", match: "\\brice\\b", limit: 14 },
+        h: "Eau de toilette: the most-stocked bottles",
+        p: ["The EDTs the most stores in your country carry, cheapest store first."],
+        picks: { title: "Eau de toilette {region}", match: "eau de toilette|\\bedt\\b", limit: 10 },
+      },
+      {
+        h: "Eau de parfum: the most-stocked bottles",
+        p: ["The EDPs the most stores carry. Compare the same name against the table above to see what the concentration adds to the price."],
+        picks: { title: "Eau de parfum {region}", match: "eau de parfum|\\bedp\\b", limit: 10 },
+      },
+      {
+        h: "Parfum, extrait and elixir",
+        p: ["The top of the ladder, sold in smaller bottles. These are where a price gap between stores is largest in money terms, so check every store before you buy one."],
+        picks: { title: "Parfum and extrait {region}", match: "parfum\\b(?!.*eau de parfum)|extrait|elixir|absolu|intense", limit: 8 },
       },
     ],
   },
   {
-    slug: "korean-toner-pads-compared",
-    title: "Korean toner pads: which to pick, and where they're cheapest",
-    short: "Toner pads",
-    description: "Exfoliating, calming and brightening Korean toner pads, what the names on the jar mean, and today's cheapest store for each in your country.",
-    date: "2026-12-04",
-    art: "toners",
+    slug: "fragrance-gift-sets-priced",
+    title: "Fragrance gift sets: when the box is cheaper than the bottle",
+    short: "Gift sets, priced",
+    description: "A house's own gift set often costs the same as the bottle inside it, with a travel spray or a lotion thrown in. The sets the most stores stock, priced at the cheapest store in your country, and how to tell a real set from a shop bundle.",
+    date: "2026-11-12",
+    art: "sets",
     sections: [
       {
         p: [
-          "Toner pads are one of the most Korean products there is: a jar of soaked cotton rounds you swipe over your face after cleansing. They replace a toner and a cotton pad, and they travel well. The trouble is that the jars look alike while the pads inside do very different jobs.",
-          "Our view: read the name. Korean brands put the job on the label, so \"peeling\", \"pore\", \"PHA\", \"LHA\" or \"BHA\" mean an exfoliating pad, while \"calming\", \"cica\" or \"heartleaf\" mean a soothing one. Start with one jar, not one of each, and use an exfoliating pad a few evenings a week rather than every day. Patch test anything new.",
+          "Every November the houses box their bestsellers with a travel spray, a shower gel or a body lotion, and the set is often priced at or near the full-size bottle alone. That makes the set the cheapest way to buy the bottle, as long as it is the house's own set: it has its own barcode, its own box, and the same contents at every store.",
+          "A shop-made bundle is different: two products the store put together under one price, carrying only one of the barcodes. We leave those out, so every row below is a boxed set the house itself sells, compared across stores on the same barcode.",
         ],
       },
       {
-        h: "Exfoliating pads",
-        p: ["Pads with acids in the name are for texture and pores. Use them at night and wear sunscreen the next day: exfoliated skin burns more easily."],
-        picks: { title: "Exfoliating toner pads {region}", match: "(peel|pore|\\bpha\\b|\\blha\\b|\\bbha\\b|\\baha\\b|exfoliat).*\\bpads?\\b|\\bpads?\\b.*(peel|pore|\\bpha\\b|\\blha\\b|\\bbha\\b|\\baha\\b|exfoliat)", limit: 10 },
+        h: "The most-stocked gift sets",
+        p: ["Cheapest store first. The size in the name is the main bottle; the set's extras are in the store's listing."],
+        picks: { title: "Fragrance gift sets {region}", match: ".", cat: "sets", limit: 12 },
       },
       {
-        h: "Calming pads",
-        p: ["Heartleaf, centella (cica) and other soothing pads are the gentle everyday kind, and the ones most people keep in the fridge for mornings. More on the ingredients in our [heartleaf guide](/blog/heartleaf-skincare-guide) and [centella guide](/blog/centella-cica-skincare-guide)."],
-        picks: { title: "Calming toner pads {region}", match: "(heartleaf|cica|centella|calm|sooth|madeca).*\\bpads?\\b|\\bpads?\\b.*(heartleaf|cica|centella|calm|sooth)", limit: 10 },
+        h: "Sets for men",
+        p: ["Aftershave balm and shower gel sets are the ones most often cheaper than the bottle alone."],
+        picks: { title: "Men's gift sets {region}", match: "men|homme|him|sauvage|bleu|eros|le male|million|acqua di gi|invictus|boss|armani code", cat: "sets", limit: 8 },
       },
       {
-        h: "Brightening and vitamin pads",
-        p: ["Pads that name vitamin C, glutathione or \"dark spot\" are aimed at uneven tone. They are usually the priciest jars, so compare the store prices before you buy."],
-        picks: { title: "Brightening toner pads {region}", match: "(vita|vitamin|glutathi|dark spot|bright|niacinamide).*\\bpads?\\b|\\bpads?\\b.*(vita|vitamin|bright)", limit: 10 },
-      },
-      {
-        h: "Price per pad",
-        p: ["Jar counts vary (60, 70, 80 and 90 pads are all common), and refills are sold separately. Check the count on the label before you compare: a cheaper jar with fewer pads can cost more per use. The rest of the toner aisle is on [Korean toners](/toners)."],
+        h: "Before you buy",
+        p: ["Check the set's bottle size against the full bottle in the same section: a set with a 50 ml is not a deal against a 100 ml. And a set that is the same price as the bottle on one store may be dearer than the bottle on another; the [women's](/women) and [men's](/men) sections show the bottle alone."],
       },
     ],
   },
   {
-    slug: "korean-vitamin-c-serums",
-    title: "Korean vitamin C serums: the most stocked, and where they're cheapest",
-    short: "Vitamin C serums",
-    description: "Korean vitamin C serums and ampoules from the brands stores stock most, with what to look for on the label and today's cheapest store in your country.",
-    date: "2026-12-08",
-    art: "serums",
+    slug: "travel-sprays-and-minis-priced",
+    title: "Travel sprays and minis: the cheapest way to own a scent you cannot afford",
+    short: "Travel sprays and minis",
+    description: "A house's own 7.5 ml, 10 ml or 15 ml bottle is a real product with a barcode, unlike a decant. The travel sizes the most stores stock, priced at the cheapest store in your country, and why we never list decants.",
+    date: "2026-11-15",
+    art: "minis",
     sections: [
       {
         p: [
-          "Vitamin C is the brightening serum most people try first, and Korean brands make a lot of them, from gentle derivatives to high-strength ampoules. Prices vary more than the ingredient does, which is exactly what comparing stores is for.",
-          "Our view: a gentle, well-stocked vitamin C serum used every morning beats a strong one that stings and ends up in a drawer. If the name gives a percentage, start low. Vitamin C goes before moisturiser and sunscreen, and sunscreen is the step that matters most for uneven tone. Patch test first, and stop if it stings.",
+          "A travel spray is the house's own small bottle: a 7.5 ml Chanel, a 10 ml Dior, a 15 ml Tom Ford, boxed, barcoded and sold at every store that stocks the big one. It costs more per millilitre than the 100 ml, but it is the only way to own a Creed or a Kilian for the price of a dinner, and it is what most people actually carry.",
+          "A decant is something else: a shop pouring a big bottle into its own vials. It can be perfectly honest, but it has no barcode, no box and no guarantee of what is in it, so ScentCompare never lists decants, samples or testers. Every row here is the brand's own miniature.",
         ],
       },
       {
-        h: "Vitamin C serums and ampoules",
-        p: [],
-        picks: { title: "Vitamin C serums {region}", match: "vita(min)? ?c\\b|\\bvita c\\b|ascorbic", cat: "serums", limit: 14 },
+        h: "The most-stocked travel sizes",
+        p: ["Cheapest store first, in your own currency."],
+        picks: { title: "Travel sprays and minis {region}", match: ".", cat: "minis", limit: 12 },
       },
       {
-        h: "Reading the label",
+        h: "Niche houses in small bottles",
+        p: ["Where the small bottle makes the most sense: a 30 ml Creed, a 35 ml Maison Francis Kurkdjian, a 15 ml Parfums de Marly."],
+        picks: { title: "Niche minis {region}", match: "creed|kurkdjian|parfums de marly|kilian|xerjoff|tom ford|le labo|byredo|initio|amouage", cat: "minis", limit: 8 },
+      },
+    ],
+  },
+  {
+    slug: "lattafa-armaf-arabic-perfumes-priced",
+    title: "Lattafa, Armaf and the Arabic houses: the budget bottles people buy instead",
+    short: "Lattafa, Armaf and friends",
+    description: "Lattafa, Armaf, Rasasi, Afnan and Al Haramain sell long-lasting fragrances at a fraction of designer prices, and the stores that carry them price them very differently. The most-stocked bottles at the cheapest store in your country.",
+    date: "2026-11-18",
+    art: "unisex",
+    sections: [
+      {
         p: [
-          "\"Pure\" or \"ascorbic acid\" vitamin C is the strongest kind and the most likely to tingle. Derivatives (ascorbyl glucoside and similar) are gentler and more stable. A dark bottle or an airless pump helps it keep, and a serum that has turned dark orange has gone off.",
-          "Vitamin C turns up in toners, pads and sheet masks too. Our [toner pad comparison](/blog/korean-toner-pads-compared) has the brightening jars, and [sunscreen](/blog/korean-sunscreen-where-cheapest) is the step to pair it with.",
+          "The Arabic houses are the fastest-growing shelf in every fragrance store we read. Lattafa's Khamrah and Asad, Armaf's Club de Nuit, Afnan's 9pm and Rasasi's Hawas sell for a quarter of a designer bottle and are famous for lasting all day. Many are openly built in the style of a famous scent; they are real products of real houses with their own barcodes, which is why they are here, while the \"inspired by\" oils and clones sold under a designer's name are not.",
+          "Because they are cheap, the price gap between stores is often bigger in percentage than for a designer bottle: a bottle that is US$30 at one store and US$45 at another is a 50% gap. Check the row before you pay.",
         ],
+      },
+      {
+        h: "Lattafa",
+        p: ["Khamrah, Asad, Yara, Fakhar, Ameer Al Oudh and the Raghba line: the most-stocked Lattafa bottles, cheapest first."],
+        picks: { title: "Lattafa {region}", match: "lattafa", limit: 10 },
+      },
+      {
+        h: "Armaf, Afnan, Rasasi and Al Haramain",
+        p: ["Club de Nuit, 9pm, Hawas and Amber Oud, the ones people buy first."],
+        picks: { title: "Armaf, Afnan, Rasasi, Al Haramain {region}", match: "armaf|afnan|rasasi|al haramain|ajmal|swiss arabian|ard al zaafaran", limit: 10 },
+      },
+      {
+        h: "Oud for the rest of us",
+        p: ["The Arabic houses are also the cheapest way into oud. Our [oud guide](/blog/oud-fragrances-guide) covers the whole ladder, from these to Tom Ford and Kilian."],
+      },
+    ],
+  },
+  {
+    slug: "black-friday-perfume-2026",
+    title: "Black Friday perfume 2026: how to tell a real discount from a usual price",
+    short: "Black Friday perfume",
+    description: "Fragrance is one of the most-discounted things on Black Friday, and also one of the most faked discounts. How to use a product's price history and every store's price to know what a bottle really costs, and what to buy first.",
+    date: "2026-11-14",
+    art: "sets",
+    sections: [
+      {
+        p: [
+          "Black Friday is 27 November 2026 and Cyber Monday 30 November. Fragrance stores lean on it harder than almost any other category, because a bottle's full price is high and a 40% sticker is easy to print. The catch is that the sticker is against a recommended price few stores ever charge, so a \"40% off\" bottle is often the price it was on an ordinary Tuesday at a different store.",
+          "ScentCompare reads every store every day and keeps each product's price history, so a product page shows two things a sale banner does not: the cheapest store today, and what that bottle has cost over the past weeks. A real Black Friday price is one that is below the bottle's own history, not just below the number printed next to it.",
+          "What to buy first, in our view: the gift sets, which are made for this week and genuinely cheaper than the bottle inside; the big 100 ml and 150 ml bottles of a scent you already wear, which the discounters compete hardest on; and anything niche that rarely goes on sale, if it does.",
+        ],
+      },
+      {
+        h: "The bestsellers to watch",
+        p: ["The bottles the most stores stock in your country, cheapest first today. Open a row's product page for its price history before the sales start, so you know its real price."],
+        picks: { title: "Bestsellers {region}", match: ".", limit: 12 },
+      },
+      {
+        h: "Gift sets",
+        p: ["The houses' own sets, which are the week's genuine bargains more often than the bottles."],
+        picks: { title: "Gift sets {region}", match: ".", cat: "sets", limit: 8 },
+      },
+      {
+        h: "The one rule",
+        p: ["Prices are each store's own, in your own currency, never converted and never including delivery. [Today's biggest savings](/deals) lists the bottles with the widest gap between stores right now, which is where a sale actually is."],
+      },
+    ],
+  },
+  {
+    slug: "oud-fragrances-guide",
+    title: "Oud fragrances: from a Lattafa to a Tom Ford, priced at the cheapest store",
+    short: "Oud fragrances guide",
+    description: "What oud is, why real oud is rare, and the oud fragrances at every price, from the Arabic houses to Tom Ford, Kilian and Maison Francis Kurkdjian, at the cheapest store in your country today.",
+    date: "2026-11-16",
+    art: "unisex",
+    sections: [
+      {
+        p: [
+          "Oud is the resinous heartwood of agarwood trees that have been infected by a mould, and real oud oil is among the most expensive raw materials in perfumery. Almost no bottle under a few hundred dollars contains much of it; what most \"oud\" fragrances use is a reconstruction, which is not a flaw, just a fact worth knowing when a label says oud and the price says otherwise.",
+          "The ladder runs from the Arabic houses (Lattafa, Rasasi, Al Haramain, Ajmal), where oud is a house style and a bottle costs the same as a lunch, through designer ouds (Tom Ford Oud Wood, Armani Privé Oud Royal, Dior's Oud Ispahan) to niche (Kilian, Maison Francis Kurkdjian, Xerjoff, Amouage). Most are sold for anyone, so they are in our [unisex section](/unisex).",
+        ],
+      },
+      {
+        h: "Oud under US$60",
+        p: ["The Arabic houses' ouds the most stores stock."],
+        picks: { title: "Affordable oud {region}", match: "oud", limit: 10 },
+      },
+      {
+        h: "Designer and niche oud",
+        p: ["Where the price gap between stores is largest in money terms."],
+        picks: { title: "Designer and niche oud {region}", match: "oud wood|oud ispahan|oud royal|oud satin|oud silk|oud for greatness|oud minerale|interlude|black afgano|oud stars|oud ousse|royal oud|kurkdjian.*oud|kilian.*oud|xerjoff.*oud|amouage.*oud", limit: 10 },
+      },
+    ],
+  },
+  {
+    slug: "body-mists-vs-perfume",
+    title: "Body mist or perfume: what you are paying for, and when the mist is enough",
+    short: "Body mist or perfume",
+    description: "A body mist is lighter, cheaper and reapplied; a perfume lasts. Which to buy for what, and the mists and sprays the most stores stock, at the cheapest store in your country.",
+    date: "2026-11-22",
+    art: "body",
+    sections: [
+      {
+        p: [
+          "A body mist (or body spray, brume, fragrance mist) is a lightly scented water-and-alcohol spray, usually two to four per cent fragrance, sold in a big bottle for a small price. It lasts an hour or two and is meant to be reapplied; a perfume at ten times the concentration lasts a day. They are not competing products so much as a daytime habit and an occasion.",
+          "Where the mist wins: the scent you want to wear to the gym, to bed, to work in a shared office, or simply every day without thinking about cost. Where it does not: anything you want someone to notice at dinner. The sweet spot many people land on is the mist of the scent they own as an eau de parfum, which the houses sell precisely for that reason.",
+        ],
+      },
+      {
+        h: "The most-stocked body mists",
+        p: ["Cheapest store first. Sizes run large (200 to 250 ml is usual), so compare per bottle, not per millilitre, against a perfume."],
+        picks: { title: "Body mists and sprays {region}", match: "mist|body spray|brume", cat: "body", limit: 12 },
+      },
+      {
+        h: "Lotions, shower gels and hair mists",
+        p: ["The rest of a house's line is the cheapest way to layer a scent so it lasts longer than the mist alone."],
+        picks: { title: "Lotions and gels {region}", match: "lotion|shower|gel|cream|hair", cat: "body", limit: 8 },
+      },
+    ],
+  },
+  {
+    slug: "vanilla-and-gourmand-perfumes-priced",
+    title: "Vanilla and gourmand perfumes: the sweet bestsellers, priced at the cheapest store",
+    short: "Vanilla and gourmand",
+    description: "Vanilla, cherry, caramel and praline fragrances are the most-searched scent family right now. The most-stocked sweet perfumes at the cheapest store in your country, from Lattafa Khamrah to Tom Ford Lost Cherry.",
+    date: "2026-11-26",
+    art: "women",
+    sections: [
+      {
+        p: [
+          "Gourmand is the family of scents built to smell edible: vanilla, caramel, praline, cherry, coffee, tonka. It is the family the stores we read stock most heavily right now, at every price, and it is one where the cheap bottle and the dear one really do share a style, so the ladder is worth climbing from the bottom.",
+          "At the bottom, Lattafa's Khamrah and Yara and Ariana Grande's Cloud. In the middle, Yves Saint Laurent's Black Opium, Mugler's Angel and Alien, Prada's Candy, Carolina Herrera's Good Girl and Kayali's Vanilla 28. At the top, Tom Ford's Lost Cherry and Tobacco Vanille, Kilian's Angels' Share and Maison Francis Kurkdjian's Baccarat Rouge 540, which is sweeter than its reputation.",
+        ],
+      },
+      {
+        h: "The sweet bestsellers",
+        p: ["Cheapest store first, in your own currency."],
+        picks: { title: "Vanilla and gourmand {region}", match: "vanill|gourmand|cherry|caramel|praline|khamrah|yara|cloud|black opium|angel|alien|candy|good girl|angels' share|baccarat rouge|tobacco vanille|lost cherry|vanilla 28", limit: 12 },
+      },
+      {
+        h: "Cherry, specifically",
+        p: ["The scent of 2026 in our stores' catalogues: Lost Cherry, Electric Cherry, Cherry Smoke, Yara and the cherry mists."],
+        picks: { title: "Cherry fragrances {region}", match: "cherry", limit: 8 },
       },
     ],
   },

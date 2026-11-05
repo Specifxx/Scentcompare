@@ -9,7 +9,7 @@ export function ThemeToggle() {
     setNight(next);
     document.documentElement.dataset.theme = next ? "night" : "day";
     try {
-      localStorage.setItem("ky-theme", next ? "night" : "day");
+      localStorage.setItem("sc-theme", next ? "night" : "day");
     } catch {}
   }
   return (

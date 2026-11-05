@@ -54,7 +54,7 @@ export function compareBasket(data: BasketData, rows: number[]): StoreTotal[] {
   );
 }
 
-const KEY = "ky-basket";
+const KEY = "sc-basket";
 export function readBasket(): string[] {
   try {
     const v = JSON.parse(localStorage.getItem(KEY) || "[]");
@@ -67,7 +67,7 @@ export function writeBasket(slugs: string[]) {
   try {
     localStorage.setItem(KEY, JSON.stringify(slugs.slice(0, 30)));
   } catch {}
-  window.dispatchEvent(new CustomEvent("ky-basket"));
+  window.dispatchEvent(new CustomEvent("sc-basket"));
 }
 
 // A shared basket (owner, 2026-11-02: word of mouth): the products travel in the link, /basket?b=<slug>,<slug>…,

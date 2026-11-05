@@ -23,7 +23,7 @@ async function check(name: string, fn: () => Promise<Omit<Result, "name">> | Omi
 }
 
 async function get(p: string) {
-  const r = await fetch(`${site}${p}`, { signal: AbortSignal.timeout(20000), headers: { "User-Agent": "KaeYoung ops monitor" } });
+  const r = await fetch(`${site}${p}`, { signal: AbortSignal.timeout(20000), headers: { "User-Agent": "ScentCompare ops monitor" } });
   return r;
 }
 
@@ -138,7 +138,7 @@ async function main() {
   // Empire HQ's copy (riftcompare.com/admin/hq and the one Monday report; owner, 2026-11-02): the
   // workflow publishes it on the public `ops-status` branch. Status and our own sentences only.
   const overall = results.some((r) => r.status === "fail") ? "fail" : results.some((r) => r.status === "warn") ? "warn" : "ok";
-  fs.writeFileSync(process.env.OPS_STATUS_FILE || "ops-status.json", JSON.stringify({ v: 1, site: "kaeyoung.com", at: new Date().toISOString(), overall, checks: results }, null, 1) + "\n");
+  fs.writeFileSync(process.env.OPS_STATUS_FILE || "ops-status.json", JSON.stringify({ v: 1, site: "scentcompare.app", at: new Date().toISOString(), overall, checks: results }, null, 1) + "\n");
   // Only red fails the run (GitHub's failed-run email is the alert); amber waits for HQ and Monday.
   const bad = results.filter((r) => r.status === "fail");
   if (bad.length) {

@@ -9,9 +9,9 @@ import { Flag } from "./Flag";
 export function setRegion(code: RegionCode) {
   document.documentElement.dataset.region = code;
   try {
-    localStorage.setItem("ky-region", code);
+    localStorage.setItem("sc-region", code);
   } catch {}
-  window.dispatchEvent(new CustomEvent("ky-region", { detail: code }));
+  window.dispatchEvent(new CustomEvent("sc-region", { detail: code }));
 }
 
 export function useRegion(): RegionCode {
@@ -19,8 +19,8 @@ export function useRegion(): RegionCode {
   useEffect(() => {
     const read = () => setR((document.documentElement.dataset.region as RegionCode) || "US");
     read();
-    window.addEventListener("ky-region", read);
-    return () => window.removeEventListener("ky-region", read);
+    window.addEventListener("sc-region", read);
+    return () => window.removeEventListener("sc-region", read);
   }, []);
   return r;
 }

@@ -11,7 +11,7 @@ const LABELS = ["", "Didn't like it", "Not great", "It's okay", "Really good", "
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
 
 type Sent = { stars: number; body?: string; status: string };
-const memKey = (ean: string) => `ky-review-${ean}`;
+const memKey = (ean: string) => `sc-review-${ean}`;
 
 declare global {
   interface Window {
@@ -83,7 +83,7 @@ export function ReviewForm({ ean, name }: { ean: string; name: string }) {
         } catch {}
       }
     } catch {
-      setError("We couldn't reach KaeYoung. Check your connection and try again.");
+      setError("We couldn't reach ScentCompare. Check your connection and try again.");
     } finally {
       setBusy(false);
     }

@@ -63,11 +63,11 @@ const MAX_PAGES = 80;
 export const PRODUCT_LOOKUPS_PER_RUN = 2400;
 export const PACE_MS = 1000;
 
-/** Brands that mark a product as Korean beauty in a shop that also sells
- *  other things (`mixed` stores): only these are worth a barcode lookup
- *  there. The 880 barcode still decides. From the 2026-10-30 probe. */
-export const K_BRANDS =
-  /\b(cosrx|beauty of joseon|anua|skin1004|round ?lab|torriden|isntree|laneige|innisfree|etude|missha|some ?by ?mi|klairs|purito|medicube|numbuzin|ma:nyo|manyo|mixsoon|abib|axis-y|haruharu|dr\.? ?jart|sulwhasoo|tirtir|banila|pyunkang|heimish|benton|neogen|illiyoon|aestura|biodance|goodal|d'alba|dalba|apieu|a'pieu|tonymoly|holika|skinfood|wishtrend|iunik|cos de baha|elizavecca|mediheal|nacific|rovectin|aprilskin|celimax|vt cosmetics|ample:n|jumiso|beplain|make p:rem|tocobo|thank you farmer|i'm from|im from|papa recipe|hanyul|belif|hera|peripera|rom&nd|romand|clio|3ce|amuse|fwee|kaine|dr\.? ?g|uiq|zeroid|bringgreen|cnp|daeng gi meo ri|ryo|mise en scene|skin&lab|dr\.? ?ceuracle|hince|espoir|huxley|mary ?& ?may|real barrier|atopalm|needly|ongredients|frudia|secret key|it'?s skin|nature republic|the face shop|hyggee|unleashia|wakemake|then i met you|arencia|house of hur|barulab|lador|masil|k-?beauty|korean)\b/i;
+/** Words that mark a listing as a fragrance in a shop that also sells other
+ *  things (`mixed` stores: a pharmacy, a beauty store): only these are worth a
+ *  barcode lookup there. The barcode still decides. */
+export const FRAGRANCE_WORDS =
+  /(eau de parfum|eau de toilette|eau de cologne|parfum|perfume|cologne|fragrance|extrait|edp|edt|edc|body mist|aftershave|after shave|elixir|intense|absolu)/i;
 
 export function stockOf(available: boolean): Stock {
   return available ? "in" : "out";
@@ -98,10 +98,10 @@ export function needsLookup(store: Store, p: ShopifyProduct): boolean {
   if ("refused" in readTitle(p.title)) return false;
   if (!p.variants.some((v) => Number(v.price) > 0)) return false;
   if (p.variants.some((v) => eanOf({ sku: v.sku, barcode: v.barcode }))) return false;
-  return !store.mixed || K_BRANDS.test(`${p.vendor ?? ""} ${p.title}`);
+  return !store.mixed || FRAGRANCE_WORDS.test(`${p.title} ${p.product_type ?? ""}`);
 }
 
-/** One store product → its listings (one per variant with a Korean barcode). */
+/** One store product → its listings (one per variant with a barcode). */
 export function listingsFromProduct(
   store: Store,
   p: ShopifyProduct,

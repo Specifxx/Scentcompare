@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CAT_BY_KEY, REGIONS, SITE, type RegionCode } from "@/site";
-import { bestIn, brandKo, cheapestDelivered, getMeta, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
+import { bestIn, cheapestDelivered, getMeta, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
 import { dayNumber, lowestOrderable } from "@/lib/history";
 import { decimal, money, niceDate, pct } from "@/lib/format";
 import { isIndexable } from "@/lib/index-tiers";
@@ -41,7 +41,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     .slice(0, 2)
     .map((b) => `${money(b!.offer.p, b!.region)} ${REGIONS.find((x) => x.code === b!.region)!.phrase}`);
   const title = `${f.name} price: compare ${n} store${n === 1 ? "" : "s"}`;
-  const description = `${f.name} prices across ${n} K-beauty stores${lows.length ? `, from ${lows.join(" and ")}` : ""}. Same barcode (${f.ean}), every store side by side, updated daily.`;
+  const description = `${f.name} prices across ${n} fragrance stores${lows.length ? `, from ${lows.join(" and ")}` : ""}. Same barcode (${f.ean}), every store side by side, updated daily.`;
   return {
     title,
     description,
@@ -63,7 +63,6 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const sameBrand = f.b ? productsOfBrand(f.b).filter((x) => x.ean !== f.ean) : [];
   const variants = variantsOf(f).sort((a, b) => variantLabel(a).localeCompare(variantLabel(b), undefined, { numeric: true }));
   const labels = variantLabels([f, ...variants]);
-  const ko = brandKo(f.brand);
   const siblings = (sameBrand.length >= 4 ? sameBrand : productsOfCat(f.cat).filter((x) => x.ean !== f.ean))
     .sort((a, b) => storeCount(b) - storeCount(a))
     .slice(0, 8);
@@ -130,7 +129,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <section className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <div>
           <div className="card relative mx-auto max-w-[240px] overflow-hidden bg-white sm:max-w-sm md:max-w-none">
-            <ProductImage src={f.img} alt={f.name} label={f.brand || "K-beauty"} eager className="relative aspect-square w-full object-contain p-8" />
+            <ProductImage src={f.img} alt={f.name} label={f.brand || "fragrance"} eager className="relative aspect-square w-full object-contain p-8" />
           </div>
           <p className="mt-2 text-center text-xs text-soft">Photo from a store listing.</p>
         </div>
@@ -140,12 +139,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             (hasBrandPage ? (
               <Link prefetch={false} href={`/brands/${f.b}`} className="eyebrow hover:text-ink">
                 {f.brand}
-                {ko && <span lang="ko" className="ml-1.5 normal-case tracking-normal text-soft">{ko}</span>}
               </Link>
             ) : (
               <p className="eyebrow">
                 {f.brand}
-                {ko && <span lang="ko" className="ml-1.5 normal-case tracking-normal text-soft">{ko}</span>}
               </p>
             ))}
           <h1 className="h-display mt-1.5 text-3xl leading-tight sm:text-[2.4rem]">{f.name}</h1>
@@ -356,7 +353,7 @@ function Faq({ f, regions, rated }: { f: Product; regions: RegionCode[]; rated: 
     if (b) qa.push([`Where is ${f.name} cheapest ${reg.phrase}?`, `${storeName(b.offer.s)} at ${money(b.offer.p, r)}, the lowest of ${b.stores} store${b.stores === 1 ? "" : "s"} we compared at our last check.`]);
   }
   if (rated && rated.n >= SCHEMA_MIN_RATINGS) {
-    qa.push([`What do shoppers rate ${f.name}?`, `${starsText(rated.avg)} out of 5 from ${rated.n} KaeYoung shoppers' ratings, with ${rated.dist[4] + rated.dist[3]} giving it four or five stars.`]);
+    qa.push([`What do shoppers rate ${f.name}?`, `${starsText(rated.avg)} out of 5 from ${rated.n} ScentCompare shoppers' ratings, with ${rated.dist[4] + rated.dist[3]} giving it four or five stars.`]);
   }
   qa.push([
     `How do you know every store sells the same ${f.name}?`,

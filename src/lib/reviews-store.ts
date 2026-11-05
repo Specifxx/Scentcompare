@@ -16,7 +16,7 @@
 import { reviewFlags, type CleanReview } from "./reviews";
 
 export const reviewsToken = () => (process.env.REVIEWS_GITHUB_TOKEN || "").trim();
-export const reviewsRepo = () => (process.env.REVIEWS_REPO || "Specifxx/Kaeyoung").trim();
+export const reviewsRepo = () => (process.env.REVIEWS_REPO || "Specifxx/scentcompare").trim();
 export const reviewsBranch = () => (process.env.REVIEWS_BRANCH || "reviews").trim();
 export const reviewsConfigured = () => Boolean(reviewsToken());
 const FILE = "reviews.json";
@@ -86,7 +86,7 @@ function api(path: string, init: RequestInit = {}, f: Fetch = fetch) {
     ...init,
     cache: "no-store",
     signal: AbortSignal.timeout(10_000),
-    headers: { Authorization: `Bearer ${reviewsToken()}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "kaeyoung-reviews", ...(init.headers ?? {}) },
+    headers: { Authorization: `Bearer ${reviewsToken()}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "scentcompare-reviews", ...(init.headers ?? {}) },
   });
 }
 

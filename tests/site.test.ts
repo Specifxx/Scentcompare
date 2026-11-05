@@ -23,29 +23,29 @@ test("regions from time zones, the specific one wins", () => {
 });
 
 test("affiliate tags name the site, region, placement and product", () => {
-  assert.equal(subId("AU", "table_pinned", "8809416470000"), "ky-au-table_pinned-8809416470000");
-  const e = new URL(ebayAffiliateUrl("https://www.ebay.com.au/itm/1", "ky-au-x"));
-  assert.equal(e.searchParams.get("customid"), "ky-au-x");
+  assert.equal(subId("AU", "table_pinned", "3348901150811"), "sc-au-table_pinned-3348901150811");
+  const e = new URL(ebayAffiliateUrl("https://www.ebay.com.au/itm/1", "sc-au-x"));
+  assert.equal(e.searchParams.get("customid"), "sc-au-x");
   assert.equal(e.searchParams.get("mkrid"), "705-53470-19255-0");
   assert.ok(e.searchParams.get("campid"));
-  assert.match(ebaySearchUrl("COSRX Snail Essence", "UK", "t")!, /ebay\.co\.uk.*LH_BIN=1/);
-  assert.match(ebaySearchUrl("COSRX Snail Essence", "NZ", "t")!, /ebay\.com\.au.*campid=/, "NZ shops on eBay Australia");
-  assert.match(amazonSearchUrl("x", "US", "ky-us-y")!, /amazon\.com\/s\?.*tag=riftcompare-20.*ascsubtag=ky-us-y/);
-  assert.match(amazonSearchUrl("x", "AU", "t")!, /amazon\.com\.au\/s\?.*tag=kaeyoung-22/, "the AU tag on amazon.com.au, never the US one");
+  assert.match(ebaySearchUrl("Dior Sauvage", "UK", "t")!, /ebay\.co\.uk.*LH_BIN=1/);
+  assert.match(ebaySearchUrl("Dior Sauvage", "NZ", "t")!, /ebay\.com\.au.*campid=/, "NZ shops on eBay Australia");
+  assert.match(amazonSearchUrl("x", "US", "sc-us-y")!, /amazon\.com\/s\?.*tag=riftcompare-20.*ascsubtag=sc-us-y/);
+  assert.match(amazonSearchUrl("x", "AU", "t")!, /amazon\.com\.au\/s\?.*tag=scentcompare-22/, "the AU tag on amazon.com.au, never the US one");
   assert.match(amazonSearchUrl("x", "UK", "t")!, /amazon\.co\.uk\/.*tag=compareempi03-21/, "the owner's UK account");
   assert.match(amazonSearchUrl("x", "EU", "t")!, /amazon\.de\/.*tag=compareempire-21/);
   assert.equal(amazonSearchUrl("x", "NZ", "t"), null, "no Amazon NZ");
   assert.doesNotMatch(readFileSync(new URL("../src/lib/affiliate.ts", import.meta.url), "utf8"), /AMAZON_TAG_|AMAZON_ASSOCIATE_TAG/, "tags are hard-coded");
-  assert.match(storeUrl("nope", "https://shop.example/p?a=1"), /utm_source=kaeyoung\.com&utm_medium=referral/);
+  assert.match(storeUrl("nope", "https://shop.example/p?a=1"), /utm_source=scentcompare\.app&utm_medium=referral/);
 });
 
 test("retailer rows appear only once their tracking template is set", () => {
   const ys = PARTNERS.find((p) => p.key === "yesstyle")!;
-  assert.equal(partnerUrl(ys, "Anua Toner", "ky-us-t", {}), null);
-  assert.equal(partnerUrl(ys, "Anua Toner", "ky-us-t", { AFF_YESSTYLE: "https://www.yesstyle.com/en/list.html?q={q}&rco=ABC" }), "https://www.yesstyle.com/en/list.html?q=Anua%20Toner&rco=ABC");
-  const net = partnerUrl(ys, "Anua", "ky-us-t", { AFF_YESSTYLE: "https://network.example/c?u={url}&s={sub}" })!;
-  assert.equal(decodeURIComponent(new URL(net).searchParams.get("u")!), "https://www.yesstyle.com/en/list.html?q=Anua");
-  assert.equal(new URL(net).searchParams.get("s"), "ky-us-t");
+  assert.equal(partnerUrl(ys, "Dior Sauvage", "sc-us-t", {}), null);
+  assert.equal(partnerUrl(ys, "Dior Sauvage", "sc-us-t", { AFF_YESSTYLE: "https://www.yesstyle.com/en/list.html?q={q}&rco=ABC" }), "https://www.yesstyle.com/en/list.html?q=Dior%20Sauvage&rco=ABC");
+  const net = partnerUrl(ys, "Dior", "sc-us-t", { AFF_YESSTYLE: "https://network.example/c?u={url}&s={sub}" })!;
+  assert.equal(decodeURIComponent(new URL(net).searchParams.get("u")!), "https://www.yesstyle.com/en/list.html?q=Dior");
+  assert.equal(new URL(net).searchParams.get("s"), "sc-us-t");
 });
 
 test("money stays in its own currency", () => {
@@ -60,20 +60,20 @@ test("stores: unique ids and hosts, every region covered", () => {
   for (const r of ["US", "UK", "CA", "AU", "NZ", "EU"]) assert.ok(STORES.filter((s) => s.region === r).length >= 2, r);
 });
 
-test("KaeYoung stands alone: no sister-site links (owner, 2026-10-30)", () => {
+test("ScentCompare stands alone: no sister-site links (owner, 2026-10-30, kept for ScentCompare)", () => {
   const src = ["src/site.ts", "src/components/Footer.tsx"].map((f) => fs.readFileSync(f, "utf8")).join("\n");
   for (const s of ["riftcompare", "dexcompare", "figurecompare", "wargamecompare", "Sister sites"]) assert.ok(!src.toLowerCase().includes(s.toLowerCase()), s);
 });
 
 test("search: every word must match; a barcode finds its product", () => {
   const rows: IndexRow[] = [
-    ["a", "COSRX Advanced Snail 96 Mucin Power Essence 100ml", "serums", "8809416470000", {}, "COSRX", "cosrx", 0, 0, 5, "2026-10-01"],
-    ["b", "Anua Heartleaf 77% Soothing Toner 250ml", "toners", "8809640730010", {}, "Anua", "anua", 0, 0, 5, "2026-10-01"],
-    ["c", "COSRX Advanced Snail 92 All in One Cream 100g", "moisturisers", "8809416470017", {}, "COSRX", "cosrx", 0, 0, 5, "2026-10-01"],
+    ["a", "Dior Sauvage Eau de Parfum 100ml", "men", "3348901150811", {}, "Dior", "dior", 0, 0, 5, "2026-10-01"],
+    ["b", "Creed Aventus Eau de Parfum 100ml", "unisex", "3508441001114", {}, "Creed", "creed", 0, 0, 5, "2026-10-01"],
+    ["c", "Dior Sauvage Elixir 60ml", "men", "3348901567671", {}, "Dior", "dior", 0, 0, 5, "2026-10-01"],
   ];
-  assert.deepEqual(searchRows(rows, "snail").map((r) => r[0]).sort(), ["a", "c"]);
-  assert.deepEqual(searchRows(rows, "cosrx cream").map((r) => r[0]), ["c"]);
-  assert.deepEqual(searchRows(rows, "8809640730010").map((r) => r[0]), ["b"]);
+  assert.deepEqual(searchRows(rows, "sauvage").map((r) => r[0]).sort(), ["a", "c"]);
+  assert.deepEqual(searchRows(rows, "dior elixir").map((r) => r[0]), ["c"]);
+  assert.deepEqual(searchRows(rows, "3508441001114").map((r) => r[0]), ["b"]);
 });
 
 test("ops monitor judgements", () => {
@@ -108,15 +108,16 @@ test("no banner ads (owner, 2026-10-30): paid links live in the price table only
   assert.match(fs.readFileSync("src/components/QuickView.tsx", "utf8"), /<PriceRows /);
 });
 
-test("no Compare branding on KaeYoung (owner, 2026-10-30)", () => {
-  for (const f of ["src/components/Header.tsx", "src/components/Logo.tsx", "src/app/layout.tsx", "src/app/page.tsx"]) assert.doesNotMatch(fs.readFileSync(f, "utf8"), /Compare/, f);
-  assert.equal(SITE.name, "KaeYoung");
+test("the site is ScentCompare on scentcompare.app", () => {
+  assert.equal(SITE.name, "ScentCompare");
+  assert.equal(SITE.domain, "scentcompare.app");
+  assert.equal(SITE.key, "sc");
 });
 
-test("the homepage's step tiles leave out toners and pads (owner, 2026-11-01)", () => {
+test("the homepage's section tiles lead with women's, men's and unisex (owner, 2026-11-05)", () => {
   const src = fs.readFileSync("src/app/page.tsx", "utf8");
   const steps = src.match(/const HOME_STEPS: CatKey\[\] = \[([^\]]*)\]/);
   assert.ok(steps, "HOME_STEPS is listed in the homepage");
-  assert.ok(!steps[1].includes('"toners"'));
+  assert.ok(steps[1].startsWith('"women", "men", "unisex"'));
   assert.ok(!/CATEGORIES\.(filter|map)/.test(src), "the homepage lists its own tiles, not every category");
 });

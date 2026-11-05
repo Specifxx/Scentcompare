@@ -12,7 +12,7 @@ export function generateMetadata({ params }: { params: { cat: string } }): Metad
   const P = c.plural.replace(/^./, (x) => x.toUpperCase());
   return {
     title: `${P} prices: compare every store`,
-    description: `Compare ${c.plural} prices across real K-beauty stores in the US, UK, Canada, Australia, New Zealand and Europe. Matched by barcode, size by size, updated daily.`,
+    description: `Compare ${c.plural} prices across real fragrance stores in the US, UK, Canada, Australia, New Zealand and Europe. Matched by barcode, size by size, updated daily.`,
     alternates: { canonical: `/${c.key}` },
   };
 }

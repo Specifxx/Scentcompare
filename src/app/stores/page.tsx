@@ -8,8 +8,8 @@ import { PageHead } from "@/components/Section";
 import { SuggestStore } from "@/components/ReportForms";
 
 export const metadata: Metadata = {
-  title: "Where to buy Korean skincare online",
-  description: "The K-beauty stores KaeYoung compares every day, by region: specialist Korean skincare shops in the US, UK, Canada, Australia, New Zealand and Europe.",
+  title: "Where to buy perfume online",
+  description: "The fragrance stores ScentCompare compares every day, by region: specialist perfume shops in the US, UK, Canada, Australia, New Zealand and Europe.",
   alternates: { canonical: "/stores" },
 };
 
@@ -18,9 +18,9 @@ export default function Stores() {
   return (
     <div className="mx-auto max-w-6xl px-4">
       <PageHead
-        eyebrow="KaeYoung"
-        title="Where to buy Korean skincare online"
-        sub="Every store we compare, by region, with how many of its products are on KaeYoung today. Real shops only: no open marketplaces, where counterfeit skincare hides. Know a store we should add? Suggest it below."
+        eyebrow="ScentCompare"
+        title="Where to buy perfume online"
+        sub="Every store we compare, by region, with how many of its products are on ScentCompare today. Real shops only: no open marketplaces, where counterfeit fragrance hides. Know a store we should add? Suggest it below."
       />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {REGIONS.map((r) => {
@@ -47,8 +47,8 @@ export default function Stores() {
       </div>
       <section id="suggest" className="mt-10">
         <h2 className="h-display mb-1 text-2xl">Suggest a store</h2>
-        <p className="mb-2 text-sm text-soft">A real K-beauty shop we don&apos;t compare yet? We look at every suggestion and add the store if its listings carry barcodes we can read. Store owners welcome: listing is free.</p>
-        <SuggestStore regions={REGIONS.map((r) => [r.code, r.name])} what="Korean skincare" buttonClassName="btn-pop btn-buy px-6 py-2 text-sm" />
+        <p className="mb-2 text-sm text-soft">A real fragrance shop we don&apos;t compare yet? We look at every suggestion and add the store if its listings carry barcodes we can read. Store owners welcome: listing is free.</p>
+        <SuggestStore regions={REGIONS.map((r) => [r.code, r.name])} what="perfume" buttonClassName="btn-pop btn-buy px-6 py-2 text-sm" />
       </section>
     </div>
   );

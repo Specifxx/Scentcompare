@@ -8,7 +8,7 @@ import { getProducts, orderableIn } from "./data";
 import type { Product } from "./types";
 import type { ProductReviews, ReviewsFile } from "./reviews";
 
-const DIR = path.resolve(process.cwd(), process.env.KY_DATA_DIR || "data/public");
+const DIR = path.resolve(process.cwd(), process.env.SC_DATA_DIR || "data/public");
 let file: ReviewsFile | null = null;
 
 export function getReviewsFile(): ReviewsFile {
@@ -30,7 +30,7 @@ export const reviewsOpen = () => Boolean((process.env.REVIEWS_GITHUB_TOKEN || ""
 
 /**
  * Popularity, until click data exists: how many stores stock it in stock (the
- * K-beauty staples are the ones every shop carries), plus what shoppers say.
+ * fragrance staples are the ones every shop carries), plus what shoppers say.
  * A rating counts by how many there are (diminishing) and how good they are,
  * so ten 5★ ratings lift a product about as much as three more stores do.
  * Never used to order prices: only lists of products.

@@ -7,15 +7,13 @@ import { CATEGORIES, REGIONS, type CatKey, type RegionCode } from "@/site";
 import { STORE_BY_ID } from "@/content/stores";
 import { ebayRowShown } from "./ebay";
 import { lowestOrderable } from "./history";
-import { canonicalKey } from "./brand";
-import { BRAND_KO } from "@/content/brands-ko";
 import type { EbayData, History, Meta, Offer, Product } from "./types";
 import { unpackProducts } from "./products-file";
 import { deliveryFor, MAX_SMALL_ORDER_FEE, type ShippingData } from "./shipping";
 
-// KY_DATA_DIR points local development and tests at a fixture; production
+// SC_DATA_DIR points local development and tests at a fixture; production
 // always reads the committed files.
-const DIR = path.resolve(process.cwd(), process.env.KY_DATA_DIR || "data/public");
+const DIR = path.resolve(process.cwd(), process.env.SC_DATA_DIR || "data/public");
 const memo = new Map<string, unknown>();
 function load<T>(file: string, fallback: T): T {
   if (memo.has(file)) return memo.get(file) as T;
@@ -248,8 +246,7 @@ export function brandPages(): Set<string> {
   return once("brandPages", () => new Set(getBrands().map((b) => b.slug)));
 }
 
-/** The brand's own Korean name, when we have it checked (src/content/brands-ko.ts). */
-export const brandKo = (brand: string): string | null => (brand ? BRAND_KO[canonicalKey(brand)] ?? null : null);
+
 
 /** Chip labels for a family: two variants that read the same (an old and a new
  *  packaging, both 150 ml) are told apart by the end of their barcode. */

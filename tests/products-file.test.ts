@@ -7,12 +7,12 @@ import type { Product } from "@/lib/types";
 const store = STORES[0];
 const sample: Product[] = [
   {
-    ean: "8809433340668",
+    ean: "3348901150811",
     slug: "a-mask",
     name: "A Mask 25g",
     brand: "107",
     b: "107",
-    cat: "masks",
+    cat: "women",
     size: "25g",
     img: "https://cdn.shopify.com/s/files/1/0800/9883/files/a.webp?v=1&width=600",
     first: "2026-10-30",

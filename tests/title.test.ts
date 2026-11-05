@@ -8,97 +8,106 @@ const refused = (t: string) => {
   return "refused" in r ? r.refused : null;
 };
 
-test("single products pass", () => {
+test("single bottles pass", () => {
   for (const t of [
-    "COSRX Advanced Snail 96 Mucin Power Essence 100ml",
-    "Beauty of Joseon Relief Sun : Rice + Probiotics SPF50+ PA++++ 50ml",
-    "Anua Heartleaf 77% Soothing Toner 250ml",
-    "Mediheal Teatree Care Solution Essential Mask EX (10 sheets)",
-    "Beauty of Joseon Glow Serum : Propolis + Niacinamide 30ml",
+    "Dior Sauvage Eau de Parfum 100ml",
+    "Chanel Coco Mademoiselle Eau de Parfum Spray 50ml",
+    "Creed Aventus Eau de Parfum 100ml",
+    "Lattafa Khamrah Eau de Parfum 100ml Unisex",
+    "Jean Paul Gaultier Le Male Elixir Parfum 125ml",
+    "Maison Francis Kurkdjian Baccarat Rouge 540 Extrait de Parfum 70ml",
+    "Chanel Bleu de Chanel Parfum Twist and Spray 3 x 20ml",
   ])
     assert.equal(refused(t), null, t);
 });
 
-test("testers, samples, short-dated and damaged stock are refused", () => {
-  assert.equal(refused("[TESTER] COSRX Advanced Snail 92 All In One Cream 100g"), "tester");
-  assert.equal(refused("Torriden DIVE-IN Serum Sample 2ml x 10"), "tester");
-  assert.equal(refused("Round Lab Birch Juice Sunscreen (Short Expiry 03/2026)"), "short-dated");
-  assert.equal(refused("SKIN1004 Centella Ampoule 55ml - EXP: 2026.02"), "short-dated");
-  assert.equal(refused("Isntree Hyaluronic Acid Toner 200ml (Box Damaged)"), "damaged");
+test("testers, unboxed bottles, decants, samples and damaged stock are refused", () => {
+  assert.equal(refused("Dior Sauvage EDP 100ml (Tester)"), "tester");
+  assert.equal(refused("Creed Aventus 100ml Unboxed No Cap"), "tester");
+  assert.equal(refused("Tom Ford Oud Wood 5ml Decant"), "decant");
+  assert.equal(refused("Baccarat Rouge 540 Sample Vial 2ml"), "decant");
+  assert.equal(refused("Parfums de Marly Layton 10ml Travel Atomizer"), "decant");
+  assert.equal(refused("Versace Eros EDT 100ml (Box Damaged)"), "damaged");
+  assert.equal(refused("Chanel No 5 EDP 100ml 80% Full"), "pre-owned");
 });
 
-test("store-made bundles are refused; a single box of masks is not", () => {
-  assert.equal(refused("Anua Heartleaf Cleansing Oil + Quercetinol Foam Duo Set"), "bundle");
-  assert.equal(refused("COSRX Snail Essence + Snail Cream Bundle"), "bundle");
-  assert.equal(refused("Beauty of Joseon Relief Sun 50ml x2"), "bundle");
-  assert.equal(refused("Buy 2 Get 1 Free Mediheal Masks"), "bundle");
-  assert.equal(refused("K-Beauty Mystery Box"), "mystery");
-  assert.equal(refused("Gift Card"), "not-beauty");
-  assert.equal(refused("Abib Mild Acidic pH Sheet Mask Heartleaf Fit 1 Box (10ea)"), null);
+test("dupes and 'inspired by' oils are refused", () => {
+  assert.equal(refused("Inspired by Creed Aventus Men's Fragrance Oil 10ml"), "dupe");
+  assert.equal(refused("Baccarat Rouge 540 Type Perfume Oil"), "dupe");
+  assert.equal(refused("Our Impression of Sauvage 50ml"), "dupe");
+  assert.equal(refused("Aventus Dupe EDP 100ml"), "dupe");
+  assert.equal(refused("Lattafa Asad Eau de Parfum 100ml"), null, "a real house's bottle is not a dupe");
 });
 
-test("categories: the specific rule wins", () => {
-  const c = (t: string) => categoryOf(t);
-  assert.equal(c("Beauty of Joseon Relief Sun : Rice + Probiotics SPF50+"), "sunscreen");
-  assert.equal(c("Round Lab 1025 Dokdo Cleanser 150ml"), "cleansers");
-  assert.equal(c("heimish All Clean Balm 120ml"), "cleansers");
-  assert.equal(c("Anua Heartleaf 77% Soothing Toner"), "toners");
-  assert.equal(c("COSRX One Step Original Clear Pad 70 pads"), "toners");
-  assert.equal(c("COSRX Advanced Snail 96 Mucin Power Essence"), "serums");
-  assert.equal(c("Torriden DIVE-IN Low Molecular Hyaluronic Acid Soothing Cream"), "moisturisers");
-  assert.equal(c("LANEIGE Water Sleeping Mask 70ml"), "masks");
-  assert.equal(c("LANEIGE Lip Sleeping Mask Berry 20g"), "lip-care");
-  assert.equal(c("Beauty of Joseon Revive Eye Serum Ginseng + Retinal"), "eye-care");
-  assert.equal(c("TIRTIR Mask Fit Red Cushion 18g"), "makeup");
-  assert.equal(c("Isntree Hyaluronic Acid Watery Sun Gel"), "sunscreen");
-  assert.equal(c("Illiyoon Ceramide Ato Concentrate Cream Body Lotion"), "body-hair");
-  assert.equal(c("Daeng Gi Meo Ri Ki Gold Energizing Shampoo"), "body-hair");
-  assert.equal(c("Some By Mi AHA BHA PHA 30 Days Miracle Toner"), "toners");
-  assert.equal(c("Nacific Origin Red Salicylic Acid Pimple Patch"), "other");
+test("store-made bundles are refused; a house's own gift set is not", () => {
+  assert.equal(refused("Dior Sauvage + Bleu de Chanel Bundle"), "bundle");
+  assert.equal(refused("Buy 2 Get 1 Free Lattafa"), "bundle");
+  assert.equal(refused("Versace Eros EDT 100ml x2"), "bundle");
+  assert.equal(refused("Perfume Mystery Box"), "mystery");
+  assert.equal(refused("Gift Card"), "not-fragrance");
+  assert.equal(refused("Dior Sauvage Eau de Toilette 100ml Gift Set"), null);
+  assert.equal(refused("Versace Eros 3 Piece Gift Set"), null);
 });
 
-test("pack sizes", () => {
-  assert.equal(sizeOf("COSRX Advanced Snail 96 Mucin Power Essence 100ml"), "100ml");
-  assert.equal(sizeOf("Mediheal Teatree Mask (10 sheets)"), "10 sheets");
-  assert.equal(sizeOf("COSRX Clear Pad 70 Pads"), "70 pads");
-  assert.equal(sizeOf("TIRTIR Mask Fit Red Cushion 18G"), "18g");
-  assert.equal(sizeOf("Anua Toner"), null);
+test("sections: what it is, then who it is for", () => {
+  const c = (t: string, k = "") => categoryOf(t, k);
+  assert.equal(c("Chanel Coco Mademoiselle EDP 100ml for Women"), "women");
+  assert.equal(c("Dior Sauvage Eau de Parfum 100ml for Men"), "men");
+  assert.equal(c("Dior Sauvage Eau de Parfum Pour Homme 100ml"), "men");
+  assert.equal(c("Versace Eros Aftershave Lotion 100ml"), "body", "an aftershave lotion is body care");
+  assert.equal(c("Lattafa Khamrah EDP 100ml Unisex"), "unisex");
+  assert.equal(c("Creed Aventus Eau de Parfum 100ml"), "unisex", "a niche house without a gender is unisex");
+  assert.equal(c("Dior Sauvage Eau de Parfum 100ml"), "other", "a designer bottle without a gender says nothing");
+  assert.equal(c("Dior Sauvage Eau de Parfum 100ml", "Men's Fragrance"), "men", "the store's type and tags decide next");
+  assert.equal(c("Tom Ford Lost Cherry EDP 50ml", "Women, Men"), "unisex");
+  assert.equal(c("Versace Eros Eau de Toilette 100ml Gift Set"), "sets");
+  assert.equal(c("Dior Sauvage EDT 10ml Travel Spray"), "minis");
+  assert.equal(c("Chanel Bleu de Chanel EDP 10ml"), "minis", "a 10 ml bottle is a mini");
+  assert.equal(c("Victoria's Secret Bare Vanilla Fragrance Mist 250ml"), "body");
+  assert.equal(c("Jo Malone Lime Basil & Mandarin Body Creme 175ml"), "body");
+  assert.equal(c("Diptyque Baies Scented Candle 190g"), "other");
+  assert.equal(c("Byredo Gypsy Water Hair Perfume 75ml"), "body");
+  assert.equal(c("Lancome La Vie Est Belle L'Elixir 50ml Ladies"), "women");
 });
 
-test("names: store noise out, brand first, once", () => {
-  assert.equal(cleanName("[NEW] COSRX Advanced Snail 96 Mucin Power Essence 100ml (Renewal)"), "COSRX Advanced Snail 96 Mucin Power Essence 100ml");
-  assert.equal(tidyName("COSRX - Advanced Snail 96 Mucin Power Essence 100ml", "COSRX"), "COSRX Advanced Snail 96 Mucin Power Essence 100ml");
-  assert.equal(tidyName("Advanced Snail 96 Mucin Power Essence 100ml by COSRX", "COSRX"), "COSRX Advanced Snail 96 Mucin Power Essence 100ml");
-  assert.equal(tidyName("BEAUTY OF JOSEON RELIEF SUN RICE PROBIOTICS 50ML", "Beauty of Joseon"), "Beauty of Joseon Relief Sun Rice Probiotics 50ml");
-  assert.equal(pickName(["COSRX Snail Essence", "COSRX Advanced Snail 96 Mucin Power Essence", "COSRX Advanced Snail 96 Mucin Power Essence"]), "COSRX Advanced Snail 96 Mucin Power Essence");
+test("bottle sizes", () => {
+  assert.equal(sizeOf("Dior Sauvage Eau de Parfum 100ml"), "100ml");
+  assert.equal(sizeOf("Creed Aventus 3.3 oz EDP Spray"), "3.3 oz");
+  assert.equal(sizeOf("Chanel No 5 1.7 fl oz"), "1.7 fl oz");
+  assert.equal(sizeOf("Diptyque Baies Candle 190G"), "190g");
+  assert.equal(sizeOf("Lattafa Asad EDP"), null);
+});
+
+test("names: store noise out, house first, once", () => {
+  assert.equal(cleanName("[NEW] Dior Sauvage Eau de Parfum 100ml (Sealed)"), "Dior Sauvage Eau de Parfum 100ml");
+  assert.equal(tidyName("Dior - Sauvage Eau de Parfum 100ml", "Dior"), "Dior Sauvage Eau de Parfum 100ml");
+  assert.equal(tidyName("Sauvage Eau de Parfum 100ml by Dior", "Dior"), "Dior Sauvage Eau de Parfum 100ml");
+  assert.equal(tidyName("VERSACE EROS EAU DE TOILETTE 100ML", "Versace"), "Versace Eros Eau de Toilette 100ml");
+  assert.equal(pickName(["Dior Sauvage EDP", "Dior Sauvage Eau de Parfum 100ml", "Dior Sauvage Eau de Parfum 100ml"]), "Dior Sauvage Eau de Parfum 100ml");
 });
 
 test("the variant's own trailing size wins over the product title's first", () => {
-  assert.equal(sizeOf("Round Lab Dokdo Toner 200ml / 500ml (500ml)"), "500ml");
-  assert.equal(sizeOf("A'PIEU Juicy Pang Perfume Hand Cream 30ml (Basil)"), "30ml");
+  assert.equal(sizeOf("Dior Sauvage EDP 60ml / 100ml (100ml)"), "100ml");
+  assert.equal(sizeOf("Chanel Chance Eau Tendre EDP 50ml (Spray)"), "50ml");
 });
 
-test("listing sizes: one per dimension, none when the title names two packs", () => {
-  assert.deepEqual(listingAmounts("107 Beauty Micro Drizzle Hydro Toner (5.24oz / 155ml)").map((a) => [a.dim, Math.round(a.n)]), [["amount", 155]]);
-  assert.deepEqual(listingAmounts("Anua Heartleaf 77% Soothing Sheet Mask 25ml (10 Sheets)").map((a) => [a.dim, a.n]), [["amount", 25], ["count", 10]]);
-  assert.deepEqual(listingAmounts("Round Lab Dokdo Toner 200ml / 500ml"), []);
-  assert.deepEqual(listingAmounts("Round Lab Dokdo Toner 200ml / 500ml (500ml)").map((a) => a.n), [500]);
+test("listing sizes: one, none when the title names two bottles, the big one in a set", () => {
+  assert.deepEqual(listingAmounts("Creed Aventus (3.3 oz / 100ml)").map((a) => [a.dim, Math.round(a.n)]), [["amount", 98]]);
+  assert.deepEqual(listingAmounts("Dior Sauvage EDP 60ml / 100ml"), []);
+  assert.deepEqual(listingAmounts("Dior Sauvage EDP 60ml / 100ml (100ml)").map((a) => a.n), [100]);
+  assert.deepEqual(listingAmounts("Versace Eros EDT 100ml + 10ml Gift Set").map((a) => a.n), [100], "a set is its main bottle");
   assert.equal(sizesConflict(amountOf("50ml"), amountOf("100ml")), true);
-  assert.equal(sizesConflict(amountOf("1.69 fl oz"), amountOf("50ml")), false);
-  assert.equal(sizesConflict(amountOf("1 pcs"), amountOf("10 sheets")), true);
-  assert.equal(sizesConflict(amountOf("50ml"), amountOf("10 sheets")), false, "different dimensions are not compared");
+  assert.equal(sizesConflict(amountOf("3.4 oz"), amountOf("100ml")), false);
+  assert.equal(sizesConflict(amountOf("1.7 fl oz"), amountOf("50ml")), false);
 });
 
-test("store flags and shade counts are not part of a product's name", () => {
-  assert.equal(cleanName("AGE20'S NEW* Signature Essence Cover Pact (11 Colors) (13C Porcelain) 14g"), "AGE20'S Signature Essence Cover Pact (13C Porcelain) 14g");
-  assert.equal(cleanName("Kaja CLEARANCE* Juicy Glass Lip Oil - 04 Grape Glowtini 4ml"), "Kaja Juicy Glass Lip Oil - 04 Grape Glowtini 4ml");
-  assert.equal(cleanName("TIRTIR mini* Mask Fit Red Cushion (40 colors) (51N Fudge) 4.5g"), "TIRTIR Mini Mask Fit Red Cushion (51N Fudge) 4.5g");
-  assert.equal(cleanName("3CE Blur Water Tint 0.16 oz 5 Colors (Laydown)"), "3CE Blur Water Tint 0.16 oz (Laydown)");
-  assert.equal(cleanName("beplain Chamomile PH-Balanced Toner (190ml) 1 pcs"), "beplain Chamomile PH-Balanced Toner (190ml)");
-  assert.equal(cleanName("Haruharu Wonder Black Rice Hyaluronic Toner Fragrance Free 30 ml."), "Haruharu Wonder Black Rice Hyaluronic Toner Fragrance Free 30 ml");
-  assert.equal(cleanName("Mediheal Teatree Mask (10 sheets)"), "Mediheal Teatree Mask (10 sheets)", "a real pack count stays");
+test("store flags and size counts are not part of a product's name", () => {
+  assert.equal(cleanName("Lattafa NEW* Khamrah Eau de Parfum (3 Sizes) (100ml)"), "Lattafa Khamrah Eau de Parfum (100ml)");
+  assert.equal(cleanName("Armaf CLEARANCE* Club de Nuit Intense Man EDT 105ml"), "Armaf Club de Nuit Intense Man EDT 105ml");
+  assert.equal(cleanName("Versace Eros EDT 100 ml."), "Versace Eros EDT 100 ml");
+  assert.equal(cleanName("Chanel Bleu de Chanel Parfum 100ml - Perfume"), "Chanel Bleu de Chanel Parfum 100ml");
 });
 
 test("promotions written into a title are not part of the name", () => {
-  assert.equal(cleanName("Tocobo $1 Deal *renew* Bio Watery Sun Cream SPF50 40ml"), "Tocobo Bio Watery Sun Cream SPF50 40ml");
+  assert.equal(cleanName("Afnan $1 Deal *renew* 9pm Eau de Parfum 100ml"), "Afnan 9pm Eau de Parfum 100ml");
 });

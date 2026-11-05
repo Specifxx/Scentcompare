@@ -1,10 +1,10 @@
 // Featured creators (/creators; owner, 2026-11-03: "the creators page for all
 // of these sites as well... just a bubble and then a really nice formatted
 // creators page, just like how RiftCompare does it"). A hand-curated list: no
-// database, no form, no account. A creator mentions or links KaeYoung in
+// database, no form, no account. A creator mentions or links ScentCompare in
 // their content; in return they get a card here (and the bubble on the
 // homepage) with their socials and a "Buy them a coffee" button to THEIR OWN
-// tip page (Ko-fi, Patreon…): KaeYoung never handles the money. Use the
+// tip page (Ko-fi, Patreon…): ScentCompare never handles the money. Use the
 // creator's own spelling and handles, and only links they show publicly.
 // Never called "partners": that word means the affiliate links.
 
@@ -43,7 +43,7 @@ export interface Creator {
 //   {
 //     slug: "some-creator",
 //     name: "Some Creator",
-//     blurb: "Korean skincare routines, honest reviews and ingredient explainers",
+//     blurb: "perfume routines, honest reviews and ingredient explainers",
 //     links: [
 //       { platform: "YouTube", url: "https://youtube.com/@somecreator", handle: "@somecreator" },
 //       { platform: "Instagram", url: "https://instagram.com/somecreator", handle: "@somecreator" },

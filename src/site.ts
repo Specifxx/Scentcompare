@@ -1,15 +1,15 @@
-// KaeYoung's one config file: name, host, regions and product categories.
+// ScentCompare's one config file: name, host, regions and product sections.
 // Store lists live in src/content/stores.ts.
 
 export const SITE = {
-  key: "ky",
-  name: "KaeYoung",
-  domain: "kaeyoung.com",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://kaeyoung.com").replace(/\/$/, ""),
-  slogan: "Stay young.",
-  tagline: "Compare Korean skincare prices across real K-beauty stores",
+  key: "sc",
+  name: "ScentCompare",
+  domain: "scentcompare.app",
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://scentcompare.app").replace(/\/$/, ""),
+  slogan: "Smell expensive. Pay less.",
+  tagline: "Compare perfume and cologne prices across real fragrance stores",
   description:
-    "Compare Korean skincare and K-beauty prices across real K-beauty stores in the US, UK, Canada, Australia, New Zealand and Europe. Matched by the barcode on the box, updated daily.",
+    "Compare perfume, cologne and unisex fragrance prices across real fragrance stores in the US, UK, Canada, Australia, New Zealand and Europe. Matched by the barcode on the box, updated daily.",
   /** Every contact address on the site (owner, 2026-10-30: the family inbox). */
   email: "compareempire@gmail.com",
   /** A product gets a page only when this many stores in one region sell it
@@ -35,10 +35,6 @@ export interface Region {
   zones: string[];
 }
 
-// No Korea region (2026-10-30): shoppers in Korea pay domestic prices at
-// Olive Young and Coupang, which publish no readable feed, and every shop we
-// read sells abroad in foreign currencies. Korean-based shops that sell in
-// US dollars are in the US region. See DECISIONS.md.
 export const REGIONS: Region[] = [
   { code: "US", name: "United States", phrase: "in the US", currency: "USD", shopifyCountry: "US", flag: "🇺🇸", ebayHost: "www.ebay.com", amazonHost: "www.amazon.com", zones: ["America/"] },
   { code: "UK", name: "United Kingdom", phrase: "in the UK", currency: "GBP", shopifyCountry: "GB", flag: "🇬🇧", ebayHost: "www.ebay.co.uk", amazonHost: "www.amazon.co.uk", zones: ["Europe/London", "Europe/Belfast", "Europe/Dublin"] },
@@ -63,47 +59,35 @@ export function regionForZone(zone: string | undefined | null): RegionCode {
   return best.code;
 }
 
-export type CatKey =
-  | "sunscreen"
-  | "cleansers"
-  | "toners"
-  | "serums"
-  | "moisturisers"
-  | "masks"
-  | "eye-care"
-  | "lip-care"
-  | "makeup"
-  | "body-hair"
-  | "other";
+/**
+ * The sections (owner, 2026-11-05: "a male cologne and unisex section so it's
+ * not mainly targeting women but all genders"). Who a fragrance is sold for is
+ * the first thing a shopper filters by, so it is the section; the
+ * concentration (EDP, EDT, parfum, cologne) stays in the product name.
+ */
+export type CatKey = "women" | "men" | "unisex" | "sets" | "minis" | "body" | "other";
 
 export interface Category {
   key: CatKey;
   name: string;
-  /** "Korean sunscreen" — what people search for */
+  /** "women's perfume" — what people search for */
   plural: string;
   /** One sentence for hub pages; facts only. */
   about: string;
 }
 
-/** In the order a routine runs; "other" is last and has no hub of its own in the nav. */
+/** "other" is last and has no hub of its own in the nav. */
 export const CATEGORIES: Category[] = [
-  { key: "cleansers", name: "Cleansers", plural: "Korean cleansers", about: "Oil cleansers, cleansing balms and foams: the first and second step of a Korean double cleanse." },
-  { key: "toners", name: "Toners", plural: "Korean toners", about: "Hydrating and exfoliating toners, toner pads and mists, used after cleansing." },
-  { key: "serums", name: "Serums & essences", plural: "Korean serums and essences", about: "Serums, essences and ampoules: concentrated treatments for hydration, brightening, acne and repair." },
-  { key: "moisturisers", name: "Moisturisers", plural: "Korean moisturisers", about: "Creams, gel creams, lotions and emulsions that seal in the steps before them." },
-  { key: "sunscreen", name: "Sunscreen", plural: "Korean sunscreen", about: "Korean sun creams, sticks and sun serums, known for light textures and no white cast." },
-  { key: "masks", name: "Masks", plural: "Korean face masks", about: "Sheet masks, sleeping masks, wash-off and collagen masks." },
-  { key: "eye-care", name: "Eye care", plural: "Korean eye creams", about: "Eye creams, eye serums and hydrogel eye patches." },
-  { key: "lip-care", name: "Lip care", plural: "Korean lip care", about: "Lip balms, lip masks and lip oils." },
-  { key: "makeup", name: "Makeup", plural: "Korean makeup", about: "Cushion compacts, tints, BB creams, primers and other Korean makeup." },
-  { key: "body-hair", name: "Body & hair", plural: "Korean body and hair care", about: "Body washes, lotions, shampoos, hair treatments and hand creams." },
-  { key: "other", name: "More K-beauty", plural: "more Korean beauty", about: "Sets, tools and everything else K-beauty stores sell under one barcode." },
+  { key: "women", name: "Women's perfume", plural: "women's perfumes", about: "Eau de parfum, eau de toilette and parfum sold for women, from designer houses to niche labels." },
+  { key: "men", name: "Men's cologne", plural: "men's colognes and aftershaves", about: "Eau de toilette, eau de parfum, parfum and aftershave sold for men." },
+  { key: "unisex", name: "Unisex fragrance", plural: "unisex fragrances", about: "Fragrances sold for anyone: most niche and oud houses, and the designer lines labelled unisex." },
+  { key: "sets", name: "Gift sets", plural: "fragrance gift sets", about: "The brands' own boxed sets: a bottle with a travel spray, a lotion or a shower gel, under one barcode." },
+  { key: "minis", name: "Travel & minis", plural: "travel sprays and miniatures", about: "The brands' own travel sprays, purse sprays and miniature bottles, each with its own barcode. Never a decant." },
+  { key: "body", name: "Body mists & more", plural: "body mists, lotions and scented care", about: "Body mists, scented body lotions, shower gels, deodorants and hair mists from fragrance houses." },
+  { key: "other", name: "More fragrance", plural: "more fragrance", about: "Everything else fragrance stores sell under one barcode: home scents, candles and discovery sets from the brands." },
 ];
 
-/**
- * Basics first, for menus that list steps (owner, 2026-11-01: KaeYoung should not put men off). The cleanse,
- * moisturise, sunscreen core leads; toners sit mid-list; makeup and lip care last. CATEGORIES keeps routine order.
- */
-export const STEP_MENU_ORDER: CatKey[] = ["cleansers", "moisturisers", "sunscreen", "serums", "toners", "body-hair", "masks", "eye-care", "lip-care", "makeup", "other"];
+/** Menu order: the three sections for people first, then the extras. */
+export const STEP_MENU_ORDER: CatKey[] = ["women", "men", "unisex", "sets", "minis", "body", "other"];
 
 export const CAT_BY_KEY = Object.fromEntries(CATEGORIES.map((c) => [c.key, c])) as Record<CatKey, Category>;

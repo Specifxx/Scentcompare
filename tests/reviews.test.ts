@@ -8,11 +8,12 @@ import { buildFile } from "../scripts/reviews-export";
 import { judgeReviews } from "../scripts/ops-monitor";
 import { applyFilters, imageUrl, norm, packImage, searchRows, NO_FILTERS, type IndexRow } from "@/lib/browse";
 
-const EAN = "8809416470000";
+const EAN = "3348901150811";
 
-test("a rating needs a Korean barcode and 1–5 stars; words are optional", () => {
+test("a rating needs a real barcode and 1–5 stars; words are optional", () => {
   assert.equal(validateReview({ ean: EAN, stars: 5 }).ok, true);
-  assert.equal(validateReview({ ean: "4901234567894", stars: 5 }).ok, false);
+  assert.equal(validateReview({ ean: "4901234567890", stars: 5 }).ok, false, "a wrong check digit");
+  assert.equal(validateReview({ ean: "2001234567893", stars: 5 }).ok, false, "a store's internal code");
   assert.equal(validateReview({ ean: EAN, stars: 0 }).ok, false);
   assert.equal(validateReview({ ean: EAN, stars: 4.5 }).ok, false);
   assert.equal(validateReview({ ean: EAN, stars: 4, body: "too short" }).ok, false);
@@ -31,9 +32,9 @@ test("a rating needs a Korean barcode and 1–5 stars; words are optional", () =
 test("links, contact details, shop names and spam wait for the owner; plain reviews and bare ratings publish", () => {
   const f = (body: string, name: string | null = null) => reviewFlags({ title: null, body, name });
   assert.deepEqual(f("Really gentle on my sensitive skin, no stinging and it layers well."), []);
-  assert.deepEqual(f("수분감이 좋아요. 끈적임 없이 촉촉하고 순해요. 재구매 의사 있어요!"), [], "Korean text is fine");
+  assert.deepEqual(f("Très belle tenue, sillage discret mais présent toute la journée. Je rachèterai."), [], "French text is fine");
   assert.deepEqual(reviewFlags({ title: null, body: null, name: null }), []);
-  assert.ok(f("Cheaper at www.cheapkbeauty.shop honestly").includes("link"));
+  assert.ok(f("Cheaper at www.cheapperfume.shop honestly").includes("link"));
   assert.ok(f("Buy it here https://x.example/p for less").includes("link"));
   assert.ok(f("Message me on whatsapp +1 415 555 0134 for a deal").includes("phone"));
   assert.ok(f("Email me at someone@example.com for samples").includes("email"));
@@ -55,7 +56,7 @@ test("the summary counts every rating; only written ones are listed, newest firs
   assert.equal(s.avg, 4);
   assert.deepEqual(s.dist, [0, 0, 1, 1, 1]);
   assert.deepEqual(s.reviews.map((r) => r.id), [3, 1]);
-  assert.equal(s.reviews[1].n, "KaeYoung shopper");
+  assert.equal(s.reviews[1].n, "ScentCompare shopper");
   assert.equal(s.reviews[0].k, undefined, "an unknown skin type is dropped");
   const many = Array.from({ length: 50 }, (_, i) => ({ ...rows[0], id: i + 1, created: `2026-10-${String((i % 28) + 1).padStart(2, "0")}T00:00:00` }));
   assert.equal(summarize(many).reviews.length, PAGE_REVIEWS_MAX);
@@ -163,17 +164,17 @@ test("the GitHub store: a review is appended, a write race re-reads, moderation 
     assert.equal(await setStatus(2, "published", gh.f), true);
     assert.equal(await setStatus(99, "hidden", gh.f), false);
     assert.equal((await loadStore(gh.f)).store.reviews[1].status, "published");
-    assert.ok(gh.calls.every((c) => c.startsWith("GET Specifxx/Kaeyoung/") || c.startsWith("PUT Specifxx/Kaeyoung/")));
+    assert.ok(gh.calls.every((c) => c.startsWith("GET Specifxx/scentcompare/") || c.startsWith("PUT Specifxx/scentcompare/")));
   } finally {
     delete process.env.REVIEWS_GITHUB_TOKEN;
   }
 });
 
 test("the review form only takes posts from our own pages; the admin key is long and exact", () => {
-  const req = (origin: string | null) => new Request("https://kaeyoung.com/api/reviews", { method: "POST", headers: origin ? { origin, host: "kaeyoung.com" } : { host: "kaeyoung.com" } });
-  assert.equal(sameSite(req("https://kaeyoung.com"), "https://kaeyoung.com"), true);
-  assert.equal(sameSite(req("https://evil.example"), "https://kaeyoung.com"), false);
-  assert.equal(sameSite(req(null), "https://kaeyoung.com"), false);
+  const req = (origin: string | null) => new Request("https://scentcompare.app/api/reviews", { method: "POST", headers: origin ? { origin, host: "scentcompare.app" } : { host: "scentcompare.app" } });
+  assert.equal(sameSite(req("https://scentcompare.app"), "https://scentcompare.app"), true);
+  assert.equal(sameSite(req("https://evil.example"), "https://scentcompare.app"), false);
+  assert.equal(sameSite(req(null), "https://scentcompare.app"), false);
   const key = "k".repeat(30);
   assert.equal(adminKeyOk(key, key), true);
   assert.equal(adminKeyOk("k".repeat(29), key), false);
@@ -189,21 +190,21 @@ test("search keeps Hangul, matches the brand and synonyms, popular first among e
   assert.equal(norm("조선미녀 맑은쌀 선크림"), "조선미녀 맑은쌀 선크림");
   assert.equal(norm("Crème Légère"), "creme legere");
   const rows = [
-    row("a", "Relief Sun Rice + Probiotics SPF50 50ml", "sunscreen", "Beauty of Joseon", 1800, 0, 0, 12, "2026-10-01"),
-    row("b", "Relief Sun Aqua-fresh SPF50 50ml", "sunscreen", "Beauty of Joseon", 1900, 0, 0, 3, "2026-10-01"),
-    row("c", "Centella Ampoule 100ml", "serums", "SKIN1004", 2000, 0, 0, 8, "2026-10-01"),
+    row("a", "Sauvage Eau de Parfum 100ml", "men", "Dior", 12900, 0, 0, 12, "2026-10-01"),
+    row("b", "Sauvage Eau de Toilette 100ml", "men", "Dior", 11900, 0, 0, 3, "2026-10-01"),
+    row("c", "Black Opium Eau de Parfum 90ml", "women", "Yves Saint Laurent", 13000, 0, 0, 8, "2026-10-01"),
   ];
-  assert.deepEqual(searchRows(rows, "joseon relief").map((r) => r[0]), ["a", "b"], "brand words count");
-  assert.deepEqual(searchRows(rows, "relief sun").map((r) => r[0]), ["a", "b"], "the popular one first");
-  assert.deepEqual(searchRows(rows, "sunscreen").map((r) => r[0]).sort(), ["a", "b"], "sunscreen finds Sun");
-  assert.deepEqual(searchRows(rows, "cica").map((r) => r[0]), ["c"]);
+  assert.deepEqual(searchRows(rows, "dior sauvage").map((r) => r[0]), ["a", "b"], "brand words count");
+  assert.deepEqual(searchRows(rows, "sauvage").map((r) => r[0]), ["a", "b"], "the popular one first");
+  assert.deepEqual(searchRows(rows, "sauvage edp").map((r) => r[0]), ["a"], "EDP finds eau de parfum");
+  assert.deepEqual(searchRows(rows, "ysl").map((r) => r[0]), ["c"], "a house's nickname finds it");
 });
 
 test("filters and sorts", () => {
   const rows = [
-    row("a", "Alpha Cream", "moisturisers", "COSRX", 2000, 46, 12, 9, "2026-10-01"),
-    row("b", "Beta Toner", "toners", "Anua", 1500, 38, 4, 12, "2026-10-20"),
-    row("c", "Gamma Cream", "moisturisers", "COSRX", undefined, 0, 0, 4, "2026-10-25"),
+    row("a", "Alpha Parfum", "women", "Dior", 2000, 46, 12, 9, "2026-10-01"),
+    row("b", "Beta Cologne", "men", "Versace", 1500, 38, 4, 12, "2026-10-20"),
+    row("c", "Gamma Parfum", "women", "Dior", undefined, 0, 0, 4, "2026-10-25"),
   ];
   const ids = (f: Partial<typeof NO_FILTERS>) => applyFilters(rows, { ...NO_FILTERS, ...f }, "US").map((r) => r[0]);
   assert.deepEqual(ids({}), ["b", "a", "c"], "most popular first");
@@ -212,10 +213,10 @@ test("filters and sorts", () => {
   assert.deepEqual(ids({ sort: "price-desc" }), ["a", "b", "c"]);
   assert.deepEqual(ids({ sort: "name" }), ["a", "b", "c"]);
   assert.deepEqual(ids({ sort: "new" }), ["c", "b", "a"]);
-  assert.deepEqual(ids({ cat: "moisturisers" }), ["a", "c"]);
-  assert.deepEqual(ids({ brand: "COSRX", inStock: true }), ["a"]);
+  assert.deepEqual(ids({ cat: "women" }), ["a", "c"]);
+  assert.deepEqual(ids({ brand: "Dior", inStock: true }), ["a"]);
   assert.deepEqual(ids({ minStars: 4 }), ["a"]);
-  assert.deepEqual(ids({ q: "cream", sort: "new" }), ["c", "a"]);
+  assert.deepEqual(ids({ q: "parfum", sort: "new" }), ["c", "a"]);
 });
 
 test("photos pack small and come back at the width asked for", () => {
@@ -226,14 +227,12 @@ test("photos pack small and come back at the width asked for", () => {
   assert.equal(imageUrl("", 120), null);
 });
 
-test("Korean words find English names; a brand's Hangul name finds the brand", () => {
+test("abbreviations and nicknames find the long names", () => {
   const rows = [
-    row("a", "Relief Sun Rice + Probiotics SPF50 50ml", "sunscreen", "Beauty of Joseon", 1800, 0, 0, 12, "2026-10-01"),
-    row("b", "Heartleaf 77% Soothing Toner 250ml", "toners", "Anua", 1900, 0, 0, 3, "2026-10-01"),
+    row("a", "Bleu de Chanel Eau de Parfum 100ml", "men", "Chanel", 15000, 0, 0, 12, "2026-10-01"),
+    row("b", "Le Male Eau de Toilette 125ml", "men", "Jean Paul Gaultier", 9900, 0, 0, 3, "2026-10-01"),
   ];
-  rows[0][11] = "조선미녀";
-  rows[1][11] = "아누아";
-  assert.deepEqual(searchRows(rows, "조선미녀").map((r) => r[0]), ["a"]);
-  assert.deepEqual(searchRows(rows, "선크림").map((r) => r[0]), ["a"]);
-  assert.deepEqual(searchRows(rows, "어성초 토너").map((r) => r[0]), ["b"]);
+  assert.deepEqual(searchRows(rows, "bdc").map((r) => r[0]), ["a"]);
+  assert.deepEqual(searchRows(rows, "jpg le male").map((r) => r[0]), ["b"]);
+  assert.deepEqual(searchRows(rows, "le male edt").map((r) => r[0]), ["b"]);
 });

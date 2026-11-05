@@ -9,7 +9,7 @@ import { shareRows } from "@/lib/og/share-rows";
 // whose price differs most between stores. src/lib/og/guide-image.tsx.
 export const dynamicParams = false;
 export const generateStaticParams = () => GUIDES.map((g) => ({ slug: g.slug }));
-export const alt = "The same Korean skincare product at different K-beauty stores: cheapest and dearest price";
+export const alt = "The same perfume product at different fragrance stores: cheapest and dearest price";
 export const size = GUIDE_IMAGE_SIZE;
 export const contentType = "image/png";
 
@@ -30,7 +30,7 @@ export default function Image({ params }: { params: { slug: string } }) {
   const n = g.region === "NZ" ? 2 : 3;
   return guideImage({
     region: g.region,
-    title: `Same K-beauty, different price in ${countryName(g.region)}`,
+    title: `Same fragrance, different price in ${countryName(g.region)}`,
     kicker: `${r.name} · ${r.currency}`,
     rows: shareRows(g.region, getProducts(), 5, n),
     asOf,

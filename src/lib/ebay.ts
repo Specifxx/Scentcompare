@@ -18,8 +18,8 @@ export interface EbayItem {
 /** EU countries: an EU buyer's eBay row may come from a seller in any of them (no customs). */
 export const EU_COUNTRIES: ReadonlySet<string> = new Set(["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]);
 
-/** Where the products come from: sellers there are kept for every region, priced delivered (owner, 2026-10-31). */
-export const HOME_COUNTRY = "KR";
+/** No home country for fragrance (it is bottled everywhere): only local sellers are kept. */
+export const HOME_COUNTRY: string | null = null;
 
 /** eBay's two-letter country code for a region (the UK is GB on eBay). */
 export const EBAY_COUNTRY: Partial<Record<RegionCode, string>> = { US: "US", UK: "GB", CA: "CA", AU: "AU", EU: "DE" };
@@ -31,8 +31,7 @@ export const EBAY_COUNTRY: Partial<Record<RegionCode, string>> = { US: "US", UK:
  */
 export function localSeller(region: RegionCode, country: string | undefined): boolean {
   if (!country) return true;
-  // The products' home country (Korea) is often the cheapest genuine source: its sellers stay, priced with postage.
-  if (country === HOME_COUNTRY) return true;
+  if (HOME_COUNTRY && country === HOME_COUNTRY) return true;
   return region === "EU" ? EU_COUNTRIES.has(country) : country === EBAY_COUNTRY[region];
 }
 
@@ -47,8 +46,8 @@ export function statedPostage(it: EbayItem, currency: string, minor: number): nu
 /** May a stored row be shown? Only one with its postage known (rows from before 2026-10-31 have none). */
 export const ebayRowShown = (pick: EbayPick | undefined): pick is EbayPick => !!pick && pick.sh != null;
 
-// Counterfeit K-beauty overwhelmingly ships from these; genuine stock from a
-// real seller is listed from Korea, the US, Europe or Australia.
+// Counterfeit designer fragrance overwhelmingly ships from these; a genuine
+// bottle from a real seller is listed from the buyer's own country.
 const BOOTLEG_ORIGINS = new Set(["CN", "HK"]);
 
 /**

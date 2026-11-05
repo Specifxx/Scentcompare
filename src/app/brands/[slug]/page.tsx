@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CATEGORIES } from "@/site";
-import { brandKo, getBrand, getBrands, storeCount } from "@/lib/data";
+import { getBrand, getBrands, storeCount } from "@/lib/data";
 import { TileGrid } from "@/components/ProductTile";
 import { PageHead } from "@/components/Section";
 import { Browse } from "@/components/Browse";
@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const stores = new Set(b.products.flatMap((f) => Object.values(f.offers).flatMap((o) => (o ?? []).map((x) => x.s)))).size;
   return {
     title: `${b.name} prices: compare ${b.products.length} products across ${stores} stores`,
-    description: `Compare ${b.name} prices across ${stores} K-beauty stores in the US, UK, Canada, Australia, New Zealand and Europe. ${b.products.length} products, matched by barcode, updated daily.`,
+    description: `Compare ${b.name} prices across ${stores} fragrance stores in the US, UK, Canada, Australia, New Zealand and Europe. ${b.products.length} products, matched by barcode, updated daily.`,
     alternates: { canonical: `/brands/${b.slug}` },
   };
 }
@@ -40,7 +40,7 @@ export default function BrandPage({ params }: { params: { slug: string } }) {
       <PageHead
         eyebrow="Brand"
         title={`${b.name} prices`}
-        sub={`${brandKo(b.name) ? `${b.name} (${brandKo(b.name)} in Korean): ` : ""}${list.length} ${b.name} products compared across K-beauty stores, matched by barcode, size by size. Most widely stocked first; prices show for your region.`}
+        sub={`${list.length} ${b.name} fragrances compared across real fragrance stores, matched by barcode, bottle by bottle. Most widely stocked first; prices show for your region.`}
       />
       <Browse brand={b.slug}>
       {cats.map((c) => {

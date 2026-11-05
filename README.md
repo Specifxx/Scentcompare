@@ -1,8 +1,8 @@
-# KaeYoung
+# ScentCompare
 
 **Stay young.** Compare Korean skincare and K-beauty prices across real K-beauty stores in the US, UK, Canada,
 Australia, New Zealand and Europe. Matched by the barcode on the box, size by size, checked every day.
-Live at **kaeyoung.com**.
+Live at **scentcompare.app**.
 
 ## How it works
 
@@ -38,7 +38,7 @@ eye-care, lip-care, makeup, body-hair, other; paged), `/brands`, `/brands/<slug>
 
 ```
 npm install
-KY_DATA_DIR=tests/fixtures/data npm run dev        # synthetic fixture (npx tsx tests/fixtures/make-fixture.ts)
+SC_DATA_DIR=tests/fixtures/data npm run dev        # synthetic fixture (npx tsx tests/fixtures/make-fixture.ts)
 STORES=nudieglow npx tsx scripts/import.ts         # a real import of one store
 ```
 

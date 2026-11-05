@@ -62,7 +62,7 @@ export function Browse({ cat = "", brand = "", search = false, children }: { cat
           value={f.q}
           onChange={(e) => set({ q: e.target.value })}
           onFocus={need}
-          placeholder={search ? "Search K-beauty…" : "Filter by name…"}
+          placeholder={search ? "Search fragrance…" : "Filter by name…"}
           aria-label="Filter by name"
           className={`${sel} min-w-0 flex-1 basis-48 px-4`}
           autoFocus={search}
@@ -154,7 +154,7 @@ function RowTile({ r, img }: { r: IndexRow; img: string | null }) {
         {img ? (
           <img src={img} alt={r[1]} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-full w-full object-contain p-4 text-transparent transition-transform duration-300 group-hover:scale-[1.03]" />
         ) : (
-          <div className="grid h-full place-items-center text-xs font-medium text-soft">{r[5] || "K-beauty"}</div>
+          <div className="grid h-full place-items-center text-xs font-medium text-soft">{r[5] || "fragrance"}</div>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 border-t border-line p-3">

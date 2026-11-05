@@ -1,3 +1,4 @@
+import { isProductEan } from "./ean";
 // Shopper ratings and reviews (owner, 2026-10-30: "users should be able to rate
 // the products … stars … and reviews"). The pure, client-safe half: limits,
 // what a review may say, the spam rules and the summary maths. No storage and
@@ -26,7 +27,7 @@ export const TITLE_MAX = 80;
 export const BODY_MIN = 20;
 export const BODY_MAX = 3000;
 export const NAME_MAX = 40;
-export const DEFAULT_NAME = "KaeYoung shopper";
+export const DEFAULT_NAME = "ScentCompare shopper";
 /** Fewer than this many seconds between the form appearing and the send: a bot. */
 export const MIN_FILL_SECONDS = 4;
 /** Google shows review stars only from a real sample; below this the page says
@@ -106,7 +107,7 @@ export function cleanText(s: unknown, max: number): string | null {
 /** Check a submission; an error is a sentence for the shopper. */
 export function validateReview(raw: Partial<ReviewInput>): { ok: true; review: CleanReview } | { ok: false; error: string } {
   const ean = typeof raw.ean === "string" ? raw.ean.trim() : "";
-  if (!/^880\d{10}$/.test(ean)) return { ok: false, error: "That product isn't one we compare." };
+  if (!isProductEan(ean)) return { ok: false, error: "That product isn't one we compare." };
   const stars = Number(raw.stars);
   if (!Number.isInteger(stars) || stars < 1 || stars > 5) return { ok: false, error: "Pick from one to five stars." };
   const body = cleanText(raw.body, BODY_MAX + 1);
@@ -137,7 +138,7 @@ export function reviewFlags(r: Pick<CleanReview, "title" | "body" | "name">): st
   // Words that are medical claims a shop or a brand shill writes, or that need a doctor, not a shopper.
   if (/\b(cures?|cured|heal(s|ed)? (my )?(eczema|psoriasis|rosacea|acne)|prescription|steroid)\b/i.test(text)) flags.push("medical claim");
   // The name is where an advertiser puts their shop.
-  if (r.name && /\b(shop|store|official|beauty co|cosmetics|skincare ltd|admin)\b/i.test(r.name)) flags.push("name looks like a shop");
+  if (r.name && /\b(shop|store|official|beauty co|cosmetics|fragrance ltd|admin)\b/i.test(r.name)) flags.push("name looks like a shop");
   return flags;
 }
 

@@ -13,8 +13,8 @@ const year = () => seasonYear(new Date().toISOString().slice(0, 10));
 export function generateMetadata(): Metadata {
   const y = year();
   return {
-    title: `K-beauty Black Friday deals ${y}`,
-    description: `Black Friday and Cyber Monday ${y} Korean skincare deals: in stock today where the cheapest store is at least 10% under the dearest. Same barcode, same size, per region, updated daily.`,
+    title: `fragrance Black Friday deals ${y}`,
+    description: `Black Friday and Cyber Monday ${y} perfume deals: in stock today where the cheapest store is at least 10% under the dearest. Same barcode, same size, per region, updated daily.`,
     alternates: { canonical: "/black-friday" },
   };
 }
@@ -27,7 +27,7 @@ export default function BlackFriday() {
     <div className="mx-auto max-w-6xl px-4">
       <PageHead
         eyebrow="Black Friday"
-        title={`K-beauty Black Friday deals ${y}`}
+        title={`fragrance Black Friday deals ${y}`}
         sub={
           <>
             Black Friday is {longDate(bf)} and Cyber Monday is {longDate(cyberMonday(y))} {y}.{before ? " Many stores start their sales earlier." : ""} These are
@@ -45,7 +45,7 @@ export default function BlackFriday() {
         );
       })}
       <p className="mt-8 text-sm text-soft">
-        <Link prefetch={false} href="/deals" className="underline">K-beauty deals today</Link> · <Link prefetch={false} href="/popular" className="underline">Popular products</Link> ·{" "}
+        <Link prefetch={false} href="/deals" className="underline">fragrance deals today</Link> · <Link prefetch={false} href="/popular" className="underline">Popular products</Link> ·{" "}
         <Link prefetch={false} href="/stores" className="underline">Stores we compare</Link>
       </p>
     </div>

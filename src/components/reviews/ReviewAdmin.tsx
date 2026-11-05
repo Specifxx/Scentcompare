@@ -4,7 +4,7 @@ import { skinLabel } from "@/lib/reviews";
 import { Stars } from "./Stars";
 
 type Row = { id: number; ean: string; stars: number; title: string | null; body: string | null; name: string | null; skin: string | null; status: string; flags: string; created: string };
-const KEY = "ky-review-admin";
+const KEY = "sc-review-admin";
 
 export function ReviewAdmin() {
   const [key, setKey] = useState("");

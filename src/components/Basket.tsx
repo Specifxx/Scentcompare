@@ -45,8 +45,8 @@ export function Basket() {
       m.content = "noindex, follow";
       document.head.appendChild(m);
     }
-    window.addEventListener("ky-basket", read);
-    return () => window.removeEventListener("ky-basket", read);
+    window.addEventListener("sc-basket", read);
+    return () => window.removeEventListener("sc-basket", read);
   }, []);
   useEffect(() => {
     // The region starts as "US" until the browser's own is read: a slower
@@ -85,8 +85,8 @@ export function Basket() {
   };
   const best = full[0] ?? null;
   const shareText = best && best.total != null
-    ? `My K-beauty basket: ${rows.length} products for ${fmt(best.total)} delivered at ${best.name}. Every store compared on KaeYoung:`
-    : `My K-beauty basket: ${slugs.length} products, every store's price on KaeYoung:`;
+    ? `My fragrance basket: ${rows.length} products for ${fmt(best.total)} delivered at ${best.name}. Every store compared on ScentCompare:`
+    : `My fragrance basket: ${slugs.length} products, every store's price on ScentCompare:`;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
@@ -105,7 +105,7 @@ export function Basket() {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Add a product: anua toner, cosrx snail…"
+            placeholder="Add a bottle: sauvage edp, baccarat rouge…"
             className="w-full rounded-xl border border-line bg-card px-4 py-2.5 text-[15px] outline-none focus:border-soft"
           />
         </label>
@@ -151,7 +151,7 @@ export function Basket() {
         {!slugs.length && <p className="mt-4 text-sm text-soft">Empty for now. Search above, or press &quot;Add to basket&quot; on any product page.</p>}
         {slugs.length > 0 && (
           <div className="mt-3 flex flex-wrap items-center gap-4">
-            <ShareButton title="My K-beauty basket" path={`/basket?b=${encodeShared(slugs)}`} medium="basket" texts={{ [region]: shareText }} />
+            <ShareButton title="My fragrance basket" path={`/basket?b=${encodeShared(slugs)}`} medium="basket" texts={{ [region]: shareText }} />
             {!shared && (
               <button type="button" onClick={() => writeBasket([])} className="text-sm text-soft underline hover:text-ink">
                 Empty the basket
@@ -214,8 +214,8 @@ export function AddToBasket({ slug }: { slug: string }) {
   useEffect(() => {
     const read = () => setIn(readBasket().includes(slug));
     read();
-    window.addEventListener("ky-basket", read);
-    return () => window.removeEventListener("ky-basket", read);
+    window.addEventListener("sc-basket", read);
+    return () => window.removeEventListener("sc-basket", read);
   }, [slug]);
   return inBasket ? (
     <Link prefetch={false} href="/basket" className="btn-pop mt-3 inline-flex border border-line bg-card px-5 py-2 text-sm text-ink hover:border-soft">

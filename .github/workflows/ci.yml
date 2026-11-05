@@ -19,6 +19,6 @@ jobs:
       - run: npm test
       - name: Build against the fixture (every page prerenders)
         env:
-          KY_DATA_DIR: tests/fixtures/data
+          SC_DATA_DIR: tests/fixtures/data
           NEXT_TELEMETRY_DISABLED: 1
         run: npx next build

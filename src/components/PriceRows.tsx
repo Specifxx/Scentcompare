@@ -47,7 +47,7 @@ export function PriceRows({ pinned, overseas = [], overseasTo, stores }: RowsDat
       )}
       {overseas.length > 0 && (
         <div className="rounded-xl border border-dashed border-line bg-card px-3.5 py-3" aria-label="Big retailers that deliver here">
-          <p className="text-sm font-semibold">Big K-beauty retailers that deliver{overseasTo ? ` to ${overseasTo}` : ""}</p>
+          <p className="text-sm font-semibold">Big fragrance retailers that deliver{overseasTo ? ` to ${overseasTo}` : ""}</p>
           <p className="mt-0.5 text-xs text-soft">
             Not part of the store comparison: we can&apos;t read their prices, so each button searches their site. Compare at their checkout, with delivery and any import charges.
           </p>

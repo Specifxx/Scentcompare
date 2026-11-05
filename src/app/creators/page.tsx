@@ -5,15 +5,15 @@ import { CoffeeIcon, CreatorCard, StarIcon } from "@/components/creators/Creator
 import { featuredCreators } from "@/lib/creators";
 import { Crumbs, JsonLd, faqLd } from "@/lib/seo";
 
-// /creators: the K-beauty creators hub, RiftCompare's /creators brought over (owner, 2026-11-03: "a really nice formatted
+// /creators: the fragrance creators hub, RiftCompare's /creators brought over (owner, 2026-11-03: "a really nice formatted
 // creators page, just like how RiftCompare does it", on every site). Two audiences: shoppers finding creators to follow
 // and tip, and creators deciding whether a listing is worth a mention in their content. The list is static
 // (src/lib/creators.ts), so the page is prerendered like every other: no data read, no request read. No emoji
 // decoration, no brand packaging (the design rules): the marks are a sparkle and a coffee cup, drawn inline.
 
-const TITLE = "K-Beauty Creators: Follow & Buy Them a Coffee";
+const TITLE = "Fragrance Creators: Follow & Buy Them a Coffee";
 const DESCRIPTION =
-  "The Korean skincare creators we feature: routines, honest reviews, ingredient explainers and hauls. Follow them, and buy your favourite a coffee. Creators: get featured free.";
+  "The perfume creators we feature: routines, honest reviews, ingredient explainers and hauls. Follow them, and buy your favourite a coffee. Creators: get featured free.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -32,7 +32,7 @@ const FAQS: [string, string][] = [
   ],
   [
     "Who can apply?",
-    "Anyone who makes K-beauty or skincare content regularly: YouTube, TikTok, Instagram, X, Threads, Pinterest, a newsletter or a blog. Audience size matters less than making content people trust. A real person reviews every application.",
+    "Anyone who makes fragrance or fragrance content regularly: YouTube, TikTok, Instagram, X, Threads, Pinterest, a newsletter or a blog. Audience size matters less than making content people trust. A real person reviews every application.",
   ],
   [
     "Will I see how many clicks my listing sends?",
@@ -51,12 +51,12 @@ const WORK_WITH_US = [
 const PERKS = [
   { title: "A spotlight card, free", body: "Your avatar, what you make and every channel you're on, here and in the creators bubble on our homepage." },
   { title: "A “Buy them a coffee” button", body: "Straight to your own Ko-fi, Patreon or tip page. Fans support you directly; we never touch the money." },
-  { title: "K-beauty shoppers, not random traffic", body: "Shoppers visit every day to price cleansers, serums and sunscreens before they buy: the people who watch skincare content." },
+  { title: "fragrance shoppers, not random traffic", body: "Shoppers visit every day to price cleansers, serums and sunscreens before they buy: the people who watch fragrance content." },
   { title: "Shout-outs and real numbers", body: "We share your new videos on our socials, and tell you how many clicks your listing sent you." },
 ];
 
 const APPLY_HREF = `mailto:${SITE.email}?subject=${encodeURIComponent(`${SITE.name} creator feature`)}&body=${encodeURIComponent(
-  "Hi! I make K-beauty / skincare content and I'd like to be featured.\n\nName / channel:\nWhat I make:\nLinks (YouTube, TikTok, Instagram, X, Threads…):\nTip page (Ko-fi, Patreon…), if any:\nWhere I'm based:\n",
+  "Hi! I make fragrance / fragrance content and I'd like to be featured.\n\nName / channel:\nWhat I make:\nLinks (YouTube, TikTok, Instagram, X, Threads…):\nTip page (Ko-fi, Patreon…), if any:\nWhere I'm based:\n",
 )}`;
 
 export default function CreatorsPage() {
@@ -98,10 +98,10 @@ export default function CreatorsPage() {
             <StarIcon className="h-3.5 w-3.5" /> Creators
           </p>
           <h1 className="h-display mt-3 text-[2.4rem] leading-[1.05] sm:text-5xl">
-            K-beauty creators we <span className="italic text-accent">love</span>
+            fragrance creators we <span className="italic text-accent">love</span>
           </h1>
           <p className="mt-3 text-base leading-7 text-soft">
-            The people who make Korean skincare easy to follow: morning and night routines, honest reviews, ingredient explainers and the
+            The people who make perfume easy to follow: morning and night routines, honest reviews, ingredient explainers and the
             hauls that find your next favourite. Watch them, follow them, and buy your favourite a coffee.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -109,7 +109,7 @@ export default function CreatorsPage() {
               Meet the creators
             </a>
             <a href="#apply" className="btn-pop min-h-11 border border-line bg-card px-5 text-ink">
-              I make skincare content →
+              I make fragrance content →
             </a>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function CreatorsPage() {
                 <StarIcon className="h-8 w-8" />
               </span>
               <span className="h-display mt-4 text-base">Your channel here</span>
-              <span className="mt-1 max-w-[16rem] text-sm text-soft">Make skincare content? Get a free spotlight card and a “Buy them a coffee” button.</span>
+              <span className="mt-1 max-w-[16rem] text-sm text-soft">Make fragrance content? Get a free spotlight card and a “Buy them a coffee” button.</span>
               <span className="mt-4 text-sm font-semibold text-accent-deep">Apply to be featured →</span>
             </a>
           ))}
@@ -166,7 +166,7 @@ export default function CreatorsPage() {
 
       {/* For creators */}
       <section id="apply" className="mt-10 scroll-mt-24">
-        <h2 className="h-display text-2xl">Make skincare content? Let&rsquo;s grow together</h2>
+        <h2 className="h-display text-2xl">Make fragrance content? Let&rsquo;s grow together</h2>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-soft">
           Mention {SITE.name} in your content (a link in your description, a price check on screen, a shout-out in a video) and we feature
           you here, free. Here&rsquo;s what you get.
@@ -215,7 +215,7 @@ export default function CreatorsPage() {
           <h3 className="font-semibold">Lines you can borrow</h3>
           <ul className="mt-2 space-y-1.5 text-sm leading-6 text-soft">
             <li>“Prices checked on our partner {SITE.domain}. Link in my bio.”</li>
-            <li>“Be sure to check out our partner {SITE.name}: it compares K-beauty prices across real stores, so you find who has it cheapest.”</li>
+            <li>“Be sure to check out our partner {SITE.name}: it compares fragrance prices across real stores, so you find who has it cheapest.”</li>
           </ul>
           <p className="mt-3 text-sm leading-6 text-soft">
             Please say we&rsquo;re partners (“our partner”, or your platform&rsquo;s partnership label) so your followers know. Ad rules such
@@ -241,7 +241,7 @@ export default function CreatorsPage() {
       <p className="mb-16 mt-10 text-sm text-soft">
         While you&rsquo;re here:{" "}
         <Link prefetch={false} href="/deals" className="font-semibold text-accent-deep hover:underline">
-          see today&rsquo;s K-beauty deals
+          see today&rsquo;s fragrance deals
         </Link>
         .
       </p>

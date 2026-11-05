@@ -3,8 +3,8 @@ import { PageHead } from "@/components/Section";
 import { Basket } from "@/components/Basket";
 
 export const metadata: Metadata = {
-  title: "Compare a whole K-beauty basket, delivery included",
-  description: "Add the Korean skincare you want and see which single store sells it all for the least, with each store's own delivery cost and free-delivery threshold.",
+  title: "Compare a whole fragrance basket, delivery included",
+  description: "Add the perfume you want and see which single store sells it all for the least, with each store's own delivery cost and free-delivery threshold.",
   alternates: { canonical: "/basket" },
 };
 

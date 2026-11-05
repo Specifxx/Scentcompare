@@ -1,14 +1,14 @@
-// KaeYoung's forum settings (the rules are in ./core.ts, docs/forum.md).
+// ScentCompare's forum settings (the rules are in ./core.ts, docs/forum.md).
 import type { ForumSite } from "./core";
 
 export const FORUM_SITE: ForumSite = {
-  site: "kaeyoung",
-  siteName: "KaeYoung",
-  repo: "Specifxx/Kaeyoung",
-  hosts: ["kaeyoung.com", "www.kaeyoung.com"],
+  site: "scentcompare",
+  siteName: "ScentCompare",
+  repo: "Specifxx/scentcompare",
+  hosts: ["scentcompare.app", "www.scentcompare.app"],
   base: "/forum",
-  topic: "K-beauty",
-  intro: "Swap K-beauty routines, product finds and good prices with other skincare lovers.",
+  topic: "fragrance",
+  intro: "Swap fragrance wardrobes, product finds and good prices with other fragrance lovers.",
   categories: [
     {
       "key": "routines",
@@ -55,5 +55,5 @@ export const FORUM_SITE: ForumSite = {
       ]
     }
   ],
-  reserved: ["kyoung", "k young", "kaeyoung"],
+  reserved: ["kyoung", "k young", "scentcompare"],
 };

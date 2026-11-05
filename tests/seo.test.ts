@@ -27,7 +27,7 @@ test("homepage title fits 60 characters, keyword first, brand last", () => {
   const t = read("src/app/page.tsx").match(/absolute: `([^`]+)`/)![1].replace("${SITE.name}", SITE.name);
   assert.ok(t.length <= 60, t);
   assert.ok(t.endsWith(SITE.name));
-  assert.match(t, /^Korean skincare/i);
+  assert.match(t, /^Perfume price comparison/i);
 });
 
 test("breadcrumbs start at Home with absolute URLs", () => {

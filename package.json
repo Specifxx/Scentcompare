@@ -1,8 +1,8 @@
 {
-  "name": "kaeyoung",
+  "name": "scentcompare",
   "version": "0.1.0",
   "private": true,
-  "description": "KaeYoung: compare Korean skincare prices across real K-beauty stores. Stay young.",
+  "description": "ScentCompare: compare Korean skincare prices across real K-beauty stores. Stay young.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

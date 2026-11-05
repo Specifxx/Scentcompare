@@ -1,10 +1,10 @@
-// Every store KaeYoung reads. Real shops only, never marketplaces (fakes are
-// common in K-beauty). Each one is read through its public Shopify
+// Every store ScentCompare reads. Real shops only, never marketplaces (fakes are
+// common in fragrance). Each one is read through its public Shopify
 // products.json, two at a time at most, about a request a second, and a store
 // that keeps answering 403/429 is skipped for the run (never worked around).
 // From the 2026-10-30 store probes (project files:
-// next-niche/skincare-store-probe-round2-2026-10-30.md): the readable Shopify
-// K-beauty shops whose barcodes we can read, one per stock (boniik.com.au is
+// next-niche/fragrance-store-probe-round2-2026-10-30.md): the readable Shopify
+// fragrance shops whose barcodes we can read, one per stock (boniik.com.au is
 // boniik.com, sentisenti.com is oo35mm.com, kiyoko.ca is kiyokobeauty.com).
 // Left out: shops with no readable barcode (Mirai Skin, RoseRoseShop, Olive
 // Kollection, Korean Beauty Australia, Lewkin, AmiGlow) and shops that charge
@@ -18,11 +18,11 @@ export interface Store {
   /** https://host, no trailing slash */
   base: string;
   platform: "shopify";
-  /** Sells more than K-beauty: only products of known Korean brands get a
+  /** Sells more than fragrance: only products of known Korean brands get a
    *  barcode lookup (the 880 barcode still decides). */
   mixed?: boolean;
   /** The brand's own store (official prices): compared like any store, and
-   *  counted apart in the "brand stores vs K-beauty shops" post. */
+   *  counted apart in the "brand stores vs fragrance shops" post. */
   official?: boolean;
   /** Pays us a commission (shown as "Paid link"): the query parameter and the
    *  env var holding our code, set once the store's program accepts us. */
@@ -48,10 +48,10 @@ export const STORES: Store[] = [
   { id: "skincupid", name: "Skin Cupid", region: "UK", base: "https://skincupid.co.uk", platform: "shopify" },
   { id: "skin2seoul", name: "Skin2Seoul", region: "UK", base: "https://skin2seoul.co.uk", platform: "shopify" },
   { id: "innerbeauty", name: "Inner Beauty", region: "CA", base: "https://kbeautycanada.com", platform: "shopify" },
-  { id: "kbeautyoutlet", name: "K-Beauty Outlet", region: "CA", base: "https://kbeautyoutlet.ca", platform: "shopify" },
+  { id: "kbeautyoutlet", name: "Fragrance Outlet", region: "CA", base: "https://kbeautyoutlet.ca", platform: "shopify" },
   { id: "kiokii", name: "Kiokii", region: "CA", base: "https://kiokii.com", platform: "shopify" },
   { id: "kiyoko", name: "Kiyoko Beauty", region: "CA", base: "https://kiyokobeauty.com", platform: "shopify" },
-  { id: "koreanskincare-ca", name: "Korean Skincare Canada", region: "CA", base: "https://koreanskincare.ca", platform: "shopify" },
+  { id: "koreanfragrance-ca", name: "Perfume Canada", region: "CA", base: "https://koreanfragrance.ca", platform: "shopify" },
   { id: "lakinza", name: "Lakinza", region: "CA", base: "https://lakinza.ca", platform: "shopify" },
   { id: "lamour", name: "LAMOUR Beauty", region: "CA", base: "https://lamourlife.com", platform: "shopify", mixed: true },
   { id: "moonmoon", name: "Moonmoon Cosmetics", region: "CA", base: "https://moonmooncosmetics.ca", platform: "shopify" },
@@ -71,12 +71,12 @@ export const STORES: Store[] = [
   { id: "cosmeticstore-nz", name: "The Cosmetic Store", region: "NZ", base: "https://thecosmeticstore.co.nz", platform: "shopify", mixed: true },
   { id: "boozyshop", name: "Boozyshop", region: "EU", base: "https://boozyshop.com", platform: "shopify", mixed: true },
   { id: "glowstation", name: "GlowStation", region: "EU", base: "https://glowstation.com", platform: "shopify" },
-  { id: "korean-skincare-nl", name: "Korean-Skincare.nl", region: "EU", base: "https://korean-skincare.nl", platform: "shopify" },
+  { id: "korean-fragrance-nl", name: "Korean-Fragrance.nl", region: "EU", base: "https://korean-fragrance.nl", platform: "shopify" },
   { id: "lovemycosmetic", name: "LoveMyCosmetic", region: "EU", base: "https://lovemycosmetic.de", platform: "shopify" },
   { id: "mimomimo", name: "Mimo Mimo", region: "EU", base: "https://mimo-mimo.com", platform: "shopify" },
   { id: "yeppo", name: "Yeppo&Soonsoo", region: "EU", base: "https://yeppo.fi", platform: "shopify" },
-  // 2026-10-30 rounds 3-4 (project files next-niche/skincare-store-probe-round3*, round4-partial*): brands' own
-  // US shops (official prices) and web-searched K-beauty shops with readable 880 barcodes.
+  // 2026-10-30 rounds 3-4 (project files next-niche/fragrance-store-probe-round3*, round4-partial*): brands' own
+  // US shops (official prices) and web-searched fragrance shops with readable 880 barcodes.
   { id: "anua", name: "Anua US", region: "US", base: "https://anua.us", platform: "shopify", official: true },
   { id: "axisy", name: "AXIS-Y", region: "US", base: "https://axis-y.com", platform: "shopify", official: true },
   { id: "beautyofjoseon", name: "Beauty of Joseon", region: "US", base: "https://beautyofjoseon.com", platform: "shopify", official: true },
@@ -87,7 +87,7 @@ export const STORES: Store[] = [
   { id: "jumiso", name: "Jumiso USA", region: "US", base: "https://jumiso.us", platform: "shopify", official: true },
   { id: "klairs", name: "Dear, Klairs", region: "US", base: "https://klairs.com", platform: "shopify", official: true },
   { id: "koreanbeauty", name: "Korean Beauty Canada", region: "CA", base: "https://koreanbeauty.ca", platform: "shopify" },
-  { id: "koreanskincareuk", name: "Korean Skincare UK", region: "UK", base: "https://koreanskincare.co.uk", platform: "shopify", mixed: true },
+  { id: "koreanfragranceuk", name: "Perfume UK", region: "UK", base: "https://koreanfragrance.co.uk", platform: "shopify", mixed: true },
   { id: "manyo", name: "manyo US", region: "US", base: "https://manyo.us", platform: "shopify", official: true },
   { id: "mixsoon", name: "mixsoon", region: "US", base: "https://mixsoon.us", platform: "shopify", official: true },
   { id: "neogenlab", name: "NEOGENLAB US", region: "US", base: "https://neogenlab.us", platform: "shopify", official: true },
@@ -141,12 +141,12 @@ export const STORES: Store[] = [
   { id: "inishpharmacy", name: "Inish Pharmacy", region: "EU", base: "https://inishpharmacy.com", platform: "shopify", mixed: true },
   { id: "irelkglow", name: "IrelKGlow", region: "UK", base: "https://irelkglow.co.uk", platform: "shopify" },
   { id: "jejuskin", name: "Jejuskin", region: "EU", base: "https://jejuskin.fr", platform: "shopify" },
-  { id: "k-beauty4you", name: "K-Beauty4You", region: "EU", base: "https://k-beauty4you.de", platform: "shopify" },
+  { id: "fragrance4you", name: "Fragrance4You", region: "EU", base: "https://fragrance4you.de", platform: "shopify" },
   { id: "kbeauty-cosmetics", name: "K Beauty Cosmetics", region: "EU", base: "https://kbeauty-cosmetics.com", platform: "shopify", mixed: true },
   { id: "kbeauty", name: "Kbeauty Canada", region: "CA", base: "https://kbeauty.ca", platform: "shopify" },
   { id: "kbeauty-us", name: "Kbeauty Sale", region: "US", base: "https://kbeauty.sale", platform: "shopify", mixed: true },
-  { id: "kbeautyoutletusa", name: "K-Beauty Outlet USA", region: "US", base: "https://kbeautyoutletusa.com", platform: "shopify" },
-  { id: "kbeautystore", name: "K-Beauty Store", region: "EU", base: "https://kbeautystore.com", platform: "shopify", mixed: true },
+  { id: "kbeautyoutletusa", name: "Fragrance Outlet USA", region: "US", base: "https://kbeautyoutletusa.com", platform: "shopify" },
+  { id: "kbeautystore", name: "Fragrance Store", region: "EU", base: "https://kbeautystore.com", platform: "shopify", mixed: true },
   { id: "kbeautyworld", name: "K Beauty World", region: "EU", base: "https://kbeautyworld.com", platform: "shopify" },
   { id: "kiyobeauty", name: "Kiyo Beauty", region: "UK", base: "https://kiyobeauty.com", platform: "shopify", mixed: true },
   { id: "kosmobox", name: "Kosmobox", region: "UK", base: "https://kosmobox.co.uk", platform: "shopify" },
@@ -169,10 +169,10 @@ export const STORES: Store[] = [
   { id: "laneige", name: "LANEIGE US", region: "US", base: "https://us.laneige.com", platform: "shopify", official: true },
   { id: "sulwhasoo", name: "Sulwhasoo US", region: "US", base: "https://us.sulwhasoo.com", platform: "shopify", official: true },
   { id: "velvetvanity", name: "Velvet Vanity", region: "CA", base: "https://velvetvanity.ca", platform: "shopify" },
-  { id: "yok-beauty", name: "Yo K-Beauty", region: "UK", base: "https://yok-beauty.com", platform: "shopify" },
+  { id: "yofragrance", name: "Yo Fragrance", region: "UK", base: "https://yofragrance.com", platform: "shopify" },
   { id: "yukiobeauty", name: "Yukio Beauty", region: "US", base: "https://yukiobeauty.com", platform: "shopify", mixed: true },
   // Round 5 (2026-11-04, probe/summary.md): the big-store gap research, every region. Readable barcodes in the
-  // sample (or EAN-13 SKUs); mirrors dropped (pharmatoul.com = esmea.ca; koreanskincare.com = korean-skincare.nl; koreanbeauty.es = koreanbeauty.nl charge SEK).
+  // sample (or EAN-13 SKUs); mirrors dropped (pharmatoul.com = esmea.ca; koreanfragrance.com = korean-fragrance.nl; koreanbeauty.es = koreanbeauty.nl charge SEK).
   { id: "mikaelabeauty", name: "Mikaela Beauty", region: "CA", base: "https://mikaela-beauty.com", platform: "shopify" },
   { id: "vglebeauty", name: "VGLE Beauty", region: "CA", base: "https://vglebeauty.com", platform: "shopify" },
   { id: "esmea", name: "Pharmatoul", region: "CA", base: "https://esmea.ca", platform: "shopify" },
@@ -181,19 +181,19 @@ export const STORES: Store[] = [
   { id: "pboo", name: "P.boo", region: "NZ", base: "https://pboo.co.nz", platform: "shopify" },
   { id: "aubeautybazaar", name: "AU Beauty Bazaar", region: "AU", base: "https://aubeautybazaar.com", platform: "shopify" },
   { id: "sulskin", name: "SUL Skin", region: "AU", base: "https://sulskin.com", platform: "shopify" },
-  { id: "bloomandshine", name: "Bloom & Shine Korean Skincare", region: "EU", base: "https://bloom-and-shine.de", platform: "shopify" },
+  { id: "bloomandshine", name: "Bloom & Shine Perfume", region: "EU", base: "https://bloom-and-shine.de", platform: "shopify" },
   { id: "joobeauty", name: "Joo Beauty", region: "EU", base: "https://joobeauty.fr", platform: "shopify" },
   { id: "planetskin", name: "Planet Skin", region: "EU", base: "https://planet-skin.com", platform: "shopify" },
   { id: "mykare", name: "My-Kare", region: "EU", base: "https://my-kare.com", platform: "shopify" },
   { id: "keeobeauty", name: "Keeo Beauty", region: "EU", base: "https://keeobeauty.fr", platform: "shopify" },
   { id: "minkibeauty", name: "Minki Beauty", region: "EU", base: "https://minkibeauty.es", platform: "shopify" },
   { id: "skincation", name: "Skincation", region: "EU", base: "https://skincation.com", platform: "shopify" },
-  { id: "kbeautystudio", name: "K-Beauty Studio", region: "EU", base: "https://k-beautystudio.com", platform: "shopify" },
+  { id: "kbeautystudio", name: "Fragrance Studio", region: "EU", base: "https://fragrancestudio.com", platform: "shopify" },
   { id: "ciamane", name: "Ciamane", region: "EU", base: "https://ciamane.com", platform: "shopify" },
-  { id: "moidauk", name: "Moida K-Beauty", region: "UK", base: "https://moida.co.uk", platform: "shopify" },
-  { id: "refreshskincare", name: "Refresh Skincare", region: "UK", base: "https://refreshskincare.co.uk", platform: "shopify" },
+  { id: "moidauk", name: "Moida Fragrance", region: "UK", base: "https://moida.co.uk", platform: "shopify" },
+  { id: "refreshfragrance", name: "Refresh Fragrance", region: "UK", base: "https://refreshfragrance.co.uk", platform: "shopify" },
   { id: "atelierdeglow", name: "Atelier De Glow", region: "UK", base: "https://atelierdeglow.com", platform: "shopify" },
-  { id: "likeskincare", name: "Likeskin", region: "UK", base: "https://likeskincare.com", platform: "shopify" },
+  { id: "likefragrance", name: "Likeskin", region: "UK", base: "https://likefragrance.com", platform: "shopify" },
 ];
 
 export const STORE_BY_ID: Record<string, Store> = Object.fromEntries(STORES.map((s) => [s.id, s]));

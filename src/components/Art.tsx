@@ -1,26 +1,21 @@
-// KaeYoung's drawings (owner, 2026-10-30: "pretty … very graphic, like Korean
-// beauty sites"): simple flat bottles, jars and tubes in the pastel set, drawn
-// in SVG so they cost nothing to load and follow the theme. No brand's
-// product or packaging is drawn: these are generic shapes.
+// ScentCompare's drawings: simple flat perfume bottles, flacons and atomisers
+// in the pastel set, drawn in SVG so they cost nothing to load and follow the
+// theme. No house's bottle is drawn: these are generic shapes.
 import type { CatKey } from "@/site";
 
-/** Each routine step's tile colour (globals.css .tint-*). */
+/** Each section's tile colour (globals.css .tint-*). */
 export const CAT_TINT: Record<CatKey, string> = {
-  cleansers: "tint-sky",
-  toners: "tint-lavender",
-  serums: "tint-peach",
-  moisturisers: "tint-mint",
-  sunscreen: "tint-butter",
-  masks: "tint-rose",
-  "eye-care": "tint-lavender",
-  "lip-care": "tint-rose",
-  makeup: "tint-peach",
-  "body-hair": "tint-mint",
-  other: "tint-sky",
+  women: "tint-rose",
+  men: "tint-sky",
+  unisex: "tint-lavender",
+  sets: "tint-peach",
+  minis: "tint-butter",
+  body: "tint-mint",
+  other: "tint-lavender",
 };
 
-const INK = "#5b3550";
-const ROSE = "#f07aa6";
+const INK = "#3b2a4a";
+const ROSE = "#e879a8";
 const PEACH = "#ffb592";
 const LAV = "#b9a6f5";
 const MINT = "#7fd3b2";
@@ -30,7 +25,7 @@ const WHITE = "#fffdfd";
 
 const S = { stroke: INK, strokeWidth: 1.6, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 
-/** A small drawing for a routine step, 48×48. */
+/** A small drawing for a section, 48×48. */
 export function CatIcon({ cat, size = 40 }: { cat: CatKey; size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden>
@@ -40,160 +35,134 @@ export function CatIcon({ cat, size = 40 }: { cat: CatKey; size?: number }) {
 }
 
 const ICONS: Record<CatKey, React.ReactNode> = {
-  // foam pump bottle
-  cleansers: (
+  // rounded flacon with a gold cap and a sprayer
+  women: (
     <g {...S}>
-      <path d="M21 6h8v4h-8z" fill={WHITE} />
-      <path d="M29 7h5" />
-      <rect x="18" y="10" width="14" height="5" rx="1.5" fill={SKY} />
-      <rect x="14" y="15" width="22" height="27" rx="6" fill={WHITE} />
-      <path d="M14 30h22" />
-      <circle cx="25" cy="22.5" r="2.5" fill={SKY} />
+      <rect x="20" y="4" width="8" height="5" rx="1.5" fill={BUTTER} />
+      <path d="M28 6h5" />
+      <rect x="18" y="9" width="12" height="6" rx="2" fill={WHITE} />
+      <path d="M12 24q0-9 12-9t12 9v10q0 8-8 8h-8q-8 0-8-8z" fill={ROSE} />
+      <path d="M17 27q0 7 6 8" stroke={WHITE} strokeWidth="2" />
     </g>
   ),
-  // tall toner bottle
-  toners: (
+  // square cologne bottle with a dark cap
+  men: (
     <g {...S}>
-      <rect x="19" y="5" width="10" height="7" rx="2" fill={LAV} />
-      <path d="M17 14q0-2 2-2h10q2 0 2 2v26q0 3-3 3h-8q-3 0-3-3z" fill={WHITE} />
-      <rect x="20" y="22" width="8" height="11" rx="1.5" fill={LAV} />
+      <rect x="18" y="5" width="12" height="9" rx="2" fill={INK} />
+      <rect x="20" y="14" width="8" height="4" fill={WHITE} />
+      <rect x="11" y="18" width="26" height="24" rx="4" fill={SKY} />
+      <rect x="16" y="25" width="16" height="10" rx="1.5" fill={WHITE} />
     </g>
   ),
-  // dropper bottle
-  serums: (
+  // tall cylinder with a round cap
+  unisex: (
     <g {...S}>
-      <path d="M21 4q3-2 6 0v6h-6z" fill={PEACH} />
-      <rect x="19" y="10" width="10" height="5" rx="1.5" fill={WHITE} />
-      <path d="M14 21q0-6 6-6h8q6 0 6 6v16q0 6-6 6h-8q-6 0-6-6z" fill={PEACH} />
-      <path d="M19 24q0 4 5 4" stroke={WHITE} strokeWidth="2" />
+      <circle cx="24" cy="9" r="5" fill={LAV} />
+      <rect x="20" y="13" width="8" height="4" fill={WHITE} />
+      <path d="M15 21q0-4 4-4h10q4 0 4 4v17q0 4-4 4H19q-4 0-4-4z" fill={WHITE} />
+      <rect x="19" y="26" width="10" height="9" rx="1" fill={LAV} />
     </g>
   ),
-  // cream jar
-  moisturisers: (
+  // gift box with a bow
+  sets: (
     <g {...S}>
-      <rect x="9" y="16" width="30" height="8" rx="3" fill={MINT} />
-      <path d="M11 24h26v12q0 6-6 6H17q-6 0-6-6z" fill={WHITE} />
-      <path d="M17 32h14" />
-      <circle cx="35" cy="9" r="2" fill={MINT} />
-      <circle cx="40" cy="14" r="1.2" fill={MINT} />
+      <rect x="8" y="20" width="32" height="22" rx="3" fill={PEACH} />
+      <rect x="6" y="14" width="36" height="8" rx="2" fill={WHITE} />
+      <path d="M24 14v28" />
+      <path d="M24 14q-8-10-10-2 2 3 10 2zM24 14q8-10 10-2-2 3-10 2z" fill={ROSE} />
     </g>
   ),
-  // tube with a sun
-  sunscreen: (
+  // three little bottles
+  minis: (
     <g {...S}>
-      <path d="M15 8h14l-2 30H17z" fill={WHITE} transform="rotate(-18 22 24)" />
-      <rect x="14" y="36" width="12" height="6" rx="1.5" fill={BUTTER} transform="rotate(-18 22 24)" />
-      <circle cx="35" cy="13" r="5" fill={BUTTER} />
-      <path d="M35 4v2M35 20v2M26 13h2M42 13h2M29 7l1.4 1.4M39.6 17.6 41 19M29 19l1.4-1.4M39.6 8.4 41 7" />
+      <rect x="8" y="22" width="9" height="18" rx="2.5" fill={BUTTER} />
+      <rect x="10" y="17" width="5" height="5" rx="1" fill={INK} />
+      <rect x="19.5" y="18" width="9" height="22" rx="2.5" fill={WHITE} />
+      <rect x="21.5" y="13" width="5" height="5" rx="1" fill={INK} />
+      <rect x="31" y="24" width="9" height="16" rx="2.5" fill={ROSE} />
+      <rect x="33" y="19" width="5" height="5" rx="1" fill={INK} />
     </g>
   ),
-  // sheet mask
-  masks: (
-    <g {...S}>
-      <path d="M24 5c9 0 15 7 15 17s-6 21-15 21S9 32 9 22 15 5 24 5z" fill={WHITE} />
-      <ellipse cx="18" cy="20" rx="3.5" ry="2" fill={ROSE} />
-      <ellipse cx="30" cy="20" rx="3.5" ry="2" fill={ROSE} />
-      <path d="M20 33q4 3 8 0" />
-      <circle cx="16" cy="27" r="2" fill={ROSE} opacity=".35" stroke="none" />
-      <circle cx="32" cy="27" r="2" fill={ROSE} opacity=".35" stroke="none" />
-    </g>
-  ),
-  // hydrogel eye patches
-  "eye-care": (
-    <g {...S}>
-      <path d="M6 22q8 14 17 2-8-6-17-2z" fill={LAV} />
-      <path d="M42 22q-8 14-17 2 8-6 17-2z" fill={LAV} />
-      <path d="M12 14q4-3 8 0M28 14q4-3 8 0" />
-    </g>
-  ),
-  // lip balm stick
-  "lip-care": (
-    <g {...S}>
-      <path d="M20 8q4-4 8 0v8h-8z" fill={ROSE} />
-      <rect x="18" y="16" width="12" height="6" rx="1.5" fill={WHITE} />
-      <rect x="16" y="22" width="16" height="20" rx="3" fill={ROSE} />
-      <path d="M21 28v8" stroke={WHITE} strokeWidth="2" />
-    </g>
-  ),
-  // cushion compact
-  makeup: (
-    <g {...S}>
-      <ellipse cx="24" cy="15" rx="16" ry="6" fill={PEACH} />
-      <path d="M8 15v4q0 6 16 6t16-6v-4" fill={WHITE} />
-      <path d="M8 27q0 6 16 6t16-6v6q0 6-16 6T8 33z" fill={PEACH} />
-      <circle cx="24" cy="15" r="2.2" fill={WHITE} />
-    </g>
-  ),
-  // body lotion pump
-  "body-hair": (
+  // body mist spray bottle
+  body: (
     <g {...S}>
       <path d="M22 4h4v6h-4zM26 6h7" />
       <rect x="19" y="10" width="10" height="5" rx="1.5" fill={MINT} />
       <path d="M13 21q0-6 6-6h10q6 0 6 6v17q0 5-5 5H18q-5 0-5-5z" fill={WHITE} />
       <path d="M18 28q3-3 6 0t6 0" stroke={MINT} strokeWidth="2.2" />
+      <circle cx="38" cy="8" r="1.5" fill={MINT} stroke="none" />
+      <circle cx="41" cy="12" r="1.2" fill={MINT} stroke="none" />
     </g>
   ),
-  // sparkle
+  // candle and sparkle
   other: (
     <g {...S}>
-      <path d="M24 6q2 12 14 14-12 2-14 14-2-12-14-14 12-2 14-14z" fill={SKY} />
-      <path d="M37 32q1 5 5 6-4 1-5 6-1-5-5-6 4-1 5-6z" fill={ROSE} />
+      <rect x="12" y="20" width="22" height="22" rx="4" fill={LAV} />
+      <path d="M12 24h22" />
+      <path d="M23 8q-5 7 0 11 5-4 0-11z" fill={BUTTER} />
+      <path d="M39 30q1 4 4 5-3 1-4 5-1-4-4-5 3-1 4-5z" fill={ROSE} />
     </g>
   ),
 };
 
-/** The hero drawing: a shelf of generic K-beauty products among petals. */
+/** The hero drawing: a shelf of generic perfume bottles among petals. */
 export function HeroArt({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 420 340" className={className} aria-hidden role="presentation">
       <defs>
-        <linearGradient id="ky-glass" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="sc-glass" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ffd3e2" />
-          <stop offset="1" stopColor="#f58fb5" />
+          <stop offset="1" stopColor="#e879a8" />
         </linearGradient>
-        <linearGradient id="ky-lav" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="sc-lav" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#efe9ff" />
-          <stop offset="1" stopColor="#c3b2fb" />
+          <stop offset="1" stopColor="#b9a6f5" />
         </linearGradient>
-        <linearGradient id="ky-peach" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#ffe9dd" />
-          <stop offset="1" stopColor="#ffb999" />
+        <linearGradient id="sc-amber" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#fff1c9" />
+          <stop offset="1" stopColor="#f3b64a" />
+        </linearGradient>
+        <linearGradient id="sc-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#e6f1ff" />
+          <stop offset="1" stopColor="#8ec5ff" />
         </linearGradient>
       </defs>
       {/* soft round backdrop */}
-      <circle cx="215" cy="170" r="150" fill="#ffe9f1" />
-      <circle cx="320" cy="95" r="60" fill="#efe9ff" />
-      <circle cx="95" cy="250" r="55" fill="#e3f7ef" />
+      <circle cx="215" cy="170" r="150" fill="#f3ecff" />
+      <circle cx="320" cy="95" r="60" fill="#ffe9f1" />
+      <circle cx="95" cy="250" r="55" fill="#fff4d6" />
       {/* shelf */}
-      <rect x="55" y="268" width="320" height="12" rx="6" fill="#f7cfdd" />
+      <rect x="55" y="268" width="320" height="12" rx="6" fill="#d9cdf5" />
       <g {...S} strokeWidth="2.2">
-        {/* tall toner */}
-        <rect x="92" y="98" width="30" height="20" rx="5" fill="#c3b2fb" />
-        <path d="M80 126q0-8 8-8h38q8 0 8 8v134q0 8-8 8H88q-8 0-8-8z" fill="url(#ky-lav)" />
-        <rect x="92" y="170" width="30" height="46" rx="5" fill={WHITE} />
-        {/* serum dropper */}
-        <path d="M178 54q10-8 20 0v26h-20z" fill="#f58fb5" />
-        <rect x="171" y="80" width="34" height="18" rx="5" fill={WHITE} />
-        <path d="M152 128q0-30 30-30h12q30 0 30 30v112q0 28-28 28h-16q-28 0-28-28z" fill="url(#ky-glass)" />
-        <path d="M170 140q0 22 22 24" stroke={WHITE} strokeWidth="5" opacity=".8" />
-        {/* cream jar */}
-        <rect x="246" y="200" width="98" height="24" rx="8" fill="#8fdcbf" />
-        <path d="M252 224h86v30q0 14-14 14h-58q-14 0-14-14z" fill={WHITE} />
-        <path d="M270 246h50" stroke="#8fdcbf" strokeWidth="4" />
-        {/* tube leaning */}
-        <g transform="rotate(16 300 150)">
-          <path d="M280 70h44l-6 112h-32z" fill="url(#ky-peach)" />
-          <rect x="284" y="180" width="32" height="18" rx="4" fill="#ffb592" />
-          <path d="M290 100h24" />
+        {/* tall cylinder (unisex) */}
+        <circle cx="107" cy="102" r="17" fill="#b9a6f5" />
+        <rect x="96" y="116" width="22" height="12" fill={WHITE} />
+        <path d="M82 136q0-8 8-8h34q8 0 8 8v124q0 8-8 8H90q-8 0-8-8z" fill="url(#sc-lav)" />
+        <rect x="92" y="170" width="30" height="46" rx="4" fill={WHITE} />
+        {/* rounded flacon with gold cap (women) */}
+        <rect x="178" y="48" width="20" height="14" rx="4" fill="#f3b64a" />
+        <path d="M198 54h18" />
+        <rect x="171" y="62" width="34" height="16" rx="4" fill={WHITE} />
+        <path d="M150 118q0-40 42-40t42 40v110q0 40-40 40h-4q-40 0-40-40z" fill="url(#sc-glass)" />
+        <path d="M170 130q0 26 24 30" stroke={WHITE} strokeWidth="5" opacity=".8" />
+        {/* square cologne bottle (men) */}
+        <rect x="266" y="112" width="40" height="28" rx="6" fill={INK} />
+        <rect x="276" y="140" width="20" height="10" fill={WHITE} />
+        <path d="M246 160q0-10 10-10h60q10 0 10 10v98q0 10-10 10h-60q-10 0-10-10z" fill="url(#sc-sky)" />
+        <rect x="258" y="190" width="56" height="40" rx="3" fill={WHITE} />
+        {/* small amber bottle leaning (mini) */}
+        <g transform="rotate(14 350 230)">
+          <rect x="338" y="190" width="18" height="12" rx="3" fill={INK} />
+          <path d="M330 206q0-6 6-6h20q6 0 6 6v50q0 8-8 8h-16q-8 0-8-8z" fill="url(#sc-amber)" />
         </g>
       </g>
       {/* petals and sparkles */}
-      <g fill="#f58fb5" opacity=".85">
+      <g fill="#e879a8" opacity=".85">
         <path d="M60 80q12-14 22 0-10 12-22 0z" />
-        <path d="M352 236q12-14 22 0-10 12-22 0z" transform="rotate(30 363 236)" />
-        <path d="M250 40q10-12 18 0-8 10-18 0z" transform="rotate(-20 259 40)" />
+        <path d="M352 290q12-14 22 0-10 12-22 0z" transform="rotate(30 363 290)" />
+        <path d="M250 30q10-12 18 0-8 10-18 0z" transform="rotate(-20 259 30)" />
       </g>
-      <g fill="#ffd66b">
+      <g fill="#f3b64a">
         <path d="M372 150q2 10 10 12-8 2-10 12-2-10-10-12 8-2 10-12z" />
         <path d="M44 170q1.5 7 7 8.5-5.5 1.5-7 8.5-1.5-7-7-8.5 5.5-1.5 7-8.5z" />
       </g>

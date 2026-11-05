@@ -53,7 +53,7 @@ export function guideImage(opts: { region: RegionCode; title: string; kicker: st
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
             <img src={ICON} width={44} height={44} />
-            <div style={{ display: "flex", fontFamily: "Fraunces", fontSize: 32 }}>KaeYoung</div>
+            <div style={{ display: "flex", fontFamily: "Fraunces", fontSize: 32 }}>ScentCompare</div>
           </div>
           <div style={{ display: "flex", fontSize: 18, letterSpacing: 2, color: SOFT, textTransform: "uppercase" }}>{kicker}</div>
         </div>
@@ -81,11 +81,11 @@ export function guideImage(opts: { region: RegionCode; title: string; kicker: st
             ))}
           </div>
         ) : (
-          <div style={{ display: "flex", marginTop: 26, fontSize: 30, color: SOFT }}>Korean skincare prices from real K-beauty stores, matched by the barcode on the box.</div>
+          <div style={{ display: "flex", marginTop: 26, fontSize: 30, color: SOFT }}>perfume prices from real fragrance stores, matched by the barcode on the box.</div>
         )}
         <div style={{ display: "flex", marginTop: "auto", fontSize: 17, color: SOFT, justifyContent: "space-between" }}>
           <div style={{ display: "flex" }}>{`Item prices before shipping${asOf ? `, ${niceDate(asOf)}` : ""}. Matched by barcode.`}</div>
-          <div style={{ display: "flex", color: INK, fontWeight: 700 }}>kaeyoung.com</div>
+          <div style={{ display: "flex", color: INK, fontWeight: 700 }}>scentcompare.app</div>
         </div>
       </div>
     ),

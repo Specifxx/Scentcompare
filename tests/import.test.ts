@@ -4,30 +4,30 @@ import { cachedCodes, listingsFromProduct, needsLookup, sizedImage, variantTitle
 import type { Store } from "@/content/stores";
 import { ean } from "./helpers";
 
-const A = ean("880941647000");
-const B = ean("880941647001");
+const A = ean("334890115081");
+const B = ean("334890115082");
 const shop: Store = { id: "s", name: "Shop", region: "AU", base: "https://shop.example", platform: "shopify" };
 const product = (over: Partial<ShopifyProduct> = {}): ShopifyProduct => ({
   id: 1,
-  title: "COSRX Advanced Snail 96 Mucin Power Essence",
-  handle: "cosrx-snail-essence",
-  vendor: "COSRX",
+  title: "Dior Sauvage Eau de Parfum",
+  handle: "dior-sauvage-edp",
+  vendor: "Dior",
   tags: [],
-  product_type: "Essence",
+  product_type: "Eau de Parfum",
   variants: [{ id: 9, title: "Default Title", price: "29.95", available: true, sku: A }],
   images: [{ src: "https://cdn.shopify.com/s/files/1/x.jpg?v=1" }],
   ...over,
 });
 
-test("a variant with a Korean barcode in its SKU becomes a listing", () => {
+test("a variant with a barcode in its SKU becomes a listing", () => {
   const r = listingsFromProduct(shop, product());
   assert.equal(r.listings.length, 1);
   const l = r.listings[0];
   assert.equal(l.ean, A);
   assert.equal(l.cents, 2995);
   assert.equal(l.st, "in");
-  assert.equal(l.vendor, "COSRX");
-  assert.equal(l.url, "https://shop.example/products/cosrx-snail-essence");
+  assert.equal(l.vendor, "Dior");
+  assert.equal(l.url, "https://shop.example/products/dior-sauvage-edp");
   assert.match(l.img!, /width=600/);
 });
 
@@ -36,40 +36,40 @@ test("each size is its own listing, by its own barcode", () => {
     shop,
     product({
       variants: [
-        { id: 1, title: "100ml", price: "29.95", available: true, sku: A },
-        { id: 2, title: "30ml", price: "14.95", available: false, sku: B },
+        { id: 1, title: "100ml", price: "129.95", available: true, sku: A },
+        { id: 2, title: "60ml", price: "99.95", available: false, sku: B },
       ],
     }),
   );
   assert.deepEqual(r.listings.map((l) => [l.ean, l.title, l.st]), [
-    [A, "COSRX Advanced Snail 96 Mucin Power Essence (100ml)", "in"],
-    [B, "COSRX Advanced Snail 96 Mucin Power Essence (30ml)", "out"],
+    [A, "Dior Sauvage Eau de Parfum (100ml)", "in"],
+    [B, "Dior Sauvage Eau de Parfum (60ml)", "out"],
   ]);
   assert.match(r.listings[1].url, /\?variant=2$/);
 });
 
 test("no barcode, no listing; a cached product-page barcode is used", () => {
-  const p = product({ variants: [{ id: 9, title: "Default Title", price: "29.95", available: true, sku: "COSRX-SNAIL" }] });
+  const p = product({ variants: [{ id: 9, title: "Default Title", price: "29.95", available: true, sku: "DIOR-SAUV" }] });
   assert.equal(listingsFromProduct(shop, p).noEan, 1);
   assert.equal(listingsFromProduct(shop, p, { "9": A }).listings[0].ean, A);
   assert.ok(needsLookup(shop, p));
   assert.ok(!needsLookup(shop, product()), "a SKU barcode needs no lookup");
 });
 
-test("mixed stores look up only Korean brands", () => {
+test("mixed stores look up only fragrance titles", () => {
   const mixed = { ...shop, mixed: true };
-  const p = (vendor: string, title: string) => product({ vendor, title, variants: [{ id: 9, title: "Default Title", price: "29.95", available: true, sku: "X" }] });
-  assert.ok(needsLookup(mixed, p("Anua", "Heartleaf 77% Soothing Toner")));
+  const p = (vendor: string, title: string) => product({ vendor, title, variants: [{ id: 9, title: "Default Title", price: "29.95", available: true, sku: "X" }], product_type: "" });
+  assert.ok(needsLookup(mixed, p("Dior", "Sauvage Eau de Parfum 100ml")));
   assert.ok(!needsLookup(mixed, p("L'Oreal", "Revitalift Serum")));
 });
 
-test("a tester variant is refused, the full size kept", () => {
+test("a sample variant is refused, the full size kept", () => {
   const r = listingsFromProduct(
     shop,
-    product({ variants: [{ id: 1, title: "100ml", price: "29.95", available: true, sku: A }, { id: 2, title: "Sample 1ml", price: "1.00", available: true, sku: B }] }),
+    product({ variants: [{ id: 1, title: "100ml", price: "129.95", available: true, sku: A }, { id: 2, title: "Sample 1ml", price: "3.00", available: true, sku: B }] }),
   );
   assert.equal(r.listings.length, 1);
-  assert.deepEqual(r.refused, ["tester"]);
+  assert.deepEqual(r.refused, ["decant"]);
 });
 
 test("barcode cache: found codes kept, empty ones re-asked after 30 days", () => {
@@ -81,6 +81,6 @@ test("barcode cache: found codes kept, empty ones re-asked after 30 days", () =>
 });
 
 test("variant titles and photos", () => {
-  assert.equal(variantTitle(product(), { id: 1, title: "Default Title", price: "1", available: true }), "COSRX Advanced Snail 96 Mucin Power Essence");
+  assert.equal(variantTitle(product(), { id: 1, title: "Default Title", price: "1", available: true }), "Dior Sauvage Eau de Parfum");
   assert.equal(sizedImage("//cdn.shopify.com/a.jpg"), "https://cdn.shopify.com/a.jpg?width=600");
 });

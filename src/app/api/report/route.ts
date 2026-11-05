@@ -8,5 +8,5 @@ import { SITE } from "@/site";
 export const runtime = "nodejs";
 
 export function POST(req: Request) {
-  return handleReportPost(req, "kaeyoung", { email: SITE.email });
+  return handleReportPost(req, "scentcompare", { email: SITE.email });
 }

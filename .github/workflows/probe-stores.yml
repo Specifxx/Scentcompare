@@ -1,7 +1,7 @@
 name: Store probe
 
-# Research only: reads the candidate K-beauty shops in probe/candidates.txt
-# (Shopify? currency? how many K-beauty products? readable barcodes?) and
+# Research only: reads the candidate fragrance shops in probe/candidates.txt
+# (Shopify? currency? how many fragrances? readable barcodes?) and
 # commits probe/results.json and probe/summary.md to the claude/* branch it ran
 # on. Never touches data/ or main. Add a passing shop to src/content/stores.ts.
 
@@ -53,7 +53,15 @@ jobs:
           node probe/summarize.mjs shards
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add probe/results.json probe/summary.md
-          git commit -m "probe: store results" || exit 0
-          for i in 1 2 3 4; do git push origin HEAD:${GITHUB_REF_NAME} && exit 0; sleep $((2 ** i)); git pull --rebase origin ${GITHUB_REF_NAME}; done
+          # The branch may have moved while the shards ran: put the new results on its tip.
+          for i in 1 2 3 4 5; do
+            git fetch origin ${GITHUB_REF_NAME}
+            git stash push -q -- probe/results.json probe/summary.md
+            git checkout -q -B ${GITHUB_REF_NAME} FETCH_HEAD
+            git checkout -q stash@{0} -- probe/results.json probe/summary.md && git stash drop -q
+            git add probe/results.json probe/summary.md
+            git commit -q -m "probe: store results" || exit 0
+            git push origin HEAD:${GITHUB_REF_NAME} && exit 0
+            sleep $((2 ** i))
+          done
           exit 1

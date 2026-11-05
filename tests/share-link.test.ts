@@ -8,7 +8,7 @@ import { cheapestOf, decodeShared, encodeShared } from "../src/lib/basket";
 const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), "utf8");
 
 test("every shared link carries utm_source=share, keeping a shared basket's list", () => {
-  assert.equal(shareUrl("https://kaeyoung.com", "/basket?b=a,b", "basket"), "https://kaeyoung.com/basket?b=a%2Cb&utm_source=share&utm_medium=basket");
+  assert.equal(shareUrl("https://scentcompare.app", "/basket?b=a,b", "basket"), "https://scentcompare.app/basket?b=a%2Cb&utm_source=share&utm_medium=basket");
 });
 
 test("the price gap needs two stores and a real spread", () => {
@@ -17,7 +17,7 @@ test("the price gap needs two stores and a real spread", () => {
 });
 
 test("a shared basket round-trips its slugs and refuses junk", () => {
-  assert.equal(decodeShared(`?b=${encodeShared(["anua-toner", "cosrx-snail"])}&utm_source=share`)!.join(" "), "anua-toner cosrx-snail");
+  assert.equal(decodeShared(`?b=${encodeShared(["dior-sauvage", "creed-aventus"])}&utm_source=share`)!.join(" "), "dior-sauvage creed-aventus");
   assert.deepEqual(decodeShared("?b=ok-1,<script>,ok-1,BAD"), ["ok-1"]);
   assert.equal(decodeShared("?x=1"), null);
 });
@@ -31,7 +31,7 @@ test("each basket item shows its cheapest in-stock store", () => {
 test("share buttons on the product page, quick view and basket; robots lets previews fetch shared links", () => {
   assert.match(read("src/app/product/[slug]/page.tsx"), /<ShareButton /);
   assert.match(read("src/components/QuickView.tsx"), /<ShareButton /);
-  assert.match(read("src/components/Basket.tsx"), /<ShareButton title="My K-beauty basket"/);
+  assert.match(read("src/components/Basket.tsx"), /<ShareButton title="My fragrance basket"/);
   assert.match(read("src/components/Basket.tsx"), /noindex, follow/);
   assert.match(read("src/app/layout.tsx"), /<ShareArrival \/>/);
   assert.match(read("src/app/robots.ts"), /"\/\*utm_source=share"/);

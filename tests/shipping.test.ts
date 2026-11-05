@@ -58,12 +58,12 @@ test("basket: the store with everything and the lowest total with delivery first
   assert.deepEqual(r[3].has, [0]);
 });
 
-test("YesStyle and Stylevana always show, unpaid until their program accepts us; others only once paid", () => {
-  const none = partnersFor("AU", "Anua Toner", "ky-au-t", {});
-  assert.deepEqual(none.map((x) => [x.p.key, x.paid]), [["yesstyle", false], ["stylevana", false]]);
-  assert.match(none[0].href, /^https:\/\/www\.yesstyle\.com\/en\/list\.html\?q=Anua%20Toner$/);
-  const paid = partnersFor("AU", "Anua", "s", { AFF_STYLEVANA: "https://n.example/?u={url}", AFF_IHERB: "https://n.example/?u={url}" });
-  assert.deepEqual(paid.map((x) => [x.p.key, x.paid]), [["yesstyle", false], ["stylevana", true], ["iherb", true]]);
+test("FragranceX and FragranceNet always show, unpaid until their program accepts us; others only once paid", () => {
+  const none = partnersFor("AU", "Dior Sauvage", "sc-au-t", {});
+  assert.deepEqual(none.map((x) => [x.p.key, x.paid]), [["fragrancex", false], ["fragrancenet", false]]);
+  assert.match(none[0].href, /^https:\/\/www\.fragrancex\.com\/search\/search_results\?stext=Dior%20Sauvage$/);
+  const paid = partnersFor("AU", "Sauvage", "s", { AFF_FRAGRANCENET: "https://n.example/?u={url}", AFF_ADOREBEAUTY: "https://n.example/?u={url}" });
+  assert.deepEqual(paid.map((x) => [x.p.key, x.paid]), [["fragrancex", false], ["fragrancenet", true], ["adorebeauty", true]]);
 });
 
 test("ops monitor watches the weekly delivery quotes", () => {

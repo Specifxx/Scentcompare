@@ -7,12 +7,12 @@ import { shareRows } from "../src/lib/og/share-rows";
 import type { Product } from "../src/lib/types";
 
 const prod = (slug: string, b: string, prices: number[], st: ("in" | "out")[] = []): Product => ({
-  ean: "8800000000000",
+  ean: "3348901150811",
   slug,
   name: slug,
   brand: b,
   b,
-  cat: "serums",
+  cat: "women",
   size: "50ml",
   img: null,
   first: "2026-10-30",

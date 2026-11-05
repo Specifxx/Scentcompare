@@ -11,10 +11,10 @@ export function Footer({ updated }: { updated?: string | null }) {
         <div>
           <div className="flex items-center gap-2.5">
             <LogoMark size={30} />
-            <span className="font-display text-xl font-semibold">KaeYoung</span>
+            <span className="font-display text-xl font-semibold">ScentCompare</span>
           </div>
           <p className="mt-3 text-soft">
-            Korean skincare prices from real K-beauty stores, matched by the barcode on the box and checked every day. {SITE.slogan}
+            perfume prices from real fragrance stores, matched by the barcode on the box and checked every day. {SITE.slogan}
           </p>
           {updated && <p className="mt-3 text-xs text-soft">Prices updated {updated}.</p>}
           <p className="mt-3 text-xs text-soft">
@@ -35,29 +35,29 @@ export function Footer({ updated }: { updated?: string | null }) {
           </ul>
         </div>
         <div>
-          <h2 className="eyebrow mb-3">KaeYoung</h2>
+          <h2 className="eyebrow mb-3">ScentCompare</h2>
           <ul className="space-y-1.5">
-            <li><Link prefetch={false} href="/deals" className="text-soft hover:text-ink">K-beauty deals today</Link></li>
-            <li><Link prefetch={false} href="/black-friday" className="text-soft hover:text-ink">Black Friday K-beauty deals</Link></li>
-            <li><Link prefetch={false} href="/boxing-day" className="text-soft hover:text-ink">Boxing Day K-beauty deals</Link></li>
+            <li><Link prefetch={false} href="/deals" className="text-soft hover:text-ink">fragrance deals today</Link></li>
+            <li><Link prefetch={false} href="/black-friday" className="text-soft hover:text-ink">Black Friday fragrance deals</Link></li>
+            <li><Link prefetch={false} href="/boxing-day" className="text-soft hover:text-ink">Boxing Day fragrance deals</Link></li>
             <li><Link prefetch={false} href="/january-sales" className="text-soft hover:text-ink">January sales</Link></li>
             <li><Link prefetch={false} href="/lunar-new-year" className="text-soft hover:text-ink">Lunar New Year deals</Link></li>
             <li><Link prefetch={false} href="/valentines-day" className="text-soft hover:text-ink">Valentine&apos;s Day gifts</Link></li>
-            <li><Link prefetch={false} href="/brands" className="text-soft hover:text-ink">Korean skincare brands</Link></li>
+            <li><Link prefetch={false} href="/brands" className="text-soft hover:text-ink">perfume brands</Link></li>
             <li><Link prefetch={false} href="/guides" className="text-soft hover:text-ink">Price guides</Link></li>
             <li><Link prefetch={false} href="/blog" className="text-soft hover:text-ink">Blog</Link></li>
-            <li><Link prefetch={false} href="/stores" className="text-soft hover:text-ink">Where to buy K-beauty online</Link></li>
+            <li><Link prefetch={false} href="/stores" className="text-soft hover:text-ink">Where to buy fragrance online</Link></li>
             <li><Link prefetch={false} href="/about" className="text-soft hover:text-ink">About &amp; how matching works</Link></li>
             <li><Link prefetch={false} href="/forum" className="text-soft hover:text-ink">Community (beta)</Link></li>
             <li><Link prefetch={false} href="/creators" className="text-soft hover:text-ink">Creators</Link></li>
             <li><Link prefetch={false} href="/basket" className="text-soft hover:text-ink">Compare a basket</Link></li>
-            <li><Link prefetch={false} href="/price-report" className="text-soft hover:text-ink">Monthly K-beauty price report</Link></li>
+            <li><Link prefetch={false} href="/price-report" className="text-soft hover:text-ink">Monthly fragrance price report</Link></li>
             <li><Link prefetch={false} href="/widgets" className="text-soft hover:text-ink">Free price links for your site</Link></li>
             <li><Link prefetch={false} href="/disclosure" className="text-soft hover:text-ink">How we make money</Link></li>
             <li><Link prefetch={false} href="/privacy" className="text-soft hover:text-ink">Privacy</Link></li>
             <li><Link prefetch={false} href="/terms" className="text-soft hover:text-ink">Terms</Link></li>
             <li><Link prefetch={false} href="/contact" className="text-soft hover:text-ink">Contact us</Link></li>
-            <li><RateUsLink className="text-soft hover:text-ink">Rate KaeYoung</RateUsLink></li>
+            <li><RateUsLink className="text-soft hover:text-ink">Rate ScentCompare</RateUsLink></li>
             <li><Link prefetch={false} href="/list-your-store" className="text-soft hover:text-ink">List your store</Link></li>
             <li><Link prefetch={false} href="/how-we-pick-stores" className="text-soft hover:text-ink">How we pick stores</Link></li>
           </ul>
@@ -90,7 +90,7 @@ export function Footer({ updated }: { updated?: string | null }) {
           As an Amazon Associate we earn from qualifying purchases. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
         </p>
         <p className="mt-1">
-          KaeYoung is an independent price guide, not affiliated with any brand or store. Product names and photos belong to their owners. Nothing here is medical advice.
+          ScentCompare is an independent price guide, not affiliated with any brand or store. Product names and photos belong to their owners. Nothing here is medical advice.
         </p>
       </div>
     </footer>

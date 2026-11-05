@@ -1,6 +1,6 @@
 # Working in this repo
 
-KaeYoung (kaeyoung.com, tagline "Stay young.") compares Korean skincare and K-beauty prices across real K-beauty stores in the
+ScentCompare (scentcompare.app, tagline "Stay young.") compares Korean skincare and K-beauty prices across real K-beauty stores in the
 US, UK, Canada, Australia, New Zealand and Europe. A sister site of RiftCompare (`Specifxx/TCGEmpire`) and FigureCompare,
 built on FigureCompare's static engine, but carrying **no Compare branding** (owner, 2026-10-30). Read `README.md`, then
 `DECISIONS.md`.
@@ -61,7 +61,7 @@ Previews build only with `[preview]`, when the owner asks. `claude/*` and `ccr-*
 ## Money
 
 - Affiliate tags are added at build (`src/lib/affiliate.ts`): `ky-<region>-<placement>-<ean>` in EPN `customid`,
-  Amazon `ascsubtag` and the retailers' `{sub}`; stores get `utm_source=kaeyoung.com`.
+  Amazon `ascsubtag` and the retailers' `{sub}`; stores get `utm_source=scentcompare.app`.
 - **No banner ads** (owner, 2026-10-30: "cut down on the banner ads … a really nice website"): no eBay strips, no
   AdSense, no nav ad boxes. Paid links live only in a product's price table, pinned above the stores, drawn like a store row (owner, 2026-11-01) and labelled:
   eBay, Amazon (hard-coded tags: US `riftcompare-20`, AU `compareempire-22`, UK `compareempi03-21`, CA `compareempire-20`, EU `compareempire-21`), and the beauty
@@ -69,7 +69,7 @@ Previews build only with `[preview]`, when the owner asks. `claude/*` and `ccr-*
   only once its `AFF_*` tracking template is set in Vercel. None is ever counted as a store or "the cheapest";
   commission never decides order. `tests/site.test.ts` pins it.
 - eBay listings come only from `scripts/ebay-import.ts` in GitHub Actions (Browse API by GTIN, new, Buy It Now,
-  never from CN/HK sellers, 60%–300% of the store median). KaeYoung's keyset is the owner's new third one (pending
+  never from CN/HK sellers, 60%–300% of the store median). ScentCompare's keyset is the owner's new third one (pending
   eBay approval, 2026-10-30), shared with CamCompare: 2,500 calls a day each, so `EBAY_DAILY_CAP` defaults to
   2,500 and the pass is a no-op until `EBAY_CLIENT_ID`/`EBAY_CLIENT_SECRET` exist. Never point it at a sister's
   keyset or raise the cap without the owner.
@@ -104,7 +104,7 @@ the owner. When you add a scheduled job, an external API or anything with a limi
 npm run typecheck
 npm run lint
 npm test
-KY_DATA_DIR=tests/fixtures/data npx next build   # every page prerenders against the fixture
+SC_DATA_DIR=tests/fixtures/data npx next build   # every page prerenders against the fixture
 ```
 
 Record non-obvious decisions in `DECISIONS.md` (newest at the bottom).

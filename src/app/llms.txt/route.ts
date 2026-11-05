@@ -11,10 +11,10 @@ export function GET() {
   const md = [
     `# ${SITE.name}`,
     "",
-    `> ${SITE.description} ${getProducts().length.toLocaleString("en-US")} products compared. Prices are each store's own, in its own currency, never converted. Only specialist K-beauty stores, never open marketplaces.`,
+    `> ${SITE.description} ${getProducts().length.toLocaleString("en-US")} products compared. Prices are each store's own, in its own currency, never converted. Only specialist fragrance stores, never open marketplaces.`,
     "",
     "## Main pages",
-    `- [Popular K-beauty](${SITE.url}/popular): stocked by the most stores`,
+    `- [Popular fragrance](${SITE.url}/popular): stocked by the most stores`,
     `- [Deals](${SITE.url}/deals): same barcode, at least 10% cheaper at one store`,
     `- [Brands](${SITE.url}/brands)`,
     `- [Stores compared](${SITE.url}/stores)`,

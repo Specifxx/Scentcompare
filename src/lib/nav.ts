@@ -1,5 +1,5 @@
 // Every place the site goes, grouped the way a shopper looks: the routine
-// step, where the value is, brands and guides, and the rest. The desktop
+// section, where the value is, brands and guides, and the rest. The desktop
 // sidebar (components/SideNav.tsx, lg and up; owner, 2026-10-30: "a side panel
 // like DexCompare") and the phone menu (components/MobileMenu.tsx) draw this
 // one list, so the two never disagree. Static links to pages that exist.
@@ -12,7 +12,7 @@ export type NavGroup = { title: string; links: NavItem[] };
 export function navGroups(counts: Record<CatKey, number>, topBrands: { slug: string; name: string }[] = []): NavGroup[] {
   return [
     {
-      title: "Shop by step",
+      title: "Shop by section",
       links: STEP_MENU_ORDER.map((k) => CAT_BY_KEY[k]).filter((c) => counts[c.key] > 0).map((c) => ({ href: `/${c.key}`, label: c.name, count: counts[c.key], cat: c.key })),
     },
     {
@@ -31,7 +31,7 @@ export function navGroups(counts: Record<CatKey, number>, topBrands: { slug: str
       links: [...topBrands.map((b) => ({ href: `/brands/${b.slug}`, label: b.name })), { href: "/brands", label: "All brands" }],
     },
     {
-      title: "KaeYoung",
+      title: "ScentCompare",
       links: [
         { href: "/forum", label: "Community" },
         { href: "/creators", label: "Creators" },

@@ -26,7 +26,7 @@ export function ProductTile({ f, region }: { f: Product; region?: RegionCode }) 
       className="card tile-hover group flex flex-col overflow-hidden"
     >
       <div className="relative aspect-square bg-gradient-to-b from-white to-subtle">
-        <ProductImage src={f.img} alt={f.name} label={f.brand || "K-beauty"} className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03]" />
+        <ProductImage src={f.img} alt={f.name} label={f.brand || "fragrance"} className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03]" />
         {regions.map((r) => {
           const s = spreadIn(f, r.code);
           return s != null && s >= 0.1 ? (

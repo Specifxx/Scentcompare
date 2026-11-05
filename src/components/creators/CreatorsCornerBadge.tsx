@@ -16,7 +16,7 @@ export function CreatorsCornerBadge() {
         <span className="absolute -right-0.5 -top-0.5 h-2 w-2 animate-ping rounded-full bg-accent" />
       </span>
       <span>
-        K-beauty creators
+        fragrance creators
         <span className="ml-1.5 text-accent-deep group-hover:underline">Buy them a coffee →</span>
       </span>
     </Link>

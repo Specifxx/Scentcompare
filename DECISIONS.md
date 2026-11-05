@@ -60,9 +60,9 @@ barcode (Mirai Skin, RoseRoseShop, Olive Kollection, Korean Beauty Australia, Le
 (boniik.com.au, sentisenti.com, kiyoko.ca) and shops pricing in CHF or DKK. Shops that also sell other beauty
 (Justmylook, Boozyshop, DODOSKIN …) are `mixed`: only known Korean brands get a barcode lookup there.
 
-## 2026-10-30: kaeyoung.com, and eBay and Amazon as the top two price rows
+## 2026-10-30: scentcompare.app, and eBay and Amazon as the top two price rows
 
-* **Domain** (owner): the site lives at kaeyoung.com (the brand stays "K Young").
+* **Domain** (owner): the site lives at scentcompare.app (the brand stays "K Young").
 * **Pinned rows** (owner): eBay and Amazon take the first two rows of every product's price table, in their own
   button colours (eBay blue, Amazon yellow) with a "Shown first" chip, so they are seen first; otherwise they are
   drawn exactly like a store row (same card, border and type). The beauty retailers follow, then the stores in
@@ -257,11 +257,11 @@ them to be addressed.
 
 **Owner:** "for the reviews we want to remove the dependency on neon … just store it in the github securely."
 
-* **Where:** one file, `reviews.json`, in the private repo `Specifxx/kaeyoung-reviews` (`REVIEWS_REPO` overrides).
+* **Where:** one file, `reviews.json`, in the private repo `Specifxx/scentcompare-reviews` (`REVIEWS_REPO` overrides).
   `POST /api/reviews` reads it through the GitHub contents API, applies the same limits and word rules, appends the
   review and writes it back with the blob sha; a write race (409/422) re-reads and retries up to four times. The
   moderation route flips a review's status the same way. Commit messages carry only the id and status.
-* **Why a private repo, not this one or a data branch:** Kaeyoung is public, so a branch here would publish held spam
+* **Why a private repo, not this one or a data branch:** ScentCompare is public, so a branch here would publish held spam
   and the hashed IPs before anyone moderated them; that was the reason GitHub was ruled out in "ratings and reviews".
   A private repo removes that objection and the database with it. Encrypting rows into the public repo was the other
   option: more code, and a leaked key would expose every past review.
@@ -281,7 +281,7 @@ them to be addressed.
 public then they don't have to leave a review." This replaces the private repo from the entry above, which was never
 set up.
 
-* **Where:** `reviews.json` on the `reviews` branch of `Specifxx/Kaeyoung` (`REVIEWS_REPO`/`REVIEWS_BRANCH`
+* **Where:** `reviews.json` on the `reviews` branch of `Specifxx/scentcompare` (`REVIEWS_REPO`/`REVIEWS_BRANCH`
   override). A branch, not `main`: each review is a commit, and on `main` it would race the daily import's push and
   fill the history. `vercel.json` never deploys the branch, CI runs only on `main` and pull requests, and a review
   commit's subject never carries `[deploy]`.
@@ -425,14 +425,14 @@ reason to come back that search rankings alone don't. `/forum` (docs/forum.md):
 - **Moderation:** the owner asks Claude; a post is removed by an edit to
   `forum.json` (`removeFromForum` in `src/lib/forum/core.ts`).
 
-## 2026-11-01: the brand is KaeYoung, one word, like the domain
+## 2026-11-01: the brand is ScentCompare, one word, like the domain
 
-Owner, 2026-11-01: "make the name K Young officially KaeYoung … it needs to be consistent with the domain name."
-Every place the site names itself now says **KaeYoung**: `SITE.name` (titles, `og:site_name`, JSON-LD), the header
+Owner, 2026-11-01: "make the name K Young officially ScentCompare … it needs to be consistent with the domain name."
+Every place the site names itself now says **ScentCompare**: `SITE.name` (titles, `og:site_name`, JSON-LD), the header
 logo and its label, the footer, the share image and the guide share cards, the blog and advice posts (queued ones
-included), the forms and their errors, the review default name ("KaeYoung shopper", applied when ratings are exported,
+included), the forms and their errors, the review default name ("ScentCompare shopper", applied when ratings are exported,
 so already published reviews pick it up at the next import), and the docs. The tagline stays **"Stay young."**: the
-pair now reads "KaeYoung, stay young", which keeps the original rhyme with the one-word name. The logo mark (a "K") is
+pair now reads "ScentCompare, stay young", which keeps the original rhyme with the one-word name. The logo mark (a "K") is
 unchanged. Earlier entries keep "K Young" where they record what was said at the time. The forum still reserves
 "k young" as a name, so nobody can post as the old brand.
 
@@ -599,7 +599,7 @@ store's own `https://<base>/products/` prefix, the `"s"/"p"/"st"/"u"` keys and `
 
 ## 2026-11-03: The sitemap starts with widely stocked products
 
-**Why.** The owner asked to drop products nobody wants and focus on what drives demand. KaeYoung has been in
+**Why.** The owner asked to drop products nobody wants and focus on what drives demand. ScentCompare has been in
 Search Console for three days (1 click, 186 impressions, 2 product pages seen), so there is no demand data yet,
 and the 10,996 products cost little: the project's Vercel bill was A$2.95 in the week to 2 November, and pages are
 static files. What does hurt a new domain is a large sitemap of thin pages (the family's lesson, `index-tiers.ts`):
@@ -636,27 +636,27 @@ stocked first, `src/lib/sitemap.ts`). The homepage carries Organization + WebSit
 every price guide. Product, brand, step hub, guide and blog pages show a breadcrumb trail with a matching BreadcrumbList
 (`<Crumbs>`, `src/lib/seo.tsx`). Product/AggregateOffer already existed on product pages. hreflang is deliberately absent:
 every page is ONE URL for all regions (CSS shows the visitor's), so there are no alternates to declare. `/llms.txt` is a
-static route. Title: "Korean Skincare Price Comparison: K-Beauty Stores | KaeYoung" (60). `tests/seo.test.ts` pins it.
+static route. Title: "Korean Skincare Price Comparison: K-Beauty Stores | ScentCompare" (60). `tests/seo.test.ts` pins it.
 
-## Rate KaeYoung and "What people say", run by the shared review service (2026-11-03)
+## Rate ScentCompare and "What people say", run by the shared review service (2026-11-03)
 
 The owner wanted RiftCompare's rating pop-up on every site, each site's reviews public, and every written review approved in
-RiftCompare's admin; star ratings count at once. These are ratings of KaeYoung itself, separate from the product reviews on the
-`reviews` branch. KaeYoung stores nothing and gains no function: the corner card (`components/site-reviews/RateCard.tsx`, in the
+RiftCompare's admin; star ratings count at once. These are ratings of ScentCompare itself, separate from the product reviews on the
+`reviews` branch. ScentCompare stores nothing and gains no function: the corner card (`components/site-reviews/RateCard.tsx`, in the
 root layout) posts cross-origin to `https://riftcompare.com/api/site-reviews`, and the homepage's "What people say" reads the
-score and approved reviews from `https://riftcompare.com/api/site-reviews/kaeyoung` in the browser (public JSON, CDN six hours).
+score and approved reviews from `https://riftcompare.com/api/site-reviews/scentcompare` in the browser (public JSON, CDN six hours).
 Nothing on the page names a sister site. The card is a small corner card, never on arrival: after 4 pages and 3 minutes or on
-return from a store tab, at most three times 14 days apart, always closable; "Rate KaeYoung" in the footer opens it. While no
+return from a store tab, at most three times 14 days apart, always closable; "Rate ScentCompare" in the footer opens it. While no
 ad script is on the page it says "We don't run banner ads, so if this helped, please leave us a review." No email asked for,
 never review markup.
 
 ## 2026-11-03: A Creators page and a homepage bubble, like RiftCompare's
 
 Owner: "having the creators page for all of these sites as well is really, really good. Like just a bubble and then a
-really nice formatted creators page, just like how RiftCompare does it", and KaeYoung "should definitely get a creators
+really nice formatted creators page, just like how RiftCompare does it", and ScentCompare "should definitely get a creators
 page despite no branding": word of mouth from creators and visitors is its only growth channel.
 
-`/creators` is RiftCompare's page in KaeYoung's look, without the parts that need a database: the list is the static
+`/creators` is RiftCompare's page in ScentCompare's look, without the parts that need a database: the list is the static
 array in `src/lib/creators.ts` (empty until the first creator agrees; the grid shows "Your channel here" spots, never an
 invented creator), applying is a pre-filled email to `SITE.email`, and there are no creator codes. "Buy them a coffee" is
 the creator's own Ko-fi, Patreon or tip page: the site never handles the money. No emoji or brand packaging (the design

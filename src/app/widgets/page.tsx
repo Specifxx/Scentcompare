@@ -8,8 +8,8 @@ import { PageHead } from "@/components/Section";
 // Free link badges (DECISIONS.md, "Free link badges", 2026-11-02): what outreach offers instead of asking for a link.
 // Plain HTML only, prerendered at the daily build like every page.
 export const metadata: Metadata = {
-  title: "Free K-beauty price links for blogs and stores",
-  description: "Free plain-HTML badges that send your readers to a Korean skincare price comparison across real K-beauty stores in their region. No script, no signup.",
+  title: "Free fragrance price links for blogs and stores",
+  description: "Free plain-HTML badges that send your readers to a perfume price comparison across real fragrance stores in their region. No script, no signup.",
   alternates: { canonical: "/widgets" },
 };
 
@@ -29,8 +29,8 @@ export default function Widgets() {
     <div className="mx-auto max-w-3xl px-4 pb-16">
       <PageHead
         eyebrow="Free for your site"
-        title="Free K-beauty price links"
-        sub={<>For skincare blogs, routine guides, reviews and stores: one line of HTML that sends readers to today&apos;s prices across real K-beauty stores in their region. No script, no image, no tracking, free.</>}
+        title="Free fragrance price links"
+        sub={<>For fragrance blogs, routine guides, reviews and stores: one line of HTML that sends readers to today&apos;s prices across real fragrance stores in their region. No script, no image, no tracking, free.</>}
       />
       <section>
         <h2 className="text-xl font-semibold">A product you review</h2>
@@ -44,7 +44,7 @@ export default function Widgets() {
       <section className="mt-8">
         <h2 className="text-xl font-semibold">For stores we compare</h2>
         <p className="mt-1 text-sm text-soft">Tell customers your prices are compared openly. <Link prefetch={false} href="/stores" className="underline">Stores we read</Link>.</p>
-        <Snippet html={linkBadge(`${SITE.url}/stores`, `Our K-beauty prices are compared on ${SITE.name}`)} />
+        <Snippet html={linkBadge(`${SITE.url}/stores`, `Our fragrance prices are compared on ${SITE.name}`)} />
       </section>
     </div>
   );

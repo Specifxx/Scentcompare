@@ -7,7 +7,7 @@ import type { Offer, Product } from "@/lib/types";
 
 const offers: Offer[] = [2199, 2399, 2599].map((p, i) => ({ s: `s${i}`, p, st: "in", u: "" }));
 const item = (over: Partial<EbayItem>): EbayItem => ({ title: "COSRX Advanced Snail 96 Mucin Power Essence 100ml", itemWebUrl: "https://www.ebay.com/itm/1?x=1", price: { value: "20.00", currency: "USD" }, itemLocation: { country: "US" }, shippingOptions: [{ shippingCost: { value: "0.00", currency: "USD" } }], ...over });
-const P = (ean: string, o: Product["offers"]): Product => ({ ean, slug: ean, name: ean, brand: "", b: "", cat: "serums", size: null, img: null, first: "d", offers: o });
+const P = (ean: string, o: Product["offers"]): Product => ({ ean, slug: ean, name: ean, brand: "", b: "", cat: "men", size: null, img: null, first: "d", offers: o });
 
 test("eBay: cheapest believable new listing", () => {
   const pick = ebayPick([item({}), item({ price: { value: "19.00", currency: "USD" }, itemWebUrl: "https://www.ebay.com/itm/2" })], offers, "US");
@@ -24,7 +24,7 @@ test("eBay: counterfeit origins, too-cheap, testers and other currencies are out
 
 test("eBay: local sellers only, postage stated, priced and ranked delivered (visitor feedback 2026-10-31)", () => {
   const ship = (value: string, currency = "USD") => ({ shippingOptions: [{ shippingCost: { value, currency } }] });
-  assert.ok(ebayPick([item({ itemLocation: { country: "KR" } })], offers, "US"), "a seller in Korea, the products' home country, stays (priced with postage)");
+  assert.equal(ebayPick([item({ itemLocation: { country: "FR" } })], offers, "US"), null, "no home country for fragrance: a seller abroad is out, however genuine");
   assert.equal(ebayPick([item({ itemLocation: { country: "GB" } })], offers, "US"), null, "a UK seller for a US buyer");
   assert.equal(ebayPick([item({ shippingOptions: [{}] })], offers, "US"), null, "calculated postage");
   assert.equal(ebayPick([item({ shippingOptions: undefined })], offers, "US"), null, "no postage at all");

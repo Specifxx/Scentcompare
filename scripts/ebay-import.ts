@@ -21,9 +21,9 @@ const read = <T>(p: string, f: T): T => {
   }
 };
 
-// Local sellers, plus the products' home country (Korea), priced with postage (visitor feedback, WargameCompare
+// Local sellers only, priced with postage (visitor feedback, WargameCompare
 // 2026-10-31; owner, the same day): the search asks for delivery to the region, ebayPick keeps sellers in the region
-// (any EU country for the EU) or in Korea, and `zip`, a central postcode, lets eBay quote real postage; ebayPick keeps
+// (any EU country for the EU), and `zip`, a central postcode, lets eBay quote real postage; ebayPick keeps
 // no listing whose postage it does not state.
 const MARKET: Partial<Record<RegionCode, { id: string; country: string; zip: string }>> = {
   US: { id: "EBAY_US", country: "US", zip: "64101" },
@@ -52,8 +52,8 @@ async function main() {
     console.log("eBay keys not set: skipping (no-op).");
     return;
   }
-  // KaeYoung's keyset is shared with CamCompare, 2,500 calls a day each
-  // (owner, 2026-10-30). EBAY_DAILY_CAP can only lower it.
+  // ScentCompare's own keyset (owner, 2026-11-05: Bill is creating it), 2,500
+  // calls a day. EBAY_DAILY_CAP can only lower it.
   // A second run on the same quota day (a manual dispatch) gets only what is left.
   const cap = Math.min(2500, Number(process.env.EBAY_DAILY_CAP || 2500));
   const qday = ebayQuotaDay();
