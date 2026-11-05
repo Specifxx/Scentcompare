@@ -25,7 +25,7 @@ const u = (p: string, priority: number): SitemapUrl => ({ url: `${SITE.url}${p}`
 const productUrls = () => getProducts().filter(inSitemap).map((f) => u(`/product/${f.slug}`, 0.7));
 
 export function sitemapParts(): string[] {
-  const n = Math.max(1, Math.ceil(productUrls().length / PRODUCTS_PER_FILE));
+  const n = Math.ceil(productUrls().length / PRODUCTS_PER_FILE); // none before the first import
   return ["pages", ...Array.from({ length: n }, (_, i) => `products-${i + 1}`)];
 }
 
