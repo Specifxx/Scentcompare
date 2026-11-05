@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+*.tsbuildinfo
+.vercel
+data/.cache
+probe/out-*.json
+shipping-out-*.json
