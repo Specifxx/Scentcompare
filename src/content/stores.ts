@@ -236,6 +236,13 @@ export const STORES: Store[] = [
   { id: "scentbeauty", name: "SCENT Beauty", region: "US", base: "https://scentbeauty.com", platform: "shopify", official: true },
   { id: "spadezstore", name: "Spadez Store", region: "US", base: "https://spadezstore.com", platform: "shopify", mixed: true },
   { id: "belensperfume", name: "Belen's Perfume", region: "US", base: "https://belensperfume.com", platform: "shopify", mixed: true },
+  // Round 3 (NZ and CA discovery, 2026-11-05: 128 more hosts, 27 NZD and 26 CAD readable, most pharmacies and
+  // concept stores with under ten fragrances). The few that pass the same rule:
+  { id: "gadgetsonline", name: "Gadgets Online", region: "NZ", base: "https://gadgetsonline.co.nz", platform: "shopify", mixed: true },
+  { id: "guardianpharmacy", name: "Guardian Pharmacy", region: "NZ", base: "https://guardianpharmacy.co.nz", platform: "shopify", mixed: true },
+  { id: "perfumefactory", name: "Perfume Factory", region: "CA", base: "https://perfumefactory.ca", platform: "shopify" },
+  { id: "dansunjardin", name: "Dans un Jardin", region: "CA", base: "https://dansunjardin.com", platform: "shopify", official: true },
+  { id: "herabeauty", name: "Hera Beauté", region: "CA", base: "https://herabeauty.ca", platform: "shopify", mixed: true },
 ];
 
 export const STORE_BY_ID: Record<string, Store> = Object.fromEntries(STORES.map((s) => [s.id, s]));
