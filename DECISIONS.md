@@ -733,3 +733,14 @@ day and prioritise the popular items and price rows should follow the same strat
   sorted by price; none of the paid rows is ever "the cheapest".
 - **The theme is KaeYoung's** (blush, rose, pastels, Fraunces and Inter) at the owner's request; the mark is a
   perfume flacon instead of the K.
+
+## 2026-11-05: Two popular products in the hero, and on the link thumbnail
+
+Ported from KaeYoung the same day (the owner asked for both sites): the hero's right column is two product cards
+(`HeroPicks.tsx`, `src/lib/hero-picks.ts`), the most popular bottles someone can order in the visitor's country
+today, each with its photo, cheapest in-stock price, store and store count, one house per pair and only with
+`HERO_MIN_STORES` (3) stores in stock. Every country's pair is in the server HTML and CSS shows one; on a phone the
+pair sits under the search. Nothing in the outline, the metadata or the URLs changed. The link preview
+(`src/app/opengraph-image.tsx`, `src/lib/og/home-image.tsx`) shows the same two US bottles, drawn at each day's
+build from the stores' own photos (read with a timeout; an unreadable photo drops that bottle, two give the
+text-only brand card), replacing the hand-rendered `opengraph-image.jpg`; `scripts/og/render.mjs` draws only the icons.
