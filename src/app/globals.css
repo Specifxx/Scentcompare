@@ -2,53 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ScentCompare's look (owner, 2026-11-05: "the theme similar" to KaeYoung's,
-   light by default, for women, men and everyone): blush-white page, white cards with soft
-   pink hairlines, rose for prices and buttons, and a pastel set (peach,
-   lavender, mint, butter, sky) for tiles and illustrations. Green only for
-   savings. Fraunces for headings, Inter for everything else. */
+/* ScentCompare's look (owner, 2026-11-05: KaeYoung's layout, "less peachy … blue
+   themed so it's a little more masculine", still polished enough for the women's
+   section): ice-white page, white cards with soft blue hairlines, a cobalt accent
+   for prices and buttons, and a cool pastel set (ice blue "peach", lavender, mint,
+   sand "butter", sky) for tiles and illustrations. The token names are KaeYoung's
+   so the engine's classes still work. Green only for savings. Fraunces for
+   headings, Inter for everything else. */
 :root {
-  --bg: 255 250 251;
+  --bg: 247 250 253;
   --card: 255 255 255;
-  --ink: 45 31 46;
-  --soft: 120 102 118;
-  --line: 243 225 232;
-  --accent: 222 72 126;
-  --accent-deep: 178 40 92;
-  --accent-pale: 255 236 243;
-  --subtle: 253 243 247;
+  --ink: 23 32 51;
+  --soft: 96 110 134;
+  --line: 226 233 243;
+  --accent: 37 99 235;
+  --accent-deep: 29 78 216;
+  --accent-pale: 229 238 255;
+  --subtle: 240 245 252;
   --save: 22 125 80;
   --save-pale: 228 245 236;
-  --ad: 255 248 250;
-  --buy: 222 72 126;
-  --peach: 255 228 214;
-  --lavender: 236 230 255;
-  --mint: 220 245 235;
-  --butter: 255 245 205;
-  --sky: 222 238 255;
+  --ad: 246 249 254;
+  --buy: 37 99 235;
+  --peach: 232 240 250;
+  --lavender: 234 232 252;
+  --mint: 222 244 238;
+  --butter: 252 243 220;
+  --sky: 219 234 254;
   --star: 232 150 38;
   color-scheme: light;
 }
 
 [data-theme="night"] {
-  --bg: 24 18 26;
-  --card: 34 27 37;
-  --ink: 246 238 244;
-  --soft: 178 162 176;
-  --line: 60 47 62;
-  --accent: 245 122 168;
-  --accent-deep: 250 156 192;
-  --accent-pale: 66 32 50;
-  --subtle: 44 35 47;
+  --bg: 15 20 32;
+  --card: 24 31 46;
+  --ink: 236 241 248;
+  --soft: 160 172 192;
+  --line: 46 58 80;
+  --accent: 96 165 250;
+  --accent-deep: 147 197 253;
+  --accent-pale: 30 48 82;
+  --subtle: 30 40 58;
   --save: 84 206 146;
   --save-pale: 22 48 36;
-  --ad: 40 32 42;
-  --buy: 245 122 168;
-  --peach: 70 44 40;
-  --lavender: 50 44 74;
-  --mint: 30 58 50;
-  --butter: 66 58 34;
-  --sky: 34 48 70;
+  --ad: 28 36 54;
+  --buy: 96 165 250;
+  --peach: 38 52 74;
+  --lavender: 44 44 78;
+  --mint: 28 56 50;
+  --butter: 62 56 38;
+  --sky: 32 52 84;
   --star: 247 186 84;
   color-scheme: dark;
 }

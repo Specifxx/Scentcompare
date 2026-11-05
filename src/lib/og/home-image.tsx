@@ -15,10 +15,10 @@ import type { HeroPick } from "@/lib/hero-picks";
 // the text-only brand card, never a broken image.
 export const HOME_IMAGE_SIZE = { width: 1200, height: 630 };
 
-const INK = "#2d1f2e";
-const SOFT = "#786676";
-const LINE = "#f3e1e8";
-const ACCENT = "#de487e";
+const INK = "#172033";
+const SOFT = "#606e86";
+const LINE = "#e2e9f3";
+const ACCENT = "#2563eb";
 
 const font = (f: string) => fs.readFileSync(path.join(process.cwd(), "src/lib/og/fonts", f));
 const ICON =
@@ -60,9 +60,9 @@ export function homeImage(o: HomeImageOpts) {
           padding: "44px 60px 34px",
           color: INK,
           fontFamily: "Inter",
-          backgroundColor: "#fffafb",
+          backgroundColor: "#f7fafd",
           backgroundImage:
-            "radial-gradient(circle at 0% 0%, #ffe4d6 0%, rgba(255,250,251,0) 45%), radial-gradient(circle at 100% 0%, #ece6ff 0%, rgba(255,250,251,0) 40%), radial-gradient(circle at 60% 100%, #ffecf3 0%, rgba(255,250,251,0) 50%)",
+            "radial-gradient(circle at 0% 0%, #dbe7fb 0%, rgba(247,250,253,0) 45%), radial-gradient(circle at 100% 0%, #e4e6fb 0%, rgba(247,250,253,0) 40%), radial-gradient(circle at 60% 100%, #e5eeff 0%, rgba(247,250,253,0) 50%)",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0, paddingRight: picks.length ? 36 : 0 }}>
@@ -87,7 +87,7 @@ export function homeImage(o: HomeImageOpts) {
           <div style={{ display: "flex", gap: 22, alignItems: "stretch" }}>
             {picks.map(({ pick, photo }) => (
               <div key={pick.f.ean} style={{ display: "flex", flexDirection: "column", width: 268, backgroundColor: "#ffffff", border: `2px solid ${LINE}`, borderRadius: 24, overflow: "hidden" }}>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: 300, padding: 22, backgroundImage: "linear-gradient(#ffffff, #fff4f7)" }}>
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: 300, padding: 22, backgroundImage: "linear-gradient(#ffffff, #f0f5fc)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
                   <img src={photo!} width={224} height={256} style={{ objectFit: "contain" }} />
                 </div>

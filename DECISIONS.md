@@ -744,3 +744,15 @@ pair sits under the search. Nothing in the outline, the metadata or the URLs cha
 (`src/app/opengraph-image.tsx`, `src/lib/og/home-image.tsx`) shows the same two US bottles, drawn at each day's
 build from the stores' own photos (read with a timeout; an unreadable photo drops that bottle, two give the
 text-only brand card), replacing the hand-rendered `opengraph-image.jpg`; `scripts/og/render.mjs` draws only the icons.
+
+## 2026-11-05: Blue, not peach: the theme is cool and gender-neutral
+
+The owner, seeing the first build: "the colours for scentcompare should be less peachy and make it blue themed so
+it's a little more masculine", polished enough for the women's section too. The light theme is now an ice-white page
+(`--bg` 247 250 253), white cards with soft blue hairlines, cobalt `--accent` (37 99 235, 4.6:1 on white) for prices
+and buttons, and a cool pastel set: `--peach` is ice blue, `--butter` is sand, `--lavender`, `--mint` and `--sky` are
+cooler; night is navy. The TOKEN NAMES are still KaeYoung's (`--peach`, `.tint-rose`, `ROSE` in `Art.tsx`) so every
+engine class and every port from KaeYoung keeps working: rename nothing, recolour. The flacon illustrations, the
+logo and icon gradient (`#2563eb → #60a5fa`), the share images (`src/lib/og/*.tsx`) and the Christmas stocking
+follow. Green stays savings-only, gold stays the champagne hairline. Section tints: women lavender, men sky, unisex
+the pale accent, sets ice blue, minis sand, body mint. Nothing in the outline, metadata or URLs changed.

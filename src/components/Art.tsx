@@ -5,23 +5,23 @@ import type { CatKey } from "@/site";
 
 /** Each section's tile colour (globals.css .tint-*). */
 export const CAT_TINT: Record<CatKey, string> = {
-  women: "tint-rose",
+  women: "tint-lavender",
   men: "tint-sky",
-  unisex: "tint-lavender",
+  unisex: "tint-rose", // accent-pale, the pale blue
   sets: "tint-peach",
   minis: "tint-butter",
   body: "tint-mint",
   other: "tint-lavender",
 };
 
-const INK = "#3b2a4a";
-const ROSE = "#e879a8";
-const PEACH = "#ffb592";
-const LAV = "#b9a6f5";
+const INK = "#1f2a44";
+const ROSE = "#5b8def"; // the accent blue; the name is KaeYoung's
+const PEACH = "#9ec5ff"; // ice blue
+const LAV = "#aeb4f2";
 const MINT = "#7fd3b2";
 const BUTTER = "#ffd66b";
 const SKY = "#8ec5ff";
-const WHITE = "#fffdfd";
+const WHITE = "#fdfdff";
 
 const S = { stroke: INK, strokeWidth: 1.6, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 
@@ -111,12 +111,12 @@ export function HeroArt({ className = "" }: { className?: string }) {
     <svg viewBox="0 0 420 340" className={className} aria-hidden role="presentation">
       <defs>
         <linearGradient id="sc-glass" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#ffd3e2" />
-          <stop offset="1" stopColor="#e879a8" />
+          <stop offset="0" stopColor="#dbe8ff" />
+          <stop offset="1" stopColor="#5b8def" />
         </linearGradient>
         <linearGradient id="sc-lav" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#efe9ff" />
-          <stop offset="1" stopColor="#b9a6f5" />
+          <stop offset="0" stopColor="#ecedff" />
+          <stop offset="1" stopColor="#aeb4f2" />
         </linearGradient>
         <linearGradient id="sc-amber" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#fff1c9" />
@@ -128,14 +128,14 @@ export function HeroArt({ className = "" }: { className?: string }) {
         </linearGradient>
       </defs>
       {/* soft round backdrop */}
-      <circle cx="215" cy="170" r="150" fill="#f3ecff" />
-      <circle cx="320" cy="95" r="60" fill="#ffe9f1" />
-      <circle cx="95" cy="250" r="55" fill="#fff4d6" />
+      <circle cx="215" cy="170" r="150" fill="#eaf1fd" />
+      <circle cx="320" cy="95" r="60" fill="#e4ecfb" />
+      <circle cx="95" cy="250" r="55" fill="#f4f0e4" />
       {/* shelf */}
-      <rect x="55" y="268" width="320" height="12" rx="6" fill="#d9cdf5" />
+      <rect x="55" y="268" width="320" height="12" rx="6" fill="#c9d8f5" />
       <g {...S} strokeWidth="2.2">
         {/* tall cylinder (unisex) */}
-        <circle cx="107" cy="102" r="17" fill="#b9a6f5" />
+        <circle cx="107" cy="102" r="17" fill="#aeb4f2" />
         <rect x="96" y="116" width="22" height="12" fill={WHITE} />
         <path d="M82 136q0-8 8-8h34q8 0 8 8v124q0 8-8 8H90q-8 0-8-8z" fill="url(#sc-lav)" />
         <rect x="92" y="170" width="30" height="46" rx="4" fill={WHITE} />
@@ -157,7 +157,7 @@ export function HeroArt({ className = "" }: { className?: string }) {
         </g>
       </g>
       {/* petals and sparkles */}
-      <g fill="#e879a8" opacity=".85">
+      <g fill="#5b8def" opacity=".85">
         <path d="M60 80q12-14 22 0-10 12-22 0z" />
         <path d="M352 290q12-14 22 0-10 12-22 0z" transform="rotate(30 363 290)" />
         <path d="M250 30q10-12 18 0-8 10-18 0z" transform="rotate(-20 259 30)" />
@@ -166,7 +166,7 @@ export function HeroArt({ className = "" }: { className?: string }) {
         <path d="M372 150q2 10 10 12-8 2-10 12-2-10-10-12 8-2 10-12z" />
         <path d="M44 170q1.5 7 7 8.5-5.5 1.5-7 8.5-1.5-7-7-8.5 5.5-1.5 7-8.5z" />
       </g>
-      <g fill="#b9a6f5">
+      <g fill="#aeb4f2">
         <circle cx="140" cy="50" r="5" />
         <circle cx="392" cy="60" r="4" />
         <circle cx="30" cy="120" r="3.5" />

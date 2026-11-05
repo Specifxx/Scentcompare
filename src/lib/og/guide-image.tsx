@@ -15,10 +15,10 @@ import type { ShareRow } from "./share-rows";
 // a post goes out.
 export const GUIDE_IMAGE_SIZE = { width: 1200, height: 630 };
 
-const INK = "#2d1f2e";
-const SOFT = "#786676";
-const LINE = "#f3e1e8";
-const ACCENT = "#de487e";
+const INK = "#172033";
+const SOFT = "#606e86";
+const LINE = "#e2e9f3";
+const ACCENT = "#2563eb";
 const SAVE = "#167d50";
 const SAVE_PALE = "#e4f5ec";
 
@@ -45,8 +45,8 @@ export function guideImage(opts: { region: RegionCode; title: string; kicker: st
           padding: "36px 60px 30px",
           color: INK,
           fontFamily: "Inter",
-          backgroundColor: "#fffafb",
-          backgroundImage: "radial-gradient(circle at 0% 0%, #ffe4d6 0%, rgba(255,250,251,0) 45%), radial-gradient(circle at 100% 0%, #ece6ff 0%, rgba(255,250,251,0) 40%)",
+          backgroundColor: "#f7fafd",
+          backgroundImage: "radial-gradient(circle at 0% 0%, #dbe7fb 0%, rgba(247,250,253,0) 45%), radial-gradient(circle at 100% 0%, #e4e6fb 0%, rgba(247,250,253,0) 40%)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
