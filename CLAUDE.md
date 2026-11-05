@@ -79,9 +79,11 @@ Previews build only with `[preview]`, when the owner asks. `claude/*` and `ccr-*
 
 ## Design
 
-KaeYoung's theme, kept similar on purpose (owner, 2026-11-05), for women, men and everyone: blush-white page, white
-cards with soft pink hairlines, rose (`--accent`) for prices and buttons, a pastel set (`--peach`, `--lavender`,
-`--mint`, `--butter`, `--sky`) for section tiles and washes, green only for savings, Fraunces headings and Inter text
+KaeYoung's layout, but blue (owner, 2026-11-05: "less peachy … blue themed so it's a little more masculine"), still
+polished and neutral enough for the women's section: ice-white page, white cards with soft blue hairlines, cobalt
+(`--accent`) for prices and buttons, a cool pastel set (`--peach` is ice blue, `--lavender`, `--mint`, `--butter` is
+sand, `--sky`; the token names stay KaeYoung's so the engine's classes work) for section tiles and washes, green only
+for savings, Fraunces headings and Inter text
 (self-hosted through fontsource), no emoji decoration. Flat SVG drawings of generic bottles (`src/components/Art.tsx`),
 never a house's own flacon. Light theme unless the visitor picks night. The side panel (`SideNav`, `src/lib/nav.ts`)
 from `lg` up, the same groups in the phone menu. Product photos are the stores' own, hotlinked. Icons and the share
