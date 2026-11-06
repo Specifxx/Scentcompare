@@ -780,3 +780,15 @@ one store). Access is per marketplace and opens by itself once that store's acco
 (about 10 in 30 days); a refused store is skipped and the row keeps its search link, so the feature costs
 nothing until then and switches on without a code change. The ops monitor cannot see a Vercel build, so a
 failed fetch is silent by design: the fallback is the row as it was.
+
+## 2026-11-06 — Awin: a store that accepts us pays from the next build, with no step by hand
+
+**Decision (owner: "check if we are making the most of Awin, and if it's not there, just do it"):** the family's Awin
+account (Compare Empire, publisher 3144410) is read each morning by Compare Empire's `scripts/awin-sync.ts`, which
+publishes the programmes that accepted us, with their tracked domains, in its public `data/awin/programmes.json`. This
+site copies that file first in every build (`scripts/fetch-awin.ts` → `src/lib/awin-programmes.json`; the committed copy is
+an empty list, so a failed fetch only leaves links untracked). `storeUrl` turns a link to a joined advertiser's own domain
+into its Awin deep link to the same page (`clickref=<site>-<store>`), and `storePays` marks the row "Paid link". A store's
+own affiliate variable, when set, still wins. Order and prices never change; eBay and Amazon are never wrapped.
+A pinned retailer row (`PARTNERS`) with no template of its own uses the joined list too, so a fragrance retailer Awin
+approves (The Scent Store, Parfumdreams, LOOKFANTASTIC…) appears as a paid row the next morning.
