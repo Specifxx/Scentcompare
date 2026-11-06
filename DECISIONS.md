@@ -866,3 +866,5 @@ with pink scent (not amber), a shiny gold lid and a chrome bottle, "fancy" and s
 Third round, same day: the chrome-and-pink version read as a poison bottle, childish and too shiny (owner). The mark is
 now calm: a square bottle in see-through glass with a thin white edge, a soft rose scent with a flat top, a matte gold
 lid and no highlights, on light blue.
+
+The glass edge and neck are a very light grey (`#e6eaf0`), not white (owner, same day).
