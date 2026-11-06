@@ -11,7 +11,7 @@ export function GET() {
   const md = [
     `# ${SITE.name}`,
     "",
-    `> ${SITE.description} ${getProducts().length.toLocaleString("en-US")} products compared. Prices are each store's own, in its own currency, never converted. Only specialist fragrance stores, never open marketplaces.`,
+    `> ${SITE.description} ${getProducts().length.toLocaleString("en-US")} products compared. Prices are each store's own, in its own currency, never converted. Only specialist fragrance stores, never open marketplaces. Updated daily.`,
     "",
     "## Main pages",
     `- [Popular fragrance](${SITE.url}/popular): stocked by the most stores`,
@@ -20,7 +20,7 @@ export function GET() {
     `- [Stores compared](${SITE.url}/stores)`,
     `- [How we pick stores](${SITE.url}/how-we-pick-stores)`,
     "",
-    "## Shop by step",
+    "## Shop by section",
     ...CATEGORIES.map((c) => `- [${c.name}](${SITE.url}/${c.key}): ${c.about}`),
     "",
     "## Price guides",

@@ -6,8 +6,8 @@ import { PageHead } from "@/components/Section";
 import { niceDate } from "@/lib/format";
 
 export const metadata: Metadata = {
-  title: "fragrance price blog",
-  description: "perfume prices, read closely: brand stores against fragrance shops, men's and women's bestsellers priced, gift sets, and the biggest price gaps, from today's store prices.",
+  title: "Fragrance price blog",
+  description: "Perfume prices, read closely: brand stores against fragrance shops, men's and women's bestsellers, gift sets and the biggest price gaps, from today's prices.",
   alternates: { canonical: "/blog" },
 };
 

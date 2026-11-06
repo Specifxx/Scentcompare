@@ -15,8 +15,8 @@ const PLACES = listRegions(REGIONS.map((r) => r.phrase.replace(/^(in|from) /, ""
 export function saleMetadata(slug: SaleSlug): Metadata {
   const y = year(slug);
   return {
-    title: `fragrance ${saleHeading(slug, y)}`,
-    description: `${SALE_SEASONS[slug].name} ${y} perfume deals: in stock today where the cheapest store is at least 10% under the dearest. Same barcode, same size, per region, updated daily.`,
+    title: `Fragrance ${saleHeading(slug, y)}`,
+    description: `${SALE_SEASONS[slug].name} ${y} perfume deals: in stock today and at least 10% under the dearest store. Same barcode, same size, updated daily.`,
     alternates: { canonical: `/${slug}` },
   };
 }
@@ -27,7 +27,7 @@ export function SaleSeasonPage({ slug }: { slug: SaleSlug }) {
     <div className="mx-auto max-w-6xl px-4">
       <PageHead
         eyebrow={SALE_SEASONS[slug].name}
-        title={`fragrance ${saleHeading(slug, y)}`}
+        title={`Fragrance ${saleHeading(slug, y)}`}
         sub={
           <>
             {saleIntro(slug, y, PLACES)} These are

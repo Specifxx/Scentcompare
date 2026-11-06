@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { PRODUCTS_PER_FILE, allSitemapUrls, sitemapIndexXml, sitemapPart, sitemapParts } from "../src/lib/sitemap";
-import { breadcrumbLd } from "../src/lib/seo";
+import { DESCRIPTION_MAX, TITLE_MAX, breadcrumbLd, fitDescription, fitTitle, ldJson } from "../src/lib/seo";
 import { SITE } from "../src/site";
 
 const read = (p: string) => readFileSync(p, "utf8");
@@ -50,4 +50,41 @@ test("no product photo has empty alt text", () => {
 
 test("llms.txt is a static route", () => {
   assert.match(read("src/app/llms.txt/route.ts"), /force-static/);
+});
+
+// ScentCompare's own audit (2026-11-06): store titles are long, so titles and descriptions are fitted, not cut by Google.
+test("fitTitle keeps the brand suffix when it fits, drops it before the keyword, never reorders", () => {
+  assert.equal(fitTitle("Dior Sauvage price: compare 9 stores"), "Dior Sauvage price: compare 9 stores");
+  const long = "Givenchy Gentleman by Givenchy Eau De Parfum Spray 2 oz for Men 60ml";
+  const t = fitTitle(`${long} price: compare 9 stores`, `${long} price`);
+  assert.deepEqual(t, { absolute: `${long} price` }); // nothing fits: the last, keyword first
+  const mid = "Dior Sauvage Eau de Parfum 100ml";
+  const m = fitTitle(`${mid} price: compare 12 stores`, `${mid} price comparison`, `${mid} price`);
+  assert.equal(typeof m, "string"); // "… price | ScentCompare" fits 60
+  assert.ok(`${m} | ${SITE.name}`.length <= TITLE_MAX);
+});
+
+test("fitDescription takes the first that fits 160, else cuts the last at a word", () => {
+  assert.equal(fitDescription("a".repeat(200), "short"), "short");
+  const cut = fitDescription(("word ".repeat(60)).trim());
+  assert.ok(cut.length <= DESCRIPTION_MAX && cut.endsWith("…"), cut);
+});
+
+test("JSON-LD escapes < so a visitor's review cannot close the script", () => {
+  assert.ok(!ldJson({ reviewBody: "</script><script>alert(1)</script>" }).includes("</script"));
+  const page = read("src/app/product/[slug]/page.tsx");
+  assert.ok(!page.includes("JSON.stringify(jsonLd)"), "the product page writes its Product block through JsonLd");
+  assert.ok(!/Skin Care/.test(page), "fragrance, not KaeYoung's skin-care category");
+});
+
+test("hub and product titles start with a capital, and every fitted title lands within 60", () => {
+  for (const f of ["src/app/deals/page.tsx", "src/app/blog/page.tsx", "src/app/brands/page.tsx", "src/app/guides/page.tsx", "src/app/black-friday/page.tsx", "src/components/SaleSeasonPage.tsx"]) {
+    assert.ok(!/title[:=]\s*["`{]*\s*`?(fragrance|perfume) /.test(read(f)), f);
+  }
+  assert.ok(SITE.description.length <= DESCRIPTION_MAX, SITE.description);
+});
+
+test("the quick view's JSON is never indexed", () => {
+  const cfg = read("next.config.js");
+  assert.match(cfg, /source: "\/q\/:slug\*", headers: \[\{ key: "X-Robots-Tag", value: "noindex" \}\]/);
 });

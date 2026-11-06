@@ -27,6 +27,9 @@ module.exports = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
+      // The quick view's JSON (one per product) is data for the pop-up, never a page to rank: robots.txt cannot hold it
+      // back (no query to match), so the header does. The product page is the one URL for each product.
+      { source: "/q/:slug*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
     ];
   },
 };

@@ -8,5 +8,7 @@ export function ProductImage({ src, alt, label, className = "", eager = false }:
     );
   // text-transparent: if a store pulls its photo, the browser's broken-image
   // alt text does not spill over the tile.
-  return <img src={src} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" referrerPolicy="no-referrer" className={`text-transparent ${className}`} />;
+  // eager is the page's own photo, its largest paint on a phone: fetched first (fetchpriority, as a plain attribute).
+  const priority = eager ? ({ fetchpriority: "high" } as object) : {};
+  return <img src={src} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" {...priority} referrerPolicy="no-referrer" className={`text-transparent ${className}`} />;
 }
