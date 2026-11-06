@@ -1,230 +1,33 @@
-# Fragrance store probe 2026-11-05
+# Fragrance store probe 2026-11-06
 
-702 candidates, 207 readable Shopify shops.
+29 candidates, 17 readable Shopify shops.
 
 | Currency | Readable shops | With 50+ fragrances | Barcodes in 2+ shops |
 | --- | --- | --- | --- |
-| ? | 1 | 0 | 0 |
-| AUD | 26 | 21 | 3118 |
-| CAD | 26 | 17 | 225 |
-| DKK | 2 | 2 | 0 |
-| EGP | 1 | 1 | 0 |
-| EUR | 18 | 11 | 38 |
-| GBP | 37 | 26 | 17 |
-| INR | 1 | 0 | 0 |
-| NZD | 27 | 10 | 76 |
-| USD | 68 | 55 | 1212 |
+| AUD | 4 | 3 | 1 |
+| CAD | 1 | 0 | 0 |
+| EUR | 4 | 3 | 1 |
+| GBP | 4 | 4 | 0 |
+| USD | 4 | 1 | 0 |
 
 | Shop | Currency | Products | Fragrances | Decants | EAN in SKU | Sample with barcode | Codes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| https://guiltyfragrance.com | USD | 2000 | 2000 | 0 | 0 | 0/40 | 0 |
-| https://perfumepur.com | USD | 2000 | 2000 | 0 | 0 | 37/40 | 38 |
-| https://fragrancesline.com | USD | 2000 | 1999 | 0 | 0 | 0/40 | 0 |
-| https://bplatz.de | EUR | 2000 | 1965 | 22 | 1939 | 2/26 | 1939 |
-| https://theperfumeworld.co.uk | GBP | 2000 | 1943 | 22 | 0 | 0/40 | 0 |
-| https://fragranceinsider.com | USD | 2000 | 1938 | 8 | 0 | 0/40 | 0 |
-| https://perfumenz.co.nz | NZD | 2000 | 1923 | 13 | 0 | 0/40 | 0 |
-| https://intenseoud.com | USD | 2000 | 1901 | 14 | 0 | 40/40 | 40 |
-| https://fragrancecanada.ca | CAD | 2000 | 1895 | 56 | 0 | 40/40 | 50 |
-| https://privateblends.com.au | AUD | 2000 | 1858 | 11 | 1776 | 3/40 | 1779 |
-| https://scentrabbit.com | USD | 1951 | 1851 | 8 | 2022 | 12/40 | 2023 |
-| https://theperfumewarehouse.com.au | AUD | 2000 | 1844 | 104 | 0 | 39/40 | 39 |
-| https://priceritemart.com.au | AUD | 2000 | 1827 | 169 | 0 | 40/40 | 40 |
-| https://fragrance365.ca | CAD | 2000 | 1814 | 186 | 0 | 1/40 | 2 |
-| https://bloomperfume.co.uk | GBP | 1932 | 1800 | 28 | 0 | 0/40 | 0 |
-| https://perfumecentre.co.uk | GBP | 2000 | 1792 | 102 | 1 | 35/40 | 40 |
-| https://fragrancevault.net | USD | 2000 | 1789 | 49 | 0 | 22/40 | 24 |
-| https://perfumeparadise.com | USD | 1803 | 1774 | 10 | 902 | 39/40 | 941 |
-| https://olfactoryfactoryllc.com | USD | 2000 | 1771 | 13 | 0 | 2/40 | 2 |
-| https://emiratesoud.co.uk | GBP | 2000 | 1767 | 136 | 0 | 12/40 | 12 |
-| https://perfumeoasis.co.uk | GBP | 2000 | 1728 | 71 | 0 | 40/40 | 47 |
-| https://perfumem.com | USD | 2000 | 1698 | 280 | 145 | 30/40 | 221 |
-| https://myperfumeshop.co.nz | AUD | 2000 | 1687 | 34 | 2279 | 5/40 | 2284 |
-| https://myperfumeshop.com | AUD | 2000 | 1687 | 34 | 2279 | 5/40 | 2284 |
-| https://perfumeonline.ca | CAD | 2000 | 1568 | 6 | 0 | 1/40 | 1 |
-| https://parfumgroup.de | EUR | 2000 | 1543 | 2 | 0 | 40/40 | 55 |
-| https://leparfumier.com | CAD | 2000 | 1512 | 1 | 2475 | 2/40 | 2474 |
-| https://perfumeoutlet.com | USD | 2000 | 1505 | 35 | 0 | 38/40 | 40 |
-| https://fragranceoutlet.com | USD | 2000 | 1492 | 1 | 0 | 39/40 | 43 |
-| https://europacosmetica.com.au | AUD | 2000 | 1477 | 6 | 0 | 38/40 | 38 |
-| https://brandshd.co.nz | NZD | 2000 | 1452 | 240 | 0 | 28/40 | 28 |
-| https://perfumeplusoutlet.com | USD | 1745 | 1444 | 293 | 5 | 21/40 | 29 |
-| https://perfumeheaven.co.uk | GBP | 1498 | 1442 | 38 | 7 | 0/40 | 7 |
-| https://oasisperfumesusa.com | USD | 1441 | 1399 | 28 | 0 | 40/40 | 41 |
-| https://perfumeforever.com.au | AUD | 1472 | 1385 | 34 | 0 | 40/40 | 40 |
-| https://beautyencounter.com | USD | 2000 | 1346 | 57 | 2189 | 31/40 | 2229 |
-| https://gadgetsonline.co.nz | NZD | 2000 | 1341 | 71 | 1328 | 1/15 | 1329 |
-| https://perfumeclearancecentre.com.au | AUD | 1344 | 1314 | 0 | 1304 | 3/10 | 1307 |
-| https://perfumesamerica.com | USD | 2000 | 1275 | 169 | 0 | 2/40 | 2 |
-| https://ministryofscent.com | USD | 1426 | 1274 | 78 | 0 | 32/40 | 49 |
-| https://inscentivesperfume.com | USD | 1521 | 1272 | 92 | 1155 | 0/40 | 1154 |
-| https://perfumeonline.com | USD | 2000 | 1222 | 3 | 0 | 0/40 | 0 |
-| https://parfumexquis.us | USD | 1499 | 1193 | 93 | 0 | 37/40 | 43 |
-| https://thebeautystore.com | GBP | 2000 | 1192 | 265 | 0 | 40/40 | 40 |
-| https://p-eleven.com | GBP | 2000 | 1164 | 10 | 0 | 31/40 | 31 |
-| https://twistedlily.com | USD | 1444 | 1155 | 45 | 5 | 40/40 | 48 |
-| https://aromique.co.uk | GBP | 1373 | 1122 | 247 | 0 | 0/40 | 0 |
-| https://perfumeelegance.ca | CAD | 1089 | 1089 | 0 | 1396 | 0/40 | 1391 |
-| https://mazzolari.com | EUR | 2000 | 1047 | 24 | 1383 | 0/29 | 1383 |
-| https://osmeperfumery.com | USD | 1072 | 1018 | 16 | 4 | 0/40 | 2 |
-| https://libertineparfumerie.com.au | AUD | 2000 | 935 | 262 | 1149 | 0/20 | 1149 |
-| https://mysticperfume.com | USD | 859 | 843 | 11 | 2 | 35/40 | 49 |
-| https://theperfumehouse.com | USD | 803 | 759 | 20 | 0 | 0/40 | 0 |
-| https://ca.oilperfumery.com | CAD | 751 | 747 | 0 | 0 | 40/40 | 80 |
-| https://luxuryperfume.com | USD | 2000 | 726 | 3 | 0 | 0/40 | 0 |
-| https://mensbiz.com.au | AUD | 1605 | 712 | 60 | 680 | 0/31 | 680 |
-| https://noah.com.au | AUD | 1605 | 712 | 60 | 680 | 0/31 | 680 |
-| https://perfumefactory.ca | CAD | 765 | 700 | 14 | 0 | 38/40 | 39 |
-| https://perfumology.com | USD | 1207 | 688 | 38 | 3 | 26/40 | 32 |
-| https://dansunjardin.com | CAD | 770 | 669 | 0 | 0 | 40/40 | 40 |
-| https://bezali.com | USD | 2000 | 652 | 81 | 653 | 0/0 | 653 |
-| https://alrashad.com | USD | 899 | 645 | 3 | 0 | 38/40 | 37 |
-| https://monc13.com | USD | 1823 | 624 | 2 | 315 | 38/40 | 327 |
-| https://justmylook.com | GBP | 2000 | 623 | 14 | 0 | 40/40 | 40 |
-| https://alhusseinperfumes.com | USD | 672 | 613 | 0 | 459 | 14/40 | 469 |
-| https://opulensi.com | GBP | 631 | 603 | 2 | 0 | 40/40 | 40 |
-| https://slickboys.co.uk | GBP | 1324 | 594 | 9 | 0 | 22/40 | 22 |
-| https://fragrancehub.co.uk | GBP | 584 | 569 | 0 | 0 | 8/40 | 8 |
-| https://fumerie.com | USD | 699 | 569 | 31 | 405 | 5/40 | 405 |
-| https://fragranceoriginal.com | USD | 565 | 550 | 15 | 0 | 36/40 | 36 |
-| https://connectionparfumerie.com.au | AUD | 1049 | 526 | 26 | 0 | 38/40 | 56 |
-| https://microperfumes.com | USD | 1743 | 512 | 1221 | 0 | 40/40 | 40 |
-| https://snud.at | EUR | 755 | 497 | 48 | 2 | 37/40 | 41 |
-| https://fragranceofarabia.com | GBP | 560 | 440 | 0 | 234 | 8/40 | 62 |
-| https://buymoreperfumes.com | USD | 439 | 438 | 0 | 1 | 21/40 | 22 |
-| https://fragranceusa.com | USD | 613 | 438 | 89 | 60 | 0/40 | 57 |
-| https://hparfums.com | CAD | 447 | 430 | 10 | 0 | 0/40 | 0 |
-| https://mutamayez-perfume.com | USD | 734 | 430 | 22 | 1 | 8/40 | 9 |
-| https://shop.sa-usa.com | USD | 734 | 430 | 22 | 1 | 8/40 | 9 |
-| https://asedos.com.au | AUD | 441 | 428 | 0 | 0 | 22/27 | 22 |
-| https://cosmeticcapital.com.au | AUD | 2000 | 425 | 0 | 0 | 31/40 | 31 |
-| https://cosbar.com | USD | 2000 | 423 | 13 | 618 | 1/1 | 619 |
-| https://mccabespharmacy.com | EUR | 2000 | 406 | 0 | 0 | 40/40 | 40 |
-| https://gordonsdirect.com | GBP | 2000 | 384 | 2 | 0 | 40/40 | 51 |
-| https://brands.co.nz | NZD | 397 | 379 | 11 | 0 | 39/40 | 39 |
-| https://thebrandoutlet.co.nz | NZD | 397 | 379 | 11 | 0 | 39/40 | 39 |
-| https://worldbrand.co.nz | NZD | 2000 | 377 | 17 | 309 | 0/40 | 309 |
-| https://roullierwhite.com | GBP | 864 | 315 | 0 | 0 | 29/40 | 25 |
-| https://lessenteurs.com | GBP | 748 | 313 | 346 | 0 | 8/40 | 8 |
-| https://nosenotes.com | DKK | 359 | 312 | 11 | 0 | 0/40 | 0 |
-| https://buhmayzing.com | USD | 968 | 298 | 1 | 0 | 0/40 | 0 |
-| https://periyard.com | EUR | 306 | 298 | 0 | 0 | 0/40 | 0 |
-| https://rabica.ca | CAD | 1551 | 281 | 668 | 21 | 9/9 | 30 |
-| https://perfumes4u.com | USD | 392 | 274 | 26 | 0 | 0/40 | 0 |
-| https://myfragranceplace.com | CAD | 2000 | 267 | 5 | 0 | 0/0 | 0 |
-| https://bnperfumes.com | CAD | 2000 | 266 | 5 | 0 | 0/40 | 0 |
-| https://nzfragrance.com | NZD | 1072 | 266 | 1 | 0 | 0/40 | 0 |
-| https://oakcha.com | USD | 276 | 266 | 10 | 0 | 40/40 | 40 |
-| https://purefx.co.nz | NZD | 1047 | 254 | 0 | 0 | 0/40 | 0 |
-| https://scentrushfragrances.com | USD | 2000 | 244 | 1323 | 0 | 15/40 | 16 |
-| https://checkout.ozhairandbeauty.com | AUD | 2000 | 240 | 2 | 10 | 38/40 | 48 |
-| https://perfume-boutique.net | USD | 248 | 239 | 6 | 2 | 37/40 | 47 |
-| https://dubaiaroma.nz | NZD | 671 | 221 | 1 | 0 | 0/40 | 0 |
-| https://indigoperfumery.com | USD | 725 | 221 | 36 | 0 | 0/40 | 0 |
-| https://bichae.co.uk | GBP | 524 | 215 | 3 | 0 | 0/40 | 0 |
-| https://jubileescents.co.uk | GBP | 218 | 214 | 0 | 0 | 40/40 | 84 |
-| https://peonymelbourne.com.au | AUD | 739 | 212 | 12 | 0 | 0/40 | 0 |
-| https://www.meagherspharmacy.ie | EUR | 2000 | 192 | 1 | 0 | 39/40 | 56 |
-| https://fathyibrahim.com | EGP | 2000 | 187 | 0 | 182 | 0/6 | 182 |
-| https://fendrihan.com | USD | 2000 | 182 | 4 | 0 | 29/40 | 49 |
-| https://encapturestore.com | EUR | 1440 | 181 | 0 | 0 | 40/40 | 46 |
-| https://unichem.co.nz | NZD | 2000 | 176 | 1 | 0 | 40/40 | 40 |
-| https://kbeautyx.com | USD | 2000 | 175 | 6 | 0 | 39/40 | 41 |
-| https://fragflex.com | USD | 248 | 173 | 75 | 0 | 30/40 | 43 |
-| https://beautyhabit.com | USD | 2000 | 168 | 15 | 0 | 36/40 | 38 |
-| https://blendzzscents.com | GBP | 168 | 168 | 0 | 0 | 0/40 | 0 |
-| https://irisoud.com | USD | 2000 | 167 | 1833 | 1 | 20/40 | 21 |
-| https://fragranceintense.com | USD | 163 | 163 | 0 | 0 | 0/40 | 0 |
-| https://theblumzperfumery.com | CAD | 248 | 157 | 19 | 0 | 0/0 | 0 |
-| https://fragrancesource.ca | CAD | 179 | 147 | 25 | 0 | 34/40 | 34 |
-| https://cloud10beauty.com | EUR | 2000 | 142 | 10 | 9 | 17/18 | 26 |
-| https://amourscents.com | GBP | 793 | 140 | 6 | 0 | 0/40 | 0 |
-| https://escentual.com | GBP | 247 | 134 | 15 | 0 | 40/40 | 41 |
-| https://ausliebezumduft.de | EUR | 2000 | 133 | 97 | 1 | 40/40 | 45 |
-| https://alexandriauk.com | GBP | 252 | 127 | 4 | 0 | 40/40 | 162 |
-| https://belvera.co.uk | GBP | 2000 | 107 | 6 | 0 | 37/40 | 37 |
-| https://scentsyndicate.com | USD | 113 | 106 | 7 | 0 | 16/40 | 21 |
-| https://perfumeaustralia.com.au | AUD | 115 | 103 | 0 | 0 | 40/40 | 89 |
-| https://perfumezforless.com | AUD | 102 | 102 | 0 | 0 | 0/40 | 0 |
-| https://samsfragranceshop.com | USD | 310 | 96 | 26 | 0 | 0/40 | 0 |
-| https://canadianglow.ca | CAD | 2000 | 92 | 8 | 0 | 37/40 | 37 |
-| https://allbeauty.com | GBP | 205 | 90 | 2 | 0 | 39/40 | 39 |
-| https://store.muslimamerican.com | USD | 780 | 87 | 0 | 0 | 0/40 | 0 |
-| https://beardandblade.com.au | AUD | 1126 | 86 | 6 | 0 | 32/40 | 32 |
-| https://nourishedlife.com.au | AUD | 2000 | 81 | 8 | 0 | 40/40 | 40 |
-| https://caveparfumerie.com | DKK | 87 | 79 | 8 | 0 | 0/40 | 0 |
-| https://pl-line.com | EUR | 1605 | 78 | 0 | 0 | 0/40 | 0 |
-| https://signelocal.com | CAD | 2000 | 78 | 0 | 0 | 4/40 | 13 |
-| https://herabeauty.ca | CAD | 2000 | 77 | 0 | 77 | 0/0 | 77 |
-| https://muslimmall.com | USD | 1846 | 69 | 0 | 0 | 0/40 | 0 |
-| https://shoppostoak.com | USD | 1103 | 64 | 3 | 0 | 0/40 | 0 |
-| https://thomsoncarter.com | GBP | 100 | 61 | 1 | 0 | 0/40 | 0 |
-| https://asiangroceronline.com.au | AUD | 2000 | 56 | 1 | 47 | 3/9 | 50 |
-| https://parlorco.com | USD | 91 | 49 | 1 | 0 | 0/40 | 0 |
-| https://whelehans.ie | EUR | 331 | 48 | 0 | 1 | 21/40 | 27 |
-| https://osswaldnyc.com | USD | 1014 | 45 | 154 | 20 | 3/25 | 23 |
-| https://verso.com | EUR | 2000 | 45 | 2 | 0 | 6/40 | 6 |
-| https://atlanticperfumes.co.uk | GBP | 45 | 44 | 0 | 0 | 0/40 | 0 |
-| https://guardianpharmacy.co.nz | NZD | 2000 | 43 | 0 | 0 | 40/40 | 40 |
-| https://notedaromas.co.uk | GBP | 211 | 43 | 0 | 0 | 0/40 | 0 |
-| https://rosebellefragrances.com.au | AUD | 42 | 42 | 0 | 0 | 0/40 | 0 |
-| https://oakandtonic.ca | CAD | 561 | 38 | 1 | 0 | 21/38 | 21 |
-| https://essentialparfums.com | EUR | 66 | 36 | 0 | 0 | 36/36 | 36 |
-| https://handsomescent.com | EUR | 202 | 32 | 9 | 0 | 0/8 | 0 |
-| https://ca.shopatshowcase.com | CAD | 1379 | 29 | 1 | 0 | 26/29 | 26 |
-| https://shopatshowcase.com | CAD | 1379 | 29 | 1 | 0 | 26/29 | 26 |
-| https://enchanteperfumes.com | CAD | 2000 | 27 | 3 | 0 | 0/27 | 0 |
-| https://paraphraseperfume.ca | CAD | 45 | 26 | 16 | 0 | 26/26 | 35 |
-| https://clemsbeauty.com | CAD | 2000 | 25 | 1 | 0 | 0/25 | 0 |
-| https://discountbeautyboutique.com.au | AUD | 2000 | 24 | 1 | 0 | 24/24 | 24 |
-| https://scentrica.com | USD | 40 | 24 | 16 | 0 | 0/24 | 0 |
-| https://hairhouse.com.au | AUD | 2000 | 23 | 4 | 0 | 23/23 | 23 |
-| https://memoriesandscents.nl | EUR | 1077 | 23 | 8 | 0 | 0/23 | 0 |
-| https://oudlux.ca | USD | 199 | 23 | 0 | 0 | 5/6 | 5 |
-| https://amberjack.co.nz | NZD | 69 | 20 | 2 | 0 | 18/20 | 18 |
-| https://the7virtues.com | USD | 44 | 20 | 2 | 0 | 20/20 | 40 |
-| https://godaperfume.com | USD | 67 | 19 | 0 | 0 | 0/19 | 0 |
-| https://dukhni.com | GBP | 153 | 18 | 0 | 0 | 18/18 | 18 |
-| https://fragroom.co | USD | 184 | 18 | 7 | 0 | 0/18 | 0 |
-| https://underyours.com | ? | 2000 | 17 | 21 | 0 | 12/17 | 12 |
-| https://paperplanestore.com | NZD | 2000 | 13 | 0 | 0 | 0/13 | 0 |
-| https://petitparfums.ca | CAD | 408 | 13 | 5 | 0 | 0/13 | 0 |
-| https://tjc.co.uk | GBP | 2000 | 13 | 0 | 0 | 0/13 | 0 |
-| https://lafemmebeauty.co.nz | NZD | 2000 | 11 | 0 | 0 | 0/11 | 0 |
-| https://topflightfragrances.com | GBP | 135 | 11 | 0 | 0 | 0/11 | 0 |
-| https://cornerpharmacy.co.nz | NZD | 752 | 10 | 0 | 0 | 5/10 | 5 |
-| https://nzonlinechemist.co.nz | NZD | 2000 | 10 | 0 | 0 | 10/10 | 10 |
-| https://theperfumestash.com | GBP | 11 | 9 | 2 | 0 | 0/9 | 0 |
-| https://whif.com.au | AUD | 155 | 9 | 1 | 0 | 9/9 | 13 |
-| https://shop.aucklandartgallery.com | NZD | 688 | 8 | 1 | 0 | 0/8 | 0 |
-| https://sistersandco.com | NZD | 2000 | 8 | 1 | 0 | 0/8 | 0 |
-| https://essentialsvs.nz | NZD | 666 | 7 | 0 | 0 | 4/7 | 4 |
-| https://healthchemist.co.nz | NZD | 2000 | 7 | 0 | 0 | 7/7 | 7 |
-| https://venomscent.com | USD | 48 | 7 | 0 | 0 | 0/7 | 0 |
-| https://teuru.org.nz | NZD | 706 | 6 | 0 | 0 | 3/6 | 3 |
-| https://blushedbow.com | AUD | 19 | 5 | 0 | 0 | 0/5 | 0 |
-| https://carouselstore.co.uk | GBP | 2000 | 4 | 0 | 0 | 0/4 | 0 |
-| https://spacecraftcreative.co.nz | NZD | 2000 | 4 | 0 | 0 | 0/4 | 0 |
-| https://my-oud.fr | EUR | 78 | 3 | 0 | 0 | 0/3 | 0 |
-| https://purepharmacy.ie | EUR | 930 | 2 | 1 | 2 | 0/0 | 2 |
-| https://shutthefrontdoor.co.nz | NZD | 249 | 2 | 0 | 0 | 0/2 | 0 |
-| https://triumphanddisaster.co.nz | NZD | 62 | 2 | 1 | 0 | 1/2 | 1 |
-| https://bodycare.com | GBP | 5 | 1 | 0 | 0 | 1/1 | 1 |
-| https://cupids.com | USD | 66 | 1 | 1 | 0 | 0/1 | 0 |
-| https://barjani.com | USD | 2 | 0 | 0 | 0 | 0/0 | 0 |
-| https://barkersonline.co.nz | NZD | 1609 | 0 | 0 | 0 | 0/0 | 0 |
-| https://bestperfumes.com | INR | 20 | 0 | 0 | 0 | 0/0 | 0 |
-| https://ewsouk.com | USD | 2000 | 0 | 0 | 0 | 0/0 | 0 |
-| https://geebeauty.ca | CAD | 623 | 0 | 0 | 0 | 0/0 | 0 |
-| https://indigo.ca | CAD | 2000 | 0 | 0 | 0 | 0/0 | 0 |
-| https://maisoncosmetics.com | USD | 42 | 0 | 0 | 0 | 0/0 | 0 |
-| https://parallelimported.co.nz | NZD | 2000 | 0 | 0 | 0 | 0/0 | 0 |
-| https://perfume.myshopify.com | USD | 1 | 0 | 0 | 0 | 0/0 | 0 |
-| https://qdstores.co.uk | GBP | 2000 | 0 | 0 | 0 | 0/0 | 0 |
-| https://radiusshop.co.nz | NZD | 388 | 0 | 0 | 0 | 0/0 | 0 |
-| https://scentspired.co.uk | GBP | 244 | 0 | 0 | 0 | 0/0 | 0 |
-| https://theregalnote.co.uk | GBP | 40 | 0 | 9 | 0 | 0/0 | 0 |
+| https://profumidinicchia.com | EUR | 2000 | 1461 | 29 | 1444 | 0/40 | 1438 |
+| https://parfumsraffy.com | USD | 1645 | 1434 | 14 | 0 | 0/40 | 0 |
+| https://beauty-scent.co.uk | GBP | 2000 | 1226 | 11 | 0 | 38/40 | 38 |
+| https://fragrancewholesale.co.uk | GBP | 1491 | 1164 | 161 | 0 | 0/40 | 0 |
+| https://freshbeautyco.com.au | AUD | 2000 | 955 | 136 | 0 | 39/40 | 39 |
+| https://eu.fragrance.com | EUR | 2000 | 941 | 2 | 0 | 36/40 | 36 |
+| https://giantchemistharbourtown.com.au | AUD | 2000 | 297 | 4 | 278 | 0/19 | 278 |
+| https://haarspullen.nl | EUR | 2000 | 175 | 4 | 196 | 0/0 | 196 |
+| https://endclothing.com | GBP | 2000 | 73 | 3 | 0 | 0/40 | 0 |
+| https://ry.com.au | AUD | 2000 | 53 | 7 | 3 | 40/40 | 43 |
+| https://theparfumesshop.com | GBP | 582 | 52 | 529 | 4 | 0/40 | 4 |
+| https://gwynns.com | USD | 2000 | 22 | 0 | 14 | 0/8 | 14 |
+| https://kith.com | USD | 2000 | 11 | 0 | 0 | 10/11 | 10 |
+| https://eskinstore.ca | CAD | 748 | 10 | 1 | 0 | 6/10 | 7 |
+| https://fashionclinic.com | EUR | 240 | 0 | 0 | 0 | 0/0 | 0 |
+| https://marissacollections.com | USD | 2000 | 0 | 0 | 0 | 0/0 | 0 |
+| https://mrvitamins.com.au | AUD | 2000 | 0 | 1 | 0 | 0/0 | 0 |
 
-Not readable: 50-ml.it (HTTP 404), abovethecollar.com.au (HTTP 404), adorebeauty.co.nz (HTTP 404), adorebeauty.com.au (HTTP 404), aftershave.co.uk (Unexpected end of JSON input), ajmalusa.com (fetch failed), allcures.com (HTTP 404), ambrosewilson.com (The operation was aborted due to timeout), anthropologie.com (HTTP 404), arabianoud.co.nz (fetch failed), arabianperfumes.ca (fetch failed), arabicperfume.com.au (fetch failed), arabicperfumes.co.nz (fetch failed), arabicperfumes.com.au (fetch failed), arabischeparfumshop.nl (fetch failed), armaf.ca (fetch failed), aromaarabia.com.au (fetch failed), aromora.co.uk (HTTP 404), attarmist.com (HTTP 404), attarmist.com.au (fetch failed), aurique.co.uk (HTTP 404), ausperfumes.com.au (fetch failed), austins.co.uk (fetch failed), australianperfumes.com.au (fetch failed), awesomeperfumes.com (HTTP 404), aztekc.com (HTTP 404), bakersandlarners.co.uk (429), beaute-privee.com (fetch failed), beauty-concept-shop.de (HTTP 404), beautybliss.co.nz (HTTP 403), beautyboutique.ca (HTTP 403), beautycosmetics.de (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), beautycupboard.co.nz (fetch failed), beautydirect.co.nz (fetch failed), beautyexpress.co.nz (fetch failed), beautyliv.com (HTTP 404), beautymart.ie (fetch failed), beautyonline.co.nz (fetch failed), beautyshop.gr (HTTP 441), beautyspin.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), beautystore.co.nz (fetch failed), beautysuccess.fr (HTTP 404), beautywelt.de (HTTP 423), belk.com (HTTP 403), bellezaactiva.com (HTTP 404), bergdorfgoodman.com (HTTP 403), bigdiscountfragrances.com (HTTP 404), bjutip.com (HTTP 404), bloomingdales.com (HTTP 403), boohoo.com (HTTP 404), boscovs.com (HTTP 404), boutiqueparfums.ca (fetch failed), boyes.co.uk (Unexpected token '<', "
-<!DOCTYPE "... is not valid JSON), brandalley.co.uk (HTTP 404), brandsdirect.co.nz (fetch failed), bromance.co.nz (not Shopify), brownsyork.co.uk (HTTP 404), brownthomas.com (HTTP 410), brunet.ca (HTTP 404), camphopson.co.uk (not Shopify), canex.ca (HTTP 404), caramelo.com (fetch failed), cheapperfume.co.nz (fetch failed), cheapperfume.co.uk (fetch failed), cheapperfumes.com.au (fetch failed), cheapsmells.com (Unexpected token '<', "<!doctype "... is not valid JSON), chemist-4-u.com (HTTP 404), chemistdiscountcentre.co.nz (fetch failed), chiosnewyork.com (fetch failed), cincottachemist.com.au (HTTP 404), cityperfume.com.au (HTTP 404), colognecity.com (HTTP 404), cologneclub.ca (HTTP 404), colognecurators.com (HTTP 403), cosmeticsdirect.com.au (fetch failed), cosmeticsloft.ca (fetch failed), cosmeticsnow.com.au (HTTP 404), cosmeticsnow.nz (HTTP 404), costplusperfume.com.au (fetch failed), deparfumeur.com (HTTP 404), dermstore.com (HTTP 404), dicksmith.co.nz (HTTP 403), discountperfumes.co.nz (fetch failed), discountperfumes.com.au (HTTP 404), dreamfragrance.com (fetch failed), druni.es (HTTP 404), dubaiperfumes.co.uk (HTTP 404), duftbar.de (fetch failed), duftkunsthandlung.co.uk (fetch failed), dutyfreeonline.com.au (fetch failed), easycosmetic.de (The operation was aborted due to timeout), edenperfumes.co.uk (Unexpected token '<', "<!doctype "... is not valid JSON), eperfumes.ca (fetch failed), epharmacy.com.au (HTTP 403), eprofumerie.it (fetch failed), esenciasdeperfume.com (fetch failed), essenzaprofumi.it (fetch failed), ethosprofumerie.it (HTTP 403), etiket.ca (HTTP 404), femmefatalecosmetics.com.au (HTTP 404), first-in-fragrance.com (fetch failed), flaircosmetics.com.au (fetch failed), formulafragrances.co.uk (HTTP 404), fortnumandmason.com (HTTP 404), fragancias-nicho.es (fetch failed), fragplace.com (HTTP 404), fragrance.ca (fetch failed), fragrance5ml.co.nz (HTTP 401), fragrancearabia.com.au (fetch failed), fragranceboutique.co.uk (fetch failed), fragranceboutique.com.au (HTTP 404), fragrancedepot.ca (HTTP 400), fragrancedirect.co.nz (fetch failed), fragrancedirect.com.au (fetch failed), fragranceempire.co.uk (fetch failed), fragrancegallery.com.au (fetch failed), fragrancegalore.com (HTTP 404), fragranceheaven.com.au (HTTP 307), fragrancehouse.ca (Unexpected token '<', "<!doctype "... is not valid JSON), fragrancehouse.co.nz (fetch failed), fragrancehouse.co.uk (HTTP 403), fragrancehq.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), fragrancejunction.com (fetch failed), fragranceloft.com (fetch failed), fragrancenet.com (HTTP 403), fragrancenz.co.nz (HTTP 404), fragranceoutlet.co.nz (fetch failed), fragranceoutlet.co.uk (fetch failed), fragranceplanet.co.uk (fetch failed), fragrancereserve.co.uk (fetch failed), fragrances.co.uk (fetch failed), fragrancesale.com (fetch failed), fragrancesandart.com (HTTP 404), fragrancesandcosmetics.com.au (Unexpected token '<', "<!doctype "... is not valid JSON), fragrancesbyus.com (fetch failed), fragrancesdirect.com.au (fetch failed), fragrancesfinest.com (fetch failed), fragranceshop.co.nz (HTTP 404), fragranceshop.com (Unexpected token '<', "<!doctype "... is not valid JSON), fragranceshop.com.au (HTTP 404), fragrancespot.com (HTTP 404), fragrancestop.com (HTTP 404), fragrancestore.co.uk (HTTP 404), fragrancetown.com (fetch failed), fragranceworld.co.nz (fetch failed), fragranceworld.ie (fetch failed), fragrancexpress.ca (fetch failed), fragrancexpress.com.au (fetch failed), fragrancezone.ca (fetch failed), fragrancezone.co.nz (fetch failed), freepeople.com (HTTP 404), galeriedebeaute.gr (HTTP 403), giftexpress.com (Unexpected token '<', "<!doctype "... is not valid JSON), glowbeautycanada.ca (fetch failed), gradmann1864.de (HTTP 410), greenlanepharmacy.co.nz (fetch failed), harryrosen.com (HTTP 404), harveynichols.com (The operation was aborted due to timeout), harveynorman.co.nz (HTTP 500), hausofperfume.com (fetch failed), hollywoodfragrance.com.au (fetch failed), holtrenfrew.com (HTTP 403), homebargains.co.uk (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), hottperfume.com (HTTP 404), incenza.com (HTTP 404), indiescents.com (HTTP 404), jolie.fi (fetch failed), jovoyparis.com (HTTP 404), jrdutyfree.com.au (fetch failed), kaleidoscope.co.uk (HTTP 404), kianabeauty.com.au (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), kohls.com (HTTP 403), lab-fragranze.it (fetch failed), lacuradelprofumo.it (fetch failed), lagardenia.it (fetch failed), landyschemist.com (HTTP 403), laparfumerie.ca (fetch failed), laparfumerieusa.com (HTTP 400), laperfumeriaonline.es (fetch failed), lattafa.es (fetch failed), lattafa.fr (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), leekes.co.uk (HTTP 404), liannetio.nl (fetch failed), lifepharmacy.ie (HTTP 404), liquides-parfums.com (HTTP 404), littlewoods.com (HTTP 404), loreperfumery.com.au (HTTP 404), lovelula.com (fetch failed), luxearabianscents.co.uk (fetch failed), luxeperfume.co.nz (fetch failed), luxeperfumesandscents.com.au (fetch failed), maisondeniche.ca (fetch failed), makeup.uk (Unexpected end of JSON input), mandmdirect.com (The operation was aborted due to timeout), marisota.co.uk (The operation was aborted due to timeout), mein-duft.de (fetch failed), mensfragrance.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), menstuff.com.au (HTTP 404), mesparfums.ca (fetch failed), mildredandco.com (HTTP 522), mirem.it (HTTP 404), mulliganspharmacy.com (HTTP 404), musk.ca (fetch failed), musk.com.au (HTTP 404), mycityscent.com (fetch failed), mycologne.com (fetch failed), myperfume.gr (fetch failed), nasengold.de (fetch failed), nasreen.com.au (fetch failed), neimanmarcus.com (HTTP 403), net-a-porter.com (HTTP 403), next.co.uk (HTTP 403), niche-beauty.com (HTTP 404), niche-perfumes.co.uk (fetch failed), niche-perfumes.com.au (fetch failed), nicheessence.com (HTTP 404), nicheparfum.nl (fetch failed), nicheperfumery.com.au (fetch failed), nicheperfumes.gr (fetch failed), noelleeming.co.nz (HTTP 403), nordicfeel.fi (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), nordstrom.com (HTTP 404), nordstromrack.com (HTTP 404), noseparis.com (HTTP 404), nzperfume.co.nz (fetch failed), nzperfumes.co.nz (fetch failed), nzpharmacy.co.nz (fetch failed), oasisfashion.com (HTTP 404), ocyanas.com (fetch failed), ohmyperfume.pt (fetch failed), olfactif.com (HTTP 404), olfactorystore.com.au (fetch failed), onceit.co.nz (Unexpected token '<', "<!doctype "... is not valid JSON), origines-parfums.com (HTTP 404), oriumscents.com (HTTP 400), oudperfumes.co.uk (fetch failed), oudshop.fr (fetch failed), oudstore.ca (fetch failed), ouroud.co.nz (fetch failed), ozscent.com.au (fetch failed), pacoperfumerias.co.uk (HTTP 404), palmbeachperfumes.com (HTTP 404), parfens.com (HTTP 404), parfinity.com (HTTP 403), parfuemerie-godel.de (HTTP 404), parfuemerie-hilpert.de (fetch failed), parfuemerie-kirschner.de (fetch failed), parfuemerie-liebe.de (fetch failed), parfuemerie-pfeiffer.de (fetch failed), parfuemerie-pieper.de (HTTP 404), parfuemerie.at (fetch failed), parfum-24.de (Unexpected token '<', "<!doctype "... is not valid JSON), parfum-zentrum.de (HTTP 404), parfumaria.com (HTTP 404), parfumarija.com (fetch failed), parfumboutique.nl (fetch failed), parfumcenter.nl (HTTP 404), parfumdirect.ca (fetch failed), parfumerie-en-ligne.fr (HTTP 503), parfumerie-online.de (Unexpected token '<', "<!doctype "... is not valid JSON), parfumerie-online.nl (fetch failed), parfumerie.be (HTTP 404), parfumerie.ca (fetch failed), parfumerie.com (HTTP 404), parfumerieenligne.ca (fetch failed), parfumeriemania.com (fetch failed), parfumerienicole.com (fetch failed), parfumeriequebec.com (fetch failed), parfumhuis.nl (fetch failed), parfumo.de (HTTP 404), parfums-arabes.fr (fetch failed), parfumsdeniche.be (fetch failed), parfumsenzo.nl (fetch failed), passionbeaute.fr (HTTP 404), perfume-city.com (HTTP 522), perfume-click.co.uk (HTTP 403), perfume-click.ie (HTTP 403), perfume-outlet.co.uk (fetch failed), perfume4every1.com (HTTP 404), perfume4u.com.au (fetch failed), perfumeaddicts.com (HTTP 404), perfumeandgift.co.uk (HTTP 500), perfumeavenue.com.au (fetch failed), perfumebar.ca (fetch failed), perfumebay.com.au (fetch failed), perfumeboss.co.uk (fetch failed), perfumeboutique.ca (fetch failed), perfumeboutique.co.nz (fetch failed), perfumebox.com.au (HTTP 404), perfumecabin.co.nz (fetch failed), perfumecenter.com (HTTP 525), perfumecentral.com.au (HTTP 404), perfumecity.com.au (fetch failed), perfumeclearance.co.nz (fetch failed), perfumeclick.ca (fetch failed), perfumeclick.co.uk (fetch failed), perfumeconnection.co.uk (fetch failed), perfumeconnection.com.au (HTTP 404), perfumecosmetics.com.au (fetch failed), perfumedepot.ca (fetch failed), perfumedepot.com.au (fetch failed), perfumedepotonline.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumedestination.ca (fetch failed), perfumedirect.co.nz (fetch failed), perfumedirect.co.uk (Unexpected token '<', "
-<!DOCTYPE "... is not valid JSON), perfumedirect.com.au (HTTP 404), perfumedirectnz.co.nz (fetch failed), perfumeempire.co.uk (fetch failed), perfumeempire.com.au (fetch failed), perfumeemporium.co.uk (HTTP 402), perfumeemporium.com (HTTP 403), perfumeemporium.com.au (fetch failed), perfumeexpress.com (fetch failed), perfumeheadquarters.com (HTTP 404), perfumeheaven.com.au (fetch failed), perfumehq.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumehut.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumeland.ca (fetch failed), perfumeland.com (fetch failed), perfumeloft.ca (fetch failed), perfumelounge.ca (fetch failed), perfumelounge.co.uk (fetch failed), perfumelounge.com.au (fetch failed), perfumelounge.nl (HTTP 404), perfumelover.co.uk (HTTP 404), perfumemart.ca (fetch failed), perfumenez.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumenow.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumenyc.com (fetch failed), perfumeoutlet.ca (fetch failed), perfumeoutlet.com.au (HTTP 404), perfumeoutletstore.com.au (fetch failed), perfumeparadise.ca (fetch failed), perfumeparlour.co.uk (fetch failed), perfumeplanet.ca (fetch failed), perfumeplanet.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumeplanet.com.au (fetch failed), perfumeplusdirect.co.uk (HTTP 404), perfumeprice.co.uk (HTTP 404), perfumeprice.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumeprincess.com (fetch failed), perfumeriadeluxe.es (fetch failed), perfumeriagotta.com (fetch failed), perfumeriajulia.es (HTTP 404), perfumeriaonline.es (fetch failed), perfumeriasavenida.com (fetch failed), perfumeriaslupe.com (fetch failed), perfumerie.co.nz (fetch failed), perfumerie.ie (fetch failed), perfumery.co.nz (fetch failed), perfumery.com.au (HTTP 404), perfumes.ca (fetch failed), perfumes.com.au (fetch failed), perfumes24h.com (HTTP 404), perfumesale.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumesalescanada.com (fetch failed), perfumesandoils.com (fetch failed), perfumesclub.com (HTTP 404), perfumesdirect.co.uk (fetch failed), perfumesdirect.com (HTTP 404), perfumesforless.com.au (HTTP 404), perfumeshop.ca (fetch failed), perfumeshop.com.au (HTTP 404), perfumeshop.ie (fetch failed), perfumeshopdirect.co.uk (fetch failed), perfumeshopper.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumeshopping.com (HTTP 403), perfumesite.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumesource.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumesplus.ca (fetch failed), perfumesplus.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumespot.com (fetch failed), perfumestore.co.nz (HTTP 404), perfumestore.com.au (HTTP 404), perfumestreet.co.uk (fetch failed), perfumeuk.co.uk (HTTP 404), perfumeuniverse.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), perfumevault.co.uk (fetch failed), perfumewarehouse.com.au (HTTP 404), perfumeworldwide.com (HTTP 401), perfumezone.co.uk (fetch failed), perfumezone.com.au (fetch failed), pharmacy-online.co.nz (fetch failed), pharmacy.co.nz (fetch failed), pharmacy4less.co.nz (fetch failed), pharmacydirect.co.nz (HTTP 404), pharmacyonline.com.au (HTTP 404), pharmacyplus.co.nz (fetch failed), pharmacyxpress.co.nz (fetch failed), pieper.de (HTTP 404), pinalli.it (HTTP 403), planetparfum.com (HTTP 404), polytronic.ca (HTTP 404), pricesmartpharmacy.com.au (fetch failed), profumeriapapini.it (fetch failed), profumeriasbraccia.it (fetch failed), profumeriavittoria.it (fetch failed), profumerieitaliane.it (fetch failed), profumi.it (fetch failed), pura.com (HTTP 404), qvcuk.com (HTTP 418), rackhams.com (HTTP 403), radiuspharmacy.co.nz (fetch failed), rasasi.ca (fetch failed), rasasiusa.com (fetch failed), regencyfragrances.com (HTTP 404), regia.es (HTTP 404), remuerapharmacy.co.nz (fetch failed), rexall.ca (HTTP 404), riwaya.co.uk (HTTP 404), sabbioni.it (HTTP 404), savagearomas.co.uk (HTTP 404), savers.co.uk (HTTP 403), scent.co.uk (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), scentbar.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), scentcentral.co.uk (fetch failed), scentcollection.com.au (HTTP 404), scentfield.com (fetch failed), scentgallery.com (HTTP 404), scenthq.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), scenthub.co.nz (fetch failed), scentlodge.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), scentsamples.co.uk (HTTP 404), scentsational.ca (fetch failed), scentsational.co.uk (HTTP 404), scentsational.com (HTTP 404), scentsau.com.au (fetch failed), scentscanada.com (fetch failed), scentsnob.com (Unexpected token '<', "<!doctype "... is not valid JSON), scentsnz.co.nz (fetch failed), scentsofarabia.ca (fetch failed), scentsofarabia.com.au (fetch failed), scentsource.com (fetch failed), scentstore.com (HTTP 404), scentstore.com.au (fetch failed), scentsunlimited.ca (fetch failed), scentvault.ca (HTTP 404), scentzone.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), sephora.com (HTTP 403), shop4perfumes.co.uk (fetch failed), shopbop.com (HTTP 406), showcaseus.com (HTTP 404), simplescents.ie (HTTP 404), skins.nl (HTTP 404), spacenk.com (HTTP 404), stellarfragrances.com (fetch failed), stockmann.com (HTTP 403), strawberrynet.co.nz (fetch failed), sydneyperfumery.com.au (fetch failed), target.com.au (HTTP 404), tendance-parfums.com (HTTP 404), terrywhitechemmart.com.au (HTTP 404), theattarshop.co.uk (fetch failed), thebeautyclub.com.au (Unexpected token '<', "<!doctype "... is not valid JSON), thebrandster.com (fetch failed), thecoolhour.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), theenglishshavingcompany.com (HTTP 404), thefragrancecounter.co.uk (HTTP 404), thefragranceshop.co.uk (HTTP 403), thegroomedman.com.au (fetch failed), theiconic.com.au (HTTP 403), theperfumebar.co.nz (HTTP 522), theperfumeconnection.com.au (fetch failed), theperfumehouse.co.nz (fetch failed), theperfumeroom.co.nz (fetch failed), theperfumery.com.au (fetch failed), theperfumerybarcelona.com (HTTP 404), theperfumeshop.com (HTTP 403), theperfumespot.com (HTTP 404), theperfumewarehouse.co.uk (fetch failed), therange.co.uk (HTTP 403), thescentedcottage.com (fetch failed), thescentsmith.com (HTTP 403), thescentstore.co.uk (fetch failed), theshelter.co.nz (fetch failed), thewarehousebeauty.com (HTTP 404), tkmaxx.com (Unexpected token '<', "<!doctype "... is not valid JSON), tofs.com (HTTP 404), ulta.com (Unexpected token '<', "<esi:debug"... is not valid JSON), ultimatefragrance.com (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), une-parfumerie.fr (fetch failed), unichemcashmere.co.nz (fetch failed), unichemrichmond.co.nz (fetch failed), unichemwhangarei.co.nz (fetch failed), uniprix.com (HTTP 404), unitedperfumes.co.uk (HTTP 404), urbanoutfitters.com (HTTP 404), very.co.uk (HTTP 404), vonmaur.com (HTTP 404), watchmaxx.com (HTTP 404), wells.pt (HTTP 410), wildirisperfumerie.co.uk (fetch failed), worldoffragrances.co.nz (fetch failed), yafperfume.com (HTTP 404), zephoria.com.au (HTTP 401)
+Not readable: 10ml.com (HTTP 404), fragrance.com (HTTP 403), luckyscent.com (HTTP 404), maisondesfragrances.fr (Unexpected token '<', "<!DOCTYPE "... is not valid JSON), maxparfum.net (HTTP 404), nicheessence.com (HTTP 404), olfactif.com (HTTP 404), ozhairandbeauty.com (HTTP 404), ozhairandbeauty.nz (HTTP 404), perfumeworldwide.com (HTTP 401), tessuti.co.nz (HTTP 404), vanitystock.com (HTTP 404)
