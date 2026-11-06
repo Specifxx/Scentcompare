@@ -5,12 +5,13 @@
 // beauty partners; all sit above the stores, labelled "Paid link", never counted
 // as a store and never the "best price" (family rule: commission never re-ranks).
 import { REGION_BY_CODE, type RegionCode } from "@/site";
-import { amazonItemUrl, buyLink, amazonSearchUrl, ebayAffiliateUrl, ebaySearchUrl, ebayShopHost, partnerAwinId, partnersFor, storePays, subId } from "@/lib/affiliate";
-import { getPromos, getShipping, storeName } from "@/lib/data";
+import { amazonItemUrl, buyLink, amazonSearchUrl, ebayAffiliateUrl, ebaySearchUrl, ebayShopHost, PARTNERS, partnerAwinId, partnerProductUrl, partnersFor, storePays, subId } from "@/lib/affiliate";
+import { getPartnerPrices, getPromos, getShipping, storeName } from "@/lib/data";
 import { STORE_BY_ID } from "@/content/stores";
 import { awinProgrammeFor } from "@/lib/awin";
 import { awinOffers, bestPerItem, dealNote, liveDeal, offerNote, type AwinPromotion } from "@/lib/promos";
 import awinPromos from "@/lib/awin-promotions.json";
+import { partnerPriceIn } from "@/lib/partner-feed";
 import { AMAZON_CLOCK, amazonLive } from "@/lib/amazon-live";
 import { deliveryNote } from "@/lib/shipping";
 import { money } from "@/lib/format";
@@ -71,18 +72,28 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
       paid: true,
       event: { source: "amazon", region, placement: `${placement}_pinned`, ean: f.ean },
     });
-  // Big international retailers (YesStyle, Stylevana…): no price feed we can
-  // read, so a search link each, in their own labelled group, never ranked.
-  const overseas: RowData[] = partnersFor(region, q, sub).map(({ p, href, paid }) => ({
-    name: p.name,
-    sub: p.note,
-    price: null,
-    status: null,
-    href,
-    paid,
-    offer: paid ? offersNote(partnerAwinId(p), region) : null,
-    event: { source: p.key, region, placement: `${placement}_overseas`, ean: f.ean },
-  }));
+  // Big international retailers. One whose affiliate product feed lists this
+  // exact barcode (lib/partner-feed.ts, 2026-11-06: Stylevana through Awin)
+  // gets a row like eBay's and Amazon's, with its own price and a tracked link
+  // to the product: pinned, labelled, never a store and never the best price.
+  // The rest are a search link each, in their own labelled group, never ranked;
+  // a feed-only partner shows nowhere else.
+  const feeds = getPartnerPrices();
+  const fedRow = (p: (typeof PARTNERS)[number]): RowData | null => {
+    const fed = p.feedEnv ? partnerPriceIn(feeds, p.key, region, f.ean) : null;
+    const href = fed && partnerProductUrl(p, fed.u, sub);
+    return fed && href ? { name: p.name, sub: `${p.note}, this exact barcode`, price: money(fed.p, region), status: "in", href, paid: true, offer: offersNote(partnerAwinId(p), region), event: { source: p.key, region, placement: `${placement}_pinned`, ean: f.ean } } : null;
+  };
+  for (const p of PARTNERS.filter((x) => x.feedOnly && x.regions.includes(region))) {
+    const row = fedRow(p);
+    if (row) pinned.push({ ...row, paid: true });
+  }
+  const overseas: RowData[] = [];
+  for (const { p, href, paid } of partnersFor(region, q, sub)) {
+    const row = paid ? fedRow(p) : null;
+    if (row) pinned.push({ ...row, paid: true });
+    else overseas.push({ name: p.name, sub: p.note, price: null, status: null, href, paid, offer: paid ? offersNote(partnerAwinId(p), region) : null, event: { source: p.key, region, placement: `${placement}_overseas`, ean: f.ean } });
+  }
   const ship = getShipping();
   const promos = getPromos();
   const fmt = (m: number) => money(m, region);
@@ -99,6 +110,7 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
       price: money(o.p, region),
       status: o.st,
       href: link.href,
+      vote: o.u,
       checkout: link.to === "checkout",
       paid: storePays(o.s),
       highlight: o === best,

@@ -68,7 +68,10 @@ Previews build only with `[preview]`, when the owner asks. `claude/*` and `ccr-*
   (hard-coded tags: US `riftcompare-20`, AU `scentcompare-22`, UK `compareempi03-21`, CA `compareempire-20`, EU
   `compareempire-21`), and the retailers in `PARTNERS` (FragranceX, FragranceNet, Perfumania, Sephora, Notino, Scent
   Store, LOOKFANTASTIC, Cult Beauty, Parfumdreams, Sobelia, Adore Beauty, YesStyle), each shown only once its `AFF_*`
-  tracking template is set in Vercel (FragranceX and FragranceNet always, as plain searches until then). None is
+  tracking template is set in Vercel (FragranceX and FragranceNet always, as plain searches until then). Stylevana (Awin, 2026-11-06) is feed-only: a
+  priced row only where its product feed (`AWIN_FEED_STYLEVANA`, `scripts/partner-feeds.ts`) lists the exact barcode (ean, product_GTIN
+  or upc), or, for a feed row with no barcode at all, one exact and unique house + name + size (`byBrandName`); both stock
+  columns must say in stock. None is
   ever counted as a store or "the cheapest"; commission never decides order. `tests/site.test.ts` pins it.
 - eBay listings come only from `scripts/ebay-import.ts` in GitHub Actions (Browse API by GTIN, new, Buy It Now,
   local sellers only, never from CN/HK sellers, 60%–300% of the store median). ScentCompare has its OWN keyset

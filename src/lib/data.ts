@@ -10,6 +10,7 @@ import { lowestOrderable } from "./history";
 import type { EbayData, History, Meta, Offer, Product } from "./types";
 import { unpackProducts } from "./products-file";
 import { deliveryFor, MAX_SMALL_ORDER_FEE, type ShippingData } from "./shipping";
+import type { PartnerPricesFile } from "./partner-feed";
 import type { PromoData } from "./promos";
 
 // SC_DATA_DIR points local development and tests at a fixture; production
@@ -50,6 +51,7 @@ export const getEbay = (): EbayData => {
   return (ebayShown = out);
 };
 /** Weekly delivery quotes per store (scripts/shipping.ts; lib/shipping.ts). */
+export const getPartnerPrices = (): PartnerPricesFile | null => load<PartnerPricesFile | null>("partners.json", null);
 export const getShipping = (): ShippingData =>
   once("shipping", () => Object.fromEntries(Object.entries(load<ShippingData>("shipping.json", {})).filter(([, q]) => q.fee <= MAX_SMALL_ORDER_FEE)));
 

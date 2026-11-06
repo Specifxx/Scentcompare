@@ -1,21 +1,22 @@
-// The mark: a rose-to-peach rounded square with a white perfume flacon (cap,
-// neck, bottle) and a spritz of two drops. Same as src/app/icon.svg.
+// The mark (owner, 2026-11-06): a square perfume bottle in see-through glass with a thin
+// light-grey edge, a soft rose scent and a matte gold lid, on light blue. Calm, not shiny.
+// Same as src/app/icon.svg, which also draws the favicon, apple icon and share images' mark.
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
       <defs>
-        <linearGradient id="sc-mark" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#2563eb" />
-          <stop offset="1" stopColor="#60a5fa" />
-        </linearGradient>
+      <linearGradient id="sc-mark-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stopColor="#a9cdf5"/>
+      <stop offset="1" stopColor="#5b93d6"/>
+      </linearGradient>
       </defs>
-      <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#sc-mark)" />
-      <rect x="26" y="11" width="12" height="9" rx="2.5" fill="#fff" />
-      <rect x="29" y="20" width="6" height="5" fill="#fff" opacity=".9" />
-      <rect x="18" y="25" width="28" height="28" rx="8" fill="none" stroke="#fff" strokeWidth="5" />
-      <path d="M26 44a6 6 0 0 1 12 0" stroke="#fff" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity=".9" />
-      <circle cx="48" cy="14" r="2.5" fill="#fff" opacity=".9" />
-      <circle cx="54" cy="20" r="1.8" fill="#fff" opacity=".7" />
+      <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#sc-mark-bg)"/>
+      <rect x="29" y="20.3" width="6" height="3.7" fill="#e6eaf0" fillOpacity=".45" stroke="#e6eaf0" strokeWidth="1.6"/>
+      <rect x="16" y="24" width="32" height="31" rx="5" fill="#e6eaf0" fillOpacity=".3"/>
+      <path d="M17 37h30v13a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4z" fill="#e8a6bd" fillOpacity=".85"/>
+      <rect x="16" y="24" width="32" height="31" rx="5" fill="none" stroke="#e6eaf0" strokeWidth="2"/>
+      <rect x="25" y="9" width="14" height="10" rx="1.5" fill="#c9a35c"/>
+      <rect x="25" y="9" width="14" height="10" rx="1.5" fill="none" stroke="#a9843f" strokeWidth="1"/>
     </svg>
   );
 }
