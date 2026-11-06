@@ -880,3 +880,19 @@ sites shares its thumbs; this site stores nothing and fetches the tally in the b
 step). One vote per browser per store, a few per network, marketplaces (eBay, Amazon, TCGplayer…) get none. Votes never
 order prices, hide a store or decide the cheapest. RiftCompare's DECISIONS.md, 2026-11-06, has the rules; change the
 component there first and copy it.
+## 2026-11-06 — Stylevana's feed: every barcode column, both stock columns, a strict name fallback
+
+**Decision (owner: "match products by GTIN/EAN/UPC first, then brand + name as a fallback; use in_stock and
+stock_status to mark availability"):** the feed Bill created (Stylevana US, CSV, gzip) carries `ean`, `product_GTIN`,
+`upc`, `mpn`, `in_stock`, `stock_status` and `brand_name`. The reader now tries each barcode column in that order (a
+14-digit GTIN with a leading zero is the same EAN-13), and a row is in stock only when BOTH stock columns agree; out of
+stock, pre-order and backorder rows are not shown (a partner row is a price you can buy now, not a status).
+
+The name fallback goes against the site's barcode-only rule, so it is as narrow as it can be and applies only to a
+feed row with no valid barcode in any column: the house (`brandKey`), the name's words with the house and sizes removed
+(EDP/EDT/EDC spelled out), and a size that agrees within 10% must point at exactly ONE product we compare; the title
+rules still refuse testers, decants, sets and bundles, and the 60–160% price band still applies. Eau de Parfum against
+Eau de Toilette, 50 ml against 100 ml, or an extra word ("Intense", "Elixir") never match; two bottles under one key is
+no match. Store listings stay barcode-only. The run log counts how many prices came by name, so if the fallback ever
+shows a wrong bottle it can be switched off by passing no index in `scripts/partner-feeds.ts`. Never the URL in a log:
+errors print `<feed url>`.
