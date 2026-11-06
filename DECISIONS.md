@@ -878,3 +878,6 @@ sites shares its thumbs; this site stores nothing and fetches the tally in the b
 step). One vote per browser per store, a few per network, marketplaces (eBay, Amazon, TCGplayer…) get none. Votes never
 order prices, hide a store or decide the cheapest. RiftCompare's DECISIONS.md, 2026-11-06, has the rules; change the
 component there first and copy it.
+
+The glass edge and neck are a very light grey (`#e6eaf0`), not white (owner, same day).
+The gold lid is drawn last, above the neck, so its outline stays whole (owner, same day).
