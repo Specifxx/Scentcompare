@@ -828,3 +828,12 @@ in stock, the currency's own region only (the feed is USD, so US only), 60–160
 (a mini or a gift set otherwise). It needs the GitHub secret `AWIN_FEED_STYLEVANA` (the Create-a-Feed download link,
 which carries the Awin API key); until it exists nothing shows. Never a store, the cheapest, a deal, the alert feed or
 history; the ops monitor's "Partner feeds" check goes amber on a failed or stale read.
+
+## 2026-11-06: The mark is a gold flacon on ink navy
+
+The owner found the blue-gradient outline bottle too stock-icon-like and its colours too light and "girly". The mark is
+now a solid, faceted gold flacon on a deep ink-navy square: rich, gender-neutral, and it sits with the cobalt site
+theme. Of three drawn options (ink & gold, oxblood & champagne, forest & amber) ink & gold was picked because the navy
+belongs to the site's own blue family. `src/app/icon.svg` and `LogoMark` stay identical; `node scripts/og/render.mjs`
+redraws the favicon and apple icon, and the share images read `icon.svg` at build. The browser theme colour left over
+from KaeYoung (`#fff8fa`, pink) is now the page's ice white.
