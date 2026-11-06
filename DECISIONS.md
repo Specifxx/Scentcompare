@@ -1080,3 +1080,9 @@ quirky place where … it smells like this combined with this" to make an inform
 - SEO: "What does X smell like?" leads the product FAQ (FAQPage JSON-LD), the meta description leads with "X smells
   like …" when it fits, and `/notes` plus `/notes/<note>` (every note on 8+ products, about 120, prerendered, in the
   sitemap, top 24 per section) answer "perfumes with vanilla" searches. Linked from the side nav.
+
+## 2026-11-06: "Lowest store price", sold-out rows without a price (from KaeYoung)
+
+Ported from KaeYoung's underperformer fixes (owner: every KaeYoung change also goes here). The headline and its row say
+"Lowest store price", since partner feed rows and eBay are never the best price; sold-out store rows stay at the bottom
+with no price.
