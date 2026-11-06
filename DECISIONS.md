@@ -1020,3 +1020,22 @@ the Amazon ad banner that's scrollable", like DexCompare, MTG Compare, RiftCompa
 
 **Measure** with the sisters' ~11-10 / ~11-17 checks (EPN customid, Amazon ascsubtag, `buy_click` placements `side_ebay`,
 `side_amazon`, `dock_ebay`). If pages per visit drop, drop the dock first.
+
+## 2026-11-06: Feature only products of about US$20+, eBay calls only on them, "Also check" rows
+
+Owner (Bill): "the products we feature should be at least 20 USD or the equivalent … on the homepage", "the eBay API as
+well … products that are over 20 USD", and with no eBay or Amazon price "say also check on eBay, also check on Amazon
+… it stands out" (KaeYoung the same, #68).
+
+- `lib/featured.ts`: a product is featured in a region when its cheapest in-stock price there is at least US$20, CA$28,
+  A$31, NZ$34, £16 or €19 (rounded up from US$20, so never under it). The homepage hero picks (and the home share card),
+  Popular, Biggest savings and New arrivals rows read only featured products. Sections, brands, search, /popular,
+  /deals and product pages still list everything.
+- The eBay plan (`planEbay`'s `eligible`) searches only featured (product, region) pairs. First run 14:20 UTC: 2,500
+  calls, 1,302 products with a live eBay listing (US 1,065, CA 112, UK 179, AU 102, EU 83).
+- The pinned eBay / Amazon row with no price reads "Also check on eBay" / "Also check on Amazon", tinted in the accent
+  with a "Check eBay →" button; order unchanged (eBay, Amazon, partners, stores). This supersedes "drawn exactly like a
+  store row" (2026-11-01) for the price-less rows only.
+- Amazon on 11-06: US credential throttled (429) on its first search, AU "AssociateNotEligible" (needs 10 qualifying
+  sales in 30 days), UK/CA/EU have no credential of their own; every Amazon row stays a tagged search link until a store
+  answers. The ASIN finder now also runs on an eBay-only dispatch.
