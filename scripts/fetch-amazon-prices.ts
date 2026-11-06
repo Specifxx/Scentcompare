@@ -1,6 +1,7 @@
 // Runs first in every Vercel build: Amazon's own price of each product, in every region we have an Amazon
-// tag for, looked up by barcode with the Creators API (getItems, itemIdType EAN or UPC, ten a call, one call a
-// second) and written to data/amazon-live/<REGION>.json (git-ignored). Amazon's licence lets a price be kept
+// tag for, with the Creators API (getItems, ten ASINs a call, one call a second): the ASINs the daily import
+// matched to our barcodes (scripts/amazon-asins.ts, data/amazon/asins-<REGION>.json; getItems takes no barcode),
+// written to data/amazon-live/<REGION>.json (git-ignored). Amazon's licence lets a price be kept
 // for 24 hours and shown with its time, so prices are fetched by each build and never committed; the
 // product page shows one only while under 24 hours old (lib/amazon-live.ts). Products with the most stores
 // first, AMAZON_BUILD_CALLS calls a region (30 by default: 300 products, about 35 seconds of build each).
@@ -11,7 +12,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { amazonTag } from "../src/lib/affiliate";
-import { AmazonRefused, credentialsFor, creatorsClient, MARKETS, pickListing, PRICE_RESOURCES } from "../src/lib/amazon-creators";
+import { readAsins } from "../src/lib/amazon-asins";
+import { AmazonRefused, barcodeMatches, credentialsFor, creatorsClient, MARKETS, pickListing, PRICE_RESOURCES } from "../src/lib/amazon-creators";
 import { AMAZON_LIVE_DIR, type AmazonLiveFile } from "../src/lib/amazon-live";
 import type { Product } from "../src/lib/types";
 import { REGIONS, type RegionCode } from "../src/site";
@@ -31,40 +33,37 @@ async function region(code: RegionCode, products: Product[]) {
   if (!tag || !market) return;
   const creds = credentialsFor(code);
   if (!creds) return console.log(`Amazon prices ${code}: no AMAZON_CREATORS_* credentials, skipped.`);
+  const asins = readAsins(code);
   const inRegion = products
-    .map((p) => ({ p, offers: (p.offers[code] ?? []).filter((o) => o.st !== "out") }))
-    .filter((x) => x.offers.length)
+    .map((p) => ({ p, asin: asins[p.ean]?.[0], offers: (p.offers[code] ?? []).filter((o) => o.st !== "out") }))
+    .filter((x): x is typeof x & { asin: string } => !!x.asin && x.offers.length > 0)
     .sort((a, b) => b.offers.length - a.offers.length || b.offers[0].p - a.offers[0].p);
+  if (!inRegion.length) return console.log(`Amazon prices ${code}: no ASINs found yet (scripts/amazon-asins.ts), skipped.`);
   const cap = Number(process.env.AMAZON_BUILD_CALLS || 30) * 10;
   const todo = inRegion.slice(0, cap);
-  if (!todo.length) return;
   const api = await creatorsClient(code, tag, creds);
   const fetchedAt = new Date().toISOString();
   const prices: AmazonLiveFile["prices"] = {};
-  // A 13-digit EAN and a 12-digit UPC-A are looked up by their own itemIdType, so batches are per kind.
-  const kinds = [...new Set(todo.map((x) => (x.p.ean.length === 12 ? "UPC" : "EAN")))];
-  const batches = kinds.flatMap((kind) => {
-    const xs = todo.filter((x) => (x.p.ean.length === 12 ? "UPC" : "EAN") === kind);
-    return Array.from({ length: Math.ceil(xs.length / 10) }, (_, i) => ({ kind, batch: xs.slice(i * 10, i * 10 + 10) }));
-  });
-  for (const { kind, batch } of batches) {
+  for (let i = 0; i < todo.length; i += 10) {
+    const batch = todo.slice(i, i + 10);
     let items;
     try {
-      items = await api.call("getItems", { itemIds: batch.map((x) => x.p.ean), itemIdType: kind, resources: PRICE_RESOURCES });
+      items = await api.call("getItems", { itemIds: batch.map((x) => x.asin), itemIdType: "ASIN", resources: PRICE_RESOURCES });
     } catch (e) {
       console.log(`Amazon prices ${code}: ${(e as Error).message}`);
       if (e instanceof AmazonRefused) break;
       continue;
     }
     for (const x of batch) {
-      const ids = (it: (typeof items)[number]) => [...(it.itemInfo?.externalIds?.eans?.displayValues ?? []), ...(it.itemInfo?.externalIds?.upcs?.displayValues ?? [])];
-      const it = items.find((it) => ids(it).includes(x.p.ean) || ids(it).includes(`0${x.p.ean}`) || ids(it).includes(x.p.ean.replace(/^0/, "")));
-      const pick = it && pickListing(it, market.currency);
+      const it = items.find((it) => it.asin === x.asin);
+      // The ASIN was matched by barcode; if Amazon now lists other barcodes on it, the page changed: skip it.
+      if (!it || (it.itemInfo?.externalIds && !barcodeMatches(it, x.p.ean))) continue;
+      const pick = pickListing(it, market.currency);
       if (!pick) continue;
       const cents = Math.round(pick.amount * 100);
       const ref = median(x.offers.map((o) => o.p));
       if (ref && (cents < ref * 0.6 || cents > ref * 1.6)) continue;
-      prices[x.p.ean] = { asin: it!.asin, p: cents };
+      prices[x.p.ean] = { asin: it.asin, p: cents };
     }
   }
   if (!Object.keys(prices).length) return console.log(`Amazon prices ${code}: none (${api.calls()} calls).`);
