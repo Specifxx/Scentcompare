@@ -1039,3 +1039,17 @@ well … products that are over 20 USD", and with no eBay or Amazon price "say a
 - Amazon on 11-06: US credential throttled (429) on its first search, AU "AssociateNotEligible" (needs 10 qualifying
   sales in 30 days), UK/CA/EU have no credential of their own; every Amazon row stays a tagged search link until a store
   answers. The ASIN finder now also runs on an eBay-only dispatch.
+
+
+## 2026-11-06 — eBay and Amazon rows are full price rows, on top, outlined
+
+**Decision (owner: "eBay prices and Amazon prices should function exactly like a normal store price row. So you can also
+add to cart … if it's in stock … it just sits on the very top. And it has a different colored outline"):** the eBay row
+is always the first row, with a green outline, and Amazon the second, with an amber one. Both carry everything a store
+row has: the stock line, the store thumbs (one tally per eBay / Amazon domain, `ebay.com.au`, `amazon.com`…) and the
+cart button. They are "manual" cart lines on their own tagged links (`src/lib/cart-list.ts`), never a Shopify checkout;
+an Amazon line's price is dropped from the visitor's list after 24 hours (Amazon's licence), and the cart then says to
+see today's price on Amazon. With no Amazon price the row reads "Also check on Amazon", a tagged link. Unchanged: neither
+is counted as a store, "Best price", a deal, an alert price or the reference price; TCGplayer and Cardmarket stay
+references (no thumbs, no cart line); no Amazon link in a pop-up.
+Here (follow-up to the pinned-row redesign): a priced eBay row and Amazon's own listing get "In stock", thumbs and the cart list; eBay keeps the green border, Amazon's priced row takes the amber one, the unpriced "Also check" rows keep the accent tint, and the quick view's Amazon row stays an internal link to the product page.
