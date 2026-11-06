@@ -4,7 +4,7 @@
 // or limit (family rule: the owner is not watching).
 import fs from "node:fs";
 import path from "node:path";
-import { STORES } from "@/content/stores";
+import { STORES, SHOPIFY_STORES } from "@/content/stores";
 import type { Meta } from "@/lib/types";
 import type { ReviewsFile } from "@/lib/reviews";
 import { loadStore, reviewsConfigured } from "@/lib/reviews-store";
@@ -172,11 +172,11 @@ async function main() {
     }),
     check("Delivery quotes", () => {
       const f = path.join(DATA, "shipping.json");
-      return judgeShipping(fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null, STORES.length);
+      return judgeShipping(fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null, SHOPIFY_STORES.length);
     }),
     check("Store deals", () => {
       const f = path.join(DATA, "promos.json");
-      return judgePromos(fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null, STORES.length);
+      return judgePromos(fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null, SHOPIFY_STORES.length);
     }),
     check("Partner feeds", () => {
       const f = path.join(DATA, "partners.json");

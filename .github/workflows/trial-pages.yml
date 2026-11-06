@@ -1,0 +1,40 @@
+# Temporary: a trial of the page reader on the round-4 stores (removed before merge).
+name: Trial page reader
+on:
+  push:
+    branches: ["claude/**"]
+    paths: [".github/workflows/trial-pages.yml", "scripts/read-pages.ts", "src/lib/import/pages.ts", "src/lib/import/jsonld.ts"]
+jobs:
+  trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/read-pages.ts
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: 4
+          MINUTES: 40
+          BUDGET: 25
+      - name: What each store gave
+        if: always()
+        run: |
+          for f in pages-out/*.json; do
+            node -e '
+              const s = require("./" + process.argv[1]);
+              const ps = Object.entries(s.pages);
+              const withP = ps.filter(([, r]) => r.p.length);
+              console.log("##", process.argv[1], JSON.stringify(s.run), "read", ps.length, "with barcode", withP.length);
+              for (const [u, r] of withP.slice(0, 4)) console.log("  ", u, JSON.stringify(r.p[0]));
+              for (const [u] of ps.filter(([, r]) => !r.p.length).slice(0, 3)) console.log("   none:", u);
+            ' "$f"
+          done

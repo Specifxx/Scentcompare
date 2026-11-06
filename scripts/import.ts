@@ -8,7 +8,9 @@ import { STORES, type Store } from "@/content/stores";
 import { REGION_BY_CODE } from "@/site";
 import { dropMirrors, mergeListings, type MergeState } from "@/lib/merge";
 import { recordHistory } from "@/lib/history";
-import { readShopify, shopifyOwnCurrency, PRODUCT_LOOKUPS_PER_RUN, type BarcodeCache, type ReadResult } from "@/lib/import/shopify";
+import { readShopify, shopifyOwnCurrency, PRODUCT_LOOKUPS_PER_RUN, FRAGRANCE_WORDS, type BarcodeCache, type ReadResult } from "@/lib/import/shopify";
+import { readWoo } from "@/lib/import/woocommerce";
+import { listingsFromState, type PagesFile } from "@/lib/import/pages";
 import { packProducts, unpackProducts } from "@/lib/products-file";
 import type { History, Listing, Meta, StoreRun } from "@/lib/types";
 
@@ -28,10 +30,25 @@ const write = (p: string, v: unknown, pretty = false) => {
 const budget = { lookups: PRODUCT_LOOKUPS_PER_RUN };
 
 async function readStore(store: Store, cache: BarcodeCache): Promise<ReadResult> {
+  if (store.platform === "woocommerce") return readWoo(store, cache, budget);
+  if (store.platform === "pages") return pagesFromState(store);
   const want = REGION_BY_CODE[store.region].currency;
   const own = await shopifyOwnCurrency(store);
   if (own && own !== want) throw new Error(`prices in ${own}, region needs ${want}`);
   return readShopify(store, cache, budget);
+}
+
+/** A pages store was read by the import workflow's page jobs (scripts/read-pages.ts) into
+ *  data/state/pages/<id>.json: today's listings are its fresh readings. */
+function pagesFromState(store: Store): ReadResult {
+  const file = read<PagesFile | null>(`state/pages/${store.id}.json`, null);
+  if (!file) throw new Error("not read yet (no page state)");
+  const today = new Date().toISOString().slice(0, 10);
+  let listings = listingsFromState(store, file.pages, today);
+  if (store.mixed) listings = listings.filter((l) => FRAGRANCE_WORDS.test(l.title));
+  const refused: Record<string, number> = {};
+  if (file.run?.stopped) refused[file.run.stopped] = 1;
+  return { listings, seen: Object.keys(file.pages).length, refused, noEan: Object.values(file.pages).filter((p) => !p.p.length).length };
 }
 
 async function main() {

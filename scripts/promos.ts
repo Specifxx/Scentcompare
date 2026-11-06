@@ -12,7 +12,7 @@
 //   STORES=heartdrops,kanvas npx tsx scripts/promos.ts
 import fs from "node:fs";
 import path from "node:path";
-import { STORES, type Store } from "@/content/stores";
+import { SHOPIFY_STORES as STORES, type Store } from "@/content/stores";
 import { CATEGORIES, REGION_BY_CODE } from "@/site";
 import { unpackProducts } from "@/lib/products-file";
 import { dealTiers, readCart, type CartJson, type ProductDeal, type PromoData, type StorePromos } from "@/lib/promos";

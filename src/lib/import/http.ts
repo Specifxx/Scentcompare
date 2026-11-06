@@ -33,3 +33,23 @@ export async function fetchJson<T>(url: string, init: RequestInit = {}, tries = 
 }
 
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** A page as text (product pages, sitemaps, robots.txt): the status is the caller's to judge. One retry on a 5xx or a network error. */
+export async function fetchText(url: string, accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"): Promise<{ status: number; url: string; text: string }> {
+  let lastErr: unknown;
+  for (let i = 0; i < 2; i++) {
+    try {
+      const res = await fetch(url, { headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "en" }, redirect: "follow", signal: AbortSignal.timeout(30_000) });
+      const text = await res.text();
+      if (res.status >= 500 && i === 0) {
+        await sleep(3000);
+        continue;
+      }
+      return { status: res.status, url: res.url, text };
+    } catch (e) {
+      lastErr = e;
+      await sleep(3000);
+    }
+  }
+  throw new Error(`${url}: ${(lastErr as Error)?.message ?? lastErr}`);
+}

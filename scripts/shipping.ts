@@ -15,7 +15,7 @@
 //   STORES=heartdrops,kanvas npx tsx scripts/shipping.ts
 import fs from "node:fs";
 import path from "node:path";
-import { STORES, type Store } from "@/content/stores";
+import { SHOPIFY_STORES as STORES, type Store } from "@/content/stores";
 import { destinationFor, MAX_SMALL_ORDER_FEE, type ShippingData, type StoreShipping } from "@/lib/shipping";
 
 const OUT = path.resolve("data/public/shipping.json");
