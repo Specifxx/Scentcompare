@@ -11,6 +11,7 @@ import { REGION_BY_CODE } from "@/site";
 import type { Store } from "@/content/stores";
 import { eanOf } from "../ean";
 import { readTitle } from "../title";
+import { readNotes } from "../notes";
 import type { Listing, Stock } from "../types";
 import { fetchJson, sleep } from "./http";
 
@@ -116,6 +117,8 @@ export function listingsFromProduct(
     return res;
   }
   const text = variants.length === 1 ? `${p.body_html ?? ""}` : null;
+  // The notes are the product's, so every size of it shares them (read once, only when a variant is kept).
+  let notes: ReturnType<typeof readNotes> | undefined;
   for (const v of variants) {
     const title = variantTitle(p, v);
     const info = readTitle(title, kind);
@@ -141,6 +144,8 @@ export function listingsFromProduct(
       vid: String(v.id),
       img: sizedImage(v.featured_image?.src ?? p.images?.[0]?.src),
     });
+    if (notes === undefined) notes = readNotes(p.body_html ?? "");
+    if (notes) res.listings[res.listings.length - 1].notes = notes;
   }
   return res;
 }

@@ -19,6 +19,7 @@ export function navGroups(counts: Record<CatKey, number>, topBrands: { slug: str
       title: "Save",
       links: [
         { href: "/popular", label: "Popular" },
+        { href: "/notes", label: "Shop by scent note" },
         { href: "/deals", label: "Deals today" },
         { href: "/basket", label: "Basket compare" },
         { href: "/new", label: "New arrivals" },

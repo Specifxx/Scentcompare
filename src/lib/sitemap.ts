@@ -1,5 +1,5 @@
 import { CATEGORIES, SITE } from "@/site";
-import { getBrands, getMeta, getProducts, productsOfCat } from "@/lib/data";
+import { getBrands, getMeta, getProducts, notePages, productsOfCat } from "@/lib/data";
 import { inSitemap } from "@/lib/index-tiers";
 import { GUIDES } from "@/lib/guides";
 import { LIVE_POSTS } from "@/content/blog";
@@ -66,6 +66,8 @@ function pageUrls(): SitemapUrl[] {
     u("/new", 0.7),
     u("/brands", 0.8),
     ...getBrands().map((b) => u(`/brands/${b.slug}`, 0.8)),
+    u("/notes", 0.7),
+    ...notePages().map((x) => u(`/notes/${x.note.key}`, 0.7)),
     u("/guides", 0.7),
     ...GUIDES.map((g) => u(`/guides/${g.slug}`, 0.8)),
     u("/blog", 0.6),
