@@ -868,3 +868,4 @@ now calm: a square bottle in see-through glass with a thin white edge, a soft ro
 lid and no highlights, on light blue.
 
 The glass edge and neck are a very light grey (`#e6eaf0`), not white (owner, same day).
+The gold lid is drawn last, above the neck, so its outline stays whole (owner, same day).
