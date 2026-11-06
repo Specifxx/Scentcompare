@@ -75,6 +75,21 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
       paid: true,
       event: { source: "amazon", region, placement: `${placement}_pinned`, ean: f.ean },
     });
+  // The quick view may not link to Amazon (Operating Agreement: no Amazon link in a pop-up), but the Amazon row is
+  // always second (owner, 2026-11-06): there it opens this product's own page, whose Amazon row is the tagged link.
+  if (!amazonUrl && placement.startsWith("quickview") && r.amazonHost)
+    pinned.push({
+      name: "Also check on Amazon",
+      sub: `${r.amazonHost.replace("www.", "")} · on the product page`,
+      brand: "amazon",
+      check: true,
+      price: null,
+      status: null,
+      href: `/product/${f.slug}`,
+      internal: true,
+      paid: false,
+      event: { source: "amazon", region, placement: `${placement}_pinned`, ean: f.ean },
+    });
   // Big international retailers. One whose affiliate product feed lists this
   // exact barcode (lib/partner-feed.ts, 2026-11-06: Stylevana through Awin)
   // gets a row like eBay's and Amazon's, with its own price and a tracked link
