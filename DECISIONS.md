@@ -1039,3 +1039,40 @@ well … products that are over 20 USD", and with no eBay or Amazon price "say a
 - Amazon on 11-06: US credential throttled (429) on its first search, AU "AssociateNotEligible" (needs 10 qualifying
   sales in 30 days), UK/CA/EU have no credential of their own; every Amazon row stays a tagged search link until a store
   answers. The ASIN finder now also runs on an eBay-only dispatch.
+
+## 2026-11-06: Stores beyond Shopify: product-page and WooCommerce readers
+
+Owner (Bill): "we are missing a ton of stores … if it requires new scrapers, we need to build these scrapers", and
+"missing a cheap store … people will lose confidence". Google's top results for popular bottles in every region were
+probed (`probe/page-candidates.txt`, `probe/pages-summary.md`, `probe/candidates-round.txt`): most of the shops we
+missed are not on Shopify, or have closed `products.json`.
+
+- **`platform: "pages"`** (`lib/import/pages.ts`, `lib/import/jsonld.ts`, `lib/import/robots.ts`): the store's sitemap
+  lists its product pages, and each page's schema.org Product (JSON-LD) gives the name, the GTIN the shop prints, the
+  price, its currency and the stock, as a search engine reads it. The barcode rule is unchanged: a page without a valid
+  EAN-13/UPC-A gives nothing; a product with two codes and offers that name none (a bundle, a shade card) gives nothing.
+- **Polite by construction:** only paths robots.txt allows (the `*` group, wildcards, longest match), one request about
+  every 1.2 s, a page budget per store per run (1,500 by default), and three bot-wall answers in a row (403, 429, a
+  challenge or captcha page) stop the store for the run, never worked around.
+- **Rolling reads:** a page costs a request, so each run reads pages whose barcode is already on the site first (up to
+  60% of the budget, oldest reading first), then never-seen pages, then the rest oldest first; a page with no barcode is
+  asked again after 30 days. `data/state/pages/<store>.json` keeps every reading; a listing is published only while its
+  reading is at most five days old, and only in the region's own currency.
+- **Where it runs:** `import.yml` now has eight `pages` jobs (90 minutes each, every Nth page store) before the import;
+  their state files are laid over `data/state/pages/` and committed with the data. A store whose job failed keeps its
+  old readings until they age out and shows as failed in meta.json. Ops check "Page readers": amber when a store has not
+  been read for 2.5 days, red when none has.
+- **`platform: "woocommerce"`** (`lib/import/woocommerce.ts`): the Store API (`/wp-json/wc/store/v1/products`) where
+  robots.txt allows it, barcode from the SKU or the product page. None added yet: the WooCommerce fragrance shops found
+  put no barcode in SKUs or pages.
+- **Shopify-only checks** (delivery quotes, multi-buys, the checkout link) read `SHOPIFY_STORES` only.
+- **A partner that becomes a store** loses its partner search row in that region (`isListedStore`): its priced row
+  replaces the search link.
+- **Added (round 4):** pages: Druni, Arenal, KICKS, Perfumes Club (EU, UK), Parfimo, Parfum-Zentrum, Tendance Parfums,
+  Parfumwebshop, Parfümerie Seuren, Maison des Fragrances (EU); Paco Perfumerías, Perfume UK, The Fragrance Counter
+  (UK); Luckyscent (US); Feeling Sexy, TerryWhite Chemmart (AU). Shopify: Fresh Beauty Co (AU), Fragrance.com EU,
+  Haarspullen, Profumi di Nicchia (EU). Left out: ÉCLAT (its own "inspired by" line), Parfumdreams (stays a partner row
+  until its Awin template is set, so its row can carry our tag).
+- **Walled, not read** (403, captcha or challenge): Sephora, Ulta, Macy's, Nordstrom, Douglas, Boots, Superdrug, The
+  Perfume Shop, Fragrance Direct, Notino, Chemist Warehouse, Myer, David Jones, Mecca, Priceline, Jomashop. Their
+  pages print no barcode either, or answer bots with a wall; the partner rows link the ones with programmes.

@@ -129,3 +129,13 @@ test("a WooCommerce variation is named by its parent and its size", () => {
   assert.equal(wooTitle(wp({ name: "Sauvage EDP", variation: "Size: 100ml" }), "Sauvage EDP"), "Sauvage EDP (100ml)");
   assert.equal(wooTitle(wp({ name: "Sauvage EDP - 60ml", variation: "" }), "Sauvage EDP"), "Sauvage EDP - 60ml");
 });
+
+test("ops: the page readers are judged by their last run", async () => {
+  const { judgePages } = await import("../scripts/ops-monitor");
+  const now = Date.parse("2026-11-06T12:00:00Z");
+  assert.equal(judgePages({}, now).status, "ok");
+  assert.equal(judgePages({ a: { at: "2026-11-06", read: 10 } }, now).status, "ok");
+  assert.equal(judgePages({ a: { at: "2026-11-06", read: 10 }, b: null }, now).status, "warn");
+  assert.equal(judgePages({ a: { at: "2026-11-01", read: 10 }, b: null }, now).status, "fail");
+  assert.equal(judgePages({ a: null, b: null }, now).status, "warn");
+});

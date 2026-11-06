@@ -102,6 +102,22 @@ export function judgeShipping(file: Record<string, { at: string }> | null, store
   return { status: "ok", detail: `${n} of ${stores} stores quoted` };
 }
 
+/** The product-page readers (import.yml's page jobs, scripts/read-pages.ts): each page store's last run, from
+ *  data/state/pages/<id>.json. Their readings age out after five days, so a stopped reader is amber at two days
+ *  and red when no page store has read anything in three. */
+export function judgePages(runs: Record<string, { at: string; read: number; stopped?: string } | null>, now = Date.now()): Omit<Result, "name"> {
+  const ids = Object.keys(runs);
+  if (!ids.length) return { status: "ok", detail: "no page stores" };
+  const age = (at?: string) => (at ? (now - Date.parse(at)) / 86_400_000 : Infinity);
+  const stale = ids.filter((id) => !(age(runs[id]?.at) < 2.5));
+  const fresh = ids.length - stale.length;
+  const stopped = ids.filter((id) => runs[id]?.stopped).map((id) => `${id}: ${runs[id]!.stopped}`);
+  if (!ids.some((id) => runs[id])) return { status: "warn", detail: "page stores not read yet: the next Import prices run reads them" };
+  if (!fresh) return { status: "fail", detail: `no page store read in days: check the page jobs of Import prices` };
+  if (stale.length || stopped.length) return { status: "warn", detail: [...stale.map((id) => `${id}: not read since ${runs[id]?.at ?? "never"}`), ...stopped].join("; ") };
+  return { status: "ok", detail: `${fresh} page stores read` };
+}
+
 /** The daily store-deals check (scripts/promos.ts, promos.yml). Deals older than two days are hidden by the pages,
  *  so a stopped check only means no deal notes: amber, never red. */
 export function judgePromos(file: Record<string, { at: string; deals: Record<string, unknown> }> | null, stores: number, now = Date.now()): Omit<Result, "name"> {
@@ -178,6 +194,16 @@ async function main() {
       const f = path.join(DATA, "promos.json");
       return judgePromos(fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null, SHOPIFY_STORES.length);
     }),
+    check("Page readers", () =>
+      judgePages(
+        Object.fromEntries(
+          STORES.filter((s) => s.platform === "pages").map((s) => {
+            const f = path.join("data/state/pages", `${s.id}.json`);
+            return [s.id, fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, "utf8")).run ?? null) : null];
+          }),
+        ),
+      ),
+    ),
     check("Partner feeds", () => {
       const f = path.join(DATA, "partners.json");
       return judgePartnerFeeds(fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, "utf8")) as PartnerPricesFile) : null);
