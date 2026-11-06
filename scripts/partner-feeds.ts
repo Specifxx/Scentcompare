@@ -10,7 +10,7 @@ import { Readable } from "node:stream";
 import { createGunzip } from "node:zlib";
 import { PARTNERS } from "@/lib/affiliate";
 import { unpackProducts } from "@/lib/products-file";
-import { feedHeader, keepRow, splitCells, type PartnerFeedRow, type PartnerPricesFile, type PartnerRegionPrices } from "@/lib/partner-feed";
+import { feedHeader, keepRow, nameIndex, splitCells, type PartnerFeedRow, type PartnerPricesFile, type PartnerRegionPrices } from "@/lib/partner-feed";
 import type { RegionCode } from "@/site";
 
 const DATA = path.join(process.cwd(), "data/public");
@@ -41,7 +41,7 @@ async function* lines(body: ReadableStream<Uint8Array>): AsyncGenerator<string> 
   if (buf) yield buf;
 }
 
-async function readFeed(url: string, storePrices: (r: RegionCode, ean: string) => number[]) {
+async function readFeed(url: string, storePrices: (r: RegionCode, ean: string) => number[], byName: ReturnType<typeof nameIndex>) {
   const res = await fetch(url, { headers: { "User-Agent": "ScentCompare/1.0 (+https://scentcompare.app)" }, signal: AbortSignal.timeout(600_000) });
   if (!res.ok || !res.body) throw new Error(`feed answered HTTP ${res.status}`);
   const out: Partial<Record<RegionCode, PartnerRegionPrices>> = {};
@@ -50,13 +50,15 @@ async function readFeed(url: string, storePrices: (r: RegionCode, ean: string) =
   let pending = "";
   let rows = 0;
   let kept = 0;
+  let byNameKept = 0;
   for await (const raw of lines(res.body)) {
     if (!header) {
       if (!raw.trim()) continue;
       if (/^\s*</.test(raw)) throw new Error("feed is XML: choose CSV in Create-a-Feed");
       delim = raw.includes("\t") ? "\t" : raw.includes("|") && !raw.includes(",") ? "|" : ",";
       header = feedHeader(splitCells(raw, delim).cells);
-      if (![...header.values()].includes("ean")) throw new Error("feed has no ean column: add ean (and product_GTIN) in Create-a-Feed");
+      const cols = new Set(header.values());
+      if (!cols.has("ean") && !cols.has("gtin") && !cols.has("upc")) throw new Error("feed has no barcode column: add ean, product_GTIN and upc in Create-a-Feed");
       continue;
     }
     pending = pending ? `${pending}\n${raw}` : raw;
@@ -66,22 +68,26 @@ async function readFeed(url: string, storePrices: (r: RegionCode, ean: string) =
     rows++;
     const row: PartnerFeedRow = {};
     for (const [i, f] of header) row[f] = cells[i]?.trim();
-    const k = keepRow(row, storePrices);
+    const k = keepRow(row, storePrices, undefined, byName);
     if (!k) continue;
     const reg = (out[k.region] ??= {});
     // A barcode listed twice (two colours of one listing): the cheaper wins.
     if (!reg[k.ean] || k.p < reg[k.ean][0]) {
-      if (!reg[k.ean]) kept++;
+      if (!reg[k.ean]) {
+        kept++;
+        if (k.by === "name") byNameKept++;
+      }
       reg[k.ean] = [k.p, k.u];
     }
   }
   if (!header) throw new Error("feed was empty");
-  return { prices: out, rows, kept };
+  return { prices: out, rows, kept, byName: byNameKept };
 }
 
 async function main() {
   const products = unpackProducts(readJson<Parameters<typeof unpackProducts>[0]>("products.json", null));
   const byEan = new Map(products.map((f) => [f.ean, f]));
+  const byName = nameIndex(products);
   const storePrices = (region: RegionCode, ean: string) => (byEan.get(ean)?.offers[region] ?? []).filter((o) => o.st !== "out").map((o) => o.p);
   const prev = readJson<PartnerPricesFile>("partners.json", { v: 1, feeds: {}, prices: {} });
   const next: PartnerPricesFile = { v: 1, feeds: {}, prices: {} };
@@ -93,10 +99,10 @@ async function main() {
       continue;
     }
     try {
-      const r = await readFeed(url, storePrices);
+      const r = await readFeed(url, storePrices, byName);
       next.feeds[p.key] = { at: new Date().toISOString(), rows: r.rows, kept: r.kept };
       next.prices[p.key] = r.prices;
-      console.log(`✓ ${p.key}: ${r.rows} feed rows, ${r.kept} prices kept (${Object.entries(r.prices).map(([k, v]) => `${k} ${Object.keys(v ?? {}).length}`).join(", ")})`);
+      console.log(`✓ ${p.key}: ${r.rows} feed rows, ${r.kept} prices kept, ${r.byName} of them by brand + name (${Object.entries(r.prices).map(([k, v]) => `${k} ${Object.keys(v ?? {}).length}`).join(", ")})`);
     } catch (e) {
       // Never print the URL: it carries the network API key.
       const error = (e as Error).message.replace(/https?:\/\/\S+/g, "<feed url>").slice(0, 200);
