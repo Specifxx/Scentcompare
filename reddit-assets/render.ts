@@ -1,7 +1,8 @@
 // Research only (Reddit post images): renders today's link thumbnail and
 // downloads a few product photos. Lives on a claude/* branch, never main.
 import fs from "node:fs";
-import Image from "../src/app/opengraph-image";
+import * as React from "react";
+(globalThis as any).React = React;
 
 async function main() {
   fs.mkdirSync("reddit-assets/out", { recursive: true });
@@ -15,6 +16,7 @@ async function main() {
       console.log(name, r.status, type);
     } catch (e) { console.log(name, "failed", e); }
   }
+  const { default: Image } = await import("../src/app/opengraph-image");
   const res = await Image();
   fs.writeFileSync("reddit-assets/out/og-home.png", Buffer.from(await res.arrayBuffer()));
   console.log("og done");
