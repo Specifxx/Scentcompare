@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CATEGORIES, CAT_BY_KEY, type CatKey } from "@/site";
 import { CatHub, pageCount } from "@/components/CatHub";
+import { CAT_SEO, fitTitle } from "@/lib/seo";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -12,7 +13,9 @@ export function generateMetadata({ params }: { params: { cat: string; n: string 
   const c = CAT_BY_KEY[params.cat as CatKey];
   if (!c) return {};
   return {
-    title: `${c.plural.replace(/^./, (x) => x.toUpperCase())} prices, page ${params.n}`,
+    title: fitTitle(`${CAT_SEO[c.key]}, page ${params.n}`),
+    // Its own line, not the home page's (a paged hub had none and inherited the site's).
+    description: `Page ${params.n} of ${c.plural} compared across real fragrance stores in six regions: every store's price for the same barcode, updated daily.`,
     alternates: { canonical: `/${c.key}/page/${params.n}` },
   };
 }

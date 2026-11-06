@@ -966,3 +966,30 @@ once instead of costing every batch a second of build. The US credential is shar
 (400 a day); together they stay far under Amazon's 8,640 a day. Until the US account has 10 qualifying sales in 30
 days Amazon refuses every call, the finder records "refused", and the row keeps its tagged "check the seller" search.
 
+
+## 2026-11-06: ScentCompare's own SEO pass (owner: "make sure scentcompare is fully seo optimised")
+
+The 2026-11-03 audit was KaeYoung's, carried over in the copy; this pass reads ScentCompare's own pages, built against
+the fixture with only two products prebuilt so an on-demand product page could be checked as a crawler gets it.
+
+- **On-demand product pages are complete HTML.** A page outside the top 500 renders on its first visit with its title,
+  canonical, Product + BreadcrumbList + FAQPage blocks and every price in the first response (no streamed fallback:
+  the page is synchronous, so `loading.tsx` only shows on client navigation). The sitemap was never tied to the
+  prebuilt list: it lists the first tier (`inSitemap`, 19,525 of 31,151 indexable products today), prebuilt or not.
+  The tier stays as decided on 2026-11-03 until Search Console shows it indexed.
+- **Titles fit 60, descriptions 160** (`fitTitle`, `fitDescription` in `lib/seo.tsx`). Store titles are long (median
+  55 characters), so 37,461 of 37,527 product titles ran past 60 and Google cut the name. The name always leads; the
+  store count, then " | ScentCompare", drop away to fit. Section hubs use the singular phrase people search
+  (`CAT_SEO`: "Women's perfume prices", not "Women's perfumes prices"); brand pages say "<house> perfume prices";
+  paged hubs got their own description instead of the home page's. The home description is 156 characters.
+- **KaeYoung leftovers fixed:** the Product block's category was "Health & Beauty > Skin Care" (now Google's
+  "Perfume & Cologne" path); hub titles and descriptions started lower case ("fragrance deals today", left by the copy's
+  find-and-replace); KaeYoung's Pinterest domain claim was in the head; llms.txt said "Shop by step".
+- **Product schema** is written through `JsonLd` (it escapes `<`; the reviews in it are visitors' own text), with
+  `sku` and `size`. A product without a store photo keeps the site's share card (a page's `openGraph` replaces the root's).
+- **`/q/<slug>` answers `X-Robots-Tag: noindex`:** the quick view's JSON is data, never a page to rank, and robots.txt
+  cannot hold it back (no query to match).
+- **The product photo is fetched first** (`fetchpriority="high"` on the eager image): it is the largest paint on a phone.
+
+Not changed: hreflang (one URL serves every region, so there are no alternates, as on KaeYoung and FigureCompare);
+the sitemap tier; URLs. Bill verifies the site in Google, Bing and Yandex himself (DNS / Search Console import).

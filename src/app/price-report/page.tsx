@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo";
 import Link from "next/link";
 import { CATEGORIES, REGIONS, SITE } from "@/site";
 import { getMeta, getProducts } from "@/lib/data";
@@ -11,8 +12,8 @@ import { pctText, regionStats, reportMonth, typicalPrice } from "@/lib/price-rep
 export function generateMetadata(): Metadata {
   const month = reportMonth(getMeta()?.updatedAt);
   return {
-    title: `Fragrance price report, ${month}: how much stores differ`,
-    description: "How much the same perfume product costs from store to store this month, region by region, and what a typical women's perfume, men's cologne or gift set costs. Free to cite.",
+    title: fitTitle(`Fragrance price report, ${month}: how much stores differ`, `Fragrance price report, ${month}`),
+    description: "How much the same perfume costs from store to store this month, region by region, and what a typical women's perfume, men's cologne or gift set costs.",
     alternates: { canonical: "/price-report" },
   };
 }

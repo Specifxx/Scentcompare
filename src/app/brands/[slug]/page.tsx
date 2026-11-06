@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitDescription, fitTitle } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CATEGORIES } from "@/site";
@@ -18,8 +19,17 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!b) return {};
   const stores = new Set(b.products.flatMap((f) => Object.values(f.offers).flatMap((o) => (o ?? []).map((x) => x.s)))).size;
   return {
-    title: `${b.name} prices: compare ${b.products.length} products across ${stores} stores`,
-    description: `Compare ${b.name} prices across ${stores} fragrance stores in the US, UK, Canada, Australia, New Zealand and Europe. ${b.products.length} products, matched by barcode, updated daily.`,
+    // The house name with "perfume" first (what people search: "Dior perfume price"), then the counts while they fit.
+    title: fitTitle(
+      `${b.name} perfume prices: ${b.products.length} products, ${stores} stores`,
+      `${b.name} perfume prices compared`,
+      `${b.name} perfume prices`,
+    ),
+    description: fitDescription(
+      `Compare ${b.name} perfume and cologne prices across ${stores} fragrance stores in the US, UK, Canada, Australia, New Zealand and Europe. ${b.products.length} products, matched by barcode.`,
+      `Compare ${b.name} perfume prices across ${stores} fragrance stores in the US, UK, Canada, Australia, NZ and Europe. ${b.products.length} products, matched by barcode.`,
+      `Compare ${b.name} perfume prices across ${stores} fragrance stores in six regions: ${b.products.length} products, matched by barcode, updated daily.`,
+    ),
     alternates: { canonical: `/brands/${b.slug}` },
   };
 }

@@ -13,8 +13,8 @@ const year = () => seasonYear(new Date().toISOString().slice(0, 10));
 export function generateMetadata(): Metadata {
   const y = year();
   return {
-    title: `fragrance Black Friday deals ${y}`,
-    description: `Black Friday and Cyber Monday ${y} perfume deals: in stock today where the cheapest store is at least 10% under the dearest. Same barcode, same size, per region, updated daily.`,
+    title: `Fragrance Black Friday deals ${y}`,
+    description: `Black Friday and Cyber Monday ${y} perfume deals: in stock today and at least 10% under the dearest store. Same barcode, same size, updated daily.`,
     alternates: { canonical: "/black-friday" },
   };
 }
@@ -27,7 +27,7 @@ export default function BlackFriday() {
     <div className="mx-auto max-w-6xl px-4">
       <PageHead
         eyebrow="Black Friday"
-        title={`fragrance Black Friday deals ${y}`}
+        title={`Fragrance Black Friday deals ${y}`}
         sub={
           <>
             Black Friday is {longDate(bf)} and Cyber Monday is {longDate(cyberMonday(y))} {y}.{before ? " Many stores start their sales earlier." : ""} These are

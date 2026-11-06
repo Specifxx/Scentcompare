@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitDescription, fitTitle } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
@@ -21,8 +22,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const p = POST_BY_SLUG[params.slug];
   if (!p) return {};
   return {
-    title: p.title,
-    description: p.description,
+    title: fitTitle(p.title),
+    description: fitDescription(p.description),
     alternates: { canonical: `/blog/${p.slug}` },
     openGraph: { type: "article", title: p.title, description: p.description, publishedTime: p.date, modifiedTime: p.updated, ...(p.image ? { images: [{ url: p.image.src, width: 1200, height: 630, alt: p.image.alt }] } : {}) },
     ...(p.image ? { twitter: { card: "summary_large_image", images: [p.image.src] } } : {}),

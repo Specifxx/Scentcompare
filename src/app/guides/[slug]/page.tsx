@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitDescription, fitTitle } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CAT_BY_KEY, REGIONS, REGION_BY_CODE, SITE, type RegionCode } from "@/site";
@@ -20,8 +21,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const g = GUIDE_BY_SLUG[params.slug];
   if (!g) return {};
   return {
-    title: g.title,
-    description: g.description,
+    title: fitTitle(g.title, g.title.split(":")[0]),
+    description: fitDescription(g.description),
     alternates: { canonical: `/guides/${g.slug}` },
     // The card itself is the sibling opengraph-image.tsx.
     openGraph: { siteName: SITE.name, type: "article", title: g.title, description: g.description, url: `/guides/${g.slug}` },

@@ -22,7 +22,7 @@ import { Stars } from "@/components/reviews/Stars";
 import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ShareButton } from "@/components/ShareButton";
 import { shareTexts } from "@/lib/share-texts";
-import { JsonLd, breadcrumbLd } from "@/lib/seo";
+import { JsonLd, breadcrumbLd, fitDescription, fitTitle } from "@/lib/seo";
 
 // The build prerenders only the top products (prebuiltProducts, 500 of ~37,000):
 // writing every page made the daily build 15+ minutes. Any other product renders
@@ -43,14 +43,24 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     .filter((b) => b != null)
     .slice(0, 2)
     .map((b) => `${money(b!.offer.p, b!.region)} ${REGIONS.find((x) => x.code === b!.region)!.phrase}`);
-  const title = `${f.name} price: compare ${n} store${n === 1 ? "" : "s"}`;
-  const description = `${f.name} prices across ${n} fragrance stores${lows.length ? `, from ${lows.join(" and ")}` : ""}. Same barcode (${f.ean}), every store side by side, updated daily.`;
+  const stores = `${n} store${n === 1 ? "" : "s"}`;
+  // Store titles are long (median 55 characters), so the name always leads and the rest drops away to fit 60 (fitTitle).
+  const title = fitTitle(`${f.name} price: compare ${stores}`, `${f.name}: compare ${stores}`, `${f.name} price comparison`, `${f.name} price`);
+  const from = (k: number) => (k && lows.length ? `, from ${lows.slice(0, k).join(" and ")}` : "");
+  const description = fitDescription(
+    `${f.name} prices across ${n} fragrance stores${from(2)}. Same barcode (${f.ean}), every store side by side, updated daily.`,
+    `${f.name} prices across ${n} fragrance stores${from(2)}. Every store side by side, updated daily.`,
+    `${f.name} prices across ${n} fragrance stores${from(1)}. Every store side by side, updated daily.`,
+    `${f.name}: ${n} fragrance stores compared${from(1)}.`,
+  );
+  const ogTitle = typeof title === "string" ? title : title.absolute;
   return {
     title,
     description,
     alternates: { canonical: `/product/${f.slug}` },
     robots: isIndexable(f) ? undefined : { index: false, follow: true },
-    openGraph: { title, description, url: `/product/${f.slug}`, images: f.img ? [{ url: f.img }] : undefined },
+    // A page's openGraph replaces the root's, so a product with no store photo keeps the site's own card.
+    openGraph: { title: ogTitle, description, url: `/product/${f.slug}`, images: [{ url: f.img ?? "/opengraph-image" }] },
   };
 }
 
@@ -78,8 +88,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     "@type": "Product",
     name: f.name,
     gtin13: f.ean,
+    sku: f.ean,
+    size: f.size ?? undefined,
     brand: f.brand ? { "@type": "Brand", name: f.brand } : undefined,
-    category: `Health & Beauty > Skin Care > ${cat.name}`,
+    // Google's product taxonomy path for fragrance (it was KaeYoung's skin-care path).
+    category: `Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne`,
     image: f.img ?? undefined,
     url: `${SITE.url}/product/${f.slug}`,
     // Only from a real sample (SCHEMA_MIN_RATINGS), and only what the page shows.
@@ -115,7 +128,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-28 pt-5 md:pb-10">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* Through JsonLd: it escapes "<", and the reviews in it are visitors' own text. */}
+      <JsonLd data={jsonLd} />
       <JsonLd data={breadcrumbLd([{ name: cat.name, path: `/${cat.key}` }, ...(hasBrandPage ? [{ name: f.brand, path: `/brands/${f.b}` }] : []), { name: f.name, path: `/product/${f.slug}` }])} />
       <nav aria-label="Breadcrumb" className="mb-4 text-sm text-soft">
         <Link prefetch={false} href="/" className="hover:text-ink">Home</Link>
