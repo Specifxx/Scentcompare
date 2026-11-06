@@ -5,7 +5,7 @@
 // Store links get utm_source so a store sees what we send it (the start of a
 // partner-code conversation).
 import { REGION_BY_CODE, SITE, type RegionCode } from "@/site";
-import { awinProgrammeFor, awinUrl, clickref } from "./awin";
+import { awinDeepLink, awinProgrammeFor, awinUrl, clickref } from "./awin";
 import { STORE_BY_ID } from "@/content/stores";
 import type { Offer } from "./types";
 
@@ -177,6 +177,14 @@ export interface Partner {
    *  as a plain unpaid search link (the two discounters fragrance buyers
    *  check first; the same rule KaeYoung used for YesStyle and Stylevana). */
   always?: boolean;
+  /** Its Awin advertiser id, once it accepted us there: product links from its feed go through awinDeepLink. */
+  awinMid?: number;
+  /** The GitHub secret holding its affiliate product feed's download URL (scripts/partner-feeds.ts): with it
+   *  the row shows the retailer's own price for the exact barcode and links to the product, not a search. */
+  feedEnv?: string;
+  /** Shown ONLY where its feed lists this exact barcode, never as a search (a shop that sells few of our
+   *  products, where a search would mostly come back empty). */
+  feedOnly?: boolean;
 }
 
 export const PARTNERS: Partner[] = [
@@ -193,6 +201,9 @@ export const PARTNERS: Partner[] = [
   { key: "sobelia", name: "Sobelia", envVar: "AFF_SOBELIA", regions: ["EU", "UK"], search: (q) => `https://www.sobelia.com/en/search?q=${q}`, note: "ships across Europe" },
   { key: "adorebeauty", name: "Adore Beauty", envVar: "AFF_ADOREBEAUTY", regions: ["AU", "NZ"], search: (q) => `https://www.adorebeauty.com.au/search?q=${q}`, note: "Australian retailer" },
   { key: "sephora-au", name: "Sephora", envVar: "AFF_SEPHORA_AU", regions: ["AU", "NZ"], search: (q) => `https://www.sephora.com.au/search?q=${q}`, note: "Australian retailer" },
+  // Stylevana accepted us on Awin (2026-11-06). A K-beauty shop with some fragrance: a row only on the products
+  // its US feed lists by barcode, never a search (lib/partner-feed.ts; DECISIONS.md 2026-11-06).
+  { key: "stylevana", name: "Stylevana", envVar: "AFF_STYLEVANA", regions: ["US"], search: (q) => `https://www.stylevana.com/en_US/catalogsearch/result/?q=${q}`, note: "ships worldwide", awinMid: 90791, feedEnv: "AWIN_FEED_STYLEVANA", feedOnly: true },
   { key: "yesstyle", name: "YesStyle", envVar: "AFF_YESSTYLE", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.yesstyle.com/en/list.html?q=${q}`, note: "ships from Hong Kong" },
 ];
 
@@ -211,9 +222,17 @@ export function partnerUrl(p: Partner, query: string, sub: string, env: Record<s
 /** The retailer rows a region shows today: those whose tracking template is
  *  set (paid), plus the `always` ones as plain search links (unpaid). */
 export function partnersFor(region: RegionCode, query: string, sub: string, env: Record<string, string | undefined> = process.env): { p: Partner; href: string; paid: boolean }[] {
-  return PARTNERS.filter((p) => p.regions.includes(region)).flatMap((p): { p: Partner; href: string; paid: boolean }[] => {
+  return PARTNERS.filter((p) => p.regions.includes(region) && !p.feedOnly).flatMap((p): { p: Partner; href: string; paid: boolean }[] => {
     const href = partnerUrl(p, query, sub, env);
     if (href) return [{ p, href, paid: true }];
     return p.always ? [{ p, href: p.search(encodeURIComponent(query)), paid: false }] : [];
   });
+}
+
+/** A partner's tracked link to one of its own product pages (from its feed), or null when nothing can track it. */
+export function partnerProductUrl(p: Partner, productUrl: string, sub: string, env: Record<string, string | undefined> = process.env): string | null {
+  const tpl = env[p.envVar];
+  if (tpl?.includes("{url}")) return tpl.replace("{url}", encodeURIComponent(productUrl)).replace("{q}", "").replace("{sub}", encodeURIComponent(sub));
+  if (p.awinMid) return awinDeepLink(p.awinMid, productUrl, clickref(sub));
+  return awinUrl(productUrl, clickref(sub));
 }

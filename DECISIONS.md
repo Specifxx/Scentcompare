@@ -816,3 +816,15 @@ we show, and the UTM tags survived into the checkout URL, so the store still see
 * **ScentCompare test, 2026-11-06:** So Avant Garde (US) opened its checkout with our UTM tags; the 100 ml we listed had sold
   out since the morning import, so Shopify showed its own "out of stock" checkout page. That is the cost of a day-old
   stock flag, the same as a stale product link. FragranceBuy (CA) shows a Cloudflare check first, as its product pages do.
+
+## 2026-11-06 — Stylevana: a priced row only where its feed has the exact bottle
+
+**Decision (owner: Stylevana "should also be in scentcompare"):** Awin accepted the family for Stylevana (merchant
+90791), a K-beauty shop that sells some fragrance. A search button on every perfume page would mostly come back empty,
+so Stylevana is `feedOnly`: it appears ONLY on a product its US product feed lists by barcode, as a labelled row beside
+eBay and Amazon with Stylevana's price and an Awin deep link to that product (`clickref` = our `sc-…` sub). The feed
+reader is KaeYoung's (`lib/partner-feed.ts`, `scripts/partner-feeds.ts`, ported by hand): any valid product EAN here,
+in stock, the currency's own region only (the feed is USD, so US only), 60–160% of the region's in-stock store median
+(a mini or a gift set otherwise). It needs the GitHub secret `AWIN_FEED_STYLEVANA` (the Create-a-Feed download link,
+which carries the Awin API key); until it exists nothing shows. Never a store, the cheapest, a deal, the alert feed or
+history; the ops monitor's "Partner feeds" check goes amber on a failed or stale read.
