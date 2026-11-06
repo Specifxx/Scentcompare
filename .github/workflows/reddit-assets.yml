@@ -25,6 +25,6 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
-          git add reddit-assets/out
+          git add -f reddit-assets/out
           git commit -m "Reddit assets: link thumbnail and product photos" || true
           git push
