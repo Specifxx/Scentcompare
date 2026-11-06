@@ -1,21 +1,25 @@
-// The mark: a rose-to-peach rounded square with a white perfume flacon (cap,
-// neck, bottle) and a spritz of two drops. Same as src/app/icon.svg.
+// The mark (owner, 2026-11-06: "less stock-icon, richer, not girly"): a solid gold
+// faceted flacon on a deep ink-navy rounded square. Same as src/app/icon.svg, which
+// also draws the favicon, the apple icon and the share images' mark.
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
       <defs>
-        <linearGradient id="sc-mark" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#2563eb" />
-          <stop offset="1" stopColor="#60a5fa" />
+        <linearGradient id="sc-mark-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#22355f" />
+          <stop offset="1" stopColor="#0b1530" />
+        </linearGradient>
+        <linearGradient id="sc-mark-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#f6dc96" />
+          <stop offset=".55" stopColor="#d4a24a" />
+          <stop offset="1" stopColor="#a8752a" />
         </linearGradient>
       </defs>
-      <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#sc-mark)" />
-      <rect x="26" y="11" width="12" height="9" rx="2.5" fill="#fff" />
-      <rect x="29" y="20" width="6" height="5" fill="#fff" opacity=".9" />
-      <rect x="18" y="25" width="28" height="28" rx="8" fill="none" stroke="#fff" strokeWidth="5" />
-      <path d="M26 44a6 6 0 0 1 12 0" stroke="#fff" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity=".9" />
-      <circle cx="48" cy="14" r="2.5" fill="#fff" opacity=".9" />
-      <circle cx="54" cy="20" r="1.8" fill="#fff" opacity=".7" />
+      <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#sc-mark-bg)" />
+      <path d="M27 8h10l3 3.5V18H24v-6.5z" fill="url(#sc-mark-gold)" />
+      <rect x="28.5" y="18" width="7" height="4.5" fill="#b8862f" />
+      <path d="M19 28q0-5.5 5.5-5.5h15q5.5 0 5.5 5.5v19q0 8-8 8H27q-8 0-8-8z" fill="url(#sc-mark-gold)" />
+      <path d="M23.5 30q0-3 3-3h1.5v23Q23.5 49 23.5 45z" fill="#fff" opacity=".32" />
     </svg>
   );
 }
