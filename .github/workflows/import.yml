@@ -41,8 +41,7 @@ jobs:
       - name: Stores
         if: github.event_name != 'workflow_dispatch' || inputs.stores
         run: npx tsx scripts/import.ts
-      - name: Partner feeds (Stylevana through Awin; a no-op until its secret exists)
-        if: github.event_name != 'workflow_dispatch' || inputs.stores
+      - name: Partner feeds (Stylevana through Awin; every run, eBay-only ones too; a no-op until its secret exists)
         env:
           AWIN_FEED_STYLEVANA: ${{ secrets.AWIN_FEED_STYLEVANA }}
         run: npx tsx scripts/partner-feeds.ts
