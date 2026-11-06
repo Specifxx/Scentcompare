@@ -896,3 +896,13 @@ Eau de Toilette, 50 ml against 100 ml, or an extra word ("Intense", "Elixir") ne
 no match. Store listings stay barcode-only. The run log counts how many prices came by name, so if the fallback ever
 shows a wrong bottle it can be switched off by passing no index in `scripts/partner-feeds.ts`. Never the URL in a log:
 errors print `<feed url>`.
+## 2026-11-06 — Store deals beside the price (from KaeYoung)
+
+The owner asked for store promotions in the comparison, on KaeYoung and here ("all of these changes with KaeYoung, we
+want to reflect to ScentCompare"). The same code as KaeYoung's entry of today: `scripts/promos.ts` (`promos.yml`, daily
+03:23 UTC) asks each store's own Shopify cart what 1, 2 and 3 of a product cost and records only discounts and free
+gifts the cart itself applied, per product, never carried to another product; Awin offers and vouchers for retailers
+that accepted us come from Compare Empire's `data/awin/promotions.json` (`scripts/fetch-awin.ts`). Both are a note on
+the store's row (`src/lib/promos.ts`): the price, the single-item order and the cheapest badge never change, a deal is
+hidden after two days or once the shelf price moves, an offer at its end date. Perfume houses' gift-with-purchase sets
+show as "Free gift in cart" only when the cart adds the gift by itself.
