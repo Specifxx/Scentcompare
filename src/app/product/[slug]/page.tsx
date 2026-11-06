@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CAT_BY_KEY, REGIONS, SITE, type RegionCode } from "@/site";
-import { bestIn, cheapestDelivered, getMeta, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
+import { bestIn, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
 import { dayNumber, lowestOrderable } from "@/lib/history";
 import { decimal, money, niceDate, pct } from "@/lib/format";
 import { isIndexable, prebuiltProducts } from "@/lib/index-tiers";
@@ -23,6 +23,8 @@ import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ShareButton } from "@/components/ShareButton";
 import { shareTexts } from "@/lib/share-texts";
 import { JsonLd, breadcrumbLd, fitDescription, fitTitle } from "@/lib/seo";
+import { SmellsLike, notesSentence } from "@/components/SmellsLike";
+import { headlineNotes, smellsLikeText, type Pyramid } from "@/lib/notes";
 
 // The build prerenders only the top products (prebuiltProducts, 500 of ~37,000):
 // writing every page made the daily build 15+ minutes. Any other product renders
@@ -47,7 +49,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   // Store titles are long (median 55 characters), so the name always leads and the rest drops away to fit 60 (fitTitle).
   const title = fitTitle(`${f.name} price: compare ${stores}`, `${f.name}: compare ${stores}`, `${f.name} price comparison`, `${f.name} price`);
   const from = (k: number) => (k && lows.length ? `, from ${lows.slice(0, k).join(" and ")}` : "");
+  const notes = notesOf(f);
+  const smells = notes ? `${f.name} smells like ${smellsLikeText(headlineNotes(notes))}.` : "";
   const description = fitDescription(
+    ...(smells ? [`${smells} Compare ${n} fragrance stores${from(2)}, updated daily.`, `${smells} Compare ${n} fragrance stores${from(1)}, updated daily.`] : []),
     `${f.name} prices across ${n} fragrance stores${from(2)}. Same barcode (${f.ean}), every store side by side, updated daily.`,
     `${f.name} prices across ${n} fragrance stores${from(2)}. Every store side by side, updated daily.`,
     `${f.name} prices across ${n} fragrance stores${from(1)}. Every store side by side, updated daily.`,
@@ -81,6 +86,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     .slice(0, 8);
 
   const rated = reviewsOf(f);
+  const notes = notesOf(f);
   const meta = getMeta();
   const showSchema = !!rated && rated.n >= SCHEMA_MIN_RATINGS;
   const jsonLd = {
@@ -255,6 +261,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
             );
           })}
+          {notes && (
+            <div className="mt-5">
+              <SmellsLike name={f.name} notes={notes} />
+            </div>
+          )}
         </div>
       </section>
 
@@ -326,7 +337,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
       <section className="mt-12 max-w-3xl">
         <h2 className="h-display mb-4 text-2xl">Questions</h2>
-        <Faq f={f} regions={regions} rated={rated} />
+        <Faq f={f} regions={regions} rated={rated} notes={notes} />
       </section>
 
       {/* Phone buy bar: the region's cheapest orderable store, always in reach. */}
@@ -370,8 +381,9 @@ function DeliveredLine({ f, region }: { f: Product; region: RegionCode }) {
   );
 }
 
-function Faq({ f, regions, rated }: { f: Product; regions: RegionCode[]; rated: ProductReviews | undefined }) {
+function Faq({ f, regions, rated, notes }: { f: Product; regions: RegionCode[]; rated: ProductReviews | undefined; notes?: Pyramid }) {
   const qa: [string, string][] = [];
+  if (notes) qa.push([`What does ${f.name} smell like?`, notesSentence(f.name, notes)]);
   for (const r of regions) {
     const b = bestIn(f, r);
     const reg = REGIONS.find((x) => x.code === r)!;

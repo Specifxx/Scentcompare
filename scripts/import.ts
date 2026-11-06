@@ -11,6 +11,7 @@ import { recordHistory } from "@/lib/history";
 import { readShopify, shopifyOwnCurrency, PRODUCT_LOOKUPS_PER_RUN, type BarcodeCache, type ReadResult } from "@/lib/import/shopify";
 import { packProducts, unpackProducts } from "@/lib/products-file";
 import type { History, Listing, Meta, StoreRun } from "@/lib/types";
+import { buildNotes, type NotesFile } from "@/lib/notes";
 
 const DATA = path.join(process.cwd(), "data");
 const read = <T>(p: string, fallback: T): T => {
@@ -90,14 +91,18 @@ async function main() {
   }
   const history = recordHistory(read<History>("public/history.json", {}), products, today);
 
+  // "Smells like" (lib/notes.ts): today's readings by barcode; a barcode no store described today keeps yesterday's.
+  const notes = buildNotes(mirrored.listings, products.map((f) => f.ean), read<NotesFile>("public/notes.json", {}));
+
   const meta: Meta = { updatedAt: new Date().toISOString(), products: products.length, stores: runs, ebay: prevMeta?.ebay };
   write("public/products.json", packProducts(products));
   write("public/history.json", history);
+  write("public/notes.json", notes);
   write("public/meta.json", meta, true);
   write("state/barcodes.json", cache);
   write("state/slugs.json", state.slugs, true);
   write("state/first-seen.json", state.first, true);
-  console.log(`\n${products.length} products from ${listings.length} listings (${failed.size} store(s) failed, ${PRODUCT_LOOKUPS_PER_RUN - budget.lookups} barcode lookups).`);
+  console.log(`\n${products.length} products from ${listings.length} listings (${failed.size} store(s) failed, ${PRODUCT_LOOKUPS_PER_RUN - budget.lookups} barcode lookups, ${Object.keys(notes).length} with notes).`);
 }
 
 main().catch((e) => {
