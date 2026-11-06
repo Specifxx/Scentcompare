@@ -1,0 +1,67 @@
+name: Page-store probe
+
+# Research only: reads the non-Shopify candidate fragrance shops in
+# probe/page-candidates.txt (walled? platform? robots? WooCommerce Store API?
+# product pages with a schema.org GTIN?) and commits probe/pages-results.json
+# and pages-summary.md to the claude/* branch it ran on. Never touches data/ or main.
+
+on:
+  push:
+    branches: ["claude/**"]
+    paths: ["probe/page-candidates.txt", "probe/probe-pages.mjs"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node probe/probe-pages.mjs
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: 32
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pages-${{ matrix.shard }}
+          path: probe/pages-out-${{ matrix.shard }}.json
+          if-no-files-found: ignore
+
+  collect:
+    needs: probe
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: shards
+      - name: Commit results
+        run: |
+          set -euo pipefail
+          node probe/summarize-pages.mjs shards
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The branch may have moved while the shards ran: put the new results on its tip.
+          for i in 1 2 3 4 5; do
+            git fetch origin ${GITHUB_REF_NAME}
+            git stash push -q -- probe/pages-results.json probe/pages-summary.md
+            git checkout -q -B ${GITHUB_REF_NAME} FETCH_HEAD
+            git checkout -q stash@{0} -- probe/pages-results.json probe/pages-summary.md && git stash drop -q
+            git add probe/pages-results.json probe/pages-summary.md
+            git commit -q -m "probe: page-store results" || exit 0
+            git push origin HEAD:${GITHUB_REF_NAME} && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1
