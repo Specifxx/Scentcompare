@@ -859,3 +859,6 @@ the `motion:start`/`motion:end` block of `globals.css`); only `--snow`, the pale
 * **The hero** eases in on arrival, its two product cards float, the wash drifts, and "Pay less." catches a gold glint
   every few seconds. Buttons lift and press, buy buttons get a light sweep, step icons wiggle, price rows lift, the
   search glows when focused, the header gains a shadow once scrolled. No pop-ups, nothing that moves a price.
+
+Same day, the owner's pick from a second round: the third option's bottle, but on a light sky blue (not forest green),
+with pink scent (not amber), a shiny gold lid and a chrome bottle, "fancy" and shiny. That replaces ink & gold.
