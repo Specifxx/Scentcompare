@@ -29,8 +29,10 @@ const ean = (s) => {
   const sum = [...d.slice(0, 12)].reduce((a, c, i) => a + Number(c) * (i % 2 ? 3 : 1), 0);
   return (10 - (sum % 10)) % 10 === Number(d[12]) ? d : null;
 };
+// A challenge page, not any page that loads reCAPTCHA for its newsletter form.
+const WALL = /<title>[^<]*(just a moment|attention required|access denied|pardon our interruption|security check|are you a (?:robot|human)|request unsuccessful)[^<]*<\/title>|cf-chl-|challenge-platform\/h\/|px-captcha|captcha-delivery\.com|_Incapsula_Resource|geo\.captcha-delivery/i;
 const walled = (r) => r.status === 403 || r.status === 429 || r.status === 503 ||
-  /just a moment\.\.\.|cf-chl|captcha|access denied|pardon our interruption|px-captcha|_incapsula_|datadome/i.test(r.text.slice(0, 20000));
+  WALL.test(r.text.slice(0, 30000));
 
 function platform(html) {
   if (/cdn\.shopify\.com|Shopify\.theme/.test(html)) return "shopify";
@@ -61,10 +63,11 @@ function robots(text) {
   }
   return out;
 }
+const rx = (rule) => new RegExp(`^${rule.replace(/\$$/, "").split("*").map((s) => s.replace(/[.+?^${}()|[\]\\]/g, "\\$&")).join(".*")}${rule.endsWith("$") ? "$" : ""}`);
 function allowed(rules, path) {
   let best = { len: -1, ok: true };
-  for (const p of rules.disallow) if (path.startsWith(p.replace(/\*.*$/, "")) && p.length > best.len) best = { len: p.length, ok: false };
-  for (const p of rules.allow) if (path.startsWith(p.replace(/\*.*$/, "")) && p.length >= best.len) best = { len: p.length, ok: true };
+  for (const p of rules.disallow) if (rx(p).test(path) && p.length > best.len) best = { len: p.length, ok: false };
+  for (const p of rules.allow) if (rx(p).test(path) && p.length >= best.len) best = { len: p.length, ok: true };
   return best.ok;
 }
 
@@ -170,6 +173,8 @@ async function probe(host) {
       if (pg.status !== 200) continue;
       s.ok++;
       const ps = products(pg.text).map(readProduct);
+      // Barcodes outside JSON-LD (microdata, a data layer): worth knowing, not yet read.
+      if (/itemprop=["']gtin(13|8|12|14)?["']|"gtin13"\s*:|"ean"\s*:\s*"?\d{12,13}/i.test(pg.text)) s.rawGtin = (s.rawGtin ?? 0) + 1;
       if (!ps.length) continue;
       s.product++;
       if (ps.some((p) => p.code)) s.code++;

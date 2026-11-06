@@ -26,7 +26,43 @@ permissions:
   contents: write
 
 jobs:
+  # The stores with no product feed (platform "pages"): eight runners read
+  # their product pages (scripts/read-pages.ts) in parallel, about a page a
+  # second each, and hand the import job each store's state.
+  pages:
+    if: github.event_name != 'workflow_dispatch' || inputs.stores
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/read-pages.ts
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: 8
+          MINUTES: 90
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pages-${{ matrix.shard }}
+          path: pages-out/
+          if-no-files-found: ignore
+          retention-days: 3
+
   import:
+    needs: pages
+    # Also when a page job failed or was skipped (an eBay-only run): those stores keep their last state.
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 240
     steps:
@@ -38,6 +74,13 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - uses: actions/download-artifact@v4
+        if: github.event_name != 'workflow_dispatch' || inputs.stores
+        continue-on-error: true
+        with:
+          pattern: pages-*
+          merge-multiple: true
+          path: data/state/pages/
       - name: Stores
         if: github.event_name != 'workflow_dispatch' || inputs.stores
         run: npx tsx scripts/import.ts

@@ -8,7 +8,7 @@ name: Store probe
 on:
   push:
     branches: ["claude/**"]
-    paths: ["probe/candidates.txt", "probe/probe.mjs"]
+    paths: ["probe/candidates.txt", "probe/candidates-round.txt", "probe/probe.mjs"]
   workflow_dispatch:
 
 permissions:

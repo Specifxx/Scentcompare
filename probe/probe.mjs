@@ -39,7 +39,9 @@ const ean = (s) => {
   return (10 - (sum % 10)) % 10 === Number(d[12]) ? d : null;
 };
 
-const hosts = [...new Set(fs.readFileSync(new URL("./candidates.txt", import.meta.url), "utf8").split("\n")
+// A round file (candidates-round.txt), when present, is probed alone; its hosts join candidates.txt after.
+const ROUND = new URL("./candidates-round.txt", import.meta.url);
+const hosts = [...new Set(fs.readFileSync(fs.existsSync(ROUND) ? ROUND : new URL("./candidates.txt", import.meta.url), "utf8").split("\n")
   .map((l) => l.replace(/#.*/, "").trim().toLowerCase()).filter(Boolean))].filter((_, i) => i % SHARDS === SHARD);
 
 async function probe(host) {
