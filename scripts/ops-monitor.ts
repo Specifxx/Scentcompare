@@ -102,6 +102,7 @@ export function judgePartnerFeeds(file: PartnerPricesFile | null, now = Date.now
 export function judgeShipping(file: Record<string, { at: string }> | null, stores: number, now = Date.now()): Omit<Result, "name"> {
   if (!file) return { status: "warn", detail: "no delivery quotes yet (data/public/shipping.json missing): run the Delivery quotes workflow" };
   const ats = Object.values(file).map((s) => Date.parse(s.at));
+  if (!ats.length) return { status: "warn", detail: "no delivery quotes yet (data/public/shipping.json is empty): the weekly Delivery quotes workflow writes it on Sunday" };
   const newest = ats.length ? Math.max(...ats) : 0;
   const days = (now - newest) / 86_400_000;
   if (days > 9) return { status: "warn", detail: `delivery quotes last refreshed ${days.toFixed(0)} days ago: check the Delivery quotes workflow` };
