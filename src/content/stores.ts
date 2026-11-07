@@ -12,13 +12,30 @@
 // and their full bottles carry barcodes.
 import type { RegionCode } from "@/site";
 
+/** A page path that names a fragrance: what a department store's or pharmacy's pages are narrowed to. */
+const FRAG_URL = "parfum|perfume|cologne|toilette|fragrance|profumo|duft|edp|edt|aftershave|tuoksu|hajuvesi";
+
 export interface Store {
   id: string;
   name: string;
   region: RegionCode;
   /** https://host, no trailing slash */
   base: string;
-  platform: "shopify";
+  /** shopify: products.json; woocommerce: the Store API (lib/import/woocommerce.ts);
+   *  pages: sitemap + each product page's schema.org GTIN (lib/import/pages.ts),
+   *  read by the import workflow's page jobs (scripts/read-pages.ts). */
+  platform: "shopify" | "woocommerce" | "pages";
+  /** pages stores: where the product pages are listed and which ones to read. */
+  pages?: {
+    /** sitemap URLs (relative to base) when robots.txt names none or the wrong ones */
+    sitemaps?: string[];
+    /** in a sitemap index, only the child sitemaps whose URL matches */
+    sitemapMatch?: string;
+    /** only page paths matching this (a department store's fragrance pages) */
+    urlMatch?: string;
+    /** pages read per run (default PAGES_PER_RUN) */
+    budget?: number;
+  };
   /** Sells more than fragrance (a pharmacy, a beauty store): only products
    *  with a fragrance word in the title or type get a barcode lookup. */
   mixed?: boolean;
@@ -243,6 +260,41 @@ export const STORES: Store[] = [
   { id: "perfumefactory", name: "Perfume Factory", region: "CA", base: "https://perfumefactory.ca", platform: "shopify" },
   { id: "dansunjardin", name: "Dans un Jardin", region: "CA", base: "https://dansunjardin.com", platform: "shopify", official: true },
   { id: "herabeauty", name: "Hera Beauté", region: "CA", base: "https://herabeauty.ca", platform: "shopify", mixed: true },
+  // Round 4 (2026-11-06, Google's top results for popular bottles in every region; probe/pages-summary.md). Shops
+  // whose products.json is closed or that are not on Shopify, read from their product pages' schema.org GTIN
+  // (platform "pages"), and four more Shopify shops. Walled (403, captcha or challenge, never worked around):
+  // Sephora, Ulta, Macy's, Nordstrom, Douglas, Boots, Superdrug, The Perfume Shop, Fragrance Direct, Notino,
+  // Chemist Warehouse, Myer, David Jones, Mecca, Priceline and Jomashop. Big shops whose pages print no barcode
+  // (FragranceNet, Perfumania, LOOKFANTASTIC, Cult Beauty) stay partner rows.
+  { id: "druni", name: "Druni", region: "EU", base: "https://www.druni.es", platform: "pages", mixed: true, pages: { urlMatch: FRAG_URL, budget: 2000 } },
+  { id: "arenal", name: "Arenal", region: "EU", base: "https://www.arenal.com", platform: "pages", mixed: true, pages: { urlMatch: FRAG_URL, budget: 2000 } },
+  { id: "kicksfi", name: "KICKS", region: "EU", base: "https://www.kicks.fi", platform: "pages", mixed: true, pages: { urlMatch: FRAG_URL, budget: 2500 } },
+  { id: "perfumesclub", name: "Perfumes Club", region: "EU", base: "https://www.perfumesclub.com", platform: "pages", mixed: true, pages: { budget: 2500 } },
+  { id: "perfumesclubuk", name: "Perfumes Club", region: "UK", base: "https://www.perfumesclub.co.uk", platform: "pages", mixed: true, pages: { budget: 2500 } },
+  { id: "parfimo", name: "Parfimo", region: "EU", base: "https://www.parfimo.de", platform: "pages", pages: { sitemapMatch: "/\\d+/sitemap_products\\.xml", budget: 2000 } },
+  { id: "tendanceparfums", name: "Tendance Parfums", region: "EU", base: "https://www.tendance-parfums.com", platform: "pages", mixed: true },
+  { id: "parfumwebshop", name: "Parfumwebshop", region: "EU", base: "https://parfumwebshop.nl", platform: "pages", mixed: true },
+  { id: "seuren", name: "Parfümerie Seuren", region: "EU", base: "https://www.seurenhealth.de", platform: "pages", mixed: true, pages: { urlMatch: "\\.html$" } },
+  { id: "maisondesfragrances", name: "Maison des Fragrances", region: "EU", base: "https://maisondesfragrances.fr", platform: "pages", pages: { sitemapMatch: "/products-\\d+\\.xml", urlMatch: "^/fr/products/", budget: 3000 } },
+  { id: "pacoperfumerias", name: "Paco Perfumerías", region: "UK", base: "https://www.pacoperfumerias.co.uk", platform: "pages", pages: { urlMatch: "^/[^/]+\\.html$", budget: 2500 } },
+  { id: "perfumeuk", name: "Perfume UK", region: "UK", base: "https://www.perfumeuk.co.uk", platform: "pages" },
+  { id: "fragrancecounter", name: "The Fragrance Counter", region: "UK", base: "https://www.thefragrancecounter.co.uk", platform: "pages", pages: { budget: 2000 } },
+  { id: "luckyscent", name: "Luckyscent", region: "US", base: "https://www.luckyscent.com", platform: "pages" },
+  { id: "feelingsexy", name: "Feeling Sexy", region: "AU", base: "https://www.feelingsexy.com.au", platform: "pages", mixed: true, pages: { urlMatch: FRAG_URL, budget: 2500 } },
+  { id: "terrywhite", name: "TerryWhite Chemmart", region: "AU", base: "https://terrywhitechemmart.com.au", platform: "pages", mixed: true, pages: { urlMatch: FRAG_URL } },
+  // Round 6 (2026-11-07, US discounters a visitor named and their peers): The Perfume Spot (BigCommerce, its
+  // sitemap at /xmlsitemap.php), Fragrance Nevaeh and Aura Fragrance (Shopify). FragranceNet, Perfume.com,
+  // FragranceShop, Perfume Emporium and Elite Fragrances answer 403; Jomashop's pages carry no product data.
+  { id: "theperfumespot", name: "The Perfume Spot", region: "US", base: "https://theperfumespot.com", platform: "pages", pages: { sitemaps: ["/xmlsitemap.php"] } },
+  { id: "fragrancenevaeh", name: "Fragrance Nevaeh", region: "US", base: "https://fragrance-nevaeh.com", platform: "shopify" },
+  { id: "aurafragrance", name: "Aura Fragrance", region: "US", base: "https://www.aurafragrance.com", platform: "shopify" },
+  { id: "freshbeautycoau", name: "Fresh Beauty Co", region: "AU", base: "https://freshbeautyco.com.au", platform: "shopify", mixed: true },
+  { id: "fragrancecomeu", name: "Fragrance.com", region: "EU", base: "https://eu.fragrance.com", platform: "shopify", mixed: true },
+  { id: "haarspullen", name: "Haarspullen", region: "EU", base: "https://haarspullen.nl", platform: "shopify", mixed: true },
+  { id: "profumidinicchia", name: "Profumi di Nicchia", region: "EU", base: "https://profumidinicchia.com", platform: "shopify" },
 ];
+
+/** The stores on Shopify: the cart-based checks (shipping quotes, multi-buys) and the checkout link read only these. */
+export const SHOPIFY_STORES: Store[] = STORES.filter((s) => s.platform === "shopify");
 
 export const STORE_BY_ID: Record<string, Store> = Object.fromEntries(STORES.map((s) => [s.id, s]));

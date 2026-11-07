@@ -1,0 +1,493 @@
+[
+ {
+  "host": "allurascent.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "aurafragrance.com",
+  "status": 200,
+  "base": "https://www.aurafragrance.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4001,
+  "sitemapFrag": 4001,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 5,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Fahrenheit for Men by Christian Dior EDT | 3348900012219 | 94.89 USD",
+    "Royal Secret by Royal Secret, 3 Piece Gift Set for Women. | - | 19.98 USD",
+    "Moschino Glamour for Women by Moschino EDP | - | 26 USD"
+   ],
+   "rawGtin": 2
+  }
+ },
+ {
+  "host": "beautyspot.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "brandsperfume.com",
+  "status": 200,
+  "base": "https://brandsperfume.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 20089,
+  "sitemapFrag": 20089,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 7,
+   "priced": 8,
+   "currency": {
+    "AED": 8
+   },
+   "names": [
+    "Salvatore Ferragamo Fiamma Eau de Parfum 100 ml | 8052464896677 | 144.9 AED",
+    "Chopard Casmir Body Lotion 150 ml | 7640177367044 | 26.25 AED",
+    "Guerlain L' ينستانت ماجيك Eau de Parfum 75 ml | 3346470143180 | 404.25 AED"
+   ]
+  }
+ },
+ {
+  "host": "dreamscents.com",
+  "status": 200,
+  "base": "https://dreamscents.com",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "elitefragrances.com",
+  "status": 403,
+  "base": "https://www.hugedomains.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "fragrance-nevaeh.com",
+  "status": 200,
+  "base": "https://fragrance-nevaeh.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 1464,
+  "sitemapFrag": 1464,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 3,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Initio Parfums Privés Mystic Experience | - | 165.99 USD",
+    "Parfums de Marly Delina/Delina Exclusif/Delina La Rosee (Cap) | 3700578521002 | 10 USD",
+    "Aaron Terence Hughes Haze Extreme Decant (Sample) | - | 55 USD"
+   ]
+  }
+ },
+ {
+  "host": "fragrancebuy.ca",
+  "status": 403,
+  "base": "https://fragrancebuy.ca",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "fragrancedirect.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "fragrancenet.com",
+  "status": 403,
+  "base": "https://fragrancenet.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en"
+ },
+ {
+  "host": "fragranceshop.com",
+  "status": 403,
+  "base": "https://fragranceshop.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "giftexpress.com",
+  "status": 200,
+  "base": "https://www.giftexpress.com",
+  "walled": false,
+  "platform": "magento",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 20709,
+  "sitemapFrag": 1975,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "USD": 8
+   },
+   "names": [
+    "Alien Parfum by Thierry Mugler for Women | - | 59.95 USD",
+    "Very Irresistible Perfume 3 Piece Gift Set by Givenchy for Women | - | 76.45 USD",
+    "Gentleman Boisee Eau De Parfum by Givenchy for Men | - | 64.95 USD"
+   ]
+  }
+ },
+ {
+  "host": "jomashop.com",
+  "status": 200,
+  "base": "https://www.jomashop.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 57609,
+  "sitemapFrag": 3317,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "luxuryperfume.com",
+  "status": 200,
+  "base": "https://luxuryperfume.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4001,
+  "sitemapFrag": 4001,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Clarins Multi-Active Day Cream by Clarins | - | 34.99 USD",
+    "Covet by Sarah Jessica Parker | - | 29.99 USD",
+    "Exense | - | 16.99 USD"
+   ]
+  }
+ },
+ {
+  "host": "maxaroma.com",
+  "status": 200,
+  "base": "https://www.maxaroma.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 30995,
+  "sitemapFrag": 27611,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Bond No. 9 Nolita perfume for Women | - | 32.5 USD",
+    "Dolce & Gabbana The One Men | - | 61 USD",
+    "Histoires De Parfums 1725 | - | 22.31 USD"
+   ]
+  }
+ },
+ {
+  "host": "perfume.com",
+  "status": 403,
+  "base": "https://www.perfume.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "perfumebox.com",
+  "status": 200,
+  "base": "https://perfumebox.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4000,
+  "sitemapFrag": 4000,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Arpege Eau De Parfum | 3386461515619 | 25.75 USD",
+    "Marc Jacobs Daisy Love Eau De Toilette | 3614225452079 | 49.09 USD",
+    "Guess 1981 Indigo Eau De Toilette | 3614225615498 | 17.95 USD"
+   ]
+  }
+ },
+ {
+  "host": "perfumecountry.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "perfumeemporium.com",
+  "status": 403,
+  "base": "https://perfumeemporium.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "perfumeexpress.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "perfumehut.com",
+  "status": 200,
+  "base": "https://perfumehut.com",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumeland.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "perfumeplanet.com",
+  "status": 200,
+  "base": "https://perfumeplanet.com",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumeshopping.com",
+  "status": 403,
+  "base": "https://perfumeshopping.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "perfumesurplus.com",
+  "error": "fetch failed"
+ },
+ {
+  "host": "perfumeuae.us",
+  "error": "fetch failed"
+ },
+ {
+  "host": "perfumeworldwide.com",
+  "status": 200,
+  "base": "https://perfumeworldwide.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "scentiment.com",
+  "status": 200,
+  "base": "https://www.scentiment.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 391,
+  "sitemapFrag": 3,
+  "sample": {
+   "looked": 3,
+   "ok": 3,
+   "walled": 0,
+   "product": 3,
+   "code": 0,
+   "priced": 3,
+   "currency": {
+    "USD": 3
+   },
+   "names": [
+    "Brilliance | - | 19.99 USD",
+    "Brilliance | - | 19.99 USD",
+    "Brilliance | - | 19.99 USD"
+   ]
+  }
+ },
+ {
+  "host": "scentsational.com",
+  "status": 200,
+  "base": "https://www.scentsational.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1000,
+  "sitemapFrag": 288,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 0,
+   "currency": {},
+   "names": [
+    "Abercrombie & Fitch Abercombie & Fitch First Instinct Pour Femme - 50ml Eau De Parfum Spray | 0085715163172 | - ",
+    "Caudalie Caudalie Ange des Vignes 50ml EDP | 3522930005315 | - ",
+    "Dolce & Gabbana Dolce & Gabbana Q Parfum Spray 50ml | 8054754405040 | - "
+   ],
+   "rawGtin": 8
+  }
+ },
+ {
+  "host": "thefragranceshop.co.uk",
+  "status": 403,
+  "base": "https://thefragranceshop.co.uk",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "theperfumespot.com",
+  "status": 200,
+  "base": "https://theperfumespot.com",
+  "walled": false,
+  "platform": "bigcommerce",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "venbaperfume.com",
+  "error": "fetch failed"
+ }
+]

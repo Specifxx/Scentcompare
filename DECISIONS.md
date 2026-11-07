@@ -1099,3 +1099,47 @@ the owner accepted the remaining risk. The quick view shows the link only (the i
 else the tagged search), never Amazon's price: that stays on the product page under the 24-hour licence. Uninvited
 overlays (a phone ad dock, a corner card, an exit pop-up) still never carry Amazon, and an Amazon page is never framed
 (item (n)).
+
+## 2026-11-06: Stores beyond Shopify: product-page and WooCommerce readers
+
+Owner (Bill): "we are missing a ton of stores … if it requires new scrapers, we need to build these scrapers", and
+"missing a cheap store … people will lose confidence". Google's top results for popular bottles in every region were
+probed (`probe/page-candidates.txt`, `probe/pages-summary.md`, `probe/candidates-round.txt`): most of the shops we
+missed are not on Shopify, or have closed `products.json`.
+
+- **`platform: "pages"`** (`lib/import/pages.ts`, `lib/import/jsonld.ts`, `lib/import/robots.ts`): the store's sitemap
+  lists its product pages, and each page's schema.org Product (JSON-LD) gives the name, the GTIN the shop prints, the
+  price, its currency and the stock, as a search engine reads it. The barcode rule is unchanged: a page without a valid
+  EAN-13/UPC-A gives nothing; a product with two codes and offers that name none (a bundle, a shade card) gives nothing.
+- **Polite by construction:** only paths robots.txt allows (the `*` group, wildcards, longest match), one request about
+  every 1.2 s, a page budget per store per run (1,500 by default), and three bot-wall answers in a row (403, 429, a
+  challenge or captcha page) stop the store for the run, never worked around.
+- **Rolling reads:** a page costs a request, so each run reads pages whose barcode is already on the site first (up to
+  60% of the budget, oldest reading first), then never-seen pages, then the rest oldest first; a page with no barcode is
+  asked again after 30 days. `data/state/pages/<store>.json` keeps every reading; a listing is published only while its
+  reading is at most five days old, and only in the region's own currency.
+- **Where it runs:** `import.yml` now has eight `pages` jobs (90 minutes each, every Nth page store) before the import;
+  their state files are laid over `data/state/pages/` and committed with the data. A store whose job failed keeps its
+  old readings until they age out and shows as failed in meta.json. Ops check "Page readers": amber when a store has not
+  been read for 2.5 days, red when none has.
+- **`platform: "woocommerce"`** (`lib/import/woocommerce.ts`): the Store API (`/wp-json/wc/store/v1/products`) where
+  robots.txt allows it, barcode from the SKU or the product page. None added yet: the WooCommerce fragrance shops found
+  put no barcode in SKUs or pages.
+- **Shopify-only checks** (delivery quotes, multi-buys, the checkout link) read `SHOPIFY_STORES` only.
+- **A partner that becomes a store** loses its partner search row in that region (`isListedStore`): its priced row
+  replaces the search link.
+- **Added:** round 4 (Google's top results in every region), pages: Druni, Arenal, KICKS, Perfumes Club (EU, UK),
+  Parfimo, Tendance Parfums, Parfumwebshop, Parfümerie Seuren, Maison des Fragrances (EU); Paco
+  Perfumerías, Perfume UK, The Fragrance Counter (UK); Luckyscent (US); Feeling Sexy, TerryWhite Chemmart (AU).
+  Shopify: Fresh Beauty Co (AU), Fragrance.com EU, Haarspullen, Profumi di Nicchia (EU). Round 6 (US discounters a
+  visitor named, 2026-11-07): The Perfume Spot (pages, BigCommerce), Fragrance Nevaeh, Aura Fragrance (Shopify);
+  Olfactory Factory, Perfumania, PerfumeBox and allbeauty were already read. Left out: ÉCLAT (its own "inspired by"
+  line), Parfum-Zentrum (the same shop and stock as Parfimo), Parfumdreams (stays a partner row until its Awin template is set, so its row can carry our tag).
+- **Not read** (`probe/pages-summary-round5.md`, `pages-summary.md`): 403 or a challenge page: Sephora (UK, AU),
+  Macy's, Boots, Superdrug, The Perfume Shop, Notino, Flaconi, Selfridges, Chemist Warehouse, Adore Beauty, Farmers,
+  Shoppers Drug Mart, Hudson's Bay, David Jones, FragranceNet, FragranceX, Perfume.com, FragranceShop, Perfume
+  Emporium, Elite Fragrances, FragranceBuy, The Fragrance Shop. No barcode on their pages: Sephora US, Ulta,
+  Nordstrom, Jomashop, Myer, Mecca, Priceline, MaxAroma, Gift Express, Luxury Perfume. The partner rows link the
+  ones with programmes.
+- **A shop's own wrong barcode:** one GTIN on two pages that name different products (Luckyscent pastes one code
+  across a range) publishes neither. A bottle's cap sold alone under the bottle's barcode is refused by title.

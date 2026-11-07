@@ -1,0 +1,3272 @@
+[
+ {
+  "host": "activeskin.com.au",
+  "status": 200,
+  "base": "https://www.activeskin.com.au",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 4000,
+  "sitemapFrag": 56,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "airpointsstore.co.nz",
+  "status": 200,
+  "base": "https://www.airpointsstore.co.nz",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 17132,
+  "sitemapFrag": 226,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "amazingperfumes.nl",
+  "error": "fetch failed"
+ },
+ {
+  "host": "arabianfragranceshop.co.uk",
+  "status": 200,
+  "base": "https://www.arabianfragranceshop.co.uk",
+  "walled": false,
+  "platform": "wix",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 864,
+  "sitemapFrag": 864,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "GBP": 8
+   },
+   "names": [
+    "Maysoon Concentrated Perfume Oil 15 ml For Women By Swiss Arabian | - | 19.99 GBP",
+    "Qaa'ed Unisex Eau De Parfum 100ml By Lattafa | - | 24.99 GBP",
+    "Musk Oil Concentrated Perfume Oil Unisex 6 ml By Mishary Alafasy | - | 29.99 GBP"
+   ]
+  }
+ },
+ {
+  "host": "arenal.com",
+  "status": 200,
+  "base": "https://www.arenal.com",
+  "walled": false,
+  "platform": "magento",
+  "lang": "es",
+  "robotsAll": false,
+  "sitemapUrls": 18000,
+  "sitemapFrag": 1846,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 4,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "Aura | 8429871992412 | 9.95 EUR",
+    "Cofre Dylan Blue | 8011003919093 | 65.95 EUR",
+    "Estuche Sobold | 8436611104714 | 34.95 EUR"
+   ],
+   "rawGtin": 4
+  }
+ },
+ {
+  "host": "asambeauty.com",
+  "status": 200,
+  "base": "https://www.asambeauty.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "de-de",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 2678,
+  "sitemapFrag": 18,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 3,
+   "code": 3,
+   "priced": 3,
+   "currency": {
+    "EUR": 3
+   },
+   "names": [
+    "The Scent of Magic Eau de Parfum | 4049639444010 | 19.99 EUR",
+    "Fabulous Eau de Parfum | 4049639445802 | 29.99 EUR",
+    "No. 1 Eau de Parfum | 4049639436077 | 26.99 EUR"
+   ],
+   "rawGtin": 3
+  }
+ },
+ {
+  "host": "aurique.co.uk",
+  "status": 200,
+  "base": "https://aurique.co.uk",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "total": 131,
+   "currency": "GBP",
+   "skuEan": 0,
+   "frag": 100,
+   "robotsOk": true
+  },
+  "sitemapUrls": 165,
+  "sitemapFrag": 148,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "GBP": 8
+   },
+   "names": [
+    "Moschino Toy Boy Gift Set 100ml EDP + 100ml Bath &amp; Shower Gel + 10ml EDP - Aurique | - | 59.99 GBP",
+    "Diesel Sound of the Brave Gift Set 50ml EDT + 100ml Shower Gel - Aurique | - | 43.99 GBP",
+    "Jean Paul Gaultier Scandal Le Parfum Pour Homme 100ml EDP Intense Spray / 75ml Shower Gel - Aurique | - | 79.99 GBP"
+   ]
+  }
+ },
+ {
+  "host": "beautyavenue.de",
+  "status": 500,
+  "base": "https://www.beautyavenue.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "en"
+ },
+ {
+  "host": "beautyexpert.com",
+  "status": 200,
+  "base": "https://www.lookfantastic.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1933,
+  "sitemapFrag": 64,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "beautylish.com",
+  "status": 200,
+  "base": "https://www.beautylish.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "belleza.de",
+  "error": "fetch failed"
+ },
+ {
+  "host": "bmstores.co.uk",
+  "status": 200,
+  "base": "https://www.bmstores.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 16673,
+  "sitemapFrag": 104,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "GBP": 7
+   },
+   "names": [
+    "Scent Favourites Night Orient EDT 100ml | - | 3.99 GBP",
+    "Nicki Minaj Pink Friday EDP 100ml | - | 12.99 GBP",
+    "Hugo Boss Man 100ml EDT | - | 24.99 GBP"
+   ]
+  }
+ },
+ {
+  "host": "boots.com",
+  "status": 200,
+  "base": "https://www.boots.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "chemistdirect.com.au",
+  "status": 200,
+  "base": "https://www.chemistdirect.com.au",
+  "walled": false,
+  "platform": "magento",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 11991,
+  "sitemapFrag": 374,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "costco.ca",
+  "status": 200,
+  "base": "https://www.costco.ca",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-ca",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 30012,
+  "sitemapFrag": 109,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "CAD": 8
+   },
+   "names": [
+    "Chloe L'eau de parfum Lumineuse for Women, Eau de parfum, 50 mL | - | 109.99 CAD",
+    "INITIO Side Effect for Women, Eau de parfum, 90 mL | - | 399.99 CAD",
+    "Redpath Special Fine Granulated Sugar, 4 kg | - | 8.99 CAD"
+   ]
+  }
+ },
+ {
+  "host": "cultbeauty.co.uk",
+  "status": 200,
+  "base": "https://www.cultbeauty.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1021,
+  "sitemapFrag": 22,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "davidjones.com",
+  "status": 200,
+  "base": "https://www.davidjones.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "dillards.com",
+  "status": 200,
+  "base": "https://www.dillards.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "dm.de",
+  "status": 200,
+  "base": "https://www.dm.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 24186,
+  "sitemapFrag": 716,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "douglas.be",
+  "status": 400,
+  "base": "https://www.douglas.be",
+  "walled": false,
+  "platform": "other"
+ },
+ {
+  "host": "druni.es",
+  "status": 200,
+  "base": "https://www.druni.es",
+  "walled": false,
+  "platform": "magento",
+  "lang": "es",
+  "robotsAll": false,
+  "sitemapUrls": 22000,
+  "sitemapFrag": 1777,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 5,
+   "priced": 6,
+   "currency": {
+    "EUR": 6
+   },
+   "names": [
+    "Acqua Man | 8424730002943 | 13.9 EUR",
+    "5Th Avenue | 0858052606202 | 21.95 EUR",
+    "L'Homme Idéal Extrême | 3346470304345 | 77.35 EUR"
+   ],
+   "rawGtin": 5
+  }
+ },
+ {
+  "host": "duftwelt24.com",
+  "status": 503,
+  "base": "https://www.duftwelt24.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "eau-de-parfum.de",
+  "status": 200,
+  "base": "https://www.domainmarkt.de",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "eclat.de",
+  "status": 200,
+  "base": "https://eclat.de",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "de",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 828,
+  "sitemapFrag": 758,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "ÉCLAT 001 - Floral Aldehydes | 4251783310015 | 9.98 EUR",
+    "ÉCLAT 091 RAR - Sweet Amaretto | 4251783300559 | 23.98 EUR",
+    "ÉCLAT 693 - Apple & Tonka Bean | 4251783303840 | 9.98 EUR"
+   ]
+  }
+ },
+ {
+  "host": "edenperfumes.co.uk",
+  "status": 200,
+  "base": "https://edenperfumes.co.uk",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "total": 622,
+   "currency": "GBP",
+   "skuEan": 0,
+   "frag": 85,
+   "robotsOk": true
+  },
+  "sitemapUrls": 829,
+  "sitemapFrag": 829,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "ediscountperfumes.com",
+  "status": 200,
+  "base": "https://ediscountperfumes.com",
+  "walled": false,
+  "platform": "bigcommerce",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 1531,
+  "sitemapFrag": 1531,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 5,
+   "code": 3,
+   "priced": 5,
+   "currency": {
+    "USD": 5
+   },
+   "names": [
+    "Amor Amor by Cacharel 3.4 oz + 1.0 oz Eau de Parfum Spray. New SET for Women | 3614274770148 | 49.99 USD",
+    "Floris Platinum 22 Eau de Parfum Spray 3.38 oz./ 100 ml. Unisex. New Sealed Box | 0886266401047 | 97.52 USD",
+    "Lumiere D'Issey by Issey Miyake 3.3 oz Eau De Parfum Spray Refillable NO BOX Lower Level | - | 62.99 USD"
+   ]
+  }
+ },
+ {
+  "host": "expressduft.de",
+  "status": 200,
+  "base": "https://expressduft.de",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "de",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 188,
+  "sitemapFrag": 188,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 1,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "Chogan Parfum 25 | - | 35 EUR",
+    "Chogan Parfum 52 | - | 35 EUR",
+    "Chogan Parfum 76 W - Deep Blue For Her | - | 35 EUR"
+   ]
+  }
+ },
+ {
+  "host": "feelingsexy.com.au",
+  "status": 200,
+  "base": "https://www.feelingsexy.com.au",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-AU",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 24900,
+  "sitemapFrag": 3897,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 6,
+   "priced": 6,
+   "currency": {
+    "AUD": 6
+   },
+   "names": [
+    "Incense Oud Eau de Parfum | - | 100 AUD",
+    "Niche Emarati Perfumes Mughal Fort 100ml Eau de Parfum | 6290360592183 | 110 AUD",
+    "Wanted Eau De Parfum Eau de Parfum | - | 89.95 AUD"
+   ],
+   "rawGtin": 6
+  }
+ },
+ {
+  "host": "fortnumandmason.com",
+  "status": 200,
+  "base": "https://www.fortnumandmason.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 13408,
+  "sitemapFrag": 361,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "fragranceboutique.com.au",
+  "status": 200,
+  "base": "https://fragranceboutique.com.au",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "total": 193,
+   "currency": "AUD",
+   "skuEan": 0,
+   "frag": 79,
+   "robotsOk": true
+  },
+  "sitemapUrls": 231,
+  "sitemapFrag": 231,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [
+    "Amethyst Love | - | - ",
+    "Oudh Nabeel 60gm | - | - ",
+    "Ajmal Lucky Perfume Oil 12ml | - | - "
+   ]
+  }
+ },
+ {
+  "host": "fragrancedepot.ca",
+  "status": 200,
+  "base": "https://www.fragrancedepot.ca",
+  "walled": false,
+  "platform": "wix",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "fragrancehouse.ca",
+  "status": 200,
+  "base": "https://whc.ca",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-CA",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 895,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "fragrancehouse.co.uk",
+  "status": 200,
+  "base": "https://fragrancehouse.co.uk",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "total": 2948,
+   "currency": "GBP",
+   "skuEan": 0,
+   "frag": 92,
+   "robotsOk": true
+  },
+  "sitemapUrls": 3668,
+  "sitemapFrag": 3668,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 0,
+   "priced": 6,
+   "currency": {
+    "GBP": 6
+   },
+   "names": [
+    "Dolce &amp;amp; Gabbana Light Blue Summer Vibes Eau De Toilette 100ml with Free Swimsuit Pouch | - | 100 GBP",
+    "Sarah Jessica Parker SJP NYC Eau de Parfum 100ml | - | 20 GBP",
+    "Issey Miyake L'Eau D'Issey Eau de Parfum 50ml with Free 4ml | - | 97 GBP"
+   ]
+  }
+ },
+ {
+  "host": "fragrancemall.ca",
+  "status": 200,
+  "base": "https://fragrancecanada.ca",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4001,
+  "sitemapFrag": 4001,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "CAD": 7
+   },
+   "names": [
+    "Burberry Touch EDP Spray (W) | 3614227748606 | 51.95 CAD",
+    "Juicy Couture La La EDP Spray (W) | 0719346158664 | 34.95 CAD",
+    "Paco Rabanne Invictus Intense EDT Spray (M) | 3349668543052 | 79 CAD"
+   ],
+   "rawGtin": 6
+  }
+ },
+ {
+  "host": "fragrancenz.co.nz",
+  "status": 200,
+  "base": "https://www.perfumenz.co.nz",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4001,
+  "sitemapFrag": 4001,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "NZD": 7
+   },
+   "names": [
+    "CK One Shock by Calvin Klein 200ml EDT for Men | - | 69.99 NZD",
+    "360 Black by Perry Ellis 100ml EDT for Men | - | 74.99 NZD",
+    "Jaguar Classic Chromite by Jaguar 100ml EDT | - | 54.99 NZD"
+   ]
+  }
+ },
+ {
+  "host": "fragranceparadise.com.au",
+  "status": 200,
+  "base": "https://www.fragranceparadise.com.au",
+  "walled": false,
+  "platform": "wix",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 596,
+  "sitemapFrag": 596,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 4,
+   "priced": 8,
+   "currency": {
+    "AUD": 8
+   },
+   "names": [
+    "Antonio Puig Quorum EDT | 8411061923221 | 24.49 AUD",
+    "Brut Original EDT | - | 19.99 AUD",
+    "Davidoff Cool Water Reborn EDT | 3616303470043 | 64.95 AUD"
+   ]
+  }
+ },
+ {
+  "host": "fragrances.co.nz",
+  "status": 200,
+  "base": "https://im.forsale",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1531,
+  "sitemapFrag": 1,
+  "sample": {
+   "looked": 1,
+   "ok": 1,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "fragrancestore.co.uk",
+  "status": 200,
+  "base": "https://fragrancestore.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "giftexpress.com",
+  "status": 200,
+  "base": "https://www.giftexpress.com",
+  "walled": false,
+  "platform": "magento",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 20709,
+  "sitemapFrag": 1975,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "USD": 8
+   },
+   "names": [
+    "Alien Parfum by Thierry Mugler for Women | - | 59.95 USD",
+    "Very Irresistible Perfume 3 Piece Gift Set by Givenchy for Women | - | 76.45 USD",
+    "Gentleman Boisee Eau De Parfum by Givenchy for Men | - | 64.95 USD"
+   ]
+  }
+ },
+ {
+  "host": "harryrosen.com",
+  "status": 200,
+  "base": "https://www.harryrosen.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 12885,
+  "sitemapFrag": 222,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "CAD": 8
+   },
+   "names": [
+    "Oud Wood Eau De Parfum 100ml | - | 580 CAD",
+    "Aventus Cologne 50ml | - | 480 CAD",
+    "Delphinus Eau de Parfum 100ml | - | 740 CAD"
+   ]
+  }
+ },
+ {
+  "host": "harveynorman.co.nz",
+  "status": 200,
+  "base": "https://www.harveynorman.co.nz",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 500
+  },
+  "sitemapUrls": 25531,
+  "sitemapFrag": 699,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 1,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [
+    "Issey Miyake Issey Miyake Eau De Toilette Spray - 75ml/2.5oz | - | - "
+   ]
+  }
+ },
+ {
+  "host": "harveynorman.com.au",
+  "status": 200,
+  "base": "https://www.harveynorman.com.au",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "homebargains.co.uk",
+  "status": 200,
+  "base": "https://home.bargains",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 27518,
+  "sitemapFrag": 441,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "GBP": 8
+   },
+   "names": [
+    "Hugo Boss Energise EDT 75ml | - | 29.99 GBP",
+    "Jeff & Co Jeff Banks EDP 100ml - Energy | - | 4.99 GBP",
+    "David Beckham Classic Blue EDT 40ml | - | 7.99 GBP"
+   ]
+  }
+ },
+ {
+  "host": "hqhair.com",
+  "status": 200,
+  "base": "https://www.lookfantastic.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1933,
+  "sitemapFrag": 64,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "jomashop.com",
+  "status": 200,
+  "base": "https://www.jomashop.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 57609,
+  "sitemapFrag": 3317,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "jovoyparis.com",
+  "status": 200,
+  "base": "https://www.jovoyparis.com",
+  "walled": false,
+  "platform": "prestashop",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "kicks.fi",
+  "status": 200,
+  "base": "https://www.kicks.fi",
+  "walled": false,
+  "platform": "other",
+  "lang": "fi-FI",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 57874,
+  "sitemapFrag": 4625,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Rabanne Fame Intense Eau de Parfum 50 ml | - | 129.9 EUR",
+    "KÉRASTASE Chronologiste L'Huile De Parfum Hair Oil 75 ml, Refill | - | 81.9 EUR",
+    "Montale Amber Musk Eau de Parfum 100 ml | - | 151.9 EUR"
+   ],
+   "rawGtin": 8
+  }
+ },
+ {
+  "host": "kosmetikkaufhaus.de",
+  "status": 200,
+  "base": "https://www.kosmetikkaufhaus.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 8029,
+  "sitemapFrag": 356,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "laparfumerieusa.com",
+  "status": 200,
+  "base": "https://www.laparfumerieusa.com",
+  "walled": false,
+  "platform": "wix",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 627,
+  "sitemapFrag": 627,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Kajal- Kolada | - | 260 USD",
+    "Scents of Wood Trio - 3 x 10ml Discovery Set | - | 165 USD",
+    "Floraiku - Boyish | - | 375 USD"
+   ]
+  }
+ },
+ {
+  "host": "lookfantastic.ie",
+  "status": 200,
+  "base": "https://www.lookfantastic.ie",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-IE",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 31,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "luckyscent.com",
+  "status": 200,
+  "base": "https://www.luckyscent.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 582,
+  "sitemapFrag": 157,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 4,
+   "priced": 8,
+   "currency": {
+    "USD": 8
+   },
+   "names": [
+    "Fior di Pane | - | 120 USD",
+    "The Chronic - Extreme Red | - | 233 USD",
+    "Moon Carnival | - | 205 USD"
+   ]
+  }
+ },
+ {
+  "host": "luxeperfumesandscents.com.au",
+  "status": 200,
+  "base": "https://luxeperfumesandscents.com.au",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "total": 82,
+   "currency": "AUD",
+   "skuEan": 0,
+   "frag": 80,
+   "robotsOk": true
+  },
+  "sitemapUrls": 90,
+  "sitemapFrag": 90,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "AUD": 8
+   },
+   "names": [
+    "Vilhelm Parfumerie Room Service EDP 100ml | - | 280 AUD",
+    "Maison Francis Kurkdjian Gentle Fluidity Silver EDP 70ml | - | 262.5 AUD",
+    "Chanel Chance EDP 100ml | - | 217 AUD"
+   ]
+  }
+ },
+ {
+  "host": "luxplus.co.uk",
+  "status": 200,
+  "base": "https://www.luxplus.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 18373,
+  "sitemapFrag": 1754,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "GBP": 7
+   },
+   "names": [
+    "Elie Saab Le Parfum | - | 37.75 GBP",
+    "Bruno Banani Man's Best Eau De Toilette | - | 15.25 GBP",
+    "David Beckham Classic EDT | - | 28.45 GBP"
+   ]
+  }
+ },
+ {
+  "host": "maisondesfragrances.fr",
+  "status": 200,
+  "base": "https://maisondesfragrances.fr",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "fr",
+  "robotsAll": false,
+  "sitemapUrls": 80000,
+  "sitemapFrag": 79789,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Gian Marco Venturi GMV Aqua Set - Eau De Toilette 100ml + After Shave 100ml | 8002747062695 | 30.99 EUR",
+    "Antonio Banderas Power Of Seduction Urban Eau de Toilette Homme | 8411061029626 | 32.99 EUR",
+    "Paco Rabanne Ultraviolet Eau de Parfum (EDP) Femme 50ml | 3349666010501 | 66.99 EUR"
+   ]
+  }
+ },
+ {
+  "host": "mankind.co.uk",
+  "status": 200,
+  "base": "https://www.mankind.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1055,
+  "sitemapFrag": 18,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "maxaroma.com",
+  "status": 200,
+  "base": "https://www.maxaroma.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 30995,
+  "sitemapFrag": 27611,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "USD": 7
+   },
+   "names": [
+    "Bond No. 9 Nolita perfume for Women | - | 32.5 USD",
+    "Dolce & Gabbana The One Men | - | 61 USD",
+    "Histoires De Parfums 1725 | - | 22.31 USD"
+   ]
+  }
+ },
+ {
+  "host": "mecca.com",
+  "status": 200,
+  "base": "https://www.mecca.com",
+  "walled": false,
+  "platform": "sfcc",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 68613,
+  "sitemapFrag": 6936,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 4,
+   "code": 0,
+   "priced": 3,
+   "currency": {
+    "AUD": 1,
+    "NZD": 2
+   },
+   "names": [
+    "Perfume Oil | - | 89 AUD",
+    "Crushed Velvet EDP | - | - ",
+    "Perfumed Car Diffuser with Mimosa Insert | - | 220 NZD"
+   ]
+  }
+ },
+ {
+  "host": "mecca.com.au",
+  "status": 200,
+  "base": "https://www.mecca.com",
+  "walled": false,
+  "platform": "sfcc",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 68613,
+  "sitemapFrag": 6936,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 4,
+   "code": 0,
+   "priced": 3,
+   "currency": {
+    "AUD": 1,
+    "NZD": 2
+   },
+   "names": [
+    "Perfume Oil | - | 89 AUD",
+    "Crushed Velvet EDP | - | - ",
+    "Perfumed Car Diffuser with Mimosa Insert | - | 220 NZD"
+   ]
+  }
+ },
+ {
+  "host": "myer.com.au",
+  "status": 200,
+  "base": "https://www.myer.com.au",
+  "walled": false,
+  "platform": "nextjs",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 13064,
+  "sitemapFrag": 90,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "nordicfeel.se",
+  "status": 200,
+  "base": "https://www.nordicfeel.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "sv-SE",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 19984,
+  "sitemapFrag": 1256,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "SEK": 7
+   },
+   "names": [
+    "Laura Biagiotti Lovely Eau de Toilette 25 ml | 8058045423065 | 535 SEK",
+    "Chloé Le Nectar Intense | 3616307650960 | 1960 SEK",
+    "Diesel Only Desire | 3614274529210 | 1635 SEK"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "nordstrom.com",
+  "status": 200,
+  "base": "https://www.nordstrom.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-us",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 40000,
+  "sitemapFrag": 410,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 6,
+   "currency": {
+    "USD": 6
+   },
+   "names": [
+    "Blossom Eau de Parfum | - | 54.4 USD",
+    "Atelier Versace Jasmin Au Soleil Eau de Parfum | - | 280.5 USD",
+    "SOLD OUT | - | - "
+   ]
+  }
+ },
+ {
+  "host": "nose-paris.com",
+  "status": 429,
+  "base": "https://nose-paris.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "notino.nl",
+  "status": 403,
+  "base": "https://www.notino.nl",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "onlinestore-john.de",
+  "status": 200,
+  "base": "https://www.onlinestore-john.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "ozfragrances.com.au",
+  "status": 200,
+  "base": "https://www.ozfragrances.com.au",
+  "walled": false,
+  "platform": "wix",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 1628,
+  "sitemapFrag": 1628,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "AUD": 7
+   },
+   "names": [
+    "Si PASSIONE - Eau De Parfum - by Giorgio Armani | - | 9.95 AUD",
+    "ACQUA E ZUCCHERO - Eau De Parfum - by Profumum Roma | - | 13.95 AUD",
+    "YUZU MAN - Eau De Toilette - by Caron | - | 8.95 AUD"
+   ]
+  }
+ },
+ {
+  "host": "pacoperfumerias.co.uk",
+  "status": 200,
+  "base": "https://www.pacoperfumerias.co.uk",
+  "walled": false,
+  "platform": "magento",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 6390,
+  "sitemapFrag": 6389,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 5,
+   "code": 5,
+   "priced": 5,
+   "currency": {
+    "GBP": 5
+   },
+   "names": [
+    "Bvlgari Omnia Amethyste Eau de Toilette 65ml Spray | 0783320952517 | 83.5 GBP",
+    "Carolina Herrera 212 VIP Men Deodorant 150ml Spray | 8411061723791 | 19.95 GBP",
+    "Sarah Jessica Parker NYC Eau de Parfum 100ml Spray | 5060426150241 | 17.95 GBP"
+   ]
+  }
+ },
+ {
+  "host": "parfimo.de",
+  "status": 200,
+  "base": "https://www.parfimo.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 7736,
+  "sitemapFrag": 4661,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "Cuba City Miami for Men Eau De Toilette 35 ml (man) | 5425017733638 | 4.95 EUR",
+    "The House of Oud Cypress Shade Eau de Parfum  75 ml | 8051277318529 | 98 EUR",
+    "Jennifer Lopez Live Eau de Parfum für Frauen 100 ml | 5050456080809 | 16.4 EUR"
+   ],
+   "rawGtin": 8
+  }
+ },
+ {
+  "host": "parfuemerie-brueckner.com",
+  "status": 200,
+  "base": "https://www.parfuemerie-brueckner.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "de",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 3976,
+  "sitemapFrag": 1839,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Blenheim Bouquet Eau de Toilette | - | 155 EUR",
+    "Maremma Extrait de Parfum | - | 220 EUR",
+    "Loafer Eau de Parfum | - | 195 EUR"
+   ]
+  }
+ },
+ {
+  "host": "parfuemerie-erb-shop.de",
+  "error": "fetch failed"
+ },
+ {
+  "host": "parfuemerie-guenther.de",
+  "status": 200,
+  "base": "https://www.parfuemerie-guenther.de",
+  "walled": false,
+  "platform": "magento",
+  "lang": "de",
+  "robotsAll": false,
+  "sitemapUrls": 6900,
+  "sitemapFrag": 1940,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfuemerie-heudorf-shop.de",
+  "status": 200,
+  "base": "https://www.parfuemerie-heudorf-shop.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de-DE",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfuemerie-katz.de",
+  "status": 200,
+  "base": "https://www.parfuemerie-katz.de",
+  "walled": false,
+  "platform": "shopware",
+  "lang": "de-DE",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfuemerie-kohlschein.de",
+  "status": 200,
+  "base": "https://www.parfuemerie-kohlschein.de",
+  "walled": false,
+  "platform": "shopware",
+  "lang": "de-DE",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfuemerie-rook.de",
+  "status": 200,
+  "base": "https://www.parfuemerie-rook.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfuemerie-schuback.de",
+  "status": 200,
+  "base": "https://www.schuback-parfuemerien.de",
+  "walled": false,
+  "platform": "magento",
+  "lang": "de",
+  "robotsAll": false,
+  "sitemapUrls": 3999,
+  "sitemapFrag": 693,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 0,
+   "priced": 6,
+   "currency": {
+    "EUR": 6
+   },
+   "names": [
+    "Aromatics Elixir Perfume Spray | - | 37.59 EUR",
+    "Zen Eau de Parfum | - | 59.99 EUR",
+    "Femme Geschenkset = Eau de Parfum 50 ml + Shower Gel 100 ml | - | 11.99 EUR"
+   ]
+  }
+ },
+ {
+  "host": "parfum-lagerverkauf.de",
+  "status": 200,
+  "base": "https://parfum-lagerverkauf.de",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfum-zentrum.de",
+  "status": 200,
+  "base": "https://www.parfum-zentrum.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 7741,
+  "sitemapFrag": 7741,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "Parfum-zentrum.de | - | - ",
+    "Versace Eros Eau De Toilette 50 ml (man) | 8011003809202 | 41.66 EUR",
+    "Ralph Lauren Polo Blue Eau De Parfum 125 ml (man) | 3605970859251 | 63.97 EUR"
+   ],
+   "rawGtin": 8
+  }
+ },
+ {
+  "host": "parfum.at",
+  "status": 200,
+  "base": "https://parfum.at",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfumcenter.de",
+  "status": 200,
+  "base": "https://fdtvo.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfumcity.ch",
+  "status": 200,
+  "base": "https://www.parfumcity.ch",
+  "walled": false,
+  "platform": "other",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 57917,
+  "sitemapFrag": 57917,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "parfumdo.com",
+  "status": 200,
+  "base": "https://parfumdo.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "fr",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfumdreams.fr",
+  "status": 200,
+  "base": "https://www.parfumdreams.fr",
+  "walled": false,
+  "platform": "other",
+  "lang": "fr",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 18348,
+  "sitemapFrag": 18345,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Shiseido Benefiance Wrinkle Smoothing Eye Cream | - | 53 EUR",
+    "Cartier Déclaration Eau de Parfum Vaporisateur | - | 123.75 EUR",
+    "Otto Kern Soft Contrast Eau de Toilette Spray | - | 22.55 EUR"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "parfumerie-burdin.com",
+  "status": 200,
+  "base": "https://www.parfumerie-burdin.com",
+  "walled": false,
+  "platform": "prestashop",
+  "lang": "fr-FR",
+  "robotsAll": false,
+  "sitemapUrls": 6005,
+  "sitemapFrag": 6005,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [],
+   "rawGtin": 6
+  }
+ },
+ {
+  "host": "parfumerie-douglas.de",
+  "status": 400,
+  "base": "https://www.douglas.de",
+  "walled": false,
+  "platform": "other"
+ },
+ {
+  "host": "parfumerie-schoenberg.de",
+  "error": "fetch failed"
+ },
+ {
+  "host": "parfumerieparis.ca",
+  "status": 200,
+  "base": "https://www.parfumerieparis.ca",
+  "walled": false,
+  "platform": "wix",
+  "lang": "fr",
+  "robotsAll": false,
+  "sitemapUrls": 3,
+  "sitemapFrag": 3,
+  "sample": {
+   "looked": 3,
+   "ok": 3,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfums.bayern",
+  "status": 200,
+  "base": "https://parfuemerie-bayerschmidt.de",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "parfumwebshop.nl",
+  "status": 200,
+  "base": "https://parfumwebshop.nl",
+  "walled": false,
+  "platform": "magento",
+  "lang": "nl",
+  "robotsAll": false,
+  "sitemapUrls": 4251,
+  "sitemapFrag": 4251,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 6,
+   "priced": 6,
+   "currency": {
+    "EUR": 6
+   },
+   "names": [
+    "Lancôme Trésor Midnight Rose - Eau de Parfum | - | 79.58 EUR",
+    "Burberry Mr. - Eau de Toilette | - | 78.18 EUR",
+    "Shiseido Men Total Revitalizer - Light Fluid 70 ml | 0729238184091 | 62.72 EUR"
+   ],
+   "rawGtin": 2
+  }
+ },
+ {
+  "host": "perfumeboss.ca",
+  "status": 200,
+  "base": "https://perfumeboss.ca",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "total": 1212,
+   "currency": "CAD",
+   "skuEan": 0,
+   "frag": 91,
+   "robotsOk": true
+  },
+  "sitemapUrls": 1393,
+  "sitemapFrag": 1393,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumelounge.eu",
+  "status": 200,
+  "base": "https://www.perfumelounge.eu",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 3207,
+  "sitemapFrag": 3207,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 5,
+   "code": 0,
+   "priced": 5,
+   "currency": {
+    "EUR": 5
+   },
+   "names": [
+    "Oratorio - eau de parfum | - | 140 EUR",
+    "Impadia - travel spray | - | 48 EUR",
+    "Teti - eau de parfum | - | 180 EUR"
+   ]
+  }
+ },
+ {
+  "host": "perfumes24h.com",
+  "status": 200,
+  "base": "https://perfumes24h.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "es",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 10000,
+  "sitemapFrag": 10000,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumesclub.co.uk",
+  "status": 200,
+  "base": "https://www.perfumesclub.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 403
+  },
+  "sitemapUrls": 22637,
+  "sitemapFrag": 22633,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "GBP": 7
+   },
+   "names": [
+    "AMICHI INTENSE BOUQUET LOT | 8414135018748 | 15.74 GBP",
+    "SELECTION SMOOTHIE pacifier with SX PRO teat -2-2m | 8426420909853 | 6.13 GBP",
+    "KAIDAX capsules density &amp;amp; growth pack | 8437015822433 | 25.83 GBP"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "perfumesclub.com",
+  "status": 200,
+  "base": "https://www.perfumesclub.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "es",
+  "robotsAll": false,
+  "woo": {
+   "status": 403
+  },
+  "sitemapUrls": 25387,
+  "sitemapFrag": 25386,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "DOLCE VITA | 3348901780193 | 118.51 EUR",
+    "EAU DES VIGNES agua fresca | 3522930005292 | 20.61 EUR",
+    "SISTEMA 4 - S&#233;rum Densificador - Cabello Te&#241;ido y Da&#241;ado con Debilitamiento Avanzado | 4064666842783 | 12"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "perfumesclub.de",
+  "error": "fetch failed"
+ },
+ {
+  "host": "perfumesclub.fr",
+  "status": 200,
+  "base": "https://www.perfumesclub.fr",
+  "walled": false,
+  "platform": "other",
+  "lang": "fr",
+  "robotsAll": false,
+  "woo": {
+   "status": 403
+  },
+  "sitemapUrls": 24234,
+  "sitemapFrag": 24226,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "BABY NATURALS gel champ&#250; duo | 8429420296664 | 27.34 EUR",
+    "MOUSSE NETTOYANTE DOUCE mousse nettoyante | 8428749943006 | 18.6 EUR",
+    "S&#233;rum cils et sourcils IRALTONE 2 EN 1 | 8470002146372 | 40.5 EUR"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "perfumesclub.it",
+  "status": 200,
+  "base": "https://www.perfumesclub.it",
+  "walled": false,
+  "platform": "other",
+  "lang": "it",
+  "robotsAll": false,
+  "woo": {
+   "status": 403
+  },
+  "sitemapUrls": 24411,
+  "sitemapFrag": 24407,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "IMPACCO NUTRATOPICO PELLE ATOPICA | 8429420136885 | 17.78 EUR",
+    "TECNI ART LISS CONTROL gel-crema | 0000030166189 | 20.5 EUR",
+    "SISTEMA 2 - Siero Densificante - Capelli Naturali con Indebolimento Avanzato | 4064666842899 | 12.8 EUR"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "perfumesclub.nl",
+  "status": 200,
+  "base": "https://www.perfumesclub.nl",
+  "walled": false,
+  "platform": "other",
+  "lang": "nl",
+  "robotsAll": false,
+  "woo": {
+   "status": 403
+  },
+  "sitemapUrls": 24465,
+  "sitemapFrag": 24459,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "GERMISDIN ORIGINELE BADGEL LOT | 8429420149076 | 11.34 EUR",
+    "AGUAS DE VICTORIO &amp; LUCCHINO N&#186;3 | 8411061822920 | 11.1 EUR",
+    "PHYTOKERATIN herstructurerend masker | 8015150297219 | 15.48 EUR"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "perfumesforless.com.au",
+  "status": 200,
+  "base": "https://perfumesforless.com.au",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "total": 136,
+   "currency": "AUD",
+   "skuEan": 0,
+   "frag": 100,
+   "robotsOk": true
+  },
+  "sitemapUrls": 159,
+  "sitemapFrag": 159,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumestore.co.uk",
+  "status": 200,
+  "base": "https://perfumestore.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumesyregalos.com",
+  "status": 200,
+  "base": "https://www.perfumesyregalos.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "es",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1,
+  "sitemapFrag": 1,
+  "sample": {
+   "looked": 1,
+   "ok": 1,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "perfumetrader.nl",
+  "status": 200,
+  "base": "https://www.perfumetrader.de",
+  "walled": false,
+  "platform": "magento",
+  "lang": "de",
+  "robotsAll": false,
+  "sitemapUrls": 33772,
+  "sitemapFrag": 33772,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "perfumeuk.co.uk",
+  "status": 200,
+  "base": "https://www.perfumeuk.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1287,
+  "sitemapFrag": 1287,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 6,
+   "priced": 6,
+   "currency": {
+    "GBP": 6
+   },
+   "names": [
+    "Giorgio Armani Acqua Di Gio Profondo Parfum 50ml | 3614273953764 | 68 GBP",
+    "Jean Paul Gaultier La Belle Le Parfum EDP Intense 100ml | 8435415049542 | 83 GBP",
+    "Marc Jacobs Daisy Eau So Intense EDP 100ml | 3616301776024 | 81 GBP"
+   ],
+   "rawGtin": 2
+  }
+ },
+ {
+  "host": "perfumewarehouse.ca",
+  "status": 200,
+  "base": "https://fragrancecanada.ca",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4001,
+  "sitemapFrag": 4001,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 7,
+   "priced": 7,
+   "currency": {
+    "CAD": 7
+   },
+   "names": [
+    "Burberry Touch EDP Spray (W) | 3614227748606 | 51.95 CAD",
+    "Juicy Couture La La EDP Spray (W) | 0719346158664 | 34.95 CAD",
+    "Paco Rabanne Invictus Intense EDT Spray (M) | 3349668543052 | 79 CAD"
+   ],
+   "rawGtin": 6
+  }
+ },
+ {
+  "host": "perfumeworld.co.uk",
+  "status": 200,
+  "base": "https://www.exclusivetravel.co",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 7749,
+  "sitemapFrag": 20,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "pharmacy4less.com.au",
+  "status": 200,
+  "base": "https://www.pharmacy4less.com.au",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "pharmacydirect.co.nz",
+  "status": 200,
+  "base": "https://pharmacydirect.co.nz",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 26436,
+  "sitemapFrag": 2043,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 1,
+   "priced": 7,
+   "currency": {
+    "NZD": 7
+   },
+   "names": [
+    "L'Eau D'Issey Eau De Toilette Spray  50ml/1.7oz | - | 119.21 NZD",
+    "Velvet Orchid Eau De Parfum Spray  100ml/3.4oz | - | 413.04 NZD",
+    "Idole Eau De Parfum Spray  50ml/1.7oz | - | 264.37 NZD"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "pharmacyonline.com.au",
+  "status": 200,
+  "base": "https://www.pharmacyonline.com.au",
+  "walled": false,
+  "platform": "magento",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 11952,
+  "sitemapFrag": 374,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "poundland.co.uk",
+  "status": 200,
+  "base": "https://www.poundland.co.uk",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 1815,
+  "sitemapFrag": 9,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "GBP": 8
+   },
+   "names": [
+    "Johnsons Bedtime Bath, 300ml | - | 2 GBP",
+    "Designer Fragrance Tu Est Belle Body Spray, 100ml | - | 1 GBP",
+    "Desginer Fragrances Our Way Body Spray - Floral Vanilla Scent, 100ml | - | 1 GBP"
+   ]
+  }
+ },
+ {
+  "host": "pour-femme.de",
+  "status": 403,
+  "base": "https://p2-1.afp24.net",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "priceline.com.au",
+  "status": 200,
+  "base": "https://www.priceline.com.au",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 16005,
+  "sitemapFrag": 811,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "pricewise.nz",
+  "status": 200,
+  "base": "https://www.pricewise.nz",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "scent.co.nz",
+  "status": 200,
+  "base": "https://im.forsale",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1531,
+  "sitemapFrag": 1,
+  "sample": {
+   "looked": 1,
+   "ok": 1,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "scenthub.ie",
+  "status": 200,
+  "base": "https://www.scenthub.ie",
+  "walled": false,
+  "platform": "wix",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 310,
+  "sitemapFrag": 257,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 5,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Dionisio by Tiziana Terenzi (Extrait de Parfum) 100ml | 8016741622557 | 320 EUR",
+    "9PM Pour Femme by Afnan EDP sample | - | 4 EUR",
+    "Empiryan by Xerjoff (Extrait de Parfum) sample | - | 8 EUR"
+   ]
+  }
+ },
+ {
+  "host": "scents.co.nz",
+  "status": 200,
+  "base": "https://im.forsale",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1531,
+  "sitemapFrag": 1,
+  "sample": {
+   "looked": 1,
+   "ok": 1,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "scentsational.co.uk",
+  "status": 200,
+  "base": "https://scentsational.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "scentsational.com",
+  "status": 200,
+  "base": "https://www.scentsational.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-GB",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 1000,
+  "sitemapFrag": 288,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 0,
+   "currency": {},
+   "names": [
+    "Abercrombie & Fitch Abercombie & Fitch First Instinct Pour Femme - 50ml Eau De Parfum Spray | 0085715163172 | - ",
+    "Caudalie Caudalie Ange des Vignes 50ml EDP | 3522930005315 | - ",
+    "Dolce & Gabbana Dolce & Gabbana Q Parfum Spray 50ml | 8054754405040 | - "
+   ],
+   "rawGtin": 8
+  }
+ },
+ {
+  "host": "scentstore.com",
+  "status": 200,
+  "base": "https://www.scentstore.com",
+  "walled": false,
+  "platform": "woocommerce",
+  "robotsAll": false,
+  "woo": {
+   "total": 3399,
+   "currency": "GBP",
+   "skuEan": 0,
+   "frag": 44,
+   "robotsOk": true
+  },
+  "sitemapUrls": 801,
+  "sitemapFrag": 457,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "GBP": 8
+   },
+   "names": [
+    "Chloe Signature Eau de Parfum Spray | - | 68 GBP",
+    "Jean Paul Gaultier Le Beau Male Eau de Toilette | - | 74 GBP",
+    "Yves Saint Laurent Black Opium Eau de Parfum | - | 70 GBP"
+   ]
+  }
+ },
+ {
+  "host": "schuback-parfuemerien.de",
+  "status": 200,
+  "base": "https://www.schuback-parfuemerien.de",
+  "walled": false,
+  "platform": "magento",
+  "lang": "de",
+  "robotsAll": false,
+  "sitemapUrls": 3999,
+  "sitemapFrag": 693,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 0,
+   "priced": 6,
+   "currency": {
+    "EUR": 6
+   },
+   "names": [
+    "Aromatics Elixir Perfume Spray | - | 37.59 EUR",
+    "Zen Eau de Parfum | - | 59.99 EUR",
+    "Femme Geschenkset = Eau de Parfum 50 ml + Shower Gel 100 ml | - | 11.99 EUR"
+   ]
+  }
+ },
+ {
+  "host": "seurenhealth.de",
+  "status": 200,
+  "base": "https://www.seurenhealth.de",
+  "walled": false,
+  "platform": "magento",
+  "lang": "de",
+  "robotsAll": false,
+  "sitemapUrls": 4057,
+  "sitemapFrag": 1133,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 5,
+   "code": 4,
+   "priced": 5,
+   "currency": {
+    "EUR": 5
+   },
+   "names": [
+    "Tiffany & Co. for Her edp 30ml  | 3614222401919 | 56 EUR",
+    "Narciso Rodriquez for her edp 150ml | 3423478923553 | 136 EUR",
+    "Prada Ocean men Le Parfum Refill 150ml | - | 148 EUR"
+   ],
+   "rawGtin": 4
+  }
+ },
+ {
+  "host": "shavershop.com.au",
+  "status": 200,
+  "base": "https://www.shavershop.com.au",
+  "walled": false,
+  "platform": "sfcc",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 2338,
+  "sitemapFrag": 46,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 0,
+   "priced": 8,
+   "currency": {
+    "AUD": 8
+   },
+   "names": [
+    "Cologne Azur Lime - 100mL | - | 52.95 AUD",
+    "Red Door Shimmer Eau de Parfum - 100mL | - | 19 AUD",
+    "Darth Vader EDT - 50mL | - | 29.95 AUD"
+   ]
+  }
+ },
+ {
+  "host": "skinstore.com",
+  "status": 200,
+  "base": "https://www.dermstore.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 998,
+  "sitemapFrag": 2,
+  "sample": {
+   "looked": 2,
+   "ok": 2,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "target.com",
+  "status": 200,
+  "base": "https://www.target.com",
+  "walled": false,
+  "platform": "nextjs",
+  "lang": "en-US",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "tendance-parfums.com",
+  "status": 200,
+  "base": "https://www.tendance-parfums.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "fr",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 5223,
+  "sitemapFrag": 5223,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 7,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Armani Armani Code | 3614273636414 | 95 EUR",
+    "CHANEL Allure | 3145891124408 | 69 EUR",
+    "Clinique Repairwear Laser Focus Eyes | 0020714777647 | 39 EUR"
+   ],
+   "rawGtin": 7
+  }
+ },
+ {
+  "host": "terrywhitechemmart.com.au",
+  "status": 200,
+  "base": "https://terrywhitechemmart.com.au",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 406
+  },
+  "sitemapUrls": 11306,
+  "sitemapFrag": 1196,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 8,
+   "currency": {
+    "AUD": 8
+   },
+   "names": [
+    "Lulu Grace Edp Roller Ball 9Ml Gift Set Opulence 4 piece | 9326338064783 | 16.99 AUD",
+    "Guess By Marciano For Him EDT Spray 100ml | 0085715321305 | 36 AUD",
+    "David Beckham Exquisite Leather EDP Spray 100ml | 3616305259257 | 70 AUD"
+   ]
+  }
+ },
+ {
+  "host": "testyourparfum.de",
+  "status": 200,
+  "base": "https://testyourparfum.de",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "de",
+  "robotsAll": false,
+  "woo": {
+   "total": 343,
+   "currency": "EUR",
+   "skuEan": 0,
+   "frag": 91,
+   "robotsOk": true
+  },
+  "sitemapUrls": 336,
+  "sitemapFrag": 336,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 7,
+   "code": 0,
+   "priced": 7,
+   "currency": {
+    "EUR": 7
+   },
+   "names": [
+    "Escentric Molecules Molecule 01 Eau de Toilette | Testyourparfum | - | 7.5 EUR",
+    "Le Labo The Noir 29 Eau de Parfum | Testyourparfum | - | 13 EUR",
+    "Initio Parfums Prives High Frequency Eau de Parfum | Testyourparfum | - | 13 EUR"
+   ]
+  }
+ },
+ {
+  "host": "thefragrancecounter.co.uk",
+  "status": 200,
+  "base": "https://www.thefragrancecounter.co.uk",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 2911,
+  "sitemapFrag": 2911,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 4,
+   "code": 4,
+   "priced": 4,
+   "currency": {
+    "GBP": 4
+   },
+   "names": [
+    "Ghost Deep Night EDT 50ml, Refill 50ml & Deep Night Elixir Mini EDP 10ml Gift Set | 5050456013913 | 40.5 GBP",
+    "Rabanne Fame Intense EDP Refill 200ml | 3349668630141 | 138.4 GBP",
+    "Hugo Boss Boss Bottled Deodorant Spray 150ml | 0737052355054 | 16.5 GBP"
+   ],
+   "rawGtin": 3
+  }
+ },
+ {
+  "host": "themall.aucklandairport.co.nz",
+  "status": 200,
+  "base": "https://themall.aucklandairport.co.nz",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 363,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "theperfumebar.ca",
+  "status": 200,
+  "base": "https://theperfumebar.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 83,
+  "sitemapFrag": 83,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 0,
+   "priced": 6,
+   "currency": {
+    "AED": 6
+   },
+   "names": [
+    "Orientalys Vanilla | - | 190 AED",
+    "Exki Vert | - | 190 AED",
+    "Kiss Me Rouge | - | 190 AED"
+   ]
+  }
+ },
+ {
+  "host": "thiemann.shop",
+  "status": 200,
+  "base": "https://thiemann.shop",
+  "walled": false,
+  "platform": "shopware",
+  "lang": "de-DE",
+  "robotsAll": false,
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "topparfuemerie.de",
+  "status": 200,
+  "base": "https://www.topparfuemerie.de",
+  "walled": false,
+  "platform": "magento",
+  "lang": "de",
+  "robotsAll": false,
+  "sitemapUrls": 7278,
+  "sitemapFrag": 2423,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "totalhealth.ie",
+  "status": 200,
+  "base": "https://www.totalhealth.ie",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 0,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 0,
+   "ok": 0,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "ulta.com",
+  "status": 200,
+  "base": "https://www.ulta.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 68725,
+  "sitemapFrag": 3585,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "vanitystock.com",
+  "status": 200,
+  "base": "https://vanitystock.com",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en-DE",
+  "robotsAll": false,
+  "sitemapUrls": 9426,
+  "sitemapFrag": 1070,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 6,
+   "priced": 8,
+   "currency": {
+    "EUR": 8
+   },
+   "names": [
+    "Calvin Klein One Eau De Toilette 100 ml | 0088300107407 | 30.7 EUR",
+    "Extrò Cosmétique Parfum Après-Rasage 1923 Turin 150 ml | - | 50.4 EUR",
+    "Yodeyma Celebrity Woman Eau De Parfum 15 ml | 8436022350113 | 8.78 EUR"
+   ],
+   "rawGtin": 4
+  }
+ },
+ {
+  "host": "walmart.ca",
+  "status": 200,
+  "base": "https://www.walmart.ca",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "watchmaxx.com",
+  "status": 200,
+  "base": "https://www.watchmaxx.com",
+  "walled": false,
+  "platform": "nextjs",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 97,
+  "sitemapFrag": 3,
+  "sample": {
+   "looked": 3,
+   "ok": 3,
+   "walled": 0,
+   "product": 3,
+   "code": 3,
+   "priced": 3,
+   "currency": {
+    "USD": 3
+   },
+   "names": [
+    "Ariana Grande MOD Blush EDP Spray 3.4 fl oz Women&apos;s Fragrance 810101500060 | 0810101500060 | 49.99 USD",
+    "Ariana Grande Cloud 3-Piece Gift Set Eau De Parfum Spray 3.4oz/100ml + Body Mist 4oz/118ml + Body Souffle 3.4oz/100ml Wo",
+    "Ariana Grande Moonlight EDP Spray 3.4 fl oz Women&apos;s Fragrance 812256022480 | 0812256022480 | 39.9 USD"
+   ]
+  }
+ },
+ {
+  "host": "well.ca",
+  "status": 200,
+  "base": "https://well.ca",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 59442,
+  "sitemapFrag": 287,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 2,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": [
+    "Axe Kilo Daily Fragrance | - | - ",
+    "Pure Laundry Detergent Fragrance Free | - | - "
+   ]
+  }
+ }
+]

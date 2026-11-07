@@ -6,7 +6,7 @@
 // partner-code conversation).
 import { REGION_BY_CODE, SITE, type RegionCode } from "@/site";
 import { awinDeepLink, awinProgrammeFor, awinUrl, clickref } from "./awin";
-import { STORE_BY_ID } from "@/content/stores";
+import { STORE_BY_ID, STORES } from "@/content/stores";
 import type { Offer } from "./types";
 
 /** One EPN campaign for every site in the family, hard-coded (owner,
@@ -226,10 +226,23 @@ export function partnerAwinId(p: Partner, env: Record<string, string | undefined
   return env[p.envVar] ? null : (awinProgrammeFor(p.search("x"))?.id ?? null);
 }
 
+const bareHost = (u: string) => {
+  try {
+    return new URL(u).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+};
+/** A partner we also read as a store in this region (its real prices are in the store rows): no search row twice. */
+export function isListedStore(p: Partner, region: RegionCode): boolean {
+  const host = bareHost(p.search("x"));
+  return STORES.some((s) => s.region === region && bareHost(s.base) === host);
+}
+
 /** The retailer rows a region shows today: those whose tracking template is
  *  set (paid), plus the `always` ones as plain search links (unpaid). */
 export function partnersFor(region: RegionCode, query: string, sub: string, env: Record<string, string | undefined> = process.env): { p: Partner; href: string; paid: boolean }[] {
-  return PARTNERS.filter((p) => p.regions.includes(region) && !p.feedOnly).flatMap((p): { p: Partner; href: string; paid: boolean }[] => {
+  return PARTNERS.filter((p) => p.regions.includes(region) && !p.feedOnly && !isListedStore(p, region)).flatMap((p): { p: Partner; href: string; paid: boolean }[] => {
     const href = partnerUrl(p, query, sub, env);
     if (href) return [{ p, href, paid: true }];
     return p.always ? [{ p, href: p.search(encodeURIComponent(query)), paid: false }] : [];

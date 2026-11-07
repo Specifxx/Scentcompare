@@ -1,0 +1,455 @@
+[
+ {
+  "host": "adorebeauty.com.au",
+  "status": 403,
+  "base": "https://www.adorebeauty.com.au",
+  "walled": true,
+  "platform": "other",
+  "lang": "en"
+ },
+ {
+  "host": "boots.com",
+  "status": 200,
+  "base": "https://www.boots.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "chemistwarehouse.com.au",
+  "status": 403,
+  "base": "https://chemistwarehouse.com.au",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "davidjones.com",
+  "status": 200,
+  "base": "https://www.davidjones.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "douglas.de",
+  "status": 400,
+  "base": "https://www.douglas.de",
+  "walled": false,
+  "platform": "other"
+ },
+ {
+  "host": "farmers.co.nz",
+  "status": 403,
+  "base": "https://farmers.co.nz",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "flaconi.de",
+  "status": 403,
+  "base": "https://www.flaconi.de",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "fragrancedirect.co.uk",
+  "status": 200,
+  "base": "https://allbeauty.com",
+  "walled": false,
+  "platform": "shopify",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 4001,
+  "sitemapFrag": 1889,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 8,
+   "priced": 8,
+   "currency": {
+    "GBP": 8
+   },
+   "names": [
+    "HUGO BOSS BOSS Woman Eau de Parfum 90ml | 0737052057989 | 33.2 GBP",
+    "Lancôme Magie Noire Eau de Toilette Spray 75ml | 3605530262309 | 76.5 GBP",
+    "HUGO BOSS BOSS Bottled Unlimited  Eau de Toilette 100ml | - | 34.25 GBP"
+   ]
+  }
+ },
+ {
+  "host": "fragrancenet.com",
+  "status": 403,
+  "base": "https://fragrancenet.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en"
+ },
+ {
+  "host": "fragrancex.com",
+  "status": 403,
+  "base": "https://www.fragrancex.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "harveynichols.com",
+  "error": "The operation was aborted due to timeout"
+ },
+ {
+  "host": "johnlewis.com",
+  "error": "The operation was aborted due to timeout"
+ },
+ {
+  "host": "jomashop.com",
+  "status": 200,
+  "base": "https://www.jomashop.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 57609,
+  "sitemapFrag": 3317,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "macys.com",
+  "status": 403,
+  "base": "https://www.macys.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en"
+ },
+ {
+  "host": "mecca.com.au",
+  "status": 200,
+  "base": "https://www.mecca.com",
+  "walled": false,
+  "platform": "sfcc",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 68613,
+  "sitemapFrag": 6936,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 4,
+   "code": 0,
+   "priced": 3,
+   "currency": {
+    "AUD": 1,
+    "NZD": 2
+   },
+   "names": [
+    "Perfume Oil | - | 89 AUD",
+    "Crushed Velvet EDP | - | - ",
+    "Perfumed Car Diffuser with Mimosa Insert | - | 220 NZD"
+   ]
+  }
+ },
+ {
+  "host": "myer.com.au",
+  "status": 200,
+  "base": "https://www.myer.com.au",
+  "walled": false,
+  "platform": "nextjs",
+  "lang": "en",
+  "robotsAll": false,
+  "sitemapUrls": 13064,
+  "sitemapFrag": 90,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "nordstrom.com",
+  "status": 200,
+  "base": "https://www.nordstrom.com",
+  "walled": false,
+  "platform": "other",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 40000,
+  "sitemapFrag": 410,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "notino.co.uk",
+  "status": 403,
+  "base": "https://www.notino.co.uk",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "notino.de",
+  "status": 403,
+  "base": "https://www.notino.de",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "perfumania.com",
+  "status": 200,
+  "base": "https://perfumania.com",
+  "walled": false,
+  "platform": "shopify",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 3987,
+  "sitemapFrag": 2922,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 8,
+   "code": 6,
+   "priced": 8,
+   "currency": {
+    "USD": 8
+   },
+   "names": [
+    "Team Force Cologne | 3607345397597 | 12.95 USD",
+    "Boucheron Perfume | 3386460036368 | 74.99 USD",
+    "Diamonds And Rubies Perfume | - | 16.99 USD"
+   ],
+   "rawGtin": 6
+  }
+ },
+ {
+  "host": "perfumesforless.com.au",
+  "status": 200,
+  "base": "https://perfumesforless.com.au",
+  "walled": false,
+  "platform": "woocommerce",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "total": 136,
+   "currency": "AUD",
+   "skuEan": 0,
+   "frag": 100,
+   "robotsOk": true
+  },
+  "sitemapUrls": 159,
+  "sitemapFrag": 159,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "priceline.com.au",
+  "status": 200,
+  "base": "https://www.priceline.com.au",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 16005,
+  "sitemapFrag": 811,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "selfridges.com",
+  "status": 403,
+  "base": "https://selfridges.com",
+  "walled": true,
+  "platform": "other",
+  "lang": "en-US"
+ },
+ {
+  "host": "sephora.ca",
+  "status": 200,
+  "base": "https://www.sephora.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 29737,
+  "sitemapFrag": 4179,
+  "sample": {
+   "looked": 2,
+   "ok": 0,
+   "walled": 2,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "sephora.co.uk",
+  "status": 403,
+  "base": "https://www.sephora.co.uk",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "sephora.com",
+  "status": 200,
+  "base": "https://www.sephora.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en",
+  "robotsAll": false,
+  "woo": {
+   "status": 404
+  },
+  "sitemapUrls": 29737,
+  "sitemapFrag": 4179,
+  "sample": {
+   "looked": 2,
+   "ok": 0,
+   "walled": 2,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ },
+ {
+  "host": "sephora.com.au",
+  "status": 403,
+  "base": "https://www.sephora.com.au",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "shoppersdrugmart.ca",
+  "status": 403,
+  "base": "https://www.shoppersdrugmart.ca",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "smithscity.co.nz",
+  "status": 200,
+  "base": "https://smithscity.co.nz",
+  "walled": false,
+  "platform": "shopify",
+  "lang": "en",
+  "shopifyJson": true,
+  "robotsAll": false,
+  "sitemapUrls": 584,
+  "sitemapFrag": 0,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 6,
+   "code": 4,
+   "priced": 6,
+   "currency": {
+    "NZD": 6
+   },
+   "names": [
+    "Logitech Signature M650 Wireless Mouse - Left Handed - Graphite | - | 69.95 NZD",
+    "TP-Link Archer T2U Nano AC600 Wireless Dual Band USB Adapter | 6935364099978 | 29 NZD",
+    "AOC U27B35 27\" IPS Monitor 4k UHD HDMI DP 3yr wty | 6973985232961 | 449.9 NZD"
+   ]
+  }
+ },
+ {
+  "host": "superdrug.com",
+  "status": 403,
+  "base": "https://superdrug.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "thebay.com",
+  "status": 403,
+  "base": "https://www.canadiantire.ca",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "theperfumeshop.com",
+  "status": 403,
+  "base": "https://theperfumeshop.com",
+  "walled": true,
+  "platform": "other"
+ },
+ {
+  "host": "ulta.com",
+  "status": 200,
+  "base": "https://www.ulta.com",
+  "walled": false,
+  "platform": "other",
+  "lang": "en-US",
+  "robotsAll": false,
+  "woo": {
+   "status": 200
+  },
+  "sitemapUrls": 68725,
+  "sitemapFrag": 3585,
+  "sample": {
+   "looked": 8,
+   "ok": 8,
+   "walled": 0,
+   "product": 0,
+   "code": 0,
+   "priced": 0,
+   "currency": {},
+   "names": []
+  }
+ }
+]
