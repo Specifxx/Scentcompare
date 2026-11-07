@@ -1,0 +1,59 @@
+name: Reviews branch
+
+# The reviews store (src/lib/reviews-store.ts) is reviews.json on this repo's `reviews` branch. ScentCompare was
+# copied from KaeYoung without that branch, so every POST /api/reviews failed with a 404 and the ops monitor's
+# "Ratings and reviews" check warned (DECISIONS.md, 2026-11-07). This job creates the branch, empty, when it is
+# missing, and does nothing when it exists: it never touches a review already stored. The subject carries no
+# [deploy]; the branch's own vercel.json turns deployments off.
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/reviews-branch.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reviews-branch
+  cancel-in-progress: false
+
+jobs:
+  ensure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create the empty reviews branch if it is missing
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --heads origin reviews >/dev/null; then
+            echo "The reviews branch exists: nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan reviews
+          git rm -rq --cached .
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          printf '{"reviews":[]}\n' > reviews.json
+          cat > vercel.json <<'JSON'
+          {
+            "$schema": "https://openapi.vercel.sh/vercel.json",
+            "git": { "deploymentEnabled": false },
+            "ignoreCommand": "exit 0"
+          }
+          JSON
+          cat > README.md <<'MD'
+          # ScentCompare reviews
+
+          Shoppers' ratings and reviews for scentcompare.app, written here by the site's `/api/reviews` route (one
+          commit per review or moderation change). Public on purpose: nothing about a reviewer is stored (no IP, no
+          email). Only reviews with `"status": "published"` reach the site, at the next daily build
+          (`scripts/reviews-export.ts` on `main`).
+
+          Never merge this branch into `main`. It never deploys (`vercel.json` here).
+          MD
+          git add reviews.json vercel.json README.md
+          git commit -qm "Reviews store (empty)"
+          git push origin reviews
+          echo "Created the reviews branch."

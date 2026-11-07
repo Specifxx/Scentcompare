@@ -1180,3 +1180,12 @@ first tier from 2026-11-03, now the existence rule), or when Search Console show
   so one that qualifies again returns at the same URL (slugs are kept forever) with its chart.
 - `data/public/culled.json` (slug → category): a culled product page 301s to its category (`lib/culled.ts`).
 - The import's half-size guard compares the merge's count before the cull (`meta.merged`).
+
+## 2026-11-07 — The reviews branch exists (it was never created)
+
+ScentCompare was copied from KaeYoung's engine, but not its `reviews` branch, so `src/lib/reviews-store.ts` found no
+`reviews.json` and every review a shopper sent failed (the ops monitor's "Ratings and reviews" check warned). Found in
+the all-keys check. `.github/workflows/reviews-branch.yml` creates the branch, empty (`reviews.json`, a README and a
+`vercel.json` that turns deployments off), when it is missing, and does nothing when it exists, so a stored review is
+never touched. It runs once when it lands on `main` and on demand. The empty `shipping.json` now reads "no quotes yet"
+in the monitor instead of "20,764 days ago".
