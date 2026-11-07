@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "site": "scentcompare.app",
+ "at": "2026-11-07T17:53:19.967Z",
+ "overall": "warn",
+ "checks": [
+  {
+   "name": "Live site",
+   "status": "ok",
+   "detail": "HTTP 200"
+  },
+  {
+   "name": "Search index",
+   "status": "ok",
+   "detail": "13511 products live"
+  },
+  {
+   "name": "Daily price import",
+   "status": "ok",
+   "detail": "2.2h old"
+  },
+  {
+   "name": "Store imports",
+   "status": "ok",
+   "detail": "230 stores read"
+  },
+  {
+   "name": "Catalogue",
+   "status": "ok",
+   "detail": "13511 products"
+  },
+  {
+   "name": "Data size",
+   "status": "warn",
+   "detail": "products.json is 18.9 MB: builds slow down; trim fields in src/lib/products-file.ts before raising minStoresPerRegion"
+  },
+  {
+   "name": "Smells like notes",
+   "status": "ok",
+   "detail": "11677 products (86%) have notes"
+  },
+  {
+   "name": "Ratings and reviews",
+   "status": "ok",
+   "detail": "0 products rated"
+  },
+  {
+   "name": "Delivery quotes",
+   "status": "warn",
+   "detail": "no delivery quotes yet (data/public/shipping.json is empty): the weekly Delivery quotes workflow writes it on Sunday"
+  },
+  {
+   "name": "Store deals",
+   "status": "ok",
+   "detail": "117 of 213 stores checked; 0 run multi-buys or gifts on 0 products"
+  },
+  {
+   "name": "Page readers",
+   "status": "ok",
+   "detail": "17 page stores read"
+  },
+  {
+   "name": "Partner feeds",
+   "status": "ok",
+   "detail": "stylevana 3/43333 prices kept"
+  },
+  {
+   "name": "Amazon ASINs",
+   "status": "ok",
+   "detail": "US 209 ASINs (10830 waiting); UK waiting for Amazon API access; CA waiting for Amazon API access; EU waiting for Amazon API access; AU waiting for Amazon API access"
+  },
+  {
+   "name": "eBay listings",
+   "status": "ok",
+   "detail": "2500/2500 calls on 2026-11-07"
+  }
+ ]
+}
