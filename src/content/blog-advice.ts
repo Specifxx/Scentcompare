@@ -194,7 +194,7 @@ export const ADVICE_POSTS: Post[] = [
     title: "Black Friday perfume 2026: how to tell a real discount from a usual price",
     short: "Black Friday perfume",
     description: "Fragrance is one of the most-discounted things on Black Friday, and also one of the most faked discounts. How to use a product's price history and every store's price to know what a bottle really costs, and what to buy first.",
-    date: "2026-11-14",
+    date: "2026-11-08",
     art: "sets",
     sections: [
       {
