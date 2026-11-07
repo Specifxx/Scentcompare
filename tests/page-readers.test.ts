@@ -145,3 +145,13 @@ test("one barcode on pages naming different products is not trusted; the same pr
   const ls = listingsFromState(pagesStore, { "https://p.example/1": r(A, "Cherry Ink - 50ml"), "https://p.example/2": r(A, "Carbonara - 50ml"), "https://p.example/3": r(B, "Fame 50ml"), "https://p.example/4": r(B, "Fame 50ml") }, "2026-11-06");
   assert.deepEqual(ls.map((l) => l.ean), [B]);
 });
+
+test("never-read product pages come before category and blog pages", async () => {
+  const { looksLikeProduct } = await import("@/lib/import/pages");
+  assert.ok(looksLikeProduct("https://p.example/lancome-tresor-eau-de-parfum"));
+  assert.ok(looksLikeProduct("https://p.example/products/sauvage"));
+  assert.ok(looksLikeProduct("https://p.example/en/dior/sauvage/p_00000123/"));
+  assert.ok(!looksLikeProduct("https://p.example/perfumes/hombre"));
+  assert.ok(!looksLikeProduct("https://p.example/fragrance/womens.html"));
+  assert.deepEqual(pageQueue(["https://p.example/perfumes", "https://p.example/dior-sauvage-edp-100ml"], {}, "2026-11-06"), ["https://p.example/dior-sauvage-edp-100ml", "https://p.example/perfumes"]);
+});

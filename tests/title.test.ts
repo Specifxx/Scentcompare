@@ -45,6 +45,9 @@ test("store-made bundles are refused; a house's own gift set is not", () => {
   assert.equal(refused("Versace Eros EDT 100ml x2"), "bundle");
   assert.equal(refused("Perfume Mystery Box"), "mystery");
   assert.equal(refused("Gift Card"), "not-fragrance");
+  // Fragrance Nevaeh sells a bottle's cap alone, under the bottle's barcode.
+  assert.equal(refused("Parfums de Marly Delina/Delina Exclusif/Delina La Rosee (Cap)"), "not-fragrance");
+  assert.equal(refused("Replacement Cap for Sauvage 100ml"), "not-fragrance");
   assert.equal(refused("Dior Sauvage Eau de Toilette 100ml Gift Set"), null);
   assert.equal(refused("Versace Eros 3 Piece Gift Set"), null);
 });

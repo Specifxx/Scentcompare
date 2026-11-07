@@ -7,7 +7,7 @@ import { CATEGORIES, type CatKey } from "@/site";
 
 export type Refusal = "not-fragrance" | "tester" | "decant" | "pre-owned" | "damaged" | "bundle" | "mystery" | "dupe";
 
-const NOT_FRAGRANCE = /\b(gift\s*card|e-?gift|gift\s*voucher|shipping|insurance|protection\s*plan|route\s*package|tote\s*bag|donation|tip\b|membership|pre-?order\s*deposit)\b/i;
+const NOT_FRAGRANCE = /\b(gift\s*card|e-?gift|gift\s*voucher|shipping|insurance|protection\s*plan|route\s*package|tote\s*bag|donation|tip\b|membership|pre-?order\s*deposit|replacement\s*(?:cap|lid|atomi[sz]er|pump|nozzle)|spare\s*(?:cap|lid)|cap\s*only|bottle\s*cap)\b|\(\s*cap\s*\)/i;
 // A tester or an unboxed bottle is the same juice sold without its box and often without a cap: not the
 // product the barcode names, and stores price it apart. "No cellophane" is just an unsealed box and stays.
 const TESTER = /\b(tester|testers|unboxed|unbox|without\s*box|no\s*box|brown\s*box|white\s*box|plain\s*box|demo\b)\b/i;

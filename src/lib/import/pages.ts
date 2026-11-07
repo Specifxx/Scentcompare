@@ -83,6 +83,18 @@ export async function sitemapPages(store: Store, robots: Robots): Promise<string
 }
 
 const bare = (h: string) => h.toLowerCase().replace(/^www\./, "");
+/** A URL whose last path segment reads like one product: three or more words, a size, or a long number. */
+export function looksLikeProduct(u: string): boolean {
+  let last = "";
+  try {
+    last = decodeURIComponent(new URL(u).pathname).replace(/\/+$/, "").split("/").pop() ?? "";
+  } catch {
+    return false;
+  }
+  last = last.replace(/\.html?$/, "");
+  return (last.match(/[-_]/g)?.length ?? 0) >= 3 || /\d+\s?ml\b|\d{5,}/i.test(last) || /\/(?:products?|p|produkt|produit|prodotto)\//i.test(new URL(u).pathname);
+}
+
 const daysBetween = (a: string, b: string) => (Date.parse(b) - Date.parse(a)) / 86_400_000;
 
 /**
@@ -105,7 +117,10 @@ export function pageQueue(urls: string[], state: PageState, today: string, wante
   const byAge = (a: [string, string], b: [string, string]) => a[1].localeCompare(b[1]);
   const hotUrls = hot.sort(byAge).map(([u]) => u);
   const first = Number.isFinite(budget) ? Math.floor(budget * 0.6) : hotUrls.length;
-  return [...hotUrls.slice(0, first), ...fresh, ...hotUrls.slice(first), ...known.sort(byAge).map(([u]) => u), ...retry.sort(byAge).map(([u]) => u)];
+  // Never-read pages that look like a product (a long slug, a size, a product number) before the shop's
+  // category, brand and blog pages, which a sitemap often lists first.
+  const freshFirst = [...fresh.filter(looksLikeProduct), ...fresh.filter((u) => !looksLikeProduct(u))];
+  return [...hotUrls.slice(0, first), ...freshFirst, ...hotUrls.slice(first), ...known.sort(byAge).map(([u]) => u), ...retry.sort(byAge).map(([u]) => u)];
 }
 
 /** Listings from the state: readings at most MAX_AGE_DAYS old, priced in the region's own currency. */

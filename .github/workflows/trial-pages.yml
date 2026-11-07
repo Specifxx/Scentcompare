@@ -3,7 +3,7 @@ name: Trial page reader
 on:
   push:
     branches: ["claude/**"]
-    paths: [".github/workflows/trial-pages.yml", "scripts/read-pages.ts", "src/lib/import/pages.ts", "src/lib/import/jsonld.ts"]
+    paths: [".github/workflows/trial-pages.yml", "scripts/read-pages.ts", "src/lib/import/pages.ts", "src/lib/import/jsonld.ts", "src/content/stores.ts"]
 jobs:
   trial:
     runs-on: ubuntu-latest
@@ -24,7 +24,8 @@ jobs:
           SHARD: ${{ matrix.shard }}
           SHARDS: 4
           MINUTES: 40
-          BUDGET: 150
+          BUDGET: 120
+          STORES: ${{ fromJSON('["druni,parfimo","seuren,fragrancecounter","parfumzentrum,maisondesfragrances","pacoperfumerias,theperfumespot"]')[matrix.shard] }}
       - name: What each store gave
         if: always()
         run: |
