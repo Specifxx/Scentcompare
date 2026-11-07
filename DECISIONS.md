@@ -1068,11 +1068,18 @@ missed are not on Shopify, or have closed `products.json`.
 - **Shopify-only checks** (delivery quotes, multi-buys, the checkout link) read `SHOPIFY_STORES` only.
 - **A partner that becomes a store** loses its partner search row in that region (`isListedStore`): its priced row
   replaces the search link.
-- **Added (round 4):** pages: Druni, Arenal, KICKS, Perfumes Club (EU, UK), Parfimo, Parfum-Zentrum, Tendance Parfums,
-  Parfumwebshop, Parfümerie Seuren, Maison des Fragrances (EU); Paco Perfumerías, Perfume UK, The Fragrance Counter
-  (UK); Luckyscent (US); Feeling Sexy, TerryWhite Chemmart (AU). Shopify: Fresh Beauty Co (AU), Fragrance.com EU,
-  Haarspullen, Profumi di Nicchia (EU). Left out: ÉCLAT (its own "inspired by" line), Parfumdreams (stays a partner row
-  until its Awin template is set, so its row can carry our tag).
-- **Walled, not read** (403, captcha or challenge): Sephora, Ulta, Macy's, Nordstrom, Douglas, Boots, Superdrug, The
-  Perfume Shop, Fragrance Direct, Notino, Chemist Warehouse, Myer, David Jones, Mecca, Priceline, Jomashop. Their
-  pages print no barcode either, or answer bots with a wall; the partner rows link the ones with programmes.
+- **Added:** round 4 (Google's top results in every region), pages: Druni, Arenal, KICKS, Perfumes Club (EU, UK),
+  Parfimo, Tendance Parfums, Parfumwebshop, Parfümerie Seuren, Maison des Fragrances (EU); Paco
+  Perfumerías, Perfume UK, The Fragrance Counter (UK); Luckyscent (US); Feeling Sexy, TerryWhite Chemmart (AU).
+  Shopify: Fresh Beauty Co (AU), Fragrance.com EU, Haarspullen, Profumi di Nicchia (EU). Round 6 (US discounters a
+  visitor named, 2026-11-07): The Perfume Spot (pages, BigCommerce), Fragrance Nevaeh, Aura Fragrance (Shopify);
+  Olfactory Factory, Perfumania, PerfumeBox and allbeauty were already read. Left out: ÉCLAT (its own "inspired by"
+  line), Parfum-Zentrum (the same shop and stock as Parfimo), Parfumdreams (stays a partner row until its Awin template is set, so its row can carry our tag).
+- **Not read** (`probe/pages-summary-round5.md`, `pages-summary.md`): 403 or a challenge page: Sephora (UK, AU),
+  Macy's, Boots, Superdrug, The Perfume Shop, Notino, Flaconi, Selfridges, Chemist Warehouse, Adore Beauty, Farmers,
+  Shoppers Drug Mart, Hudson's Bay, David Jones, FragranceNet, FragranceX, Perfume.com, FragranceShop, Perfume
+  Emporium, Elite Fragrances, FragranceBuy, The Fragrance Shop. No barcode on their pages: Sephora US, Ulta,
+  Nordstrom, Jomashop, Myer, Mecca, Priceline, MaxAroma, Gift Express, Luxury Perfume. The partner rows link the
+  ones with programmes.
+- **A shop's own wrong barcode:** one GTIN on two pages that name different products (Luckyscent pastes one code
+  across a range) publishes neither. A bottle's cap sold alone under the bottle's barcode is refused by title.

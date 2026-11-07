@@ -272,7 +272,6 @@ export const STORES: Store[] = [
   { id: "perfumesclub", name: "Perfumes Club", region: "EU", base: "https://www.perfumesclub.com", platform: "pages", mixed: true, pages: { budget: 2500 } },
   { id: "perfumesclubuk", name: "Perfumes Club", region: "UK", base: "https://www.perfumesclub.co.uk", platform: "pages", mixed: true, pages: { budget: 2500 } },
   { id: "parfimo", name: "Parfimo", region: "EU", base: "https://www.parfimo.de", platform: "pages", pages: { sitemapMatch: "/\\d+/sitemap_products\\.xml", budget: 2000 } },
-  { id: "parfumzentrum", name: "Parfum-Zentrum", region: "EU", base: "https://www.parfum-zentrum.de", platform: "pages", pages: { sitemapMatch: "/\\d+/sitemap_products\\.xml", budget: 2000 } },
   { id: "tendanceparfums", name: "Tendance Parfums", region: "EU", base: "https://www.tendance-parfums.com", platform: "pages", mixed: true },
   { id: "parfumwebshop", name: "Parfumwebshop", region: "EU", base: "https://parfumwebshop.nl", platform: "pages", mixed: true },
   { id: "seuren", name: "Parfümerie Seuren", region: "EU", base: "https://www.seurenhealth.de", platform: "pages", mixed: true, pages: { urlMatch: "\\.html$" } },

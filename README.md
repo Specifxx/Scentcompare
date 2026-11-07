@@ -9,7 +9,10 @@ Live at **scentcompare.app**.
 
 ```
 GitHub Actions, daily 06:11 UTC (import.yml)
-  every store in src/content/stores.ts (Shopify products.json, 2 at a time, ~1 request a second)
+  page jobs first: "pages" stores' sitemaps → product pages' schema.org GTIN, budgeted, robots.txt only
+    (scripts/read-pages.ts, src/lib/import/pages.ts) → data/state/pages/<store>.json
+  every store in src/content/stores.ts (Shopify products.json or the WooCommerce Store API, 2 at a time,
+    ~1 request a second; page stores from their state, readings up to 5 days old)
   → one listing per variant with a valid EAN-13 or UPC (src/lib/ean.ts, src/lib/import/shopify.ts)
   → refuse testers, unboxed, decants, samples, dupes, bundles (src/lib/title.ts); section, size, house
   → one product per barcode, kept when 2+ stores in a region sell it (src/lib/merge.ts)
