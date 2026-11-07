@@ -73,7 +73,7 @@ export async function sitemapPages(store: Store, robots: Robots): Promise<string
   return [...pages].filter((u) => {
     try {
       const url = new URL(u);
-      if (url.origin !== new URL(store.base).origin) return false;
+      if (bare(url.host) !== bare(new URL(store.base).host)) return false;
       if (keep && !keep.test(url.pathname)) return false;
       return robotsAllows(robots, url.pathname + url.search);
     } catch {
@@ -82,6 +82,7 @@ export async function sitemapPages(store: Store, robots: Robots): Promise<string
   });
 }
 
+const bare = (h: string) => h.toLowerCase().replace(/^www\./, "");
 const daysBetween = (a: string, b: string) => (Date.parse(b) - Date.parse(a)) / 86_400_000;
 
 /**
@@ -110,11 +111,18 @@ export function pageQueue(urls: string[], state: PageState, today: string, wante
 /** Listings from the state: readings at most MAX_AGE_DAYS old, priced in the region's own currency. */
 export function listingsFromState(store: Store, state: PageState, today: string): Listing[] {
   const want = REGION_BY_CODE[store.region].currency;
+  // A barcode the shop prints on two pages that name different products is the shop's own mistake (one
+  // GTIN pasted across a range): no page of it is trusted. The same product on two pages counts once.
+  const names = new Map<string, Set<string>>();
+  for (const s of Object.values(state)) for (const p of s.p) names.set(p.e, (names.get(p.e) ?? new Set()).add(p.t.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()));
   const out: Listing[] = [];
+  const seen = new Set<string>();
   for (const [url, s] of Object.entries(state)) {
     if (daysBetween(s.at, today) > MAX_AGE_DAYS) continue;
     for (const p of s.p) {
       if (p.cur && p.cur !== want) continue;
+      if ((names.get(p.e)?.size ?? 0) > 1 || seen.has(p.e)) continue;
+      seen.add(p.e);
       out.push({ store: store.id, region: store.region, title: p.t, vendor: p.b, kind: "", ean: p.e, cents: p.c, st: p.st, url: p.u ?? url, img: p.i });
     }
   }

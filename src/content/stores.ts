@@ -276,7 +276,7 @@ export const STORES: Store[] = [
   { id: "tendanceparfums", name: "Tendance Parfums", region: "EU", base: "https://www.tendance-parfums.com", platform: "pages", mixed: true },
   { id: "parfumwebshop", name: "Parfumwebshop", region: "EU", base: "https://parfumwebshop.nl", platform: "pages", mixed: true },
   { id: "seuren", name: "Parfümerie Seuren", region: "EU", base: "https://www.seurenhealth.de", platform: "pages", mixed: true },
-  { id: "maisondesfragrances", name: "Maison des Fragrances", region: "EU", base: "https://maisondesfragrances.fr", platform: "pages", pages: { urlMatch: "^/products/", budget: 3000 } },
+  { id: "maisondesfragrances", name: "Maison des Fragrances", region: "EU", base: "https://maisondesfragrances.fr", platform: "pages", pages: { budget: 3000 } },
   { id: "pacoperfumerias", name: "Paco Perfumerías", region: "UK", base: "https://www.pacoperfumerias.co.uk", platform: "pages", pages: { budget: 2500 } },
   { id: "perfumeuk", name: "Perfume UK", region: "UK", base: "https://www.perfumeuk.co.uk", platform: "pages" },
   { id: "fragrancecounter", name: "The Fragrance Counter", region: "UK", base: "https://www.thefragrancecounter.co.uk", platform: "pages", pages: { budget: 2000 } },

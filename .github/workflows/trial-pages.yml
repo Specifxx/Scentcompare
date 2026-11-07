@@ -24,7 +24,7 @@ jobs:
           SHARD: ${{ matrix.shard }}
           SHARDS: 4
           MINUTES: 40
-          BUDGET: 25
+          BUDGET: 150
       - name: What each store gave
         if: always()
         run: |
@@ -34,7 +34,7 @@ jobs:
               const ps = Object.entries(s.pages);
               const withP = ps.filter(([, r]) => r.p.length);
               console.log("##", process.argv[1], JSON.stringify(s.run), "read", ps.length, "with barcode", withP.length);
-              for (const [u, r] of withP.slice(0, 4)) console.log("  ", u, JSON.stringify(r.p[0]));
+              for (const [u, r] of withP.slice(0, 3)) console.log("  ", u, JSON.stringify(r.p[0]));
               for (const [u] of ps.filter(([, r]) => !r.p.length).slice(0, 3)) console.log("   none:", u);
             ' "$f"
           done

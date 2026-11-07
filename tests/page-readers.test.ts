@@ -139,3 +139,9 @@ test("ops: the page readers are judged by their last run", async () => {
   assert.equal(judgePages({ a: { at: "2026-11-01", read: 10 }, b: null }, now).status, "fail");
   assert.equal(judgePages({ a: null, b: null }, now).status, "warn");
 });
+
+test("one barcode on pages naming different products is not trusted; the same product twice counts once", () => {
+  const r = (e: string, t: string) => ({ at: "2026-11-05", p: [{ e, c: 17500, cur: "GBP", st: "in" as const, t, b: "", i: null }] });
+  const ls = listingsFromState(pagesStore, { "https://p.example/1": r(A, "Cherry Ink - 50ml"), "https://p.example/2": r(A, "Carbonara - 50ml"), "https://p.example/3": r(B, "Fame 50ml"), "https://p.example/4": r(B, "Fame 50ml") }, "2026-11-06");
+  assert.deepEqual(ls.map((l) => l.ean), [B]);
+});
