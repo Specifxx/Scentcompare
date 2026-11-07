@@ -1189,3 +1189,11 @@ the all-keys check. `.github/workflows/reviews-branch.yml` creates the branch, e
 `vercel.json` that turns deployments off), when it is missing, and does nothing when it exists, so a stored review is
 never touched. It runs once when it lands on `main` and on demand. The empty `shipping.json` now reads "no quotes yet"
 in the monitor instead of "20,764 days ago".
+
+## Black Friday indexing push (2026-11-07)
+
+Owner: get every Black Friday page indexed. The daily IndexNow ping sent only the hubs it named, so the sale pages
+(`/black-friday`, `/cyber-monday`, the other seasonal pages) and the blog posts never went out; they are named now
+(the sitemap already listed them). A Black Friday blog post goes live on 8 November (on 7 November for Figure; Scent's,
+written for the 14th, moved up because it is only useful before the sales) and the two sale pages link to it once it is live. Every price in it is a live table of
+the day's prices; no countdown, no "was" price.
