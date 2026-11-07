@@ -25,7 +25,7 @@ jobs:
           SHARDS: 4
           MINUTES: 40
           BUDGET: 120
-          STORES: ${{ fromJSON('["druni,parfimo","seuren,fragrancecounter","parfumzentrum,maisondesfragrances","pacoperfumerias,theperfumespot"]')[matrix.shard] }}
+          STORES: ${{ fromJSON('["parfimo","seuren","parfumzentrum,maisondesfragrances","pacoperfumerias"]')[matrix.shard] }}
       - name: What each store gave
         if: always()
         run: |
