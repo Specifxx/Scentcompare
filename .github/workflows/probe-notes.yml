@@ -1,0 +1,66 @@
+name: Notes probe
+
+# Research only: samples every store's product descriptions for fragrance
+# notes (probe/notes.mjs) and commits probe/notes-sample.json.gz to the
+# claude/* branch it ran on. Never touches data/ or main.
+
+on:
+  push:
+    branches: ["claude/**"]
+    paths: ["probe/notes.mjs"]
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node probe/notes.mjs
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: 16
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: notes-${{ matrix.shard }}
+          path: probe/notes-${{ matrix.shard }}.json
+          if-no-files-found: ignore
+
+  collect:
+    needs: probe
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: shards
+      - name: Commit sample
+        run: |
+          set -euo pipefail
+          node -e '
+            const fs=require("fs");let stat={},out=[];
+            for(const d of fs.readdirSync("shards"))for(const f of fs.readdirSync("shards/"+d)){const j=JSON.parse(fs.readFileSync("shards/"+d+"/"+f));Object.assign(stat,j.stat);out=out.concat(j.out)}
+            fs.writeFileSync("probe/notes-sample.json",JSON.stringify({stat,out}))'
+          gzip -9 -f probe/notes-sample.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git fetch origin ${GITHUB_REF_NAME}
+            git checkout -q -B ${GITHUB_REF_NAME} FETCH_HEAD
+            git add probe/notes-sample.json.gz
+            git commit -q -m "probe: notes sample" || exit 0
+            git push origin HEAD:${GITHUB_REF_NAME} && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1

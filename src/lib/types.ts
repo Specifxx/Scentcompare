@@ -69,6 +69,8 @@ export interface Listing {
   /** the Shopify variant id */
   vid?: string;
   img: string | null;
+  /** the notes the store's own description lists (lib/notes.ts readNotes), when it lists any */
+  notes?: import("./notes").Pyramid;
 }
 
 /** Cheapest real eBay Buy It Now listing for a product (data/public/ebay.json). */

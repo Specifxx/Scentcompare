@@ -36,6 +36,14 @@ export function judgeFreshness(updatedAt: string, now = Date.now()): Omit<Result
   return { status: h < 54 ? "warn" : "fail", detail: `prices are ${h.toFixed(0)}h old: check the Import prices workflow` };
 }
 
+/** "Smells like" (lib/notes.ts): the import should find notes for a good share of the catalogue
+ *  (about 30% on the 2026-11-06 probe). A sharp drop means the parser or the stores' copy changed. */
+export function judgeNotes(withNotes: number | null, products: number): Omit<Result, "name"> {
+  if (withNotes == null) return { status: "warn", detail: "no data/public/notes.json yet: the next daily import writes it" };
+  const share = products ? withNotes / products : 0;
+  return share >= 0.1 ? { status: "ok", detail: `${withNotes} products (${Math.round(share * 100)}%) have notes` } : { status: "warn", detail: `only ${withNotes} of ${products} products have notes: check readNotes against today's store copy` };
+}
+
 export function judgeStores(meta: Meta, total: number): Omit<Result, "name"> {
   const bad = Object.entries(meta.stores).filter(([, s]) => !s.ok);
   // A store that answered with no products at all: it moved, closed or
@@ -174,6 +182,10 @@ async function main() {
     check("Data size", () =>
       size < 12e6 ? { status: "ok", detail: `${(size / 1e6).toFixed(1)} MB` } : { status: "warn", detail: `products.json is ${(size / 1e6).toFixed(1)} MB: builds slow down; trim fields in src/lib/products-file.ts before raising minStoresPerRegion` },
     ),
+    check("Smells like notes", () => {
+      const f = path.join(DATA, "notes.json");
+      return judgeNotes(fs.existsSync(f) ? Object.keys(JSON.parse(fs.readFileSync(f, "utf8"))).length : null, meta.products);
+    }),
     check("Ratings and reviews", async () => {
       const f = path.join(DATA, "reviews.json");
       const probe: { error?: string; tokenExpires?: string } = {};

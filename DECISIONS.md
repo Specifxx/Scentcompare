@@ -1040,6 +1040,66 @@ well … products that are over 20 USD", and with no eBay or Amazon price "say a
   sales in 30 days), UK/CA/EU have no credential of their own; every Amazon row stays a tagged search link until a store
   answers. The ASIN finder now also runs on an eBay-only dispatch.
 
+
+## 2026-11-06 — eBay and Amazon rows are full price rows, on top, outlined
+
+**Decision (owner: "eBay prices and Amazon prices should function exactly like a normal store price row. So you can also
+add to cart … if it's in stock … it just sits on the very top. And it has a different colored outline"):** the eBay row
+is always the first row, with a green outline, and Amazon the second, with an amber one. Both carry everything a store
+row has: the stock line, the store thumbs (one tally per eBay / Amazon domain, `ebay.com.au`, `amazon.com`…) and the
+cart button. They are "manual" cart lines on their own tagged links (`src/lib/cart-list.ts`), never a Shopify checkout;
+an Amazon line's price is dropped from the visitor's list after 24 hours (Amazon's licence), and the cart then says to
+see today's price on Amazon. With no Amazon price the row reads "Also check on Amazon", a tagged link. Unchanged: neither
+is counted as a store, "Best price", a deal, an alert price or the reference price; TCGplayer and Cardmarket stay
+references (no thumbs, no cart line); no Amazon link in a pop-up.
+Here (follow-up to the pinned-row redesign): a priced eBay row and Amazon's own listing get "In stock", thumbs and the cart list; eBay keeps the green border, Amazon's priced row takes the amber one, the unpriced "Also check" rows keep the accent tint, and the quick view's Amazon row stays an internal link to the product page.
+
+## 2026-11-06: "Smells like": every product's notes in plain words, from the stores' own note lists
+
+Owner (Bill): shoppers in a store "get a few samples and test it out"; online they can't, so give them "a very fun,
+quirky place where … it smells like this combined with this" to make an informed choice.
+
+- Source: the note lists stores print in their own product descriptions ("Top notes: … / Heart notes: … / Base notes:
+  …", Fragrantica's "Top notes are …; middle notes are …", "Key notes: …"). The importer already downloads every
+  description in `products.json`, so it costs no extra request. Probe 2026-11-06 (`probe/notes.mjs`, 4 pages of every
+  store): 79k of 178k descriptions mention notes, and the parser reads a list from about 40k; on the catalogue that was
+  about 10,600 products from the partial sample (the daily import reads every page).
+- `lib/notes.ts` `readNotes`: only a label written as a label counts (prose like "opens with a burst of bergamot"
+  never does), only notes in its vocabulary are kept (~130 notes in 11 families, so an odd word never becomes a "note";
+  an unknown note is dropped, never guessed), and a description with two pyramids (a set, two products) is skipped.
+- `consensus`: one store's list as it is; two or more stores, only the notes at least two of them name (so one
+  store's copy-paste mistake can't put the wrong notes on a bottle). On the probe, stores sharing a barcode agreed in
+  97% of cases. `data/public/notes.json` (barcode → pyramid + how many stores agree) is written by the import; a
+  barcode no store described today keeps yesterday's entry. A size with no list borrows another size's (same
+  `familyKey`) only when every size that has one agrees.
+- The panel (`components/SmellsLike.tsx`, server HTML, no script) sits under the price card: the headline is two or
+  three vivid notes, one per family ("lemon + lavender + jasmine"), a wear line built from the top and base layers
+  ("Opens bright and zesty, then dries down woody"), a family bar, and the pyramid in plain labels (first spray, after
+  an hour, all day on skin). No list, no panel. The words are templates over the listed notes; nothing describes a
+  scent the stores didn't list.
+- SEO: "What does X smell like?" leads the product FAQ (FAQPage JSON-LD), the meta description leads with "X smells
+  like …" when it fits, and `/notes` plus `/notes/<note>` (every note on 8+ products, about 120, prerendered, in the
+  sitemap, top 24 per section) answer "perfumes with vanilla" searches. Linked from the side nav.
+
+## 2026-11-06: "Lowest store price", sold-out rows without a price (from KaeYoung)
+
+Ported from KaeYoung's underperformer fixes (owner: every KaeYoung change also goes here). The headline and its row say
+"Lowest store price", since partner feed rows and eBay are never the best price; sold-out store rows stay at the bottom
+with no price.
+
+## 2026-11-06: The quick view carries the tagged Amazon link (owner)
+
+Since 2026-11-02 the quick view showed no Amazon link (or, on KaeYoung and ScentCompare, an "Amazon" row that opened our
+own product page), read as Amazon's ban on links in pop-ups. The owner noticed the quick view sends nobody to Amazon and
+chose (2026-11-06) to put the product page's own tagged Amazon link there. Amazon's Participation Requirements, item
+(o): "You will not post or serve any Special Links … within any pop-up or pop-under windows, transitional page ads, or
+layer ads, except for pop-up windows in conjunction with your Site promoting Products closely associated with the
+materials on your Site." A quick view the visitor opens for one product, showing that same product, fits the exception;
+the owner accepted the remaining risk. The quick view shows the link only (the item's own page where the ASIN is known,
+else the tagged search), never Amazon's price: that stays on the product page under the 24-hour licence. Uninvited
+overlays (a phone ad dock, a corner card, an exit pop-up) still never carry Amazon, and an Amazon page is never framed
+(item (n)).
+
 ## 2026-11-06: Stores beyond Shopify: product-page and WooCommerce readers
 
 Owner (Bill): "we are missing a ton of stores … if it requires new scrapers, we need to build these scrapers", and

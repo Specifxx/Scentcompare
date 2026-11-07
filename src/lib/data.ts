@@ -12,6 +12,7 @@ import { unpackProducts } from "./products-file";
 import { deliveryFor, MAX_SMALL_ORDER_FEE, type ShippingData } from "./shipping";
 import type { PartnerPricesFile } from "./partner-feed";
 import type { PromoData } from "./promos";
+import { allNotes, NOTES, type NoteInfo, type NotesFile, type Pyramid } from "./notes";
 
 // SC_DATA_DIR points local development and tests at a fixture; production
 // always reads the committed files.
@@ -282,4 +283,53 @@ export function cheapestDelivered(f: Product, region: RegionCode): { offer: Offe
   const cheapest = orderable.reduce((a, b) => (b.p < a.p ? b : a));
   if (!best || best.offer.s === cheapest.s || known < 2) return null;
   return { ...best, known, of: orderable.length };
+}
+
+// "Smells like" (lib/notes.ts, DECISIONS.md 2026-11-06): the notes stores list for each barcode.
+export const getNotes = (): NotesFile => load<NotesFile>("notes.json", {});
+
+/** A product's notes: its own barcode's, else those of another size of the same
+ *  fragrance (same house, same name and concentration: familyKey), when every
+ *  size that has notes agrees. undefined: no store lists them, and no panel shows. */
+export function notesOf(f: Product): (Pyramid & { n: number }) | undefined {
+  const all = getNotes();
+  if (all[f.ean]) return all[f.ean];
+  const sib = variantsOf(f).map((v) => all[v.ean]).filter(Boolean);
+  if (!sib.length) return undefined;
+  const key = (p: Pyramid) => allNotes(p).slice().sort().join(",");
+  return sib.every((p) => key(p) === key(sib[0])) ? sib[0] : undefined;
+}
+
+/** A note gets its own page (/notes/<key>) once this many products list it. */
+export const NOTE_PAGE_MIN = 8;
+
+/** note key → the products whose notes name it (own barcode or a size's), most widely stocked first. */
+function productsByNote(): Map<string, Product[]> {
+  return once("byNote", () => {
+    const m = new Map<string, Product[]>();
+    for (const f of getProducts()) {
+      const p = notesOf(f);
+      if (!p) continue;
+      for (const k of allNotes(p)) m.set(k, [...(m.get(k) ?? []), f]);
+    }
+    for (const list of m.values()) list.sort((a, b) => storeCount(b) - storeCount(a) || a.name.localeCompare(b.name));
+    return m;
+  });
+}
+
+export function productsWithNote(key: string): Product[] {
+  return [...(productsByNote().get(key) ?? [])];
+}
+
+/** Notes with a page, most common first. */
+export function notePages(): { note: NoteInfo; count: number }[] {
+  return once("notePages", () =>
+    NOTES.map((note) => ({ note, count: productsByNote().get(note.key)?.length ?? 0 }))
+      .filter((x) => x.count >= NOTE_PAGE_MIN)
+      .sort((a, b) => b.count - a.count || a.note.name.localeCompare(b.note.name)),
+  );
+}
+
+export function hasNotePage(key: string): boolean {
+  return once("notePageSet", () => new Set(notePages().map((x) => x.note.key))).has(key);
 }

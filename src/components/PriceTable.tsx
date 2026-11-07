@@ -40,13 +40,18 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
   const q = searchQuery(f);
   const sub = subId(region, `${placement}_pinned`, f.ean);
   const ebayUrl = ebay ? ebayAffiliateUrl(ebay.u, sub) : ebaySearchUrl(q, region, sub);
-  // Never in the quick view (2026-11-02): Amazon's Operating Agreement allows no Amazon link in a pop-up window.
   // Amazon's own listing and price when this build's Creators API lookup matched the barcode (2026-11-05), else a search.
-  const live = placement.startsWith("quickview") ? null : amazonLive(f.ean, region);
-  const liveUrl = live && amazonItemUrl(live.asin, region, sub);
-  const amazonUrl = placement.startsWith("quickview") ? null : (liveUrl ?? amazonSearchUrl(q, region, sub));
+  // The quick view carries the same tagged link (owner, 2026-11-06: a visitor-opened view of this one product is the
+  // Associates policy's "pop-up windows in conjunction with your Site promoting Products closely associated with the
+  // materials on your Site"), but never Amazon's price: that stays on the product page (24-hour licence, CLAUDE.md).
+  const quick = placement.startsWith("quickview");
+  const found = amazonLive(f.ean, region);
+  const liveUrl = found && amazonItemUrl(found.asin, region, sub);
+  const live = quick ? null : found;
+  const amazonUrl = liveUrl ?? amazonSearchUrl(q, region, sub);
   const clock = AMAZON_CLOCK[region];
   const pinned: RowData[] = [];
+  const cartTitle = f.brand && !f.name.toLowerCase().startsWith(f.brand.toLowerCase()) ? `${f.brand} ${f.name}` : f.name;
   if (ebayUrl)
     pinned.push({
       // No listing priced: a standout "Also check on eBay" search row instead (owner, 2026-11-06).
@@ -57,20 +62,24 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
       brand: "ebay",
       price: ebay ? money(ebay.p, region) : null,
       from: !!ebay,
-      status: null,
+      // A priced eBay row works like a store row (owner, 2026-11-06): in stock, thumbs and the cart list.
+      status: ebay ? "in" : null,
       href: ebayUrl,
+      ...(ebay ? { vote: ebay.u, cart: { title: cartTitle, image: f.img, priceCents: ebay.p, currency: r.currency } } : {}),
       paid: true,
       event: { source: "ebay", region, placement: `${placement}_pinned`, ean: f.ean },
     });
   if (amazonUrl)
     pinned.push({
-      name: liveUrl ? "Amazon" : "Also check on Amazon",
+      name: live ? "Amazon" : "Also check on Amazon",
       sub: liveUrl ? `${r.amazonHost?.replace("www.", "")} · new, this exact barcode` : `${r.amazonHost?.replace("www.", "")} · check the seller`,
-      check: !liveUrl,
+      check: !live,
       brand: "amazon",
       price: liveUrl && live ? money(live.p, region) : null,
-      status: null,
+      // Amazon's own listing works like a store row too; the cart list drops its price after 24 hours (lib/cart-list.ts).
+      status: liveUrl && live ? "in" : null,
       href: amazonUrl,
+      ...(liveUrl && live ? { vote: liveUrl, cart: { title: cartTitle, image: f.img, priceCents: live.p, currency: r.currency } } : {}),
       live: liveUrl && live && clock ? { at: live.at, timeZone: clock.timeZone, zoneLabel: clock.label } : undefined,
       paid: true,
       event: { source: "amazon", region, placement: `${placement}_pinned`, ean: f.ean },
@@ -109,8 +118,9 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
     const store = STORE_BY_ID[o.s];
     return {
       name: storeName(o.s),
-      sub: o === best ? "Lowest item price" : null,
-      price: money(o.p, region),
+      sub: o === best ? "Lowest store price" : null,
+      // A sold-out row keeps its place at the bottom with no price (2026-11-06): a stale price there read as a deal.
+      price: o.st === "out" ? null : money(o.p, region),
       status: o.st,
       href: link.href,
       vote: o.u,
@@ -122,7 +132,7 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
       dealLabel: d ? (d.l ?? (d.t.length ? "Multi-buy" : "Free gift")) : null,
       offer: store ? offersNote(awinProgrammeFor(store.base)?.id ?? null, region) : null,
       event: { source: o.s, region, placement, ean: f.ean, to: link.to },
-      ...(o.st !== "out" ? { cart: { title: f.brand && !f.name.toLowerCase().startsWith(f.brand.toLowerCase()) ? `${f.brand} ${f.name}` : f.name, image: f.img, priceCents: o.p, currency: r.currency } } : {}),
+      ...(o.st !== "out" ? { cart: { title: cartTitle, image: f.img, priceCents: o.p, currency: r.currency } } : {}),
     };
   });
   return { pinned, overseas, overseasTo: r.name, stores };
