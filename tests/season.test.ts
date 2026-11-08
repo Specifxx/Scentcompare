@@ -35,19 +35,15 @@ test("the boot script agrees with isChristmas(), takes ?season=, and never throw
   assert.doesNotThrow(() => vm.runInNewContext(SEASON_BOOT_SCRIPT, { Date }));
 });
 
-test("the layout stamps the season before paint, and the holiday pieces are quiet decoration", () => {
+test("the layout stamps the season before paint, and the holiday is one quiet line (owner, 2026-11-08)", () => {
   const layout = readFileSync("src/app/layout.tsx", "utf8");
   assert.match(layout, /__html: SEASON_BOOT_SCRIPT/);
   const css = readFileSync("src/app/globals.css", "utf8");
-  assert.match(css, /\.sc-holiday,\s*\.sc-snow,\s*\.sc-flakes \{\s*display: none;/);
-  assert.match(css, /\.sc-snow \{[^}]*pointer-events: none;/);
-  assert.match(css, /prefers-reduced-motion: reduce\) \{\s*\.sc-stocking,\s*\.sc-snow::before/);
+  assert.match(css, /\.sc-holiday \{\s*display: none;/);
+  assert.match(css, /html\[data-season="christmas"\] \.sc-holiday \{\s*display: flex;/);
   const home = readFileSync("src/app/page.tsx", "utf8");
-  assert.match(home, /<span className="sc-snow" aria-hidden="true" \/>/);
-  // Professional, not gamified (owner): no Santa hats or light strands, and none of the sister sites' cartoon art; the
-  // tree, cane and stockings (owner, 2026-11-01: "a little more festive") are ScentCompare's own pastel drawings.
-  assert.doesNotMatch(css + home, /santa-hat|xmas-lights|xmas-tree|candy-cane\.svg|xmas-hat/);
-  for (const f of ["sc-tree", "sc-cane", "sc-stocking"]) assert.match(css, new RegExp(`/xmas/${f}\\.svg`), f);
-  // The CSS names them; the files must exist too (they were still ky-* until 2026-11-08, three 404s on the home page).
-  for (const f of ["sc-tree", "sc-cane", "sc-stocking", "snowflake"]) assert.ok(existsSync(`public/xmas/${f}.svg`), `public/xmas/${f}.svg`);
+  assert.match(home, /className="sc-holiday-pill"/);
+  // "The theme must match the domain": no snow, glints, snowflakes, tree, cane, stockings or hats, in CSS or markup.
+  assert.doesNotMatch(css + home, /sc-snow|sc-flake|sc-deco|sc-tree|sc-stocking|HeroSnow|mo-snow|\/xmas\/|santa-hat|xmas-lights/);
+  assert.ok(!existsSync("src/components/HeroSnow.tsx"));
 });
