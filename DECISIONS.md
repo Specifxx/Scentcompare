@@ -1223,3 +1223,12 @@ notes and 0.3 weighted overlap, same shelf or unisex) and that cost at least 15%
 - A reference has a page only with 3+ alternatives (owner: 3+), ≈235 pages, all prerendered. The sitemap lists the 40
   best-known (`SITEMAP_SMELLS_LIKE`) to keep the lean core under 600 URLs; the rest are linked from `/smells-like` and
   from the product page's "Smells like" panel ("Real perfumes with these notes for less").
+
+## 2026-11-08 — Store badges, free price data and My collection (competitor scan)
+
+The owner approved the competitor scan's ideas (Collectr and PriceCharting keep people coming back with "what is my
+collection worth"; Scryfall grew on free data credited with a link; price sites earn links from the stores they list).
+- **Store badge.** `/list-your-store` ends with "Already listed? Add our badge": a plain-HTML (`lib/store-badge.ts`) "prices compared on"
+  badge (an ordinary link: no iframe, script, image or tracking) and its code to copy. `ListYourStore.tsx` takes it as the
+  optional `badge` prop and stays the same file in every site. Stores see it when they come to us; nobody is emailed about it
+  (cold outreach stays stopped).
