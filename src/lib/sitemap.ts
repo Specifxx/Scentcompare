@@ -1,5 +1,5 @@
 import { CATEGORIES, SITE } from "@/site";
-import { getBrands, getMeta, getProducts, notePages } from "@/lib/data";
+import { getBrands, getMeta, getProducts, notePages, smellsLikePages } from "@/lib/data";
 import { sitemapProducts } from "@/lib/index-tiers";
 import { GUIDES } from "@/lib/guides";
 import { LIVE_POSTS } from "@/content/blog";
@@ -15,6 +15,8 @@ export interface SitemapUrl {
   lastModified: string;
   priority: number;
 }
+/** "Smells like" pages in the sitemap (the lean core, SEO audit 2026-11-07: under 600 URLs in all). */
+export const SITEMAP_SMELLS_LIKE = 40;
 export const PRODUCTS_PER_FILE = 5000;
 /** Products on one category hub page (CatHub's PER_PAGE). */
 export const HUB_PER_PAGE = 48;
@@ -69,6 +71,10 @@ function pageUrls(): SitemapUrl[] {
     ...((core) => getBrands().filter((b) => b.products.some((f) => core.has(f.slug))))(new Set(coreProducts().map((f) => f.slug))).map((b) => u(`/brands/${b.slug}`, 0.8)),
     u("/notes", 0.7),
     ...notePages().map((x) => u(`/notes/${x.note.key}`, 0.7)),
+    // "Smells like, costs less" (lib/smells-like.ts): only references with 3+ alternatives have a page. The lean core
+    // lists the SITEMAP_SMELLS_LIKE best-known; the rest stay indexable and linked from /smells-like and product pages.
+    u("/smells-like", 0.7),
+    ...smellsLikePages().slice(0, SITEMAP_SMELLS_LIKE).map((x) => u(`/smells-like/${x.ref.slug}`, 0.7)),
     u("/guides", 0.7),
     ...GUIDES.map((g) => u(`/guides/${g.slug}`, 0.8)),
     u("/blog", 0.6),
