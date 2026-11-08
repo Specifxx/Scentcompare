@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import vm from "node:vm";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { CHRISTMAS_FROM, CHRISTMAS_TO, isChristmas, SEASON_BOOT_SCRIPT } from "../src/lib/season";
 
 // The holiday look (owner, 2026-11-01): 1 November to Boxing Day by the visitor's own date, quiet and professional.
@@ -48,4 +48,6 @@ test("the layout stamps the season before paint, and the holiday pieces are quie
   // tree, cane and stockings (owner, 2026-11-01: "a little more festive") are ScentCompare's own pastel drawings.
   assert.doesNotMatch(css + home, /santa-hat|xmas-lights|xmas-tree|candy-cane\.svg|xmas-hat/);
   for (const f of ["sc-tree", "sc-cane", "sc-stocking"]) assert.match(css, new RegExp(`/xmas/${f}\\.svg`), f);
+  // The CSS names them; the files must exist too (they were still ky-* until 2026-11-08, three 404s on the home page).
+  for (const f of ["sc-tree", "sc-cane", "sc-stocking", "snowflake"]) assert.ok(existsSync(`public/xmas/${f}.svg`), `public/xmas/${f}.svg`);
 });
