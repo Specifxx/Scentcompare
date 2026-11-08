@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { culledTarget } from "@/lib/culled";
 import { CAT_BY_KEY, REGIONS, SITE, type RegionCode } from "@/site";
-import { bestIn, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
+import { smellsLikeForProduct, bestIn, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
 import { dayNumber, lowestOrderable } from "@/lib/history";
 import { decimal, money, niceDate, pct } from "@/lib/format";
 import { isIndexable, prebuiltProducts } from "@/lib/index-tiers";
@@ -269,7 +269,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           })}
           {notes && (
             <div className="mt-5">
-              <SmellsLike name={f.name} notes={notes} />
+              <SmellsLike name={f.name} notes={notes} cheaper={smellsLikeForProduct(f)} />
             </div>
           )}
         </div>

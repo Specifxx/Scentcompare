@@ -13,6 +13,8 @@ import { deliveryFor, MAX_SMALL_ORDER_FEE, type ShippingData } from "./shipping"
 import type { PartnerPricesFile } from "./partner-feed";
 import type { PromoData } from "./promos";
 import { allNotes, NOTES, type NoteInfo, type NotesFile, type Pyramid } from "./notes";
+import { MIN_OVERLAP, MIN_SAVING, MIN_SHARED, noteOverlap, noteWeights, sharedNotes, sizeMl, SMELLS_LIKE_MAX, SMELLS_LIKE_MIN } from "./smells-like";
+import { slugify } from "./slug";
 
 // SC_DATA_DIR points local development and tests at a fixture; production
 // always reads the committed files.
@@ -332,4 +334,134 @@ export function notePages(): { note: NoteInfo; count: number }[] {
 
 export function hasNotePage(key: string): boolean {
   return once("notePageSet", () => new Set(notePages().map((x) => x.note.key))).has(key);
+}
+
+// "Smells like X, costs less" (lib/smells-like.ts, DECISIONS.md 2026-11-08). A scent is one fragrance across its sizes
+// (familyKey); its price is the lowest orderable price per ml over those sizes, per region.
+export interface Scent {
+  key: string;
+  slug: string;
+  /** the fragrance's name without its size */
+  name: string;
+  brand: string;
+  /** the most widely stocked size: the tile we show */
+  rep: Product;
+  notes: Pyramid;
+  stores: number;
+  perMl: Partial<Record<RegionCode, number>>;
+}
+
+export interface SmellsLikeAlt {
+  scent: Scent;
+  overlap: number;
+  shared: string[];
+  /** per region where both are sold and this one is MIN_SAVING+ cheaper per ml: the saving, 0..1 */
+  saving: Partial<Record<RegionCode, number>>;
+}
+
+/** How many of the most widely stocked scents are candidates for a "smells like" page. */
+export const SMELLS_LIKE_REFS = 250;
+const SCENT_CATS = new Set<string>(["women", "men", "unisex"]);
+export const scentName = (f: Product) =>
+  f.name
+    .replace(/\(?\s*\d+(?:[.,]\d+)?\s?(?:ml|fl\.?\s?oz|oz)\b\s*\)?/gi, " ")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\([^()]*$/, " ")
+    .replace(/[\s,·/-]+$/, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+/** A scent's line, for telling two listings of one fragrance apart from two fragrances: no house, concentration or "spray". */
+const scentCore = (s: Scent) =>
+  s.name
+    .toLowerCase()
+    .replace(s.brand.toLowerCase(), " ")
+    .replace(/\bby\s+[\w'& .-]+?(?=\s(?:eau|edp|edt|parfum|cologne|spray|for)\b|$)/g, " ")
+    .replace(/\b(eau de (parfum|toilette|cologne)|edp|edt|parfum|cologne|spray|intense|for (women|men|him|her)|pour (homme|femme)|unisex|men|women)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+const NOT_A_SPRAY = /\b(after ?shave|deodorant|body (lotion|mist|spray|wash)|shower|lotion|balm|hair mist|soap)\b/i;
+
+function scents(): Scent[] {
+  return once("scents", () => {
+    const groups = new Map<string, Product[]>();
+    for (const f of getProducts()) {
+      if (!SCENT_CATS.has(f.cat) || !f.b || NOT_A_SPRAY.test(f.name)) continue;
+      const k = familyKey(f);
+      groups.set(k, [...(groups.get(k) ?? []), f]);
+    }
+    const out: Scent[] = [];
+    const used = new Set<string>();
+    for (const [key, list] of groups) {
+      const withNotes = list.map((f) => ({ f, n: notesOf(f) })).filter((x) => x.n && allNotes(x.n).length >= 4);
+      if (!withNotes.length) continue;
+      const rep = list.slice().sort((a, b) => storeCount(b) - storeCount(a) || a.slug.localeCompare(b.slug))[0];
+      const perMl: Partial<Record<RegionCode, number>> = {};
+      for (const r of REGIONS) {
+        for (const f of list) {
+          const ml = sizeMl(f.size);
+          const o = lowestOrderable(f.offers[r.code]);
+          if (!ml || !o) continue;
+          const v = o.p / ml;
+          if (perMl[r.code] == null || v < perMl[r.code]!) perMl[r.code] = v;
+        }
+      }
+      if (!Object.keys(perMl).length) continue;
+      let slug = slugify(`${rep.brand} ${scentName(rep).replace(new RegExp(`^${rep.brand.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*`, "i"), "")}`);
+      if (!slug || used.has(slug)) slug = `${slug}-${rep.ean.slice(-4)}`;
+      used.add(slug);
+      out.push({ key, slug, name: scentName(rep), brand: rep.brand, rep, notes: withNotes.sort((a, b) => storeCount(b.f) - storeCount(a.f))[0].n!, stores: new Set(list.flatMap((f) => Object.values(f.offers).flatMap((o) => (o ?? []).map((x) => x.s)))).size, perMl });
+    }
+    return out.sort((a, b) => b.stores - a.stores || a.slug.localeCompare(b.slug));
+  });
+}
+
+/** Reference slug → its alternatives, for the SMELLS_LIKE_REFS most widely stocked scents with SMELLS_LIKE_MIN+ of them. */
+function smellsLikeIndex(): Map<string, { ref: Scent; alts: SmellsLikeAlt[] }> {
+  return once("smellsLike", () => {
+    const all = scents();
+    const w = noteWeights(all.map((s) => s.notes));
+    const m = new Map<string, { ref: Scent; alts: SmellsLikeAlt[] }>();
+    for (const ref of all.slice(0, SMELLS_LIKE_REFS)) {
+      const alts: SmellsLikeAlt[] = [];
+      for (const c of all) {
+        if (c.key === ref.key || c.rep.b === ref.rep.b) continue; // other houses only
+        // the same shelf: a women's scent for a women's one, a men's for a men's, unisex either way
+        if (c.rep.cat !== ref.rep.cat && c.rep.cat !== "unisex" && ref.rep.cat !== "unisex") continue;
+        const shared = sharedNotes(ref.notes, c.notes);
+        if (shared.length < MIN_SHARED) continue;
+        const overlap = noteOverlap(ref.notes, c.notes, w);
+        if (overlap < MIN_OVERLAP) continue;
+        const saving: Partial<Record<RegionCode, number>> = {};
+        for (const r of REGIONS) {
+          const a = ref.perMl[r.code];
+          const b = c.perMl[r.code];
+          if (a && b && b <= a * (1 - MIN_SAVING)) saving[r.code] = 1 - b / a;
+        }
+        if (Object.keys(saving).length) alts.push({ scent: c, overlap, shared, saving });
+      }
+      alts.sort((a, b) => b.overlap - a.overlap || b.scent.stores - a.scent.stores);
+      const seen = new Set<string>();
+      const uniq = alts.filter((a) => {
+        const k = `${a.scent.rep.b}|${scentCore(a.scent)}`;
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      });
+      if (uniq.length >= SMELLS_LIKE_MIN) m.set(ref.slug, { ref, alts: uniq.slice(0, 40) });
+    }
+    return m;
+  });
+}
+
+/** One region's alternatives: those cheaper per ml there, closest notes first, at most SMELLS_LIKE_MAX. */
+export const altsIn = (alts: SmellsLikeAlt[], region: RegionCode) => alts.filter((a) => a.saving[region] != null).slice(0, SMELLS_LIKE_MAX);
+
+/** Every "smells like" page, most widely stocked reference first. */
+export const smellsLikePages = () => [...smellsLikeIndex().values()];
+export const smellsLikeOf = (slug: string) => smellsLikeIndex().get(slug);
+/** The "smells like" page whose reference is this product's scent, if any. */
+export function smellsLikeForProduct(f: Product): string | null {
+  const k = familyKey(f);
+  for (const v of smellsLikeIndex().values()) if (v.ref.key === k) return v.ref.slug;
+  return null;
 }
