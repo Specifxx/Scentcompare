@@ -5,7 +5,7 @@ import { familyMix, headlineNotes, NOTE_BY_KEY, smellsLikeText, wearLine, type P
 /** "Smells like": the notes stores list for this bottle, in plain words, for a
  *  shopper who cannot spray a tester (owner, 2026-11-06). Server HTML only, no
  *  script. Rendered only when there is a note list (lib/data.ts notesOf). */
-export function SmellsLike({ name, notes }: { name: string; notes: Pyramid & { n: number } }) {
+export function SmellsLike({ name, notes, cheaper }: { name: string; notes: Pyramid & { n: number }; cheaper?: string | null }) {
   const head = headlineNotes(notes);
   const wear = wearLine(notes);
   const mix = familyMix(notes);
@@ -81,6 +81,13 @@ export function SmellsLike({ name, notes }: { name: string; notes: Pyramid & { n
         From the note list {notes.n > 1 ? `${notes.n} stores print` : "the store prints"} for {name}
         {notes.n > 1 ? " (we show the notes they agree on)" : ""}. Skin changes how a scent wears, so treat it as a guide, not a sniff.
       </p>
+      {cheaper && (
+        <p className="mt-3 text-sm">
+          <Link prefetch={false} href={`/smells-like/${cheaper}`} className="font-semibold text-accent-deep underline-offset-4 hover:underline">
+            Real perfumes with these notes for less →
+          </Link>
+        </p>
+      )}
     </section>
   );
 }

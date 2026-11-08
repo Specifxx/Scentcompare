@@ -1207,6 +1207,23 @@ touch, drawn in the site's own colours: "The Holiday Edit" line above the hero (
 Boxing Day), and the tests pin that nothing else comes back. Black Friday and Cyber Monday (strip, pages, nav) are
 unchanged. The same rule went to every sister site: the site's own identity first.
 
+## 2026-11-08 — "Smells like X, costs less": real bottles with the same notes, never dupes
+
+Owner approved the competitor scan's search-by-need hubs (2026-11-08). KaeYoung's version is ingredients and skin
+concerns; a perfume shopper's need is "I love X but it costs too much". `/smells-like/<slug>` takes one of the 250
+most widely stocked scents (a scent = one fragrance across its sizes, `familyKey`) and lists the fragrances from OTHER
+houses whose store-listed notes overlap most with it (`lib/smells-like.ts`: rarer notes weigh more, at least 3 shared
+notes and 0.3 weighted overlap, same shelf or unisex) and that cost at least 15% less per ml in a region.
+
+- Never dupes, clones or "inspired by": those never get a product page (`lib/title.ts`), so every alternative is a
+  house's own bottle with its own barcode. The copy says sharing notes is not smelling the same. Aftershaves, body
+  products and gift sets are not scents here.
+- Each region shows only the alternatives cheaper per ml there (`altsIn`, `.rp-XX`), so the promise holds for the
+  visitor's region.
+- A reference has a page only with 3+ alternatives (owner: 3+), ≈235 pages, all prerendered. The sitemap lists the 40
+  best-known (`SITEMAP_SMELLS_LIKE`) to keep the lean core under 600 URLs; the rest are linked from `/smells-like` and
+  from the product page's "Smells like" panel ("Real perfumes with these notes for less").
+
 ## 2026-11-08 — Store badges, free price data and My collection (competitor scan)
 
 The owner approved the competitor scan's ideas (Collectr and PriceCharting keep people coming back with "what is my
