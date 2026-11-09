@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-08T16:02:15.245Z",
- "products": 13858,
- "merged": 40166,
+ "updatedAt": "2026-11-09T18:49:11.776Z",
+ "products": 14062,
+ "merged": 40531,
  "stores": {
   "scentrabbit": {
    "ok": true,
@@ -15,12 +15,12 @@
     "mystery": 1
    },
    "noEan": 133,
-   "ms": 10451
+   "ms": 10265
   },
   "fragrancevault": {
    "ok": true,
-   "listings": 2461,
-   "matched": 1562,
+   "listings": 2462,
+   "matched": 1565,
    "refused": {
     "decant": 1840,
     "tester": 485,
@@ -29,35 +29,20 @@
     "not-fragrance": 84,
     "damaged": 4
    },
-   "noEan": 1188,
-   "ms": 15180
-  },
-  "olfactoryfactoryllc": {
-   "ok": true,
-   "listings": 5036,
-   "matched": 2522,
-   "refused": {
-    "tester": 3020,
-    "bundle": 13,
-    "decant": 133,
-    "damaged": 9,
-    "pre-owned": 8,
-    "not-fragrance": 101
-   },
-   "noEan": 4011,
-   "ms": 28619
+   "noEan": 1189,
+   "ms": 14372
   },
   "scentsplit": {
    "ok": true,
-   "listings": 10796,
-   "matched": 7957,
+   "listings": 10804,
+   "matched": 7966,
    "refused": {
-    "decant": 10541,
+    "decant": 10547,
     "mystery": 23,
     "dupe": 4
    },
-   "noEan": 33117,
-   "ms": 58745
+   "noEan": 33134,
+   "ms": 64918
   },
   "rafaelos": {
    "ok": true,
@@ -73,20 +58,7 @@
     "no-price": 1
    },
    "noEan": 1736,
-   "ms": 47677
-  },
-  "fragranceoutlet": {
-   "ok": true,
-   "listings": 4817,
-   "matched": 5752,
-   "refused": {
-    "tester": 182,
-    "decant": 13,
-    "bundle": 3,
-    "mystery": 3
-   },
-   "noEan": 424,
-   "ms": 32792
+   "ms": 43328
   },
   "perfumeoutlet": {
    "ok": true,
@@ -102,7 +74,20 @@
     "not-fragrance": 1
    },
    "noEan": 963,
-   "ms": 108681
+   "ms": 100480
+  },
+  "fragranceoutlet": {
+   "ok": true,
+   "listings": 4817,
+   "matched": 5752,
+   "refused": {
+    "tester": 182,
+    "decant": 13,
+    "bundle": 3,
+    "mystery": 3
+   },
+   "noEan": 424,
+   "ms": 31378
   },
   "fragrancemarket": {
    "ok": true,
@@ -115,7 +100,7 @@
     "mystery": 3
    },
    "noEan": 408,
-   "ms": 33692
+   "ms": 31327
   },
   "perfumeplusoutlet": {
    "ok": true,
@@ -125,12 +110,12 @@
     "decant": 5
    },
    "noEan": 593,
-   "ms": 12258
+   "ms": 9856
   },
   "zgoperfumery": {
    "ok": true,
-   "listings": 1842,
-   "matched": 2404,
+   "listings": 1838,
+   "matched": 2400,
    "refused": {
     "decant": 9,
     "bundle": 7,
@@ -138,21 +123,8 @@
     "no-price": 3,
     "not-fragrance": 6
    },
-   "noEan": 987,
-   "ms": 13639
-  },
-  "perfumedefrance": {
-   "ok": true,
-   "listings": 1380,
-   "matched": 529,
-   "refused": {
-    "decant": 3192,
-    "not-fragrance": 7,
-    "bundle": 2,
-    "tester": 1
-   },
-   "noEan": 1391,
-   "ms": 9176
+   "noEan": 988,
+   "ms": 9907
   },
   "beautyencounter": {
    "ok": true,
@@ -168,26 +140,71 @@
     "dupe": 2
    },
    "noEan": 737,
-   "ms": 30373
+   "ms": 27141
+  },
+  "perfumedefrance": {
+   "ok": true,
+   "listings": 1373,
+   "matched": 527,
+   "refused": {
+    "decant": 3174,
+    "not-fragrance": 7,
+    "bundle": 2,
+    "tester": 1
+   },
+   "noEan": 1384,
+   "ms": 8713
+  },
+  "olfactoryfactoryllc": {
+   "ok": true,
+   "listings": 5323,
+   "matched": 2765,
+   "refused": {
+    "tester": 3191,
+    "mystery": 1,
+    "bundle": 13,
+    "decant": 135,
+    "damaged": 9,
+    "pre-owned": 8,
+    "not-fragrance": 101
+   },
+   "noEan": 4064,
+   "ms": 335381
   },
   "ministryofscent": {
    "ok": true,
    "listings": 1422,
    "matched": 1530,
    "refused": {
-    "decant": 1187,
+    "decant": 1184,
     "no-price": 1,
     "bundle": 10,
     "dupe": 3,
     "not-fragrance": 10
    },
-   "noEan": 446,
-   "ms": 8114
+   "noEan": 445,
+   "ms": 7378
+  },
+  "perfumesamerica": {
+   "ok": true,
+   "listings": 8063,
+   "matched": 3494,
+   "refused": {
+    "tester": 297,
+    "decant": 14,
+    "bundle": 13,
+    "not-fragrance": 8,
+    "damaged": 2,
+    "mystery": 2,
+    "dupe": 10
+   },
+   "noEan": 4597,
+   "ms": 41699
   },
   "inscentivesperfume": {
    "ok": true,
-   "listings": 1537,
-   "matched": 1266,
+   "listings": 1534,
+   "matched": 1263,
    "refused": {
     "tester": 105,
     "bundle": 16,
@@ -195,7 +212,7 @@
     "decant": 2
    },
    "noEan": 192,
-   "ms": 8578
+   "ms": 7854
   },
   "twistedlily": {
    "ok": true,
@@ -208,23 +225,7 @@
     "not-fragrance": 7
    },
    "noEan": 39,
-   "ms": 6919
-  },
-  "perfumesamerica": {
-   "ok": true,
-   "listings": 8061,
-   "matched": 3494,
-   "refused": {
-    "tester": 297,
-    "decant": 14,
-    "bundle": 13,
-    "not-fragrance": 8,
-    "damaged": 2,
-    "mystery": 2,
-    "dupe": 10
-   },
-   "noEan": 4595,
-   "ms": 42863
+   "ms": 6722
   },
   "mysticperfume": {
    "ok": true,
@@ -238,7 +239,7 @@
     "not-fragrance": 205
    },
    "noEan": 78,
-   "ms": 5155
+   "ms": 4221
   },
   "osmeperfumery": {
    "ok": true,
@@ -249,7 +250,7 @@
     "not-fragrance": 18
    },
    "noEan": 1245,
-   "ms": 6326
+   "ms": 4880
   },
   "perfumology": {
    "ok": true,
@@ -262,7 +263,7 @@
     "not-fragrance": 5
    },
    "noEan": 767,
-   "ms": 7049
+   "ms": 6328
   },
   "sprayonyx": {
    "ok": true,
@@ -273,7 +274,7 @@
     "mystery": 1
    },
    "noEan": 632,
-   "ms": 3549
+   "ms": 3385
   },
   "fumerie": {
    "ok": true,
@@ -288,19 +289,7 @@
     "tester": 1
    },
    "noEan": 814,
-   "ms": 3524
-  },
-  "eclecticlady": {
-   "ok": true,
-   "listings": 2934,
-   "matched": 362,
-   "refused": {
-    "dupe": 245,
-    "no-price": 2,
-    "not-fragrance": 1
-   },
-   "noEan": 10201,
-   "ms": 16866
+   "ms": 3020
   },
   "fragranceoriginal": {
    "ok": true,
@@ -312,44 +301,19 @@
     "bundle": 1
    },
    "noEan": 17,
-   "ms": 3440
+   "ms": 2925
   },
-  "microperfumes": {
+  "eclecticlady": {
    "ok": true,
-   "listings": 1743,
-   "matched": 1046,
+   "listings": 2934,
+   "matched": 360,
    "refused": {
-    "decant": 649,
-    "tester": 1,
-    "not-fragrance": 3
+    "dupe": 245,
+    "no-price": 2,
+    "not-fragrance": 1
    },
-   "noEan": 54,
-   "ms": 8021
-  },
-  "fragranceusa": {
-   "ok": true,
-   "listings": 613,
-   "matched": 87,
-   "refused": {
-    "tester": 241,
-    "decant": 65,
-    "bundle": 1,
-    "not-fragrance": 6
-   },
-   "noEan": 544,
-   "ms": 3140
-  },
-  "oakcha": {
-   "ok": true,
-   "listings": 276,
-   "matched": 258,
-   "refused": {
-    "bundle": 3,
-    "decant": 10,
-    "not-fragrance": 4
-   },
-   "noEan": 4,
-   "ms": 1743
+   "noEan": 9821,
+   "ms": 16354
   },
   "arielleshoshana": {
    "ok": true,
@@ -363,7 +327,44 @@
     "dupe": 1
    },
    "noEan": 158,
-   "ms": 25345
+   "ms": 3797
+  },
+  "microperfumes": {
+   "ok": true,
+   "listings": 1741,
+   "matched": 1044,
+   "refused": {
+    "decant": 649,
+    "tester": 1,
+    "not-fragrance": 3
+   },
+   "noEan": 54,
+   "ms": 8563
+  },
+  "oakcha": {
+   "ok": true,
+   "listings": 276,
+   "matched": 258,
+   "refused": {
+    "bundle": 3,
+    "decant": 10,
+    "not-fragrance": 4
+   },
+   "noEan": 4,
+   "ms": 1545
+  },
+  "fragranceusa": {
+   "ok": true,
+   "listings": 618,
+   "matched": 87,
+   "refused": {
+    "tester": 242,
+    "decant": 65,
+    "bundle": 1,
+    "not-fragrance": 6
+   },
+   "noEan": 548,
+   "ms": 7595
   },
   "perfumeboutique": {
    "ok": true,
@@ -376,19 +377,19 @@
     "no-price": 1
    },
    "noEan": 2,
-   "ms": 842
+   "ms": 1807
   },
   "fragflex": {
    "ok": true,
    "listings": 248,
    "matched": 157,
    "refused": {
-    "tester": 21,
+    "tester": 22,
     "pre-owned": 19,
     "decant": 71
    },
-   "noEan": 35,
-   "ms": 641
+   "noEan": 36,
+   "ms": 1585
   },
   "perfumarie": {
    "ok": true,
@@ -402,7 +403,7 @@
     "not-fragrance": 1
    },
    "noEan": 353,
-   "ms": 3110
+   "ms": 2467
   },
   "scentsyndicate": {
    "ok": true,
@@ -413,7 +414,19 @@
     "decant": 7
    },
    "noEan": 60,
-   "ms": 402
+   "ms": 304
+  },
+  "scentrushfragrances": {
+   "ok": true,
+   "listings": 2699,
+   "matched": 314,
+   "refused": {
+    "decant": 9821,
+    "tester": 257,
+    "pre-owned": 13
+   },
+   "noEan": 444,
+   "ms": 15039
   },
   "perfumecentre": {
    "ok": true,
@@ -426,19 +439,7 @@
     "dupe": 1
    },
    "noEan": 811,
-   "ms": 13505
-  },
-  "scentrushfragrances": {
-   "ok": true,
-   "listings": 2699,
-   "matched": 314,
-   "refused": {
-    "decant": 9821,
-    "tester": 257,
-    "pre-owned": 13
-   },
-   "noEan": 444,
-   "ms": 41880
+   "ms": 12498
   },
   "beautybase": {
    "ok": true,
@@ -451,14 +452,14 @@
     "damaged": 2
    },
    "noEan": 511,
-   "ms": 21378
+   "ms": 19919
   },
   "thebeautystore": {
    "ok": true,
-   "listings": 6119,
+   "listings": 6121,
    "matched": 3234,
    "refused": {
-    "tester": 375,
+    "tester": 377,
     "damaged": 29,
     "decant": 16,
     "bundle": 96,
@@ -467,7 +468,7 @@
     "mystery": 2
    },
    "noEan": 2356,
-   "ms": 37289
+   "ms": 32911
   },
   "slickboys": {
    "ok": true,
@@ -478,7 +479,7 @@
     "not-fragrance": 4
    },
    "noEan": 682,
-   "ms": 8624
+   "ms": 8053
   },
   "gordonsdirect": {
    "ok": true,
@@ -492,32 +493,32 @@
     "decant": 2
    },
    "noEan": 2795,
-   "ms": 20614
+   "ms": 18130
   },
   "roullierwhite": {
    "ok": true,
-   "listings": 874,
-   "matched": 906,
+   "listings": 875,
+   "matched": 911,
    "refused": {
-    "decant": 261,
-    "bundle": 10,
-    "not-fragrance": 4
+    "not-fragrance": 12,
+    "decant": 260,
+    "bundle": 10
    },
-   "noEan": 720,
-   "ms": 6898
+   "noEan": 715,
+   "ms": 15649
   },
   "lessenteurs": {
    "ok": true,
-   "listings": 1067,
-   "matched": 439,
+   "listings": 1065,
+   "matched": 436,
    "refused": {
-    "decant": 589,
+    "decant": 588,
     "no-price": 362,
     "bundle": 5,
     "not-fragrance": 7
    },
-   "noEan": 381,
-   "ms": 25715
+   "noEan": 383,
+   "ms": 24386
   },
   "jubileescents": {
    "ok": true,
@@ -529,12 +530,12 @@
     "bundle": 2
    },
    "noEan": 59,
-   "ms": 828
+   "ms": 786
   },
   "justmylook": {
    "ok": true,
-   "listings": 17949,
-   "matched": 3865,
+   "listings": 17947,
+   "matched": 3863,
    "refused": {
     "no-price": 122,
     "bundle": 198,
@@ -545,7 +546,7 @@
     "dupe": 1
    },
    "noEan": 16081,
-   "ms": 113970
+   "ms": 107908
   },
   "alexandriauk": {
    "ok": true,
@@ -557,19 +558,19 @@
     "decant": 3
    },
    "noEan": 8,
-   "ms": 2178
+   "ms": 1657
   },
   "allbeauty": {
    "ok": true,
-   "listings": 224,
-   "matched": 94,
+   "listings": 229,
+   "matched": 95,
    "refused": {
-    "bundle": 4,
+    "bundle": 8,
     "not-fragrance": 4,
     "damaged": 1
    },
    "noEan": 124,
-   "ms": 655
+   "ms": 5255
   },
   "sunnamusk": {
    "ok": true,
@@ -580,27 +581,27 @@
     "not-fragrance": 4
    },
    "noEan": 0,
-   "ms": 510
+   "ms": 542
   },
   "escentual": {
    "ok": true,
    "listings": 4930,
-   "matched": 3156,
+   "matched": 3155,
    "refused": {
-    "no-price": 263,
+    "no-price": 264,
     "decant": 5,
     "damaged": 7,
     "bundle": 16,
     "not-fragrance": 4,
     "mystery": 1
    },
-   "noEan": 4773,
-   "ms": 42145
+   "noEan": 4772,
+   "ms": 35721
   },
   "fragrancecanada": {
    "ok": true,
-   "listings": 4754,
-   "matched": 6060,
+   "listings": 4766,
+   "matched": 6071,
    "refused": {
     "damaged": 1,
     "tester": 570,
@@ -611,14 +612,14 @@
     "pre-owned": 1
    },
    "noEan": 49,
-   "ms": 29041
+   "ms": 35278
   },
   "fragrance365": {
    "ok": true,
-   "listings": 12448,
+   "listings": 12450,
    "matched": 1805,
    "refused": {
-    "tester": 1270,
+    "tester": 1271,
     "decant": 173,
     "mystery": 8,
     "damaged": 2,
@@ -626,63 +627,25 @@
     "dupe": 1,
     "not-fragrance": 5
    },
-   "noEan": 10212,
-   "ms": 65310
+   "noEan": 10213,
+   "ms": 62715
   },
   "fragrancebuy": {
    "ok": true,
-   "listings": 11846,
+   "listings": 11859,
    "matched": 13738,
    "refused": {
-    "tester": 5118,
+    "tester": 5122,
     "decant": 243,
-    "pre-owned": 277,
+    "pre-owned": 271,
     "damaged": 106,
     "mystery": 8,
     "dupe": 8,
     "bundle": 7,
     "not-fragrance": 1
    },
-   "noEan": 1165,
-   "ms": 61451
-  },
-  "leparfumier": {
-   "ok": true,
-   "listings": 4591,
-   "matched": 6564,
-   "refused": {
-    "bundle": 32,
-    "not-fragrance": 9,
-    "pre-owned": 2,
-    "no-price": 2,
-    "damaged": 2
-   },
-   "noEan": 1022,
-   "ms": 24092
-  },
-  "parfumexquis": {
-   "ok": true,
-   "listings": 1440,
-   "matched": 1341,
-   "refused": {
-    "decant": 48,
-    "bundle": 5,
-    "dupe": 9
-   },
-   "noEan": 1954,
-   "ms": 9528
-  },
-  "perfumeelegance": {
-   "ok": true,
-   "listings": 1088,
-   "matched": 1387,
-   "refused": {
-    "mystery": 3,
-    "dupe": 2,
-    "tester": 1
-   },
-   "noEan": 118,
-   "ms": 6609
+   "noEan": 1185,
+   "ms": 72536
   },
   "perfumeonline": {
    "ok": true,
@@ -700,7 +663,45 @@
     "no-price": 2
    },
    "noEan": 5802,
-   "ms": 57649
+   "ms": 48087
+  },
+  "parfumexquis": {
+   "ok": true,
+   "listings": 1440,
+   "matched": 1341,
+   "refused": {
+    "decant": 48,
+    "bundle": 5,
+    "dupe": 9
+   },
+   "noEan": 1954,
+   "ms": 9522
+  },
+  "leparfumier": {
+   "ok": true,
+   "listings": 4591,
+   "matched": 6564,
+   "refused": {
+    "bundle": 32,
+    "not-fragrance": 9,
+    "pre-owned": 2,
+    "no-price": 2,
+    "damaged": 2
+   },
+   "noEan": 1022,
+   "ms": 22837
+  },
+  "perfumeelegance": {
+   "ok": true,
+   "listings": 1088,
+   "matched": 1387,
+   "refused": {
+    "mystery": 3,
+    "dupe": 2,
+    "tester": 1
+   },
+   "noEan": 118,
+   "ms": 5952
   },
   "ephyr": {
    "ok": true,
@@ -713,7 +714,7 @@
     "bundle": 4
    },
    "noEan": 433,
-   "ms": 6642,
+   "ms": 6212,
    "mirrorOf": "parfumexquis"
   },
   "discountfragrances": {
@@ -725,7 +726,7 @@
     "decant": 34
    },
    "noEan": 14,
-   "ms": 17238
+   "ms": 5462
   },
   "westernperfumes": {
    "ok": true,
@@ -736,7 +737,7 @@
     "not-fragrance": 3
    },
    "noEan": 1,
-   "ms": 1855
+   "ms": 2074
   },
   "fragrancesource": {
    "ok": true,
@@ -748,7 +749,7 @@
     "decant": 1
    },
    "noEan": 26,
-   "ms": 992
+   "ms": 592
   },
   "privateblends": {
    "ok": true,
@@ -762,12 +763,12 @@
     "tester": 8
    },
    "noEan": 285,
-   "ms": 15988
+   "ms": 14770
   },
   "priceritemart": {
    "ok": true,
-   "listings": 16641,
-   "matched": 13571,
+   "listings": 16644,
+   "matched": 13574,
    "refused": {
     "tester": 2706,
     "bundle": 20,
@@ -778,25 +779,25 @@
     "not-fragrance": 5
    },
    "noEan": 332,
-   "ms": 92322
+   "ms": 97803
   },
   "rabica": {
    "ok": true,
-   "listings": 1559,
+   "listings": 1560,
    "matched": 204,
    "refused": {
     "decant": 668,
     "bundle": 2
    },
-   "noEan": 911,
-   "ms": 159255
+   "noEan": 912,
+   "ms": 150232
   },
   "sugapash": {
    "ok": true,
-   "listings": 11198,
-   "matched": 8861,
+   "listings": 11192,
+   "matched": 8858,
    "refused": {
-    "tester": 978,
+    "tester": 977,
     "decant": 84,
     "pre-owned": 18,
     "bundle": 19,
@@ -805,8 +806,8 @@
     "damaged": 1,
     "not-fragrance": 1
    },
-   "noEan": 1228,
-   "ms": 67070
+   "noEan": 1226,
+   "ms": 59800
   },
   "perfumeclearancecentre": {
    "ok": true,
@@ -818,30 +819,30 @@
     "no-price": 1
    },
    "noEan": 7,
-   "ms": 9461
+   "ms": 8420
   },
   "libertineparfumerie": {
    "ok": true,
-   "listings": 2857,
-   "matched": 3168,
+   "listings": 2858,
+   "matched": 3172,
    "refused": {
     "no-price": 28,
     "decant": 56,
     "bundle": 2,
     "not-fragrance": 8
    },
-   "noEan": 72,
-   "ms": 17346
+   "noEan": 73,
+   "ms": 17207
   },
   "witr": {
    "ok": true,
-   "listings": 866,
-   "matched": 807,
+   "listings": 872,
+   "matched": 812,
    "refused": {
-    "bundle": 4
+    "bundle": 5
    },
    "noEan": 71,
-   "ms": 6701
+   "ms": 5523
   },
   "lamilas": {
    "ok": true,
@@ -851,22 +852,22 @@
     "tester": 1
    },
    "noEan": 51,
-   "ms": 5456
+   "ms": 4849
   },
   "myperfumeshop": {
    "ok": true,
-   "listings": 11709,
-   "matched": 15509,
+   "listings": 11742,
+   "matched": 15533,
    "refused": {
-    "decant": 1301,
-    "tester": 3724,
+    "decant": 1303,
+    "tester": 3728,
     "mystery": 11,
     "dupe": 1,
     "bundle": 7,
     "not-fragrance": 13
    },
-   "noEan": 798,
-   "ms": 94847
+   "noEan": 811,
+   "ms": 72246
   },
   "connectionparfumerie": {
    "ok": true,
@@ -878,7 +879,7 @@
     "not-fragrance": 4
    },
    "noEan": 331,
-   "ms": 6480
+   "ms": 5783
   },
   "noah": {
    "ok": true,
@@ -891,11 +892,11 @@
     "not-fragrance": 15
    },
    "noEan": 247,
-   "ms": 27885
+   "ms": 25249
   },
   "cosmeticcapital": {
    "ok": true,
-   "listings": 2528,
+   "listings": 2526,
    "matched": 467,
    "refused": {
     "bundle": 53,
@@ -904,19 +905,19 @@
     "dupe": 1,
     "not-fragrance": 4
    },
-   "noEan": 1996,
-   "ms": 15816
+   "noEan": 1994,
+   "ms": 14221
   },
   "aerre": {
    "ok": true,
-   "listings": 114,
-   "matched": 119,
+   "listings": 113,
+   "matched": 118,
    "refused": {
     "decant": 3,
     "not-fragrance": 7
    },
-   "noEan": 7,
-   "ms": 724
+   "noEan": 10,
+   "ms": 588
   },
   "perfumeaustralia": {
    "ok": true,
@@ -926,21 +927,21 @@
     "bundle": 1
    },
    "noEan": 1,
-   "ms": 950
+   "ms": 837
   },
   "ry": {
    "ok": true,
    "listings": 8159,
-   "matched": 880,
+   "matched": 879,
    "refused": {
-    "no-price": 116,
+    "no-price": 118,
     "damaged": 25,
     "not-fragrance": 19,
     "bundle": 91,
     "decant": 13
    },
-   "noEan": 8567,
-   "ms": 65600
+   "noEan": 8566,
+   "ms": 59715
   },
   "asedos": {
    "ok": true,
@@ -953,7 +954,7 @@
     "not-fragrance": 3
    },
    "noEan": 147,
-   "ms": 141720
+   "ms": 134601
   },
   "brandshd": {
    "ok": true,
@@ -969,8 +970,8 @@
     "damaged": 36,
     "pre-owned": 2
    },
-   "noEan": 44075,
-   "ms": 128915
+   "noEan": 43790,
+   "ms": 109390
   },
   "brands": {
    "ok": true,
@@ -982,47 +983,45 @@
     "bundle": 7
    },
    "noEan": 6,
-   "ms": 2091
+   "ms": 1774
+  },
+  "thescentvault": {
+   "ok": true,
+   "listings": 6657,
+   "matched": 8308,
+   "refused": {
+    "mystery": 6,
+    "not-fragrance": 128,
+    "dupe": 10
+   },
+   "noEan": 17,
+   "ms": 39842
   },
   "freshbeautyco": {
    "ok": true,
    "listings": 20000,
-   "matched": 6002,
+   "matched": 5925,
    "refused": {
     "bundle": 1010,
-    "tester": 1733,
-    "decant": 894,
+    "tester": 1739,
+    "decant": 915,
     "mystery": 53,
     "not-fragrance": 42,
-    "damaged": 94
+    "damaged": 95
    },
-   "noEan": 17377,
-   "ms": 109826
-  },
-  "parfumgroup": {
-   "ok": true,
-   "listings": 13045,
-   "matched": 22015,
-   "refused": {
-    "bundle": 60,
-    "decant": 5,
-    "no-price": 1,
-    "damaged": 23,
-    "dupe": 5
-   },
-   "noEan": 100,
-   "ms": 77685
+   "noEan": 17475,
+   "ms": 105462
   },
   "parfumslubner": {
    "ok": true,
-   "listings": 1796,
-   "matched": 2190,
+   "listings": 1795,
+   "matched": 2191,
    "refused": {
     "decant": 2,
     "no-price": 1
    },
    "noEan": 149,
-   "ms": 11733
+   "ms": 10831
   },
   "jada": {
    "ok": true,
@@ -1035,18 +1034,46 @@
     "bundle": 1
    },
    "noEan": 742,
-   "ms": 8620
+   "ms": 5247
   },
   "snud": {
    "ok": true,
-   "listings": 755,
-   "matched": 713,
+   "listings": 781,
+   "matched": 741,
    "refused": {
-    "bundle": 5,
-    "decant": 41
+    "decant": 42,
+    "bundle": 5
    },
-   "noEan": 135,
-   "ms": 5726
+   "noEan": 143,
+   "ms": 44221
+  },
+  "parfumgroup": {
+   "ok": true,
+   "listings": 13046,
+   "matched": 22016,
+   "refused": {
+    "bundle": 60,
+    "decant": 5,
+    "no-price": 1,
+    "damaged": 23,
+    "dupe": 5
+   },
+   "noEan": 101,
+   "ms": 70214
+  },
+  "meaghers": {
+   "ok": true,
+   "listings": 3681,
+   "matched": 278,
+   "refused": {
+    "bundle": 150,
+    "no-price": 17,
+    "decant": 2,
+    "damaged": 2,
+    "not-fragrance": 8
+   },
+   "noEan": 4008,
+   "ms": 37304
   },
   "mccabespharmacy": {
    "ok": true,
@@ -1061,49 +1088,23 @@
     "pre-owned": 1
    },
    "noEan": 8947,
-   "ms": 56843
-  },
-  "thescentvault": {
-   "ok": true,
-   "listings": 6657,
-   "matched": 8308,
-   "refused": {
-    "mystery": 6,
-    "not-fragrance": 128,
-    "dupe": 10
-   },
-   "noEan": 17,
-   "ms": 200089
-  },
-  "meaghers": {
-   "ok": true,
-   "listings": 3685,
-   "matched": 277,
-   "refused": {
-    "bundle": 149,
-    "no-price": 23,
-    "decant": 2,
-    "damaged": 2,
-    "not-fragrance": 8
-   },
-   "noEan": 4008,
-   "ms": 35481
+   "ms": 48982
   },
   "ausliebezumduft": {
    "ok": true,
-   "listings": 4935,
-   "matched": 6207,
+   "listings": 4946,
+   "matched": 6218,
    "refused": {
     "decant": 23,
     "dupe": 25
    },
    "noEan": 3168,
-   "ms": 30617
+   "ms": 43406
   },
   "theperfumewarehouse": {
    "ok": true,
-   "listings": 4052,
-   "matched": 3469,
+   "listings": 4061,
+   "matched": 3475,
    "refused": {
     "no-price": 1,
     "tester": 535,
@@ -1111,11 +1112,11 @@
     "dupe": 1
    },
    "noEan": 101,
-   "ms": 40337
+   "ms": 38945
   },
   "cloud10beauty": {
    "ok": true,
-   "listings": 4096,
+   "listings": 4097,
    "matched": 574,
    "refused": {
     "no-price": 26,
@@ -1125,8 +1126,8 @@
     "damaged": 37,
     "dupe": 1
    },
-   "noEan": 5083,
-   "ms": 145903
+   "noEan": 5090,
+   "ms": 134505
   },
   "ascentluxurycosmetics": {
    "ok": true,
@@ -1140,34 +1141,34 @@
     "not-fragrance": 9
    },
    "noEan": 21,
-   "ms": 16817
+   "ms": 14989
   },
   "perfumeforever": {
    "ok": true,
-   "listings": 1472,
-   "matched": 1443,
+   "listings": 1469,
+   "matched": 1441,
    "refused": {
     "tester": 1,
     "decant": 12
    },
-   "noEan": 16,
-   "ms": 14293
+   "noEan": 15,
+   "ms": 12598
   },
   "cosmeticsonline": {
    "ok": true,
    "listings": 20000,
-   "matched": 8855,
+   "matched": 8863,
    "refused": {
+    "damaged": 67,
+    "bundle": 37,
     "tester": 932,
     "decant": 324,
-    "damaged": 67,
-    "bundle": 35,
     "mystery": 44,
     "dupe": 8,
     "not-fragrance": 15
    },
-   "noEan": 9720,
-   "ms": 102313
+   "noEan": 9710,
+   "ms": 122874
   },
   "mensbiz": {
    "ok": true,
@@ -1180,7 +1181,7 @@
     "not-fragrance": 15
    },
    "noEan": 247,
-   "ms": 26349,
+   "ms": 23972,
    "mirrorOf": "noah"
   },
   "perfumebazaar": {
@@ -1199,14 +1200,14 @@
     "pre-owned": 1
    },
    "noEan": 11716,
-   "ms": 104334
+   "ms": 98159
   },
   "beautyaffairs": {
    "ok": true,
-   "listings": 2506,
-   "matched": 1584,
+   "listings": 2472,
+   "matched": 1575,
    "refused": {
-    "bundle": 30,
+    "bundle": 29,
     "tester": 81,
     "no-price": 102,
     "decant": 24,
@@ -1214,26 +1215,26 @@
     "damaged": 7,
     "dupe": 5
    },
-   "noEan": 2533,
-   "ms": 15054
+   "noEan": 2475,
+   "ms": 13402
   },
   "lottedutyfree": {
    "ok": true,
-   "listings": 5873,
-   "matched": 690,
+   "listings": 5847,
+   "matched": 689,
    "refused": {
-    "bundle": 26,
+    "bundle": 25,
     "mystery": 3,
     "not-fragrance": 6,
     "tester": 1
    },
-   "noEan": 5147,
-   "ms": 623171
+   "noEan": 5123,
+   "ms": 38640
   },
   "giantchemistharbourtown": {
    "ok": true,
-   "listings": 12558,
-   "matched": 11424,
+   "listings": 12554,
+   "matched": 11420,
    "refused": {
     "bundle": 59,
     "decant": 9,
@@ -1242,12 +1243,12 @@
     "tester": 10
    },
    "noEan": 1012,
-   "ms": 75956
+   "ms": 73459
   },
   "cateschemist": {
    "ok": true,
-   "listings": 2018,
-   "matched": 216,
+   "listings": 2015,
+   "matched": 213,
    "refused": {
     "bundle": 57,
     "dupe": 43,
@@ -1256,12 +1257,12 @@
     "not-fragrance": 8,
     "no-price": 2
    },
-   "noEan": 1972,
-   "ms": 12720
+   "noEan": 1971,
+   "ms": 13272
   },
   "directchemistoutlet": {
    "ok": true,
-   "listings": 17194,
+   "listings": 17201,
    "matched": 1450,
    "refused": {
     "dupe": 40,
@@ -1272,26 +1273,52 @@
     "not-fragrance": 16,
     "pre-owned": 1
    },
-   "noEan": 15529,
-   "ms": 132960
+   "noEan": 15536,
+   "ms": 108218
   },
   "justperfume": {
    "ok": true,
-   "listings": 7178,
-   "matched": 2432,
+   "listings": 7185,
+   "matched": 2701,
    "refused": {
     "bundle": 9,
     "dupe": 5,
     "not-fragrance": 5,
     "mystery": 2
    },
-   "noEan": 6296,
-   "ms": 144835
+   "noEan": 6034,
+   "ms": 580832
+  },
+  "ontrendbeauty": {
+   "ok": true,
+   "listings": 4460,
+   "matched": 428,
+   "refused": {
+    "bundle": 960,
+    "mystery": 1,
+    "damaged": 13,
+    "not-fragrance": 8,
+    "decant": 1
+   },
+   "noEan": 3049,
+   "ms": 26978
+  },
+  "sensoriam": {
+   "ok": true,
+   "listings": 154,
+   "matched": 87,
+   "refused": {
+    "decant": 1,
+    "mystery": 1,
+    "not-fragrance": 7
+   },
+   "noEan": 164,
+   "ms": 625
   },
   "europacosmetica": {
    "ok": true,
    "listings": 19398,
-   "matched": 6698,
+   "matched": 7681,
    "refused": {
     "mystery": 151,
     "bundle": 99,
@@ -1301,34 +1328,8 @@
     "not-fragrance": 11,
     "decant": 22
    },
-   "noEan": 12190,
-   "ms": 1334829
-  },
-  "sensoriam": {
-   "ok": true,
-   "listings": 153,
-   "matched": 87,
-   "refused": {
-    "decant": 1,
-    "mystery": 1,
-    "not-fragrance": 7
-   },
-   "noEan": 163,
-   "ms": 769
-  },
-  "ontrendbeauty": {
-   "ok": true,
-   "listings": 4468,
-   "matched": 428,
-   "refused": {
-    "bundle": 968,
-    "mystery": 1,
-    "damaged": 13,
-    "not-fragrance": 8,
-    "decant": 1
-   },
-   "noEan": 3049,
-   "ms": 28447
+   "noEan": 11207,
+   "ms": 1174493
   },
   "beardandblade": {
    "ok": true,
@@ -1340,7 +1341,7 @@
     "bundle": 17
    },
    "noEan": 1067,
-   "ms": 7470
+   "ms": 6310
   },
   "nourishedlife": {
    "ok": true,
@@ -1353,29 +1354,29 @@
     "not-fragrance": 9,
     "mystery": 1
    },
-   "noEan": 4719,
-   "ms": 19666
+   "noEan": 4718,
+   "ms": 18403
   },
   "cosmeticssquad": {
    "ok": true,
-   "listings": 499,
-   "matched": 10,
+   "listings": 749,
+   "matched": 11,
    "refused": {
-    "bundle": 5
+    "bundle": 14
    },
-   "noEan": 499,
-   "ms": 3685
+   "noEan": 739,
+   "ms": 4264
   },
   "oudcollection": {
    "ok": true,
-   "listings": 129,
+   "listings": 133,
    "matched": 17,
    "refused": {
     "decant": 16,
     "mystery": 1
    },
-   "noEan": 139,
-   "ms": 869
+   "noEan": 147,
+   "ms": 787
   },
   "dubaiperfumes": {
    "ok": true,
@@ -1387,7 +1388,7 @@
     "mystery": 2
    },
    "noEan": 1204,
-   "ms": 9254
+   "ms": 8473
   },
   "parfumgallerie": {
    "ok": true,
@@ -1401,12 +1402,12 @@
     "not-fragrance": 1
    },
    "noEan": 1307,
-   "ms": 13764
+   "ms": 12691
   },
   "lookfantastic": {
    "ok": true,
-   "listings": 7796,
-   "matched": 381,
+   "listings": 7794,
+   "matched": 380,
    "refused": {
     "damaged": 25,
     "bundle": 138,
@@ -1414,12 +1415,12 @@
     "not-fragrance": 21,
     "decant": 15
    },
-   "noEan": 8995,
-   "ms": 45340
+   "noEan": 8994,
+   "ms": 40991
   },
   "myroyalmusk": {
    "ok": true,
-   "listings": 1922,
+   "listings": 1932,
    "matched": 359,
    "refused": {
     "tester": 54,
@@ -1429,12 +1430,12 @@
     "dupe": 2,
     "bundle": 8
    },
-   "noEan": 1515,
-   "ms": 10023
+   "noEan": 1525,
+   "ms": 9153
   },
   "thedetoxmarket": {
    "ok": true,
-   "listings": 1741,
+   "listings": 1740,
    "matched": 0,
    "refused": {
     "no-price": 13,
@@ -1443,8 +1444,8 @@
     "decant": 4,
     "not-fragrance": 15
    },
-   "noEan": 3244,
-   "ms": 9177
+   "noEan": 3243,
+   "ms": 8627
   },
   "maximumfragrance": {
    "ok": true,
@@ -1460,7 +1461,7 @@
     "pre-owned": 2
    },
    "noEan": 286,
-   "ms": 38676
+   "ms": 37339
   },
   "scentrique": {
    "ok": true,
@@ -1472,7 +1473,7 @@
     "not-fragrance": 11
    },
    "noEan": 1623,
-   "ms": 3756
+   "ms": 3348
   },
   "beautebox": {
    "ok": true,
@@ -1489,7 +1490,7 @@
     "mystery": 1
    },
    "noEan": 11889,
-   "ms": 54763
+   "ms": 53120
   },
   "leparfum": {
    "ok": true,
@@ -1503,7 +1504,7 @@
     "decant": 1
    },
    "noEan": 13040,
-   "ms": 57073
+   "ms": 53355
   },
   "bellaviacanada": {
    "ok": true,
@@ -1520,11 +1521,11 @@
     "pre-owned": 1
    },
    "noEan": 16681,
-   "ms": 107703
+   "ms": 105406
   },
   "signelocal": {
    "ok": true,
-   "listings": 3534,
+   "listings": 3536,
    "matched": 147,
    "refused": {
     "bundle": 101,
@@ -1532,8 +1533,8 @@
     "not-fragrance": 6,
     "decant": 8
    },
-   "noEan": 6504,
-   "ms": 21433
+   "noEan": 6487,
+   "ms": 21646
   },
   "oakandtonic": {
    "ok": true,
@@ -1544,7 +1545,7 @@
     "not-fragrance": 6
    },
    "noEan": 748,
-   "ms": 3522
+   "ms": 3503
   },
   "bplatz": {
    "ok": true,
@@ -1558,7 +1559,7 @@
     "bundle": 1
    },
    "noEan": 33,
-   "ms": 14604
+   "ms": 13916
   },
   "houseofniche": {
    "ok": true,
@@ -1570,19 +1571,19 @@
     "bundle": 7
    },
    "noEan": 1799,
-   "ms": 21040
+   "ms": 21591
   },
   "orientalstyle": {
    "ok": true,
-   "listings": 2966,
+   "listings": 2967,
    "matched": 368,
    "refused": {
     "dupe": 20,
     "tester": 7,
     "mystery": 6
    },
-   "noEan": 6268,
-   "ms": 20748
+   "noEan": 6269,
+   "ms": 17906
   },
   "canadianglow": {
    "ok": true,
@@ -1599,55 +1600,30 @@
     "pre-owned": 1
    },
    "noEan": 17894,
-   "ms": 108214
+   "ms": 101983
   },
   "premiereavenue": {
    "ok": true,
-   "listings": 2649,
-   "matched": 1838,
+   "listings": 2648,
+   "matched": 1837,
    "refused": {
     "decant": 2,
     "bundle": 5
    },
    "noEan": 1395,
-   "ms": 15606
+   "ms": 14226
   },
   "lamaisonduparfum": {
    "ok": true,
-   "listings": 2599,
+   "listings": 2605,
    "matched": 0,
    "refused": {
     "decant": 38,
     "bundle": 3,
     "not-fragrance": 8
    },
-   "noEan": 3354,
-   "ms": 15897
-  },
-  "mazzolari": {
-   "ok": true,
-   "listings": 5964,
-   "matched": 8869,
-   "refused": {
-    "bundle": 13,
-    "not-fragrance": 11,
-    "decant": 7,
-    "damaged": 2
-   },
-   "noEan": 129,
-   "ms": 34228
-  },
-  "averyperfumegallery": {
-   "ok": true,
-   "listings": 599,
-   "matched": 510,
-   "refused": {
-    "not-fragrance": 21,
-    "dupe": 4,
-    "bundle": 6
-   },
-   "noEan": 691,
-   "ms": 4023
+   "noEan": 3364,
+   "ms": 14141
   },
   "mcgorisks": {
    "ok": true,
@@ -1661,7 +1637,20 @@
     "decant": 21
    },
    "noEan": 7904,
-   "ms": 33337
+   "ms": 28418
+  },
+  "mazzolari": {
+   "ok": true,
+   "listings": 5967,
+   "matched": 8875,
+   "refused": {
+    "bundle": 13,
+    "not-fragrance": 11,
+    "decant": 7,
+    "damaged": 2
+   },
+   "noEan": 127,
+   "ms": 29867
   },
   "inishpharmacy": {
    "ok": true,
@@ -1670,8 +1659,8 @@
    "refused": {
     "damaged": 1
    },
-   "noEan": 260,
-   "ms": 1207
+   "noEan": 272,
+   "ms": 1090
   },
   "encapturestore": {
    "ok": true,
@@ -1679,32 +1668,44 @@
    "matched": 0,
    "refused": {},
    "noEan": 39,
-   "ms": 636
+   "ms": 554
+  },
+  "averyperfumegallery": {
+   "ok": true,
+   "listings": 598,
+   "matched": 509,
+   "refused": {
+    "not-fragrance": 21,
+    "dupe": 4,
+    "bundle": 6
+   },
+   "noEan": 690,
+   "ms": 3372
   },
   "campomarzio70": {
    "ok": true,
-   "listings": 2549,
-   "matched": 1538,
+   "listings": 2544,
+   "matched": 1534,
    "refused": {
     "bundle": 35,
     "no-price": 12,
     "not-fragrance": 18,
     "decant": 19
    },
-   "noEan": 2551,
-   "ms": 20805
+   "noEan": 2546,
+   "ms": 18830
   },
   "hagelshop": {
    "ok": true,
    "listings": 747,
    "matched": 2,
    "refused": {
-    "no-price": 15,
-    "bundle": 21,
+    "no-price": 16,
+    "bundle": 17,
     "damaged": 1
    },
-   "noEan": 943,
-   "ms": 3923
+   "noEan": 946,
+   "ms": 3352
   },
   "parfumswinkel": {
    "ok": true,
@@ -1712,7 +1713,7 @@
    "matched": 118,
    "refused": {},
    "noEan": 183,
-   "ms": 774
+   "ms": 517
   },
   "whelehans": {
    "ok": true,
@@ -1724,7 +1725,7 @@
     "not-fragrance": 7
    },
    "noEan": 316,
-   "ms": 2561
+   "ms": 2471
   },
   "essentialparfums": {
    "ok": true,
@@ -1734,12 +1735,12 @@
     "no-price": 19
    },
    "noEan": 19,
-   "ms": 850,
+   "ms": 482,
    "mirrorOf": "parfumslubner"
   },
   "vanitystock": {
    "ok": true,
-   "listings": 7144,
+   "listings": 7117,
    "matched": 638,
    "refused": {
     "bundle": 58,
@@ -1748,8 +1749,8 @@
     "damaged": 7,
     "not-fragrance": 16
    },
-   "noEan": 9039,
-   "ms": 50243
+   "noEan": 9012,
+   "ms": 47876
   },
   "worldbrand": {
    "ok": true,
@@ -1763,7 +1764,7 @@
     "no-price": 1
    },
    "noEan": 3317,
-   "ms": 12787
+   "ms": 11601
   },
   "unichem": {
    "ok": true,
@@ -1779,14 +1780,14 @@
     "pre-owned": 1
    },
    "noEan": 7126,
-   "ms": 49868
+   "ms": 45475
   },
   "lifepharmacy": {
    "ok": true,
    "listings": 20000,
    "matched": 5167,
    "refused": {
-    "no-price": 721,
+    "no-price": 722,
     "damaged": 25,
     "bundle": 56,
     "not-fragrance": 13,
@@ -1795,19 +1796,19 @@
     "mystery": 3,
     "dupe": 1
    },
-   "noEan": 13990,
-   "ms": 120024
+   "noEan": 13989,
+   "ms": 112735
   },
   "floandfrankie": {
    "ok": true,
    "listings": 999,
-   "matched": 627,
+   "matched": 626,
    "refused": {
     "not-fragrance": 20,
     "bundle": 34
    },
-   "noEan": 3767,
-   "ms": 7164
+   "noEan": 3784,
+   "ms": 5787
   },
   "soghaat": {
    "ok": true,
@@ -1818,23 +1819,23 @@
     "mystery": 2
    },
    "noEan": 97,
-   "ms": 16561
+   "ms": 15634
   },
   "emiratesoud": {
    "ok": true,
-   "listings": 2130,
+   "listings": 2132,
    "matched": 0,
    "refused": {
-    "dupe": 1048,
+    "dupe": 1050,
     "bundle": 10,
     "decant": 136
    },
    "noEan": 984,
-   "ms": 12110
+   "ms": 10841
   },
   "perfumeoasis": {
    "ok": true,
-   "listings": 2867,
+   "listings": 2866,
    "matched": 1857,
    "refused": {
     "no-price": 1,
@@ -1842,13 +1843,13 @@
     "bundle": 11,
     "decant": 1
    },
-   "noEan": 2292,
-   "ms": 21298
+   "noEan": 2291,
+   "ms": 18535
   },
   "bargainchemist": {
    "ok": true,
-   "listings": 15981,
-   "matched": 1012,
+   "listings": 15993,
+   "matched": 1011,
    "refused": {
     "no-price": 1,
     "bundle": 99,
@@ -1856,8 +1857,8 @@
     "damaged": 25,
     "decant": 15
    },
-   "noEan": 14798,
-   "ms": 95686
+   "noEan": 14811,
+   "ms": 92241
   },
   "perfumeheaven": {
    "ok": true,
@@ -1870,7 +1871,7 @@
     "bundle": 2
    },
    "noEan": 1082,
-   "ms": 9324
+   "ms": 8259
   },
   "fragrancelondon": {
    "ok": true,
@@ -1882,7 +1883,7 @@
     "tester": 7
    },
    "noEan": 4018,
-   "ms": 24543
+   "ms": 21828
   },
   "glowempire": {
    "ok": true,
@@ -1897,11 +1898,11 @@
     "mystery": 1
    },
    "noEan": 9423,
-   "ms": 54698
+   "ms": 52160
   },
   "perfumedirect": {
    "ok": true,
-   "listings": 2740,
+   "listings": 2749,
    "matched": 0,
    "refused": {
     "bundle": 29,
@@ -1911,12 +1912,12 @@
     "not-fragrance": 5,
     "dupe": 2
    },
-   "noEan": 4087,
-   "ms": 17768
+   "noEan": 4100,
+   "ms": 16980
   },
   "redlabeloutlet": {
    "ok": true,
-   "listings": 19230,
+   "listings": 19528,
    "matched": 6388,
    "refused": {
     "bundle": 83,
@@ -1928,20 +1929,20 @@
     "not-fragrance": 4,
     "mystery": 1
    },
-   "noEan": 12720,
-   "ms": 106554
+   "noEan": 13018,
+   "ms": 88143
   },
   "ambientbeauty": {
    "ok": true,
-   "listings": 1470,
-   "matched": 843,
+   "listings": 1474,
+   "matched": 839,
    "refused": {},
-   "noEan": 627,
-   "ms": 11421
+   "noEan": 635,
+   "ms": 10120
   },
   "beautyscent": {
    "ok": true,
-   "listings": 2384,
+   "listings": 2386,
    "matched": 2306,
    "refused": {
     "damaged": 12,
@@ -1950,41 +1951,28 @@
     "bundle": 8,
     "dupe": 1
    },
-   "noEan": 114,
-   "ms": 13649
+   "noEan": 116,
+   "ms": 11970
   },
   "fragranza": {
    "ok": true,
    "listings": 20000,
    "matched": 3172,
    "refused": {
-    "bundle": 130,
-    "tester": 55,
-    "decant": 62,
-    "damaged": 24,
+    "tester": 56,
+    "mystery": 1,
+    "bundle": 126,
+    "decant": 61,
+    "damaged": 23,
     "not-fragrance": 4,
     "dupe": 3
    },
-   "noEan": 16550,
-   "ms": 114849
-  },
-  "almanaar": {
-   "ok": true,
-   "listings": 3014,
-   "matched": 6,
-   "refused": {
-    "no-price": 9,
-    "bundle": 52,
-    "tester": 25,
-    "dupe": 156,
-    "decant": 32
-   },
-   "noEan": 5217,
-   "ms": 21345
+   "noEan": 16554,
+   "ms": 105669
   },
   "peleven": {
    "ok": true,
-   "listings": 15760,
+   "listings": 15841,
    "matched": 63,
    "refused": {
     "bundle": 46,
@@ -1994,8 +1982,22 @@
     "not-fragrance": 4,
     "mystery": 2
    },
-   "noEan": 15591,
-   "ms": 92749
+   "noEan": 15672,
+   "ms": 86792
+  },
+  "almanaar": {
+   "ok": true,
+   "listings": 3016,
+   "matched": 6,
+   "refused": {
+    "no-price": 9,
+    "bundle": 52,
+    "tester": 25,
+    "dupe": 156,
+    "decant": 32
+   },
+   "noEan": 5219,
+   "ms": 19295
   },
   "opulensi": {
    "ok": true,
@@ -2007,19 +2009,7 @@
     "bundle": 1
    },
    "noEan": 41,
-   "ms": 4233
-  },
-  "fragrancehub": {
-   "ok": true,
-   "listings": 584,
-   "matched": 0,
-   "refused": {
-    "bundle": 14,
-    "mystery": 1,
-    "dupe": 4
-   },
-   "noEan": 565,
-   "ms": 4167
+   "ms": 3901
   },
   "perfumescents": {
    "ok": true,
@@ -2032,18 +2022,19 @@
     "damaged": 4
    },
    "noEan": 957,
-   "ms": 12115
+   "ms": 10170
   },
-  "pulseofperfumery": {
+  "fragrancehub": {
    "ok": true,
-   "listings": 855,
-   "matched": 808,
+   "listings": 584,
+   "matched": 0,
    "refused": {
-    "decant": 8,
-    "not-fragrance": 6
+    "bundle": 14,
+    "mystery": 1,
+    "dupe": 4
    },
-   "noEan": 38,
-   "ms": 4797
+   "noEan": 565,
+   "ms": 3224
   },
   "fragranceofarabia": {
    "ok": true,
@@ -2054,7 +2045,18 @@
     "bundle": 2
    },
    "noEan": 998,
-   "ms": 4065
+   "ms": 3271
+  },
+  "pulseofperfumery": {
+   "ok": true,
+   "listings": 855,
+   "matched": 808,
+   "refused": {
+    "decant": 8,
+    "not-fragrance": 6
+   },
+   "noEan": 38,
+   "ms": 4512
   },
   "thegroomingclinic": {
    "ok": true,
@@ -2067,11 +2069,11 @@
     "not-fragrance": 7
    },
    "noEan": 108,
-   "ms": 13009
+   "ms": 12433
   },
   "amsons": {
    "ok": true,
-   "listings": 8144,
+   "listings": 8143,
    "matched": 2,
    "refused": {
     "bundle": 30,
@@ -2080,25 +2082,8 @@
     "decant": 1,
     "damaged": 1
    },
-   "noEan": 15186,
-   "ms": 45841
-  },
-  "fenwick": {
-   "ok": true,
-   "listings": 20000,
-   "matched": 1742,
-   "refused": {
-    "not-fragrance": 187,
-    "bundle": 2385,
-    "mystery": 14,
-    "no-price": 134,
-    "dupe": 20,
-    "decant": 8,
-    "pre-owned": 7,
-    "damaged": 3
-   },
-   "noEan": 50371,
-   "ms": 147434
+   "noEan": 15185,
+   "ms": 41909
   },
   "belvera": {
    "ok": true,
@@ -2114,25 +2099,42 @@
     "mystery": 1
    },
    "noEan": 18837,
-   "ms": 120763
+   "ms": 106626
+  },
+  "fenwick": {
+   "ok": true,
+   "listings": 20000,
+   "matched": 1760,
+   "refused": {
+    "bundle": 2390,
+    "no-price": 134,
+    "not-fragrance": 185,
+    "mystery": 14,
+    "dupe": 20,
+    "decant": 8,
+    "pre-owned": 7,
+    "damaged": 3
+   },
+   "noEan": 50325,
+   "ms": 141632
   },
   "contentbeautywellbeing": {
    "ok": true,
-   "listings": 1012,
+   "listings": 1010,
    "matched": 0,
    "refused": {
     "decant": 1,
     "not-fragrance": 21
    },
-   "noEan": 1694,
-   "ms": 8271
+   "noEan": 1692,
+   "ms": 7951
   },
   "elyswimbledon": {
    "ok": true,
-   "listings": 13918,
+   "listings": 13960,
    "matched": 2,
    "refused": {
-    "bundle": 1596,
+    "bundle": 1592,
     "not-fragrance": 64,
     "damaged": 9,
     "decant": 2,
@@ -2142,8 +2144,8 @@
     "pre-owned": 8,
     "tester": 1
    },
-   "noEan": 28470,
-   "ms": 83521
+   "noEan": 28494,
+   "ms": 76360
   },
   "fragrancedealz": {
    "ok": true,
@@ -2159,7 +2161,7 @@
     "no-price": 4
    },
    "noEan": 121,
-   "ms": 19537
+   "ms": 18699
   },
   "tjhughes": {
    "ok": true,
@@ -2175,22 +2177,22 @@
     "mystery": 2
    },
    "noEan": 24068,
-   "ms": 119036
+   "ms": 108168
   },
   "scentsangel": {
    "ok": true,
-   "listings": 4514,
-   "matched": 1250,
+   "listings": 4497,
+   "matched": 1241,
    "refused": {
-    "tester": 1587,
+    "tester": 1579,
     "decant": 687,
     "bundle": 5,
     "dupe": 3,
     "not-fragrance": 100,
     "mystery": 6
    },
-   "noEan": 11439,
-   "ms": 34990
+   "noEan": 11394,
+   "ms": 31122
   },
   "intenseoud": {
    "ok": true,
@@ -2205,7 +2207,7 @@
     "tester": 27
    },
    "noEan": 4463,
-   "ms": 37633
+   "ms": 34511
   },
   "perfumebox": {
    "ok": true,
@@ -2221,7 +2223,7 @@
     "decant": 1
    },
    "noEan": 6608,
-   "ms": 40293
+   "ms": 36010
   },
   "labelleperfumes": {
    "ok": true,
@@ -2235,7 +2237,7 @@
     "bundle": 1
    },
    "noEan": 2885,
-   "ms": 29557
+   "ms": 27139
   },
   "perfumeparadise": {
    "ok": true,
@@ -2249,15 +2251,15 @@
     "mystery": 1
    },
    "noEan": 1325,
-   "ms": 10696
+   "ms": 11759
   },
   "nearstore": {
    "ok": true,
-   "listings": 9520,
-   "matched": 4242,
+   "listings": 9517,
+   "matched": 4240,
    "refused": {
     "tester": 2181,
-    "decant": 993,
+    "decant": 992,
     "bundle": 7,
     "mystery": 4,
     "dupe": 5,
@@ -2265,7 +2267,7 @@
     "not-fragrance": 1
    },
    "noEan": 5422,
-   "ms": 52482
+   "ms": 50699
   },
   "perfumeempire": {
    "ok": true,
@@ -2278,7 +2280,7 @@
     "damaged": 8
    },
    "noEan": 4700,
-   "ms": 30500
+   "ms": 28937
   },
   "tripletraders": {
    "ok": true,
@@ -2295,7 +2297,7 @@
     "not-fragrance": 1
    },
    "noEan": 227,
-   "ms": 41568
+   "ms": 38937
   },
   "perfumem": {
    "ok": true,
@@ -2309,7 +2311,7 @@
     "damaged": 1
    },
    "noEan": 5830,
-   "ms": 19131
+   "ms": 18315
   },
   "sensabeauty": {
    "ok": true,
@@ -2324,20 +2326,20 @@
     "pre-owned": 4
    },
    "noEan": 3832,
-   "ms": 18335
+   "ms": 16839
   },
   "perfumes": {
    "ok": true,
-   "listings": 3902,
+   "listings": 3910,
    "matched": 2771,
    "refused": {
-    "tester": 834,
-    "bundle": 6,
+    "bundle": 7,
+    "tester": 835,
     "decant": 2,
     "mystery": 1
    },
-   "noEan": 288,
-   "ms": 25107
+   "noEan": 294,
+   "ms": 21094
   },
   "perfumania": {
    "ok": true,
@@ -2350,11 +2352,11 @@
     "mystery": 3
    },
    "noEan": 5787,
-   "ms": 21999
+   "ms": 20793
   },
   "oasisperfumesusa": {
    "ok": true,
-   "listings": 1457,
+   "listings": 1458,
    "matched": 0,
    "refused": {
     "pre-owned": 1,
@@ -2365,8 +2367,8 @@
     "mystery": 2,
     "dupe": 2
    },
-   "noEan": 1463,
-   "ms": 9100
+   "noEan": 1464,
+   "ms": 8493
   },
   "perfumora": {
    "ok": true,
@@ -2383,11 +2385,11 @@
     "not-fragrance": 4
    },
    "noEan": 4153,
-   "ms": 56178
+   "ms": 52466
   },
   "soavantgarde": {
    "ok": true,
-   "listings": 1438,
+   "listings": 1437,
    "matched": 1415,
    "refused": {
     "decant": 409,
@@ -2397,12 +2399,12 @@
     "no-price": 3,
     "mystery": 1
    },
-   "noEan": 753,
-   "ms": 9585
+   "noEan": 752,
+   "ms": 8927
   },
   "99perfume": {
    "ok": true,
-   "listings": 11649,
+   "listings": 11655,
    "matched": 0,
    "refused": {
     "tester": 4653,
@@ -2412,8 +2414,8 @@
     "dupe": 3,
     "mystery": 2
    },
-   "noEan": 16412,
-   "ms": 59584
+   "noEan": 16421,
+   "ms": 55700
   },
   "perfumecity": {
    "ok": true,
@@ -2426,7 +2428,7 @@
     "bundle": 6
    },
    "noEan": 1721,
-   "ms": 7921
+   "ms": 7007
   },
   "lrlux": {
    "ok": true,
@@ -2442,7 +2444,7 @@
     "decant": 2
    },
    "noEan": 1117,
-   "ms": 5861
+   "ms": 5595
   },
   "credobeauty": {
    "ok": true,
@@ -2456,11 +2458,11 @@
     "damaged": 2
    },
    "noEan": 3743,
-   "ms": 10351
+   "ms": 8544
   },
   "thedetoxmarketus": {
    "ok": true,
-   "listings": 1828,
+   "listings": 1829,
    "matched": 0,
    "refused": {
     "no-price": 8,
@@ -2469,8 +2471,8 @@
     "decant": 4,
     "not-fragrance": 15
    },
-   "noEan": 3371,
-   "ms": 11285
+   "noEan": 3380,
+   "ms": 10172
   },
   "alrashad": {
    "ok": true,
@@ -2481,18 +2483,18 @@
     "decant": 3
    },
    "noEan": 863,
-   "ms": 4418
+   "ms": 3932
   },
   "monc13": {
    "ok": true,
-   "listings": 1822,
+   "listings": 1820,
    "matched": 186,
    "refused": {
     "decant": 504,
     "not-fragrance": 8
    },
-   "noEan": 2736,
-   "ms": 11776
+   "noEan": 2734,
+   "ms": 11026
   },
   "alhusseinperfumes": {
    "ok": true,
@@ -2502,18 +2504,18 @@
     "no-price": 34
    },
    "noEan": 151,
-   "ms": 3622
+   "ms": 3262
   },
   "shoprescuespa": {
    "ok": true,
-   "listings": 2889,
+   "listings": 2890,
    "matched": 81,
    "refused": {
     "bundle": 132,
     "not-fragrance": 2
    },
-   "noEan": 4565,
-   "ms": 15938
+   "noEan": 4566,
+   "ms": 15649
   },
   "buymoreperfumes": {
    "ok": true,
@@ -2521,7 +2523,7 @@
    "matched": 1,
    "refused": {},
    "noEan": 450,
-   "ms": 2698
+   "ms": 2509
   },
   "mutamayezperfume": {
    "ok": true,
@@ -2534,12 +2536,12 @@
     "mystery": 2
    },
    "noEan": 553,
-   "ms": 3300
+   "ms": 3008
   },
   "cosbar": {
    "ok": true,
-   "listings": 2016,
-   "matched": 3980,
+   "listings": 2017,
+   "matched": 4000,
    "refused": {
     "no-price": 6,
     "bundle": 13,
@@ -2548,7 +2550,7 @@
     "not-fragrance": 8
    },
    "noEan": 23,
-   "ms": 12675
+   "ms": 11887
   },
   "thedsshop": {
    "ok": true,
@@ -2560,11 +2562,11 @@
     "damaged": 1
    },
    "noEan": 3126,
-   "ms": 9433
+   "ms": 8603
   },
   "violetgrey": {
    "ok": true,
-   "listings": 1340,
+   "listings": 1348,
    "matched": 0,
    "refused": {
     "no-price": 7,
@@ -2573,8 +2575,8 @@
     "decant": 2,
     "mystery": 1
    },
-   "noEan": 2288,
-   "ms": 8143
+   "noEan": 2296,
+   "ms": 7329
   },
   "dunyaaloud": {
    "ok": true,
@@ -2582,18 +2584,18 @@
    "matched": 0,
    "refused": {},
    "noEan": 323,
-   "ms": 1936
+   "ms": 1618
   },
   "bluemercury": {
    "ok": true,
    "listings": 499,
    "matched": 67,
    "refused": {
-    "no-price": 35,
+    "no-price": 34,
     "decant": 1
    },
-   "noEan": 535,
-   "ms": 2059
+   "noEan": 536,
+   "ms": 1729
   },
   "kbeautyx": {
    "ok": true,
@@ -2610,22 +2612,22 @@
     "mystery": 2
    },
    "noEan": 5629,
-   "ms": 20508
+   "ms": 18333
   },
   "bezali": {
    "ok": true,
    "listings": 20000,
-   "matched": 3799,
+   "matched": 3789,
    "refused": {
+    "tester": 1490,
     "damaged": 88,
-    "tester": 1495,
-    "decant": 86,
+    "decant": 84,
     "bundle": 10,
     "not-fragrance": 81,
     "dupe": 5
    },
-   "noEan": 14555,
-   "ms": 113860
+   "noEan": 14567,
+   "ms": 105920
   },
   "theperfumeshopusa": {
    "ok": true,
@@ -2636,7 +2638,7 @@
     "bundle": 1
    },
    "noEan": 4065,
-   "ms": 13657
+   "ms": 12445
   },
   "bazaralhaya": {
    "ok": true,
@@ -2649,21 +2651,22 @@
     "not-fragrance": 8
    },
    "noEan": 2747,
-   "ms": 7274
+   "ms": 5814
   },
   "scentbeauty": {
    "ok": true,
-   "listings": 75,
+   "listings": 78,
    "matched": 0,
    "refused": {
+    "no-price": 3,
     "bundle": 2
    },
    "noEan": 100,
-   "ms": 484
+   "ms": 374
   },
   "beautyhabit": {
    "ok": true,
-   "listings": 6129,
+   "listings": 6133,
    "matched": 0,
    "refused": {
     "no-price": 47,
@@ -2672,8 +2675,8 @@
     "decant": 10,
     "dupe": 3
    },
-   "noEan": 6547,
-   "ms": 37551
+   "noEan": 6551,
+   "ms": 37057
   },
   "belensperfume": {
    "ok": true,
@@ -2683,19 +2686,7 @@
     "tester": 4
    },
    "noEan": 483,
-   "ms": 2922
-  },
-  "gadgetsonline": {
-   "ok": true,
-   "listings": 2674,
-   "matched": 2548,
-   "refused": {
-    "decant": 70,
-    "tester": 16,
-    "bundle": 11
-   },
-   "noEan": 31,
-   "ms": 18909
+   "ms": 2762
   },
   "spadezstore": {
    "ok": true,
@@ -2710,7 +2701,19 @@
     "pre-owned": 1
    },
    "noEan": 11465,
-   "ms": 31150
+   "ms": 28363
+  },
+  "gadgetsonline": {
+   "ok": true,
+   "listings": 2675,
+   "matched": 2549,
+   "refused": {
+    "decant": 70,
+    "tester": 16,
+    "bundle": 11
+   },
+   "noEan": 31,
+   "ms": 16993
   },
   "perfumefactory": {
    "ok": true,
@@ -2720,7 +2723,7 @@
     "tester": 41
    },
    "noEan": 753,
-   "ms": 5294
+   "ms": 4717
   },
   "dansunjardin": {
    "ok": true,
@@ -2731,7 +2734,7 @@
     "bundle": 1
    },
    "noEan": 767,
-   "ms": 4426
+   "ms": 4313
   },
   "guardianpharmacy": {
    "ok": true,
@@ -2746,15 +2749,15 @@
     "damaged": 1
    },
    "noEan": 3101,
-   "ms": 17017
+   "ms": 15656
   },
   "druni": {
    "ok": true,
-   "listings": 1661,
-   "matched": 98,
+   "listings": 2264,
+   "matched": 137,
    "refused": {},
-   "noEan": 677,
-   "ms": 5
+   "noEan": 850,
+   "ms": 6
   },
   "arenal": {
    "ok": true,
@@ -2762,79 +2765,79 @@
    "matched": 296,
    "refused": {},
    "noEan": 1031,
-   "ms": 6
+   "ms": 11
   },
   "kicksfi": {
    "ok": true,
-   "listings": 2536,
-   "matched": 1766,
+   "listings": 2838,
+   "matched": 1768,
    "refused": {},
-   "noEan": 11,
-   "ms": 15
+   "noEan": 12,
+   "ms": 14
   },
   "perfumesclub": {
    "ok": true,
-   "listings": 2293,
-   "matched": 122,
+   "listings": 3420,
+   "matched": 229,
    "refused": {},
    "noEan": 2,
-   "ms": 12
+   "ms": 15
   },
   "perfumesclubuk": {
    "ok": true,
-   "listings": 2505,
-   "matched": 159,
+   "listings": 3763,
+   "matched": 258,
    "refused": {},
    "noEan": 0,
-   "ms": 10
+   "ms": 15
   },
   "parfimo": {
    "ok": true,
-   "listings": 2128,
-   "matched": 2377,
+   "listings": 2421,
+   "matched": 2669,
    "refused": {},
-   "noEan": 2,
-   "ms": 10
+   "noEan": 6,
+   "ms": 11
   },
   "tendanceparfums": {
    "ok": true,
-   "listings": 2713,
-   "matched": 741,
+   "listings": 3587,
+   "matched": 796,
    "refused": {},
-   "noEan": 238,
-   "ms": 15
+   "noEan": 620,
+   "ms": 20
   },
   "parfumwebshop": {
    "ok": true,
-   "listings": 1839,
-   "matched": 1852,
+   "listings": 2079,
+   "matched": 2093,
    "refused": {},
-   "noEan": 127,
+   "noEan": 128,
    "ms": 12
   },
   "seuren": {
    "ok": true,
-   "listings": 1769,
-   "matched": 420,
+   "listings": 2367,
+   "matched": 654,
    "refused": {},
-   "noEan": 106,
-   "ms": 6
+   "noEan": 165,
+   "ms": 11
   },
   "maisondesfragrances": {
    "ok": true,
-   "listings": 2398,
-   "matched": 2339,
+   "listings": 2653,
+   "matched": 2594,
    "refused": {},
    "noEan": 59,
    "ms": 8
   },
   "pacoperfumerias": {
    "ok": true,
-   "listings": 2310,
-   "matched": 2255,
+   "listings": 2721,
+   "matched": 2665,
    "refused": {},
-   "noEan": 55,
-   "ms": 10
+   "noEan": 56,
+   "ms": 11
   },
   "perfumeuk": {
    "ok": true,
@@ -2846,27 +2849,27 @@
   },
   "fragrancecounter": {
    "ok": true,
-   "listings": 2258,
-   "matched": 1762,
+   "listings": 2894,
+   "matched": 1802,
    "refused": {},
-   "noEan": 778,
-   "ms": 7
+   "noEan": 1400,
+   "ms": 8
   },
   "luckyscent": {
    "ok": true,
-   "listings": 2571,
-   "matched": 2048,
+   "listings": 3285,
+   "matched": 2503,
    "refused": {},
-   "noEan": 793,
-   "ms": 10
+   "noEan": 1119,
+   "ms": 12
   },
   "feelingsexy": {
    "ok": true,
-   "listings": 2452,
-   "matched": 2456,
+   "listings": 2877,
+   "matched": 2771,
    "refused": {},
-   "noEan": 159,
-   "ms": 11
+   "noEan": 164,
+   "ms": 13
   },
   "terrywhite": {
    "ok": true,
@@ -2874,15 +2877,15 @@
    "matched": 1181,
    "refused": {},
    "noEan": 20,
-   "ms": 4
+   "ms": 7
   },
   "theperfumespot": {
    "ok": true,
-   "listings": 1607,
-   "matched": 1467,
+   "listings": 1871,
+   "matched": 1714,
    "refused": {},
-   "noEan": 138,
-   "ms": 8
+   "noEan": 155,
+   "ms": 7
   },
   "fragrancenevaeh": {
    "ok": true,
@@ -2898,12 +2901,12 @@
     "pre-owned": 1
    },
    "noEan": 1431,
-   "ms": 7381
+   "ms": 6995
   },
   "herabeauty": {
    "ok": true,
-   "listings": 4778,
-   "matched": 12144,
+   "listings": 4776,
+   "matched": 12142,
    "refused": {
     "bundle": 994,
     "not-fragrance": 47,
@@ -2914,7 +2917,7 @@
     "pre-owned": 15
    },
    "noEan": 19,
-   "ms": 30154
+   "ms": 27054
   },
   "aurafragrance": {
    "ok": true,
@@ -2930,7 +2933,7 @@
     "dupe": 1
    },
    "noEan": 5307,
-   "ms": 32120
+   "ms": 33201
   },
   "fragrancecomeu": {
    "ok": true,
@@ -2942,17 +2945,17 @@
     "damaged": 4
    },
    "noEan": 4756,
-   "ms": 16215
+   "ms": 13659
   },
   "haarspullen": {
    "ok": true,
    "listings": 243,
-   "matched": 403,
+   "matched": 395,
    "refused": {
     "bundle": 2
    },
-   "noEan": 21,
-   "ms": 2372
+   "noEan": 29,
+   "ms": 2260
   },
   "profumidinicchia": {
    "ok": true,
@@ -2967,7 +2970,7 @@
     "not-fragrance": 10
    },
    "noEan": 1864,
-   "ms": 20631
+   "ms": 17580
   },
   "freshbeautycoau": {
    "ok": true,
@@ -2983,16 +2986,16 @@
     "mystery": 46
    },
    "noEan": 20995,
-   "ms": 100983
+   "ms": 95439
   }
  },
  "ebay": {
-  "at": "2026-11-08T16:20:46.159Z",
-  "day": "2026-11-08",
+  "at": "2026-11-09T19:07:50.485Z",
+  "day": "2026-11-09",
   "calls": 2500,
   "budget": 2500,
-  "listings": 4377,
-  "qday": "2026-11-08",
+  "listings": 5568,
+  "qday": "2026-11-09",
   "qcalls": 2500
  }
 }
