@@ -1266,3 +1266,17 @@ engine (FigureCompare's variant has its own entry), made in step in the three re
 - The header search's short placeholder now names what it finds (brand, product, barcode / part code). "Smells like" and "Shop by scent note" moved out of "Save" into their own sidebar group, "Find a scent".
 - Unchanged: every URL, title, description, canonical, h1 and JSON-LD. Not done: brand-within-section hub pages (a new indexable
   page per pair needs its own thin-page rule), and the side rails and corner rating card (owner, 2026-11-06 / 2026-11-03).
+
+## 2026-11-09, Header mega menus replace the side panel (Bill)
+
+Bill: navigation is very important, prefers dropdown menus, wants the best modern pattern across the family.
+
+- **`components/HeaderMenus.tsx`** (lg up): Shop (women, men, unisex and extras), Scent notes (notes + the find-a-scent pages), Houses, Deals & more. Panels are plain
+  links in the server HTML (closed ones only hidden by CSS), opened by hover with a ~90 ms intent delay, click or tap, and keyboard
+  (ArrowDown/Enter open, Tab walks, Escape closes and refocuses); `aria-expanded`/`aria-controls`; no library, no layout shift.
+- **One source**: `headerMenus()` in `lib/nav.ts` takes the same `navGroups` the phone menu draws, plus `menuFacts()` (`lib/menu-facts.ts`,
+  data already loaded): the 14 commonest notes with pages and 14 houses. Each link carries the markets that have products and is
+  drawn with the engine's `rp rp-XX` classes, so a visitor sees only what their market lists; a link with none anywhere is dropped.
+- **Side panel removed** (at Bill's 2026-11-09 direction): the menus carry every destination it
+  had; the page is flush. Below lg the quick row and the phone menu are unchanged.
+- Unchanged: every URL, title, canonical, h1, JSON-LD. No new fetch, no revalidate change.
