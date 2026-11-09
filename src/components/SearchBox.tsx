@@ -123,7 +123,7 @@ export function SearchBox({ big = false }: { big?: boolean }) {
             }
             if (e.key === "Escape") setOpen(false);
           }}
-          placeholder={big ? "Search a house, a scent or a barcode…" : "Search fragrance…"}
+          placeholder={big ? "Search a house, a scent or a barcode…" : "Search house, scent, barcode…"}
           aria-label="Search perfume"
           aria-expanded={open}
           aria-controls={listId}
