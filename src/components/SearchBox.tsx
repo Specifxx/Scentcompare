@@ -7,6 +7,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { CATEGORIES } from "@/site";
 import { useRegion } from "./RegionPicker";
+import { compareSearchHref } from "@/lib/compare-search";
 import { money } from "@/lib/format";
 import { imageUrl, loadImages, loadIndex, norm, searchRows, type IndexRow } from "@/lib/browse";
 import { Stars } from "./reviews/Stars";
@@ -158,6 +159,11 @@ export function SearchBox({ big = false }: { big?: boolean }) {
           )}
           {rows && !empty && nq.length < 2 && <p className="px-3 py-2 text-sm text-soft">Keep typing…</p>}
           {rows && nq.length > 1 && !items.length && <p className="px-3 py-2 text-sm text-soft">Nothing matches yet. Try the house&apos;s name or a word like cologne.</p>}
+          {rows && nq.length > 1 && !items.length && (
+            <a href={compareSearchHref(q, "scent", region)} rel="nofollow" className="block px-3 pb-2 text-sm font-semibold text-accent-deep hover:underline">
+              Search every Compare Empire site for &ldquo;{q.trim()}&rdquo; &rarr;
+            </a>
+          )}
           {(brandHits.length > 0 || stepHits.length > 0) && (
             <ul className="border-b border-line pb-1">
               {brandHits.map((b) => (
