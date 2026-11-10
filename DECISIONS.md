@@ -1280,3 +1280,12 @@ Bill: navigation is very important, prefers dropdown menus, wants the best moder
 - **Side panel removed** (at Bill's 2026-11-09 direction): the menus carry every destination it
   had; the page is flush. Below lg the quick row and the phone menu are unchanged.
 - Unchanged: every URL, title, canonical, h1, JSON-LD. No new fetch, no revalidate change.
+
+## 2026-11-10: Explore layer, PriceRunner-style (ported from KaeYoung the same day)
+
+Diagnosis (9 Nov weekly report, 8 Nov traffic check): 89 visitors a week, 1 Google click, A$0 earned against A$3.51
+of Vercel in its first week; Google had only met the site (166 impressions). Same design answer as KaeYoung, files
+identical (`components/explore/`, `lib/explore.ts`): section photo tiles on the home page under a shorter hero,
+"Recently viewed" kept in the visitor's own browser (`sc-recent`), and "Similar <section>" beside the price table
+(same section, most shared notes first, other houses first, each with its lowest store price). No URL, title, meta
+description or price order changed.
