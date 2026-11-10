@@ -1289,3 +1289,11 @@ identical (`components/explore/`, `lib/explore.ts`): section photo tiles on the 
 "Recently viewed" kept in the visitor's own browser (`sc-recent`), and "Similar <section>" beside the price table
 (same section, most shared notes first, other houses first, each with its lowest store price). No URL, title, meta
 description or price order changed.
+
+## 2026-11-10: Category page 2 and later are noindex, follow (site review X4)
+
+Search Console showed the paginated hubs competing with their own hub: kaeyoung.com/serums/page/23 had 806 impressions
+and /serums/page/11 had 262 in 56 days, both with 0 clicks. Page 2+ was self-canonical and indexable. It is now
+`robots: { index: false, follow: true }`: the page and its links stay crawlable, so every product it lists is still
+found, but only the hub (page 1) competes for the category's searches. Page 2+ was already out of the sitemap. The
+canonical stays self (pointing page 23 at page 1 would claim they are the same content). Pinned in `tests/seo.test.ts`.
