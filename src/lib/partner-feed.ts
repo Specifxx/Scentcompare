@@ -42,6 +42,7 @@ const FIELDS = {
   link: ["merchant_deep_link", "link", "product_url", "url"],
   awLink: ["aw_deep_link"],
   price: ["search_price", "store_price", "price", "display_price"],
+  salePrice: ["sale_price"],
   currency: ["currency", "currency_code"],
   ean: ["ean", "barcode"],
   gtin: ["product_gtin", "gtin"],
@@ -185,9 +186,12 @@ export function keepRow(
     by = "name";
   }
   if (!ean) return null;
-  const cur = (r.currency?.trim().toUpperCase() || fallbackCurrency || "").slice(0, 3);
+  // Google-format feeds (The Beauty Store UK) have no currency column: the price reads "15.55 GBP", and a
+  // sale_price (same shape) is what the shopper pays while it is set.
+  const cur = (r.currency?.trim().toUpperCase() || /\b([A-Z]{3})\s*$/.exec(r.price?.trim().toUpperCase() ?? "")?.[1] || fallbackCurrency || "").slice(0, 3);
   const region = CURRENCY_REGION[cur];
-  const p = cents(r.price);
+  const sale = cents(r.salePrice);
+  const p = sale && (!r.price || sale < cents(r.price)) ? sale : cents(r.price);
   const u = productLink(r);
   if (!region || !p || !u) return null;
   const ref = median(storePrices(region, ean));
