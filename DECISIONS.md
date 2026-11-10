@@ -1306,3 +1306,13 @@ searched, and US searches find a listing 75% of the time. The owner approved 4,8
 other site is on the keyset rests on elimination, not on the portal: its 2,500 calls are missing from the Cyberpunk and Rift
 keysets' own counters and every other keyset is too full to carry them. If the pass starts stopping on eBay's 429 before
 4,800, another site is on this keyset: lower the cap again. `EBAY_DAILY_CAP` can still only lower it.
+
+## 2026-11-10: The Beauty Store UK joins as a feed-only Awin partner
+
+Awin accepted us on The Beauty Store UK (advertiser 116255, UK, GBP; Bill got the welcome email 2026-11-10). A discounter
+of designer fragrance, so, like Stylevana, a priced row appears only on the bottles its feed (F1761, Google format, ~5,900
+products, `gtin` + `price` as "15.55 GBP") lists by exact barcode, in the UK only, never as a search link. The secret is
+`AWIN_FEED_BEAUTYSTORE` (the key-bearing download URL; GitHub secret only). Google-format feeds have no currency column, so
+`keepRow` now reads the currency from the price's suffix and prefers a lower `sale_price`; a price in another currency still
+maps to no region and is dropped. Same guards as every partner row: in stock, 60–160% of the UK store median, never a store,
+never the cheapest, never re-ranked. Until the secret exists the step is a quiet no-op.
