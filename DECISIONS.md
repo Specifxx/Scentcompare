@@ -1356,3 +1356,21 @@ empty recheck), so its calls follow its visitors. The owner's split brief (2026-
 calls already go about 91% to the US (2,275 of 2,500 measured), the US first. The same code is here so the two engines
 stay alike, with `EBAY_REGION_DAILY_CAP` and `EBAY_EMPTY_RECHECK_SCALE` empty: the planner behaves exactly as before.
 The cap stays 4,800 a day.
+
+## 2026-11-10: Heavy pages: lighter price rows on product pages
+
+After the hub change of the same day, product pages were the heaviest left (ScentCompare up to 556 KB, KaeYoung up to
+816 KB): the price table is drawn for six regions, and every store row carried two inline-styled thumbs buttons with
+full SVG paths (StoreVote), a full cart SVG, long class strings, and its own copy of the row in the RSC payload for
+each of its client islands (cart button twice, thumbs, link).
+
+- `PriceRows` is a client component: each region's rows reach the page once as data instead of as a server tree.
+  The quick view already drew it on the client.
+- The thumbs and the cart icon are defined once per page (`IconSprite`, in the layout) and placed with `<use>`; the
+  thumbs' inline styles are classes in `globals.css` (`.sv`, `.sv-b`, pressed state from `aria-pressed`).
+- The row's repeated class strings are short component classes (`.pr-*`, the same Tailwind values).
+
+Same look, compared side by side on desktop and phone, including a pressed thumb and a cart add. Same URLs, text,
+links, titles, meta and JSON-LD. Result: ScentCompare product pages 556 to 372 KB at most, KaeYoung 816 to 481 KB.
+Brand pages were left: they list every product of the house (Lattafa 345 tiles, 552 KB; TIRTIR 408 KB), already a
+quarter of what they were this morning, and going lower would mean listing fewer products, which is a content change.
