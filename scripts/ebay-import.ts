@@ -3,7 +3,7 @@
 // key). Off until EBAY_CLIENT_ID / EBAY_CLIENT_SECRET exist (a green no-op).
 // One call per (product, region), home-page, popular and new products first,
 // the US first among equals, the rest weekly and empty searches every three weeks
-// (planEbay), capped at 2,500 per eBay quota day however many runs there are.
+// (planEbay), capped at 4,800 per eBay quota day however many runs there are.
 import fs from "node:fs";
 import path from "node:path";
 import { REGIONS, type RegionCode } from "@/site";
@@ -53,10 +53,10 @@ async function main() {
     console.log("eBay keys not set: skipping (no-op).");
     return;
   }
-  // ScentCompare's own keyset (owner, 2026-11-05: Bill is creating it), 2,500
-  // calls a day. EBAY_DAILY_CAP can only lower it.
+  // ScentCompare's own keyset (owner, 2026-11-05), 4,800 of its 5,000 calls a day
+  // (owner, 2026-11-10: no other site is on it). EBAY_DAILY_CAP can only lower it.
   // A second run on the same quota day (a manual dispatch) gets only what is left.
-  const cap = Math.min(2500, Number(process.env.EBAY_DAILY_CAP || 2500));
+  const cap = Math.min(4800, Number(process.env.EBAY_DAILY_CAP || 4800));
   const qday = ebayQuotaDay();
   const spent = meta?.ebay?.qday === qday ? meta.ebay.qcalls ?? 0 : 0;
   const budget = Math.max(0, cap - spent);
