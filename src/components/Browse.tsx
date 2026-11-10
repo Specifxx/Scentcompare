@@ -8,6 +8,7 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { CATEGORIES } from "@/site";
 import { FACETS } from "@/content/facets";
 import { applyFilters, facetValues, imageUrl, loadImages, loadIndex, NO_FILTERS, SORTS, type Filters, type IndexRow, type SortKey } from "@/lib/browse";
+import { compareSearchHref } from "@/lib/compare-search";
 import { money } from "@/lib/format";
 import { useRegion } from "./RegionPicker";
 import { Stars } from "./reviews/Stars";
@@ -151,7 +152,14 @@ export function Browse({ cat = "", brand = "", search = false, children }: { cat
               ))}
             </div>
           ) : (
-            <p className="card p-6 text-center text-soft">Nothing matches. Try fewer filters.</p>
+            <div className="card p-6 text-center text-soft">
+              <p>Nothing matches. Try fewer filters.</p>
+              {f.q.trim().length > 1 && (
+                <a href={compareSearchHref(f.q, "scent", region)} rel="nofollow" className="mt-2 inline-block text-sm font-semibold text-accent-deep hover:underline">
+                  Search every Compare Empire site for &ldquo;{f.q.trim()}&rdquo; &rarr;
+                </a>
+              )}
+            </div>
           )}
           {result.length > shown && (
             <div className="mt-8 text-center">
