@@ -1306,3 +1306,23 @@ searched, and US searches find a listing 75% of the time. The owner approved 4,8
 other site is on the keyset rests on elimination, not on the portal: its 2,500 calls are missing from the Cyberpunk and Rift
 keysets' own counters and every other keyset is too full to carry them. If the pass starts stopping on eBay's 429 before
 4,800, another site is on this keyset: lower the cap again. `EBAY_DAILY_CAP` can still only lower it.
+
+## 2026-11-10: Hub pages under 300 KB (zero-earnings diagnosis, fix 3; ported from KaeYoung)
+
+The note hubs were up to 1.1 MB of HTML (musk 1,106 KB) and the smells-like pages up to 324 KB: every product tile
+was drawn twice (HTML, then again as the RSC payload), with all six regions' prices and "Save" chips under long class
+strings. Same fix as KaeYoung's entry of the same day:
+
+- `TileGrid` (every product grid) hands the client component `Tiles` one compact row per product, computed on the
+  server at build; the HTML still holds every tile, name, price and link, the payload carries numbers. Tiles use short
+  classes (`.pt-*` in `globals.css`, the same Tailwind values) and an empty `data-qv`; the quick view reads the slug
+  from the href and the name, brand and photo from the tile. `ProductTile` (one tile) draws through the same path.
+- A smells-like page's six per-region lists ("Closest notes, lower price per ml") are drawn by `AltCards` from
+  compact rows (each bottle once, then per region its rank, saving and price). Same markup and text as before.
+- A note hub shows the 12 most popular products per section instead of 24, with the same "Showing the N most popular"
+  line and search link.
+
+Result: note hubs 95 to 197 KB, smells-like pages 87 to 171 KB. URLs, titles, descriptions, canonicals, JSON-LD, the
+h1 and h2 outline and the intro text are unchanged. Brand pages, the home page and the sections shrink too (Lattafa
+2,201 to 552 KB, home 692 to 345 KB, Men 449 to 183 KB) without losing a tile; product pages (up to ~550 KB) are
+heavy for other reasons and were left.

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { REGIONS } from "@/site";
+import { REGIONS, type RegionCode } from "@/site";
 import { altsIn, bestIn, smellsLikeOf, smellsLikePages } from "@/lib/data";
 import { NOTE_BY_KEY } from "@/lib/notes";
-import { money, pct } from "@/lib/format";
 import { ProductTile } from "@/components/ProductTile";
 import { ProductImage } from "@/components/ProductImage";
+import { AltCards, type AltItem, type AltPick } from "@/components/AltCards";
 import { PageHead } from "@/components/Section";
 import { Crumbs } from "@/lib/seo";
 
@@ -27,6 +27,28 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 const noteName = (k: string) => NOTE_BY_KEY.get(k)?.name ?? k;
+
+type Alts = NonNullable<ReturnType<typeof smellsLikeOf>>["alts"];
+
+/** The six regions' lists as compact rows for AltCards: each bottle once, then per region its rank, saving and price. */
+function altRows(alts: Alts): { items: AltItem[]; picks: [RegionCode, AltPick[]][] } {
+  const items: AltItem[] = [];
+  const at = new Map<string, number>();
+  const picks = REGIONS.map((r): [RegionCode, AltPick[]] => [
+    r.code,
+    altsIn(alts, r.code).map((a) => {
+      let i = at.get(a.scent.key);
+      if (i == null) {
+        const f = a.scent.rep;
+        i = items.push([f.slug, f.name, a.scent.name, a.scent.brand || f.brand || "", f.img || "", a.shared.length, a.shared.map(noteName).join(", ").toLowerCase(), f.size || ""]) - 1;
+        at.set(a.scent.key, i);
+      }
+      const b = bestIn(a.scent.rep, r.code);
+      return [i, Math.round(a.saving[r.code]! * 100), b ? b.offer.p : -1];
+    }),
+  ]);
+  return { items, picks };
+}
 
 export default function SmellsLikePage({ params }: { params: { slug: string } }) {
   const x = smellsLikeOf(params.slug);
@@ -69,42 +91,7 @@ export default function SmellsLikePage({ params }: { params: { slug: string } })
         </div>
       </section>
       <h2 className="h-display mb-4 text-2xl">Closest notes, lower price per ml</h2>
-      {REGIONS.map((r) => {
-        const list = altsIn(alts, r.code);
-        return (
-          <div key={r.code} className={`rp rp-${r.code} mb-12`}>
-            {list.length ? (
-              <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {list.map((a, i) => {
-                  const b = bestIn(a.scent.rep, r.code);
-                  return (
-                    <li key={a.scent.key}>
-                      <Link prefetch={false} href={`/product/${a.scent.rep.slug}`} data-qv={a.scent.rep.slug} data-qv-name={a.scent.rep.name} data-qv-brand={a.scent.rep.brand || undefined} data-qv-img={a.scent.rep.img || undefined} className="card tile-hover flex h-full gap-3 p-3">
-                        <div className="h-24 w-20 shrink-0 overflow-hidden rounded-xl bg-gradient-to-b from-white to-subtle">
-                          <ProductImage src={a.scent.rep.img} alt={a.scent.rep.name} label={a.scent.brand || "fragrance"} className="h-full w-full object-contain p-1.5" />
-                        </div>
-                        <div className="min-w-0 text-sm">
-                          <p className="eyebrow">
-                            #{i + 1} · {a.shared.length} shared notes
-                          </p>
-                          <p className="mt-1 font-medium leading-snug text-ink">{a.scent.name}</p>
-                          <p className="mt-1 line-clamp-2 text-soft">{a.shared.map(noteName).join(", ").toLowerCase()}</p>
-                          <p className="mt-1.5">
-                            <span className="font-semibold text-save">{pct(a.saving[r.code]!)} less per ml</span>
-                            {b && <span className="text-soft"> · from {money(b.offer.p, r.code)}{a.scent.rep.size ? ` (${a.scent.rep.size})` : ""}</span>}
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ol>
-            ) : (
-              <p className="card p-6 text-center text-soft">None of these is cheaper per ml {r.phrase} today. Pick another region at the top, or compare {ref.name} prices.</p>
-            )}
-          </div>
-        );
-      })}
+      <AltCards {...altRows(alts)} refName={ref.name} />
     </div>
   );
 }
