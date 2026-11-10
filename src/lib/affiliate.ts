@@ -204,6 +204,9 @@ export const PARTNERS: Partner[] = [
   // Stylevana accepted us on Awin (2026-11-06). A K-beauty shop with some fragrance: a row only on the products
   // its US feed lists by barcode, never a search (lib/partner-feed.ts; DECISIONS.md 2026-11-06).
   { key: "stylevana", name: "Stylevana", envVar: "AFF_STYLEVANA", regions: ["US"], search: (q) => `https://www.stylevana.com/en_US/catalogsearch/result/?q=${q}`, note: "ships worldwide", awinMid: 90791, feedEnv: "AWIN_FEED_STYLEVANA", feedOnly: true },
+  // The Beauty Store UK accepted us on Awin (2026-11-10): a UK perfume discounter (advertiser 116255, GBP). Feed-only
+  // like Stylevana: a row only on the bottles its Google-format feed lists by barcode (DECISIONS.md 2026-11-10).
+  { key: "beautystore", name: "The Beauty Store", envVar: "AFF_BEAUTYSTORE", regions: ["UK"], search: (q) => `https://thebeautystore.com/search?q=${q}`, note: "UK retailer", awinMid: 116255, feedEnv: "AWIN_FEED_BEAUTYSTORE", feedOnly: true },
   { key: "yesstyle", name: "YesStyle", envVar: "AFF_YESSTYLE", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.yesstyle.com/en/list.html?q=${q}`, note: "ships from Hong Kong" },
 ];
 
