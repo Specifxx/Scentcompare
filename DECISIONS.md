@@ -1316,6 +1316,38 @@ products, `gtin` + `price` as "15.55 GBP") lists by exact barcode, in the UK onl
 `keepRow` now reads the currency from the price's suffix and prefers a lower `sale_price`; a price in another currency still
 maps to no region and is dropped. Same guards as every partner row: in stock, 60–160% of the UK store median, never a store,
 never the cheapest, never re-ranked. Until the secret exists the step is a quiet no-op.
+## 2026-11-10: The nearest paid price under the cheapest store (hero and phone buy bar)
+
+The zero-earnings diagnosis (10 Nov) found 14 buy clicks in 30 days, 4 of them to a link that can earn:
+the hero and the phone buy bar name only the cheapest store, which usually pays nothing. RiftCompare's rule
+(`lib/paid-alternative.ts`, owner 2026-10-27) is ported: when the cheapest orderable store is not a paid link, a second
+line names the cheapest paid row of the same table (eBay's delivered listing, Amazon's own listing, a partner's feed
+price for this barcode, or a store on a joined programme) when it is within 20% of that store's price: "or US$19.95 on
+Stylevana +11% (ships worldwide) →", labelled "Paid link". It is the row's real price, never called cheaper, never the
+best price, and nothing is reordered; when the cheapest store already pays, nothing is added. Amazon's price follows its
+24-hour licence in the browser too (`PaidAlt`), so `tests/amazon-api.test.ts` now lets `lib/paid-alternative.ts` read
+`amazon-live` beside the price table. Clicks are `buy_click` with placement `hero_alt` / `buybar_alt` (and the same in
+the sub id). On the day's data it shows on 5,687 of 56,028 product-region pairs (eBay 5,685, Stylevana 2). Ported from KaeYoung the same day (same files).
+
+## 2026-11-10: Hub pages under 300 KB (zero-earnings diagnosis, fix 3; ported from KaeYoung)
+
+The note hubs were up to 1.1 MB of HTML (musk 1,106 KB) and the smells-like pages up to 324 KB: every product tile
+was drawn twice (HTML, then again as the RSC payload), with all six regions' prices and "Save" chips under long class
+strings. Same fix as KaeYoung's entry of the same day:
+
+- `TileGrid` (every product grid) hands the client component `Tiles` one compact row per product, computed on the
+  server at build; the HTML still holds every tile, name, price and link, the payload carries numbers. Tiles use short
+  classes (`.pt-*` in `globals.css`, the same Tailwind values) and an empty `data-qv`; the quick view reads the slug
+  from the href and the name, brand and photo from the tile. `ProductTile` (one tile) draws through the same path.
+- A smells-like page's six per-region lists ("Closest notes, lower price per ml") are drawn by `AltCards` from
+  compact rows (each bottle once, then per region its rank, saving and price). Same markup and text as before.
+- A note hub shows the 12 most popular products per section instead of 24, with the same "Showing the N most popular"
+  line and search link.
+
+Result: note hubs 95 to 197 KB, smells-like pages 87 to 171 KB. URLs, titles, descriptions, canonicals, JSON-LD, the
+h1 and h2 outline and the intro text are unchanged. Brand pages, the home page and the sections shrink too (Lattafa
+2,201 to 552 KB, home 692 to 345 KB, Men 449 to 183 KB) without losing a tile; product pages (up to ~550 KB) are
+heavy for other reasons and were left.
 
 ## 2026-11-10: KaeYoung's per-region eBay ceilings ported, none set (owner)
 
