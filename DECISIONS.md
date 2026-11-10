@@ -1316,3 +1316,11 @@ products, `gtin` + `price` as "15.55 GBP") lists by exact barcode, in the UK onl
 `keepRow` now reads the currency from the price's suffix and prefers a lower `sale_price`; a price in another currency still
 maps to no region and is dropped. Same guards as every partner row: in stock, 60–160% of the UK store median, never a store,
 never the cheapest, never re-ranked. Until the secret exists the step is a quiet no-op.
+
+## 2026-11-10: KaeYoung's per-region eBay ceilings ported, none set (owner)
+
+KaeYoung now holds its EU eBay searches to 160 a day (`EBAY_REGION_DAILY_CAP`, `meta.ebay.qregions`, a longer EU
+empty recheck), so its calls follow its visitors. The owner's split brief (2026-11-10) keeps ScentCompare as it is: its
+calls already go about 91% to the US (2,275 of 2,500 measured), the US first. The same code is here so the two engines
+stay alike, with `EBAY_REGION_DAILY_CAP` and `EBAY_EMPTY_RECHECK_SCALE` empty: the planner behaves exactly as before.
+The cap stays 4,800 a day.
