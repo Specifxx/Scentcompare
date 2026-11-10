@@ -17,6 +17,9 @@ export function generateMetadata({ params }: { params: { cat: string; n: string 
     // Its own line, not the home page's (a paged hub had none and inherited the site's).
     description: `Page ${params.n} of ${c.plural} compared across real fragrance stores in six regions: every store's price for the same barcode, updated daily.`,
     alternates: { canonical: `/${c.key}/page/${params.n}` },
+    // Page 2+ competes with its hub in Google (KaeYoung /serums/page/23: 806 impressions, 0 clicks;
+    // site review X4, 2026-11-10): noindex, but links stay followed so every product is still crawled.
+    robots: { index: false, follow: true },
   };
 }
 
