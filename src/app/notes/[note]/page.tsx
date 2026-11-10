@@ -16,7 +16,7 @@ export function generateStaticParams() {
 }
 
 /** Tiles per section: the most widely stocked, so the page stays light. */
-const PER_SECTION = 24;
+const PER_SECTION = 12;
 
 export function generateMetadata({ params }: { params: { note: string } }): Metadata {
   const n = NOTE_BY_KEY.get(params.note);
