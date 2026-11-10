@@ -86,3 +86,15 @@ test("brand + name fallback: only without a barcode, exact and unique", () => {
   assert.equal(keepRow({ ...row, brand: "Ralph Lauren", name: "Polo Blue EDT 125ml" }, stores, undefined, idx), null, "two products share the key: no match");
   assert.equal(keepRow({ ...row, ean: "3348901250153" }, () => [9000, 10000, 11000], undefined, idx)?.ean, "3348901250153", "a barcode beats the name");
 });
+
+test("The Beauty Store UK: feed-only, Awin 116255, and a Google-format row (price '15.55 GBP', no currency column) lands in UK", () => {
+  const bs = PARTNERS.find((p) => p.key === "beautystore")!;
+  assert.equal(bs.awinMid, 116255);
+  assert.ok(!partnersFor("UK", "Dior Sauvage", "sc-uk-t", {}).some((x) => x.p.key === "beautystore"));
+  const h = feedHeader(splitCells("id,title,link,aw_deep_link,gtin,brand,availability,price,sale_price", ",").cells);
+  assert.deepEqual([...h.values()], ["name", "link", "awLink", "gtin", "brand", "stockStatus", "price", "salePrice"]);
+  const row = { gtin: EAN, price: "100.00 GBP", salePrice: "90.00 GBP", stockStatus: "in_stock", link: "https://thebeautystore.com/products/x" };
+  const stores = () => [9000, 9500, 10000];
+  assert.deepEqual(keepRow(row, stores), { region: "UK", ean: EAN, p: 9000, u: "https://thebeautystore.com/products/x", by: "barcode" });
+  assert.equal(keepRow({ ...row, stockStatus: "out_of_stock" }, stores), null);
+});
