@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { ebayPick, ebayQuotaDay, planEbay, type EbayItem, type EbayPrio } from "@/lib/ebay";
+import { EBAY_REGION_DAILY_CAP, ebayPick, ebayQuotaDay, planEbay, regionAllowance, type EbayItem, type EbayPrio } from "@/lib/ebay";
 import { dayNumber, priceOn, recordHistory } from "@/lib/history";
 import type { Offer, Product } from "@/lib/types";
 
@@ -95,4 +95,21 @@ test("history records only changes and reads back by day", () => {
 
 test("sold-out everywhere records nothing", () => {
   assert.deepEqual(recordHistory({}, [P("k", { US: [{ ...offers[0], st: "out" }] })], "2026-10-01"), { k: {} });
+});
+
+test("eBay plan: a region at its daily ceiling gives its calls to the next pairs, the US first (owner, 2026-11-10)", () => {
+  const ps = ["a", "b", "c", "d"].map((e) => P(e, { US: offers, EU: offers, AU: offers }));
+  const plan = planEbay(ps, {}, ["US", "EU", "AU"], 8, undefined, "2026-11-10", undefined, undefined, { EU: 1 });
+  const by = (r: string) => plan.filter((p) => p.region === r).length;
+  assert.equal(plan.length, 8, "no call of the budget is lost");
+  assert.equal(by("EU"), 1, "EU held to its ceiling");
+  assert.equal(by("US"), 4, "every US pair searched");
+  assert.equal(by("AU"), 3);
+  const spare = planEbay(ps, {}, ["US", "EU"], 6, undefined, "2026-11-10", undefined, undefined, { EU: 1 });
+  assert.deepEqual(spare.map((p) => p.region), ["US", "US", "US", "US", "EU", "EU"], "calls no other region can use still go to the capped region, last");
+});
+
+test("eBay plan: no region ceiling or longer EU recheck is set here (KaeYoung's code, owner 2026-11-10)", () => {
+  assert.deepEqual(EBAY_REGION_DAILY_CAP, {});
+  assert.deepEqual(regionAllowance({ EU: 100 }), {});
 });

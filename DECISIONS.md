@@ -1348,3 +1348,11 @@ Result: note hubs 95 to 197 KB, smells-like pages 87 to 171 KB. URLs, titles, de
 h1 and h2 outline and the intro text are unchanged. Brand pages, the home page and the sections shrink too (Lattafa
 2,201 to 552 KB, home 692 to 345 KB, Men 449 to 183 KB) without losing a tile; product pages (up to ~550 KB) are
 heavy for other reasons and were left.
+
+## 2026-11-10: KaeYoung's per-region eBay ceilings ported, none set (owner)
+
+KaeYoung now holds its EU eBay searches to 160 a day (`EBAY_REGION_DAILY_CAP`, `meta.ebay.qregions`, a longer EU
+empty recheck), so its calls follow its visitors. The owner's split brief (2026-11-10) keeps ScentCompare as it is: its
+calls already go about 91% to the US (2,275 of 2,500 measured), the US first. The same code is here so the two engines
+stay alike, with `EBAY_REGION_DAILY_CAP` and `EBAY_EMPTY_RECHECK_SCALE` empty: the planner behaves exactly as before.
+The cap stays 4,800 a day.
