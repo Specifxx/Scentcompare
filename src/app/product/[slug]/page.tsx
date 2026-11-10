@@ -3,12 +3,17 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { culledTarget } from "@/lib/culled";
 import { CAT_BY_KEY, REGIONS, SITE, type RegionCode } from "@/site";
-import { smellsLikeForProduct, bestIn, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
+import { smellsLikeForProduct, bestIn, familyKey, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
 import { dayNumber, lowestOrderable } from "@/lib/history";
 import { decimal, money, niceDate, pct } from "@/lib/format";
 import { isIndexable, prebuiltProducts } from "@/lib/index-tiers";
 import { buyLink } from "@/lib/affiliate";
 import { ProductImage } from "@/components/ProductImage";
+import { popularity } from "@/lib/ratings";
+import { allNotes } from "@/lib/notes";
+import { SimilarList } from "@/components/explore/SimilarList";
+import { TrackView } from "@/components/explore/TrackView";
+import { RecentlyViewed } from "@/components/explore/RecentlyViewed";
 import { PriceTable } from "@/components/PriceTable";
 import { PriceHistory } from "@/components/Sparkline";
 import { RegionTabs } from "@/components/RegionPicker";
@@ -90,6 +95,23 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const siblings = (sameBrand.length >= 4 ? sameBrand : productsOfCat(f.cat).filter((x) => x.ean !== f.ean))
     .sort((a, b) => storeCount(b) - storeCount(a))
     .slice(0, 8);
+
+  // Similar products beside the price table (2026-11-10): the same section, other
+  // product families (sizes have their own chips), most shared notes first, then other
+  // houses and the most stocked, so it reads as alternatives.
+  const mine = notesOf(f);
+  const myNotes = new Set(mine ? allNotes(mine) : []);
+  const fam = familyKey(f);
+  const similar = productsOfCat(f.cat)
+    .filter((x) => x.ean !== f.ean && familyKey(x) !== fam && regionsOf(x).length > 0)
+    .map((x) => {
+      const n = myNotes.size ? notesOf(x) : undefined;
+      return { x, shared: n ? allNotes(n).filter((k) => myNotes.has(k)).length : 0, other: x.b !== f.b ? 1 : 0, p: popularity(x) };
+    })
+    .sort((a, b) => b.shared - a.shared || b.other - a.other || b.p - a.p || a.x.name.localeCompare(b.x.name))
+    .slice(0, 5)
+    .map((s) => s.x);
+  const lowNow = Object.fromEntries(regions.flatMap((r) => { const b = bestIn(f, r); return b ? [[r, b.offer.p]] : []; }));
 
   const rated = reviewsOf(f);
   const notes = notesOf(f);
@@ -296,6 +318,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
 
         <aside className="space-y-6">
+          <SimilarList title={`Similar ${cat.name.toLowerCase()}`} products={similar} more={{ href: `/${cat.key}`, label: `All ${cat.name.toLowerCase()}` }} />
           <div className="card p-5">
             <h2 className="h-display mb-3 text-lg">Price history</h2>
             {REGIONS.map((r) => (
@@ -338,6 +361,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <TileGrid products={siblings} />
         </section>
       )}
+
+      <RecentlyViewed prefix="sc" exclude={f.slug} />
+      <TrackView prefix="sc" item={{ s: f.slug, n: f.name, b: f.brand, i: f.img, p: lowNow }} />
 
       <ReviewsSection ean={f.ean} slug={f.slug} name={f.name} data={rated} open={reviewsOpen()} />
 
