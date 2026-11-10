@@ -1297,3 +1297,12 @@ and /serums/page/11 had 262 in 56 days, both with 0 clicks. Page 2+ was self-can
 `robots: { index: false, follow: true }`: the page and its links stay crawlable, so every product it lists is still
 found, but only the hub (page 1) competes for the category's searches. Page 2+ was already out of the sitemap. The
 canonical stays self (pointing page 23 at page 1 would claim they are the same content). Pinned in `tests/seo.test.ts`.
+
+## 2026-11-10: eBay cap 2,500 to 4,800 (owner)
+
+The eBay review (`/mnt/project-files/strategy/ebay-api-distribution-2026-11-10.html`) found ScentCompare alone on its keyset
+and spending half of it: 2,500 calls a day while 31,252 of its 40,307 eligible product and region pairs had never been
+searched, and US searches find a listing 75% of the time. The owner approved 4,800 (200 spare for a manual run). That no
+other site is on the keyset rests on elimination, not on the portal: its 2,500 calls are missing from the Cyberpunk and Rift
+keysets' own counters and every other keyset is too full to carry them. If the pass starts stopping on eBay's 429 before
+4,800, another site is on this keyset: lower the cap again. `EBAY_DAILY_CAP` can still only lower it.
