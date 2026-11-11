@@ -3,6 +3,7 @@
 // Webmaster Tools also reads the sitemap.
 import { CATEGORIES, SITE } from "@/site";
 import { getProducts } from "@/lib/data";
+import { sitemapPart } from "@/lib/sitemap";
 import { isIndexable } from "@/lib/index-tiers";
 import { LIVE_POSTS } from "@/content/blog";
 
@@ -14,7 +15,9 @@ async function main() {
   const hubs = ["", "/deals", "/black-friday", "/cyber-monday", "/boxing-day", "/january-sales", "/lunar-new-year", "/valentines-day", "/new", "/brands", "/guides", ...CATEGORIES.map((c) => `/${c.key}`)].map((p) => `${site}${p}`);
   const fresh = getProducts().filter((f) => f.first >= week && isIndexable(f)).map((f) => `${site}/product/${f.slug}`);
   const posts = ["/blog", ...LIVE_POSTS.map((p) => `/blog/${p.slug}`)].map((p) => `${site}${p}`);
-  const urls = [...new Set([...hubs, ...posts, ...fresh])].slice(0, 1000);
+  // Every page the sitemap lists that is not a product: hubs, guides, brands, notes, smells-like (Bing showed 0 pages, 2026-11-11).
+  const pages = (sitemapPart("pages") ?? []).map((x) => x.url);
+  const urls = [...new Set([...hubs, ...pages, ...posts, ...fresh])].slice(0, 1000);
   const res = await fetch("https://api.indexnow.org/indexnow", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
