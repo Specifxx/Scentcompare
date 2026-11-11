@@ -94,7 +94,6 @@ jobs:
         env:
           EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
-          EBAY_DAILY_CAP: ${{ vars.EBAY_DAILY_CAP }}
         run: npx tsx scripts/ebay-import.ts
       - name: Amazon ASINs (by barcode; a no-op until a Creators API credential exists)
         # Also on an eBay-only run: it reads today's products and needs no store pass.
