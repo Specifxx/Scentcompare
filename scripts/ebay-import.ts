@@ -54,7 +54,9 @@ async function main() {
     return;
   }
   // ScentCompare's own keyset (owner, 2026-11-05), 4,800 of its 5,000 calls a day
-  // (owner, 2026-11-10: no other site is on it). EBAY_DAILY_CAP can only lower it.
+  // (owner, 2026-11-10: no other site is on it). The workflow no longer passes the old
+  // EBAY_DAILY_CAP repository variable (still 2,500, which held the 2026-11-10 run at 2,500);
+  // set EBAY_DAILY_CAP in the step's env only to lower the cap.
   // A second run on the same quota day (a manual dispatch) gets only what is left.
   const cap = Math.min(4800, Number(process.env.EBAY_DAILY_CAP || 4800));
   const qday = ebayQuotaDay();

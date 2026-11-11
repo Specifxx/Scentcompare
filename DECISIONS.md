@@ -1374,3 +1374,11 @@ Same look, compared side by side on desktop and phone, including a pressed thumb
 links, titles, meta and JSON-LD. Result: ScentCompare product pages 556 to 372 KB at most, KaeYoung 816 to 481 KB.
 Brand pages were left: they list every product of the house (Lattafa 345 tiles, 552 KB; TIRTIR 408 KB), already a
 quarter of what they were this morning, and going lower would mean listing fewer products, which is a content change.
+
+## 2026-11-11: the old EBAY_DAILY_CAP variable no longer reaches the eBay pass
+
+The cap went to 4,800 in code on 2026-11-10, but that day's scheduled run still spent 2,500 of 2,500: the
+repository variable `EBAY_DAILY_CAP` (2,500, from the site's first week) is passed to the step and can only
+lower the cap. The workflows no longer pass it, so the code's 4,800 applies. To lower the cap again, set
+`EBAY_DAILY_CAP` in the eBay step's `env` in `import.yml`.
+
