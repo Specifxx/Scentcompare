@@ -1382,3 +1382,16 @@ repository variable `EBAY_DAILY_CAP` (2,500, from the site's first week) is pass
 lower the cap. The workflows no longer pass it, so the code's 4,800 applies. To lower the cap again, set
 `EBAY_DAILY_CAP` in the eBay step's `env` in `import.yml`.
 
+
+## 2026-11-12: Paid rows easier to see, hubs and brands submitted to Bing (owner approved the site verdicts)
+
+The 11-11 verdicts (KaeYoung RETHINK, ScentCompare pause (only the shared fixes here)) asked for slimmer hubs, a Bing submission and more visible
+partner rows. Hubs were already cut on 2026-11-10 (196 to 256 KB skin-concern hubs, 88 to 238 KB ingredient hubs), so
+that part stands; brand pages with 300+ tiles stay as they are (listing fewer would be a content change).
+
+- Pinned eBay and Amazon rows with a price get a faint green or amber wash behind their existing outline and an
+  "Ad · Paid link" chip; the partner buttons under "Big retailers that deliver" are filled (`btn-buy`) when paid.
+  The "or A$X on eBay" line is a bordered pill, not a bare link. Same labels, same order, never counted as a store,
+  the cheapest or a deal; commission still never sets the order. No pop-ups, no floating rails.
+- The daily IndexNow ping now sends every non-product page the sitemap lists (hubs, guides, brands, notes, smells-like) as well as
+  categories, posts and new products, still at most 1,000 URLs.
