@@ -21,16 +21,16 @@ const prod = (slug: string, b: string, prices: number[], img: string | null = "h
 
 test("the most-stocked products with a photo, 3+ stores in stock, one per brand", () => {
   const picks = heroPicks("US", [
-    prod("cheap", "z", [1900, 2500, 3000, 3000, 3000, 3000, 3000]), // under US$20 at its cheapest: not featured (owner, 2026-11-06)
-    prod("a-top", "a", [3000, 4500, 6000, 6000, 6000]),
-    prod("a-second", "a", [3000, 4500, 6000, 6000]), // same brand: skipped
-    prod("no-photo", "b", [3000, 4500, 6000, 6000, 6000, 6000], null),
-    prod("two-stores", "c", [3000, 6000, 6000, 6000], "https://img/y.jpg", ["in", "in", "out", "out"]),
-    prod("ok", "d", [3600, 4500, 6000, 6000]),
+    prod("cheap", "z", [7400, 9000, 9000, 9000, 9000, 9000, 9000]), // under the homepage floor (US$75) at its cheapest: not featured (owner, 2026-11-12)
+    prod("a-top", "a", [9000, 13500, 18000, 18000, 18000]),
+    prod("a-second", "a", [9000, 13500, 18000, 18000]), // same brand: skipped
+    prod("no-photo", "b", [9000, 13500, 18000, 18000, 18000, 18000], null),
+    prod("two-stores", "c", [9000, 18000, 18000, 18000], "https://img/y.jpg", ["in", "in", "out", "out"]),
+    prod("ok", "d", [10800, 13500, 18000, 18000]),
     prod("also-ok", "e", [900, 900, 900]),
   ]);
   assert.deepEqual(picks.map((p) => p.f.slug), ["a-top", "ok"]);
-  assert.equal(picks[0].lo, 3000);
+  assert.equal(picks[0].lo, 9000);
   assert.equal(picks[0].loStore, "s0");
   assert.equal(picks[0].stores, 5);
   assert.equal(picks[1].stores, 4);
