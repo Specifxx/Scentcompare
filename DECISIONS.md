@@ -1455,3 +1455,9 @@ search link, US only (`PARTNERS`, `always`). Unpaid, no price, never a store, th
 Testers stay out for now. The same commenter asked why: the import refused 62,356 tester and unboxed listings on
 11 November across 230 stores. Showing them would need a barcode lookup for each (Shopify's feed has none) and proof that a
 tester carries the boxed bottle's barcode, which we do not have. Decide it from that evidence, not from one comment.
+
+## 2026-11-12: Amazon's row only with a real price
+
+Owner: "we just want eBay and TCGplayer as the paid links at the top. That is why our revenue is declining." The pinned Amazon row is
+drawn only when this build's Creators API lookup found the product's price (never the "Also check on Amazon" search row, never in
+the quick view). `tests/paid-rows.test.ts` pins it.
