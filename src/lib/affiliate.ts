@@ -190,6 +190,10 @@ export interface Partner {
 export const PARTNERS: Partner[] = [
   { key: "fragrancex", name: "FragranceX", envVar: "AFF_FRAGRANCEX", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.fragrancex.com/search/search_results?stext=${q}`, note: "ships worldwide from the US", always: true },
   { key: "fragrancenet", name: "FragranceNet", envVar: "AFF_FRAGRANCENET", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.fragrancenet.com/search?q=${q}`, note: "ships worldwide from the US", always: true },
+  // Jomashop (Reddit, 2026-11-12: two r/Colognes and r/FemFragLab commenters named it as their discounter and one found
+  // a bottle cheaper there). Its pages carry no product data we can read, so it is a plain unpaid search link in the
+  // US, like the two above, so a visitor can check it in one click. No programme, no price, never a store row.
+  { key: "jomashop", name: "Jomashop", envVar: "AFF_JOMASHOP", regions: ["US"], search: (q) => `https://www.jomashop.com/search?q=${q}`, note: "US discounter", always: true },
   { key: "perfumania", name: "Perfumania", envVar: "AFF_PERFUMANIA", regions: ["US"], search: (q) => `https://www.perfumania.com/search?q=${q}`, note: "US discounter" },
   { key: "sephora", name: "Sephora", envVar: "AFF_SEPHORA", regions: ["US", "CA"], search: (q) => `https://www.sephora.com/search?keyword=${q}`, note: "US retailer" },
   { key: "notino-uk", name: "Notino", envVar: "AFF_NOTINO_UK", regions: ["UK"], search: (q) => `https://www.notino.co.uk/search/?q=${q}`, note: "UK discounter" },

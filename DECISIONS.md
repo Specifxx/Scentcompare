@@ -1441,3 +1441,17 @@ rule now applies here too: the accent is for the one thing to press, green is fo
 Order, labels, links, tags, URLs, titles, metadata and headings are unchanged; commission still never decides order. Measure outbound
 clicks per placement on 19 November against the week before: if the pinned eBay row's clicks fall, strengthen its button before
 bringing any outline back.
+
+
+## 2026-11-12: Jomashop is a search link in the US (Reddit feedback)
+
+Three comments under the ScentCompare posts in r/Colognes and r/FemFragLab asked whether the discounters are compared
+("Olfactoryfactory, The Perfume Spot, Jomashop, Fragrance Nevaeh, and Fragrancenet"), and one found Black Orchid 100 ml
+cheaper at Jomashop. Olfactory Factory (1,184 prices) and The Perfume Spot (1,078) are already store rows; FragranceNet
+is a search link; Fragrance Nevaeh is read daily but none of its 1,463 listings matches (1,439 carry no barcode, it sells
+mostly decants). Jomashop's pages carry no product data, so it joins FragranceX and FragranceNet as an always-shown plain
+search link, US only (`PARTNERS`, `always`). Unpaid, no price, never a store, the best price or a deal.
+
+Testers stay out for now. The same commenter asked why: the import refused 62,356 tester and unboxed listings on
+11 November across 230 stores. Showing them would need a barcode lookup for each (Shopify's feed has none) and proof that a
+tester carries the boxed bottle's barcode, which we do not have. Decide it from that evidence, not from one comment.
