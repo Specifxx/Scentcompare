@@ -6,6 +6,7 @@ import { CATEGORIES } from "@/site";
 import { getBrand, getBrands, storeCount } from "@/lib/data";
 import { TileGrid } from "@/components/ProductTile";
 import { PageHead } from "@/components/Section";
+import { InlineAds } from "@/components/InlineAds";
 import { Browse } from "@/components/Browse";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
@@ -65,6 +66,7 @@ export default function BrandPage({ params }: { params: { slug: string } }) {
         );
       })}
       </Browse>
+      <InlineAds page="brand" />
     </div>
   );
 }
