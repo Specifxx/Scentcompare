@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { culledTarget } from "@/lib/culled";
 import { CAT_BY_KEY, REGIONS, SITE, type RegionCode } from "@/site";
-import { smellsLikeForProduct, bestIn, familyKey, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
+import { smellsLikeForProduct, bestIn, familyKey, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productTitle, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
 import { dayNumber, lowestOrderable } from "@/lib/history";
 import { decimal, money, niceDate, pct } from "@/lib/format";
 import { isIndexable, prebuiltProducts } from "@/lib/index-tiers";
@@ -31,7 +31,7 @@ import { Stars } from "@/components/reviews/Stars";
 import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ShareButton } from "@/components/ShareButton";
 import { shareTexts } from "@/lib/share-texts";
-import { JsonLd, breadcrumbLd, faqLd, fitDescription, fitTitle } from "@/lib/seo";
+import { JsonLd, breadcrumbLd, faqLd, fitDescription } from "@/lib/seo";
 import { SmellsLike, notesSentence } from "@/components/SmellsLike";
 import { headlineNotes, smellsLikeText, type Pyramid } from "@/lib/notes";
 import { ProductFacts } from "@/components/ProductFacts";
@@ -56,9 +56,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     .filter((b) => b != null)
     .slice(0, 2)
     .map((b) => `${money(b!.offer.p, b!.region)} ${REGIONS.find((x) => x.code === b!.region)!.phrase}`);
-  const stores = `${n} store${n === 1 ? "" : "s"}`;
-  // Store titles are long (median 55 characters), so the name always leads and the rest drops away to fit 60 (fitTitle).
-  const title = fitTitle(`${f.name} price: compare ${stores}`, `${f.name}: compare ${stores}`, `${f.name} price comparison`, `${f.name} price`);
+  // Store titles are long (median 55 characters): the name leads, then the store count and the site name drop away,
+  // then the name is shortened, to fit 60 and stay unique (productTitle, lib/titles.ts).
+  const title = productTitle(f);
   const from = (k: number) => (k && lows.length ? `, from ${lows.slice(0, k).join(" and ")}` : "");
   const notes = notesOf(f);
   const smells = notes ? `${f.name} smells like ${smellsLikeText(headlineNotes(notes))}.` : "";

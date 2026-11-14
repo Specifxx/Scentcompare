@@ -1518,3 +1518,37 @@ own CSS classes, so nothing moves after load. `tests/product-facts.test.ts`, `te
 Looked at and left alone: the sitemap tier (already a lean core of 300 products since 2026-11-07, and since the
 2026-11-07 cull no listed product has fewer than three stores); the product page's links (20 to 36 followed internal
 links each); ratings in the Product block (already only from our own reviews file, which is empty today).
+
+
+## 2026-11-14: Product titles fit 60
+
+Why. The 2026-11-06 `fitTitle` dropped the store count and the site name to fit, but never shortened the name, so on the
+committed data (14,851 products) 51.1% of product titles still ran past 60 as rendered (median 61, longest 209), and
+42 titles were shared by two pages (the same name under two barcodes, or the same name for men and women). Ported from
+KaeYoung, where 99% ran past 60; the two sites use the same file.
+
+What. `lib/titles.ts`, a pure function over the product data, read once for the whole catalogue through
+`productTitle` in `lib/data.ts`. The first that fits 60 as rendered wins, in this order:
+
+1. the full name with the site name: `<name> price: compare N stores`, `<name>: compare N stores`,
+   `<name> price comparison`, `<name> price`, each followed by " | ScentCompare" (the 2026-11-06 order, unchanged, so a
+   title that already fitted is the same);
+2. the same without the site name (also as before);
+3. new: the name shortened one step at a time: the house said twice ("Gentleman by Givenchy" under Givenchy, "4711 by
+   4711"), the same size in the other unit ("100ml/3.4oz" keeps the size the data reads), filler ("Eau de Parfum
+   Spray" keeps "Eau de Parfum", "in Manufacturer's bottle"), Eau de Parfum / Toilette / Cologne as EDP / EDT / EDC,
+   then "for Men" / "for Women" / "(Unisex)";
+4. new: a cut at words: the house, the last word that says what it is ("Parfum", "Cologne"), the size and anything in
+   brackets stay, the words before that last word go, and "…" marks the gap.
+
+Nothing is typed in: every word is the name's own, plus "price" and the store count. Titles are unique across the site
+(ignoring case): when two pages land on the same title the older page keeps it; one whose name differs (often only "for
+Men" against "for Women") takes its other cut, else steps back to its last richer title, past 60 if it must (6 pages);
+one whose name says the same as the other's ends in its barcode's last four digits, " · …1234", as the size picker
+already labels it. A size is never cut.
+
+Result on the committed data: past 60 51.1% to 0.04%, median 61 to 56, shared titles 42 to 0 (50 barcode tails, 1,503
+cuts); 7,617 of 14,851 titles change, the rest are as they were. Brand and section titles already fit and are unchanged.
+h1, URL, canonical, description, robots and the sitemap are unchanged. `tests/titles.test.ts` (the same file as
+KaeYoung's) pins the order and, on the committed data, at most 2% past 60, a median within 60, no shared title, every
+title starting with its product's name and the size kept in 99%.
