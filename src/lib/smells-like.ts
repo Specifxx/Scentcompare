@@ -39,6 +39,23 @@ export function noteOverlap(a: Pyramid, b: Pyramid, w: Map<string, number>): num
   return union ? inter / union : 0;
 }
 
+/**
+ * noteOverlap on note sets built once (allNotes per scent), for the all-pairs scan in lib/data.ts: the same sum in
+ * the same order (A's notes, then B's that A lacks), so the same result to the last bit. Building the sets on every
+ * pair made the scan ~11 s of CPU per cold function instance (Vercel cost cap, DECISIONS.md 2026-11-14).
+ */
+export function noteOverlapSets(A: Set<string>, B: Set<string>, w: Map<string, number>): number {
+  let inter = 0;
+  let union = 0;
+  for (const k of A) {
+    const x = w.get(k) ?? 1;
+    union += x;
+    if (B.has(k)) inter += x;
+  }
+  for (const k of B) if (!A.has(k)) union += w.get(k) ?? 1;
+  return union ? inter / union : 0;
+}
+
 /** The notes two lists share, in the first list's order. */
 export const sharedNotes = (a: Pyramid, b: Pyramid) => {
   const B = new Set(allNotes(b));
