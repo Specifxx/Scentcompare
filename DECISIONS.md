@@ -1625,3 +1625,15 @@ Two finishes, both page styling only:
 
 No paid link, placement, URL or metadata changed, so the 19 November clicks-per-placement recheck is unaffected. Left as it
 is (money, owner's call): KaeYoung's outlined "+ Add to cart" in the cheapest row reads 4.2:1 on its green tint.
+
+## 2026-11-14 — Product pages no longer run the whole "smells like" scan (Vercel cost cap)
+
+Vercel's billing put ScentCompare's Fluid Active CPU at the top of the team on 13 Nov ($0.67 a day), and Observability
+showed `/product/[slug]`: 1.9K invocations, 3 h of Active CPU in 12 h. The page's "cheaper scents that share its notes"
+link called `smellsLikeForProduct`, which built the full index behind `/smells-like` (250 references × ~9,400 scents,
+`allNotes` rebuilt for every pair): ~11 s of CPU on every cold function instance. Now the scan builds each scent's note
+set once, scans only the scents that share 3+ notes with a reference (a note → scents index, in the same order), checks
+the per-ml saving before the overlap, and a product page computes only its own reference (`smellsLikeFor`). The maps in
+`lib/data.ts` also append in place instead of copying the list on every product. A cold product page now spends ~0.5 s
+here; the `/smells-like` pages and every product's link are byte-identical to before (checked against the full output).
+`tests/smells-like.test.ts` fails if the product lookup calls the full index again.

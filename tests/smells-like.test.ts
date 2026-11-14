@@ -34,3 +34,9 @@ test("never dupes: the page copy says so and the data layer keeps other houses o
   assert.match(page, /never dupes, clones or &ldquo;inspired by&rdquo; bottles/);
   assert.match(fs.readFileSync("src/lib/data.ts", "utf8"), /c\.rep\.b === ref\.rep\.b\) continue; \/\/ other houses only/);
 });
+
+test("the product page's smells-like lookup never runs the full 250-reference scan (Vercel CPU, DECISIONS.md 2026-11-14)", async () => {
+  const src = (await import("node:fs")).readFileSync("src/lib/data.ts", "utf8");
+  const fn = src.slice(src.indexOf("export function smellsLikeForProduct"));
+  assert.doesNotMatch(fn.slice(0, fn.indexOf("\n}")), /smellsLikeIndex\(|smellsLikePages\(/);
+});

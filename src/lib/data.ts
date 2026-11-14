@@ -14,7 +14,7 @@ import { deliveryFor, MAX_SMALL_ORDER_FEE, type ShippingData } from "./shipping"
 import type { PartnerPricesFile } from "./partner-feed";
 import type { PromoData } from "./promos";
 import { allNotes, NOTES, type NoteInfo, type NotesFile, type Pyramid } from "./notes";
-import { MIN_OVERLAP, MIN_SAVING, MIN_SHARED, noteOverlap, noteWeights, sharedNotes, sizeMl, SMELLS_LIKE_MAX, SMELLS_LIKE_MIN } from "./smells-like";
+import { MIN_OVERLAP, MIN_SAVING, MIN_SHARED, noteOverlapSets, noteWeights, sharedNotes, sizeMl, SMELLS_LIKE_MAX, SMELLS_LIKE_MIN } from "./smells-like";
 import { slugify } from "./slug";
 
 // SC_DATA_DIR points local development and tests at a fixture; production
@@ -83,7 +83,7 @@ export function productTitle(f: Product): PageTitle {
 export function productsOfCat(cat: CatKey): Product[] {
   return [...(once("byCat", () => {
     const m = new Map<CatKey, Product[]>();
-    for (const f of getProducts()) m.set(f.cat, [...(m.get(f.cat) ?? []), f]);
+    for (const f of getProducts()) { const l = m.get(f.cat); if (l) l.push(f); else m.set(f.cat, [f]); }
     return m;
   }).get(cat) ?? [])];
 }
@@ -91,7 +91,7 @@ export function productsOfCat(cat: CatKey): Product[] {
 export function productsOfBrand(b: string): Product[] {
   return [...(once("byBrand", () => {
     const m = new Map<string, Product[]>();
-    for (const f of getProducts()) if (f.b) m.set(f.b, [...(m.get(f.b) ?? []), f]);
+    for (const f of getProducts()) if (f.b) { const l = m.get(f.b); if (l) l.push(f); else m.set(f.b, [f]); }
     return m;
   }).get(b) ?? [])];
 }
@@ -123,7 +123,7 @@ export function variantsOf(f: Product): Product[] {
     for (const x of getProducts()) {
       if (!x.b) continue;
       const k = familyKey(x);
-      m.set(k, [...(m.get(k) ?? []), x]);
+      { const l = m.get(k); if (l) l.push(x); else m.set(k, [x]); }
     }
     return m;
   });
@@ -326,7 +326,7 @@ function productsByNote(): Map<string, Product[]> {
     for (const f of getProducts()) {
       const p = notesOf(f);
       if (!p) continue;
-      for (const k of allNotes(p)) m.set(k, [...(m.get(k) ?? []), f]);
+      for (const k of allNotes(p)) { const l = m.get(k); if (l) l.push(f); else m.set(k, [f]); }
     }
     for (const list of m.values()) list.sort((a, b) => storeCount(b) - storeCount(a) || a.name.localeCompare(b.name));
     return m;
@@ -401,7 +401,7 @@ function scents(): Scent[] {
     for (const f of getProducts()) {
       if (!SCENT_CATS.has(f.cat) || !f.b || NOT_A_SPRAY.test(f.name)) continue;
       const k = familyKey(f);
-      groups.set(k, [...(groups.get(k) ?? []), f]);
+      { const l = groups.get(k); if (l) l.push(f); else groups.set(k, [f]); }
     }
     const out: Scent[] = [];
     const used = new Set<string>();
@@ -429,39 +429,79 @@ function scents(): Scent[] {
   });
 }
 
+// The scan behind the "smells like" pages. Note sets are built once, and a note → scents index lets each
+// reference scan only the scents that share MIN_SHARED+ notes with it (in `all` order, so ties sort exactly as a
+// full scan did). A product page needs one reference, not all 250 (smellsLikeForProduct). The old full scan was
+// ~11 s of CPU per cold function instance on every product page (Vercel cost cap, DECISIONS.md 2026-11-14).
+function smellsLikeCtx() {
+  return once("smellsLikeCtx", () => {
+    const all = scents();
+    const w = noteWeights(all.map((s) => s.notes));
+    const sets = all.map((x) => new Set(allNotes(x.notes)));
+    const byNote = new Map<string, number[]>();
+    sets.forEach((set, i) => {
+      for (const k of set) {
+        const l = byNote.get(k);
+        if (l) l.push(i);
+        else byNote.set(k, [i]);
+      }
+    });
+    return { all, w, sets, byNote, hits: new Int32Array(all.length) };
+  });
+}
+
+/** Reference `ri` (an index into scents(), under SMELLS_LIKE_REFS) → its page, or null under SMELLS_LIKE_MIN alternatives. */
+function smellsLikeFor(ri: number): { ref: Scent; alts: SmellsLikeAlt[] } | null {
+  const { all, w, sets, byNote, hits } = smellsLikeCtx();
+  const ref = all[ri];
+  const A = sets[ri];
+  const touched: number[] = [];
+  for (const k of A)
+    for (const i of byNote.get(k) ?? []) {
+      if (hits[i]++ === 0) touched.push(i);
+    }
+  const cands = touched.filter((i) => hits[i] >= MIN_SHARED).sort((a, b) => a - b);
+  for (const i of touched) hits[i] = 0;
+  const alts: SmellsLikeAlt[] = [];
+  for (const ci of cands) {
+    const c = all[ci];
+    if (c.key === ref.key || c.rep.b === ref.rep.b) continue; // other houses only
+    // the same shelf: a women's scent for a women's one, a men's for a men's, unisex either way
+    if (c.rep.cat !== ref.rep.cat && c.rep.cat !== "unisex" && ref.rep.cat !== "unisex") continue;
+    const saving: Partial<Record<RegionCode, number>> = {};
+    let cheaper = false;
+    for (const r of REGIONS) {
+      const a = ref.perMl[r.code];
+      const b = c.perMl[r.code];
+      if (a && b && b <= a * (1 - MIN_SAVING)) {
+        saving[r.code] = 1 - b / a;
+        cheaper = true;
+      }
+    }
+    if (!cheaper) continue;
+    const overlap = noteOverlapSets(A, sets[ci], w);
+    if (overlap < MIN_OVERLAP) continue;
+    alts.push({ scent: c, overlap, shared: sharedNotes(ref.notes, c.notes), saving });
+  }
+  alts.sort((a, b) => b.overlap - a.overlap || b.scent.stores - a.scent.stores);
+  const seen = new Set<string>();
+  const uniq = alts.filter((a) => {
+    const k = `${a.scent.rep.b}|${scentCore(a.scent)}`;
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+  return uniq.length >= SMELLS_LIKE_MIN ? { ref, alts: uniq.slice(0, 40) } : null;
+}
+
 /** Reference slug → its alternatives, for the SMELLS_LIKE_REFS most widely stocked scents with SMELLS_LIKE_MIN+ of them. */
 function smellsLikeIndex(): Map<string, { ref: Scent; alts: SmellsLikeAlt[] }> {
   return once("smellsLike", () => {
-    const all = scents();
-    const w = noteWeights(all.map((s) => s.notes));
     const m = new Map<string, { ref: Scent; alts: SmellsLikeAlt[] }>();
-    for (const ref of all.slice(0, SMELLS_LIKE_REFS)) {
-      const alts: SmellsLikeAlt[] = [];
-      for (const c of all) {
-        if (c.key === ref.key || c.rep.b === ref.rep.b) continue; // other houses only
-        // the same shelf: a women's scent for a women's one, a men's for a men's, unisex either way
-        if (c.rep.cat !== ref.rep.cat && c.rep.cat !== "unisex" && ref.rep.cat !== "unisex") continue;
-        const shared = sharedNotes(ref.notes, c.notes);
-        if (shared.length < MIN_SHARED) continue;
-        const overlap = noteOverlap(ref.notes, c.notes, w);
-        if (overlap < MIN_OVERLAP) continue;
-        const saving: Partial<Record<RegionCode, number>> = {};
-        for (const r of REGIONS) {
-          const a = ref.perMl[r.code];
-          const b = c.perMl[r.code];
-          if (a && b && b <= a * (1 - MIN_SAVING)) saving[r.code] = 1 - b / a;
-        }
-        if (Object.keys(saving).length) alts.push({ scent: c, overlap, shared, saving });
-      }
-      alts.sort((a, b) => b.overlap - a.overlap || b.scent.stores - a.scent.stores);
-      const seen = new Set<string>();
-      const uniq = alts.filter((a) => {
-        const k = `${a.scent.rep.b}|${scentCore(a.scent)}`;
-        if (seen.has(k)) return false;
-        seen.add(k);
-        return true;
-      });
-      if (uniq.length >= SMELLS_LIKE_MIN) m.set(ref.slug, { ref, alts: uniq.slice(0, 40) });
+    const n = Math.min(SMELLS_LIKE_REFS, smellsLikeCtx().all.length);
+    for (let ri = 0; ri < n; ri++) {
+      const page = smellsLikeFor(ri);
+      if (page) m.set(page.ref.slug, page);
     }
     return m;
   });
@@ -476,6 +516,6 @@ export const smellsLikeOf = (slug: string) => smellsLikeIndex().get(slug);
 /** The "smells like" page whose reference is this product's scent, if any. */
 export function smellsLikeForProduct(f: Product): string | null {
   const k = familyKey(f);
-  for (const v of smellsLikeIndex().values()) if (v.ref.key === k) return v.ref.slug;
-  return null;
+  const ri = smellsLikeCtx().all.slice(0, SMELLS_LIKE_REFS).findIndex((x) => x.key === k);
+  return ri < 0 ? null : (smellsLikeFor(ri)?.ref.slug ?? null);
 }
