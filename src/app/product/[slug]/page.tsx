@@ -31,9 +31,11 @@ import { Stars } from "@/components/reviews/Stars";
 import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ShareButton } from "@/components/ShareButton";
 import { shareTexts } from "@/lib/share-texts";
-import { JsonLd, breadcrumbLd, fitDescription, fitTitle } from "@/lib/seo";
+import { JsonLd, breadcrumbLd, faqLd, fitDescription, fitTitle } from "@/lib/seo";
 import { SmellsLike, notesSentence } from "@/components/SmellsLike";
 import { headlineNotes, smellsLikeText, type Pyramid } from "@/lib/notes";
+import { ProductFacts } from "@/components/ProductFacts";
+import { factsQa, gtinProps, regionFacts, schemaRegion, sizeRows, type RegionFacts, type SizeRow } from "@/lib/product-facts";
 
 // The build prerenders only the top products (prebuiltProducts, 500 of ~37,000):
 // writing every page made the daily build 15+ minutes. Any other product renders
@@ -120,11 +122,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const notes = notesOf(f);
   const meta = getMeta();
   const showSchema = !!rated && rated.n >= SCHEMA_MIN_RATINGS;
+  // The page's own words about its prices (lib/product-facts.ts): the summary, the regions table, the sizes and the
+  // computed questions all read these, and so does the one offer in the Product block.
+  const facts = regionFacts(f, history);
+  const sizes: Partial<Record<RegionCode, SizeRow[]>> = Object.fromEntries(regions.map((r) => [r, sizeRows(f, variants, r)]).filter(([, rows]) => (rows as SizeRow[]).length > 1));
+  const offerIn = schemaRegion(facts);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: f.name,
-    gtin13: f.ean,
+    ...gtinProps(f.ean),
     sku: f.ean,
     size: f.size ?? undefined,
     brand: f.brand ? { "@type": "Brand", name: f.brand } : undefined,
@@ -144,23 +151,20 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           reviewBody: r.b,
         }))
       : undefined,
-    offers: regions
-      .map((r) => {
-        const orderable = (f.offers[r] ?? []).filter((o) => o.st !== "out");
-        if (!orderable.length) return null;
-        const ps = orderable.map((o) => o.p);
-        return {
+    // ONE offer, in one currency (2026-11-14): the first region, US first, where a store can sell it today. The page
+    // used to list an offer per region, six currencies in one block, which a results page cannot show as one price.
+    offers: offerIn
+      ? {
           "@type": "AggregateOffer",
-          priceCurrency: REGIONS.find((x) => x.code === r)!.currency,
-          lowPrice: decimal(Math.min(...ps), r),
-          highPrice: decimal(Math.max(...ps), r),
-          offerCount: orderable.length,
+          priceCurrency: REGIONS.find((x) => x.code === offerIn.region)!.currency,
+          lowPrice: decimal(offerIn.low!.p, offerIn.region),
+          highPrice: decimal(offerIn.high!.p, offerIn.region),
+          offerCount: offerIn.inStock,
           availability: "https://schema.org/InStock",
           // Prices refresh on the daily import: good until tomorrow (schema.org priceValidUntil).
           priceValidUntil: new Date(Date.now() + 86400e3).toISOString().slice(0, 10),
-        };
-      })
-      .filter(Boolean),
+        }
+      : undefined,
   };
 
   return (
@@ -334,6 +338,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             product={`${f.name} (${f.ean})`}
             stores={REGIONS.flatMap((r) => (f.offers[r.code] ?? []).map((o) => ({ name: `${storeName(o.s)} (${r.code})`, price: money(o.p, r.code) })))}
           />
+          <ProductFacts f={f} facts={facts} sizes={sizes} updatedAt={meta?.updatedAt} kind="fragrance stores" />
         </div>
 
         <aside className="space-y-6">
@@ -391,7 +396,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
       <section className="mt-12 max-w-3xl">
         <h2 className="h-display mb-4 text-2xl">Questions</h2>
-        <Faq f={f} regions={regions} rated={rated} notes={notes} />
+        <Faq f={f} regions={regions} rated={rated} notes={notes} facts={facts} sizes={sizes} />
       </section>
 
       {/* Phone buy bar: the region's cheapest orderable store, always in reach. */}
@@ -447,7 +452,7 @@ function DeliveredLine({ f, region }: { f: Product; region: RegionCode }) {
   );
 }
 
-function Faq({ f, regions, rated, notes }: { f: Product; regions: RegionCode[]; rated: ProductReviews | undefined; notes?: Pyramid }) {
+function Faq({ f, regions, rated, notes, facts, sizes }: { f: Product; regions: RegionCode[]; rated: ProductReviews | undefined; notes?: Pyramid; facts: RegionFacts[]; sizes: Partial<Record<RegionCode, SizeRow[]>> }) {
   const qa: [string, string][] = [];
   if (notes) qa.push([`What does ${f.name} smell like?`, notesSentence(f.name, notes)]);
   for (const r of regions) {
@@ -455,6 +460,10 @@ function Faq({ f, regions, rated, notes }: { f: Product; regions: RegionCode[]; 
     const reg = REGIONS.find((x) => x.code === r)!;
     if (b) qa.push([`Where is ${f.name} cheapest ${reg.phrase}?`, `${storeName(b.offer.s)} at ${money(b.offer.p, r)}, the lowest of ${b.stores} store${b.stores === 1 ? "" : "s"} we compared at our last check.`]);
   }
+  // Computed from the day's offers and the recorded history: the spread between stores, the price per unit, the
+  // best-value size (in the first region that sells two sizes) and the last price change.
+  const sizeRegion = regions.find((r) => sizes[r]);
+  qa.push(...factsQa(f, facts, sizeRegion ? { region: sizeRegion, rows: sizes[sizeRegion]! } : null));
   if (rated && rated.n >= SCHEMA_MIN_RATINGS) {
     qa.push([`What do shoppers rate ${f.name}?`, `${starsText(rated.avg)} out of 5 from ${rated.n} ScentCompare shoppers' ratings, with ${rated.dist[4] + rated.dist[3]} giving it four or five stars.`]);
   }
@@ -466,10 +475,9 @@ function Faq({ f, regions, rated, notes }: { f: Product; regions: RegionCode[]; 
     "Are these prices with shipping?",
     "The prices are each store's own listed price, before delivery, and they are sorted by that price. Under each store we show what delivery cost in that store's own quote for a small order to a city in your region (checked weekly), and from what order total it becomes free, when we know it. Your address can change the cost, so check the store's checkout before you buy. Buying several products? The basket compares whole orders with delivery.",
   ]);
-  const ld = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qa.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      <JsonLd data={faqLd(qa)} />
       <div className="divide-y divide-line rounded-xl border border-line bg-card">
         {qa.map(([q, a]) => (
           <details key={q} className="group px-5 py-4">
