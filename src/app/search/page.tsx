@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Search() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-40">
-      <PageHead title="Search perfume" sub="Type a brand, a product, an ingredient like snail or centella, or a 13-digit barcode, then narrow it down by type, brand, rating and price." />
+      <PageHead title="Search perfume" sub="Type a house, a perfume's name or a 13-digit barcode, then narrow it down by type, house, size and price." />
       <Browse search />
     </div>
   );
