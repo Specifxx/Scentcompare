@@ -1,6 +1,6 @@
 {
  "99perfume": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
   "freeFrom": 2699,
@@ -8,7 +8,7 @@
   "maxTested": 2699
  },
  "aerre": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 0,
   "freeFrom": 2500,
@@ -16,7 +16,7 @@
   "maxTested": 2500
  },
  "alexandriauk": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 700,
   "freeFrom": 11100,
@@ -24,15 +24,15 @@
   "maxTested": 11100
  },
  "alhusseinperfumes": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 1924,
+  "fee": 1923,
   "freeFrom": null,
-  "paidAt": 25924,
-  "maxTested": 25924
+  "paidAt": 25923,
+  "maxTested": 25923
  },
  "allbeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 395,
   "freeFrom": 2700,
@@ -40,15 +40,15 @@
   "maxTested": 4800
  },
  "alrashad": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 872,
+  "fee": 867,
   "freeFrom": 5040,
   "paidAt": 4725,
   "maxTested": 5040
  },
  "ambientbeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 199,
   "freeFrom": 5097,
@@ -56,15 +56,15 @@
   "maxTested": 6796
  },
  "amsons": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 900,
   "freeFrom": null,
-  "paidAt": 25200,
-  "maxTested": 25200
+  "paidAt": 25400,
+  "maxTested": 25400
  },
  "arielleshoshana": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 500,
   "freeFrom": 7500,
@@ -72,23 +72,23 @@
   "maxTested": 12000
  },
  "asedos": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 700,
   "freeFrom": 7000,
   "paidAt": 6300,
-  "maxTested": 9800
+  "maxTested": 11200
  },
  "aurafragrance": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 695,
-  "freeFrom": 7280,
-  "paidAt": 6382,
-  "maxTested": 7280
+  "freeFrom": 7380,
+  "paidAt": 7177,
+  "maxTested": 7380
  },
  "ausliebezumduft": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 390,
   "freeFrom": 6052,
@@ -96,11 +96,11 @@
   "maxTested": 6052
  },
  "averyperfumegallery": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
-  "fee": 1800,
+  "fee": 1700,
   "freeFrom": 6000,
-  "paidAt": 6600,
+  "paidAt": 6500,
   "maxTested": 9600
  },
  "bazaralhaya": {
@@ -112,7 +112,7 @@
   "maxTested": 15968
  },
  "beardandblade": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 499,
   "freeFrom": 3591,
@@ -120,15 +120,15 @@
   "maxTested": 6384
  },
  "beautebox": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 1399,
-  "freeFrom": 20146,
-  "paidAt": 20286,
-  "maxTested": 20286
+  "freeFrom": 20148,
+  "paidAt": 20108,
+  "maxTested": 23026
  },
  "beautyencounter": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 695,
   "freeFrom": 5187,
@@ -144,7 +144,7 @@
   "maxTested": 4740
  },
  "belensperfume": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
   "freeFrom": 2250,
@@ -152,7 +152,7 @@
   "maxTested": 2250
  },
  "bellaviacanada": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 0,
   "freeFrom": 3072,
@@ -160,7 +160,7 @@
   "maxTested": 3072
  },
  "belvera": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 0,
   "freeFrom": 1325,
@@ -168,15 +168,15 @@
   "maxTested": 1325
  },
  "bezali": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
-  "freeFrom": 1963,
+  "freeFrom": 1603,
   "paidAt": 0,
-  "maxTested": 1963
+  "maxTested": 1603
  },
  "bluemercury": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 995,
   "freeFrom": 10000,
@@ -184,7 +184,7 @@
   "maxTested": 16000
  },
  "bplatz": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 400,
   "freeFrom": 8725,
@@ -192,7 +192,7 @@
   "maxTested": 11168
  },
  "brands": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Auckland",
   "fee": 699,
   "freeFrom": 6250,
@@ -200,7 +200,7 @@
   "maxTested": 10000
  },
  "brandshd": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Auckland",
   "fee": 0,
   "freeFrom": 12499,
@@ -216,15 +216,15 @@
   "maxTested": 26182
  },
  "campomarzio70": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Rome",
-  "fee": 1000,
-  "freeFrom": 6000,
-  "paidAt": 6000,
-  "maxTested": 8000
+  "fee": 900,
+  "freeFrom": 6300,
+  "paidAt": 6300,
+  "maxTested": 7200
  },
  "canadianglow": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 0,
   "freeFrom": 2239,
@@ -232,15 +232,15 @@
   "maxTested": 2239
  },
  "cloud10beauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 702,
-  "freeFrom": 7854,
-  "paidAt": 7842,
-  "maxTested": 11424
+  "freeFrom": 7752,
+  "paidAt": 7162,
+  "maxTested": 10336
  },
  "connectionparfumerie": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 999,
   "freeFrom": 15300,
@@ -248,39 +248,47 @@
   "maxTested": 24300
  },
  "contentbeautywellbeing": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 600,
-  "freeFrom": 5400,
+  "freeFrom": 5000,
   "paidAt": 5100,
-  "maxTested": 5400
+  "maxTested": 8000
  },
  "cosmeticcapital": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 895,
-  "freeFrom": 7505,
-  "paidAt": 7110,
-  "maxTested": 7505
+  "freeFrom": 7500,
+  "paidAt": 7200,
+  "maxTested": 9600
  },
  "cosmeticsonline": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 0,
   "freeFrom": 1916,
   "paidAt": 0,
   "maxTested": 1916
  },
+ "cosmeticssquad": {
+  "at": "2026-11-15",
+  "to": "Sydney",
+  "fee": 995,
+  "freeFrom": 12150,
+  "paidAt": 12659,
+  "maxTested": 15552
+ },
  "credobeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 0,
-  "freeFrom": 800,
-  "paidAt": 0,
-  "maxTested": 800
+  "fee": 595,
+  "freeFrom": 5200,
+  "paidAt": 4795,
+  "maxTested": 5200
  },
  "discountfragrances": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 995,
   "freeFrom": 12932,
@@ -288,15 +296,15 @@
   "maxTested": 14291
  },
  "dubaiperfumes": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 2995,
   "freeFrom": null,
-  "paidAt": 29995,
-  "maxTested": 29995
+  "paidAt": 30995,
+  "maxTested": 30995
  },
  "dunyaaloud": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 1500,
   "freeFrom": 17850,
@@ -304,15 +312,15 @@
   "maxTested": 20825
  },
  "eclecticlady": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
-  "freeFrom": 1199,
+  "freeFrom": 1299,
   "paidAt": 0,
-  "maxTested": 1199
+  "maxTested": 1299
  },
  "emiratesoud": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 600,
   "freeFrom": 7500,
@@ -320,7 +328,7 @@
   "maxTested": 12000
  },
  "ephyr": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 1500,
   "freeFrom": 10000,
@@ -328,15 +336,15 @@
   "maxTested": 11100
  },
  "escentual": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 500,
-  "freeFrom": 5100,
-  "paidAt": 4300,
-  "maxTested": 6400
+  "freeFrom": 4800,
+  "paidAt": 4100,
+  "maxTested": 4800
  },
  "essentialparfums": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 500,
   "freeFrom": 8400,
@@ -344,20 +352,20 @@
   "maxTested": 8400
  },
  "europacosmetica": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 795,
   "freeFrom": null,
-  "paidAt": 25757,
-  "maxTested": 25757
+  "paidAt": 25168,
+  "maxTested": 25168
  },
  "fenwick": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 500,
-  "freeFrom": 10150,
-  "paidAt": 9600,
-  "maxTested": 11200
+  "freeFrom": 10989,
+  "paidAt": 9990,
+  "maxTested": 10989
  },
  "floandfrankie": {
   "at": "2026-11-08",
@@ -368,15 +376,15 @@
   "maxTested": 11040
  },
  "fragflex": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 995,
-  "freeFrom": 16182,
-  "paidAt": 15379,
-  "maxTested": 25172
+  "freeFrom": 15570,
+  "paidAt": 14610,
+  "maxTested": 15570
  },
  "fragrance365": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 1495,
   "freeFrom": 20800,
@@ -392,7 +400,7 @@
   "maxTested": 15960
  },
  "fragrancecanada": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 1495,
   "freeFrom": null,
@@ -400,15 +408,15 @@
   "maxTested": 25375
  },
  "fragrancecomeu": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 395,
-  "freeFrom": 3105,
-  "paidAt": 2926,
-  "maxTested": 3105
+  "freeFrom": 3713,
+  "paidAt": 2769,
+  "maxTested": 3713
  },
  "fragrancehub": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 499,
   "freeFrom": 10494,
@@ -416,7 +424,7 @@
   "maxTested": 16491
  },
  "fragrancemarket": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 750,
   "freeFrom": 7170,
@@ -424,7 +432,7 @@
   "maxTested": 9560
  },
  "fragrancenevaeh": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 921,
   "freeFrom": 10290,
@@ -432,7 +440,7 @@
   "maxTested": 11760
  },
  "fragranceofarabia": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 0,
   "freeFrom": 1000,
@@ -440,7 +448,7 @@
   "maxTested": 1000
  },
  "fragranceoutlet": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 750,
   "freeFrom": 5995,
@@ -448,7 +456,7 @@
   "maxTested": 9592
  },
  "fragrancesource": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 850,
   "freeFrom": 18854,
@@ -456,7 +464,7 @@
   "maxTested": 21426
  },
  "fragranceusa": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
   "freeFrom": 14999,
@@ -464,7 +472,7 @@
   "maxTested": 14999
  },
  "fragrancevault": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 780,
   "freeFrom": null,
@@ -480,23 +488,23 @@
   "maxTested": 19000
  },
  "freshbeautyco": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Auckland",
   "fee": 700,
-  "freeFrom": 9600,
-  "paidAt": 8700,
-  "maxTested": 12800
+  "freeFrom": 9400,
+  "paidAt": 8400,
+  "maxTested": 9400
  },
  "freshbeautycoau": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
-  "fee": 800,
-  "freeFrom": 8000,
-  "paidAt": 7000,
-  "maxTested": 8000
+  "fee": 400,
+  "freeFrom": 1600,
+  "paidAt": 1200,
+  "maxTested": 1600
  },
  "fumerie": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 1000,
   "freeFrom": 10000,
@@ -504,15 +512,15 @@
   "maxTested": 12800
  },
  "gadgetsonline": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Auckland",
   "fee": 900,
   "freeFrom": null,
-  "paidAt": 26400,
-  "maxTested": 26400
+  "paidAt": 25200,
+  "maxTested": 25200
  },
  "glowempire": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 350,
   "freeFrom": 5580,
@@ -520,7 +528,7 @@
   "maxTested": 9920
  },
  "gordonsdirect": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 599,
   "freeFrom": null,
@@ -528,7 +536,7 @@
   "maxTested": 27040
  },
  "guardianpharmacy": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Auckland",
   "fee": 400,
   "freeFrom": 4000,
@@ -536,7 +544,7 @@
   "maxTested": 5200
  },
  "haarspullen": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Amsterdam",
   "fee": 450,
   "freeFrom": 3555,
@@ -544,23 +552,31 @@
   "maxTested": 6320
  },
  "hagelshop": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 499,
-  "freeFrom": 4188,
-  "paidAt": 4338,
-  "maxTested": 5584
+  "freeFrom": 4000,
+  "paidAt": 3999,
+  "maxTested": 4000
  },
  "herabeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
-  "fee": 1313,
+  "fee": 1309,
   "freeFrom": 7182,
   "paidAt": 6783,
   "maxTested": 8778
  },
+ "houseofniche": {
+  "at": "2026-11-15",
+  "to": "Amsterdam",
+  "fee": 600,
+  "freeFrom": 5600,
+  "paidAt": 5800,
+  "maxTested": 5800
+ },
  "inscentivesperfume": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
   "freeFrom": 1199,
@@ -568,31 +584,31 @@
   "maxTested": 1199
  },
  "intenseoud": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 0,
-  "freeFrom": 999,
-  "paidAt": 0,
-  "maxTested": 999
+  "fee": 599,
+  "freeFrom": 7992,
+  "paidAt": 7592,
+  "maxTested": 7992
  },
  "jubileescents": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 199,
-  "freeFrom": 5489,
-  "paidAt": 4990,
-  "maxTested": 7984
+  "freeFrom": 5600,
+  "paidAt": 5200,
+  "maxTested": 6400
  },
  "justmylook": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 299,
-  "freeFrom": 2653,
-  "paidAt": 2573,
-  "maxTested": 3032
+  "freeFrom": 2632,
+  "paidAt": 2602,
+  "maxTested": 2632
  },
  "justperfume": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 0,
   "freeFrom": 3400,
@@ -600,7 +616,7 @@
   "maxTested": 3400
  },
  "kbeautyx": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 900,
   "freeFrom": null,
@@ -608,7 +624,7 @@
   "maxTested": 25200
  },
  "lamaisonduparfum": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 1200,
   "freeFrom": 21600,
@@ -616,7 +632,7 @@
   "maxTested": 25200
  },
  "lamilas": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 1500,
   "freeFrom": 20000,
@@ -624,15 +640,23 @@
   "maxTested": 23500
  },
  "leparfum": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 1399,
-  "freeFrom": 20146,
-  "paidAt": 20286,
-  "maxTested": 20286
+  "freeFrom": 20148,
+  "paidAt": 20108,
+  "maxTested": 23026
+ },
+ "leparfumier": {
+  "at": "2026-11-15",
+  "to": "Toronto",
+  "fee": 1000,
+  "freeFrom": 13800,
+  "paidAt": 13000,
+  "maxTested": 19200
  },
  "libertineparfumerie": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 1200,
   "freeFrom": 10500,
@@ -640,31 +664,39 @@
   "maxTested": 12000
  },
  "lookfantastic": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 899,
-  "freeFrom": 7633,
-  "paidAt": 7972,
-  "maxTested": 9313
+  "freeFrom": 7656,
+  "paidAt": 7995,
+  "maxTested": 8776
  },
  "mcgorisks": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Dublin",
   "fee": 500,
   "freeFrom": 6060,
   "paidAt": 5365,
   "maxTested": 6060
  },
+ "meaghers": {
+  "at": "2026-11-15",
+  "to": "Dublin",
+  "fee": 561,
+  "freeFrom": 6286,
+  "paidAt": 5837,
+  "maxTested": 7184
+ },
  "mensbiz": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 600,
-  "freeFrom": 10400,
-  "paidAt": 10600,
-  "maxTested": 12800
+  "freeFrom": 5200,
+  "paidAt": 5400,
+  "maxTested": 6400
  },
  "microperfumes": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 599,
   "freeFrom": 7150,
@@ -672,7 +704,7 @@
   "maxTested": 10400
  },
  "ministryofscent": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 600,
   "freeFrom": 7500,
@@ -680,7 +712,7 @@
   "maxTested": 8000
  },
  "mutamayezperfume": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 653,
   "freeFrom": 8483,
@@ -688,15 +720,15 @@
   "maxTested": 15968
  },
  "myperfumeshop": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 1099,
   "freeFrom": 15000,
-  "paidAt": 15599,
-  "maxTested": 16000
+  "paidAt": 14599,
+  "maxTested": 24000
  },
  "myroyalmusk": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 800,
   "freeFrom": 5500,
@@ -704,7 +736,7 @@
   "maxTested": 8000
  },
  "mysticperfume": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 699,
   "freeFrom": 10078,
@@ -712,23 +744,31 @@
   "maxTested": 10577
  },
  "nearstore": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 795,
-  "freeFrom": 10978,
-  "paidAt": 10379,
-  "maxTested": 10978
+  "freeFrom": 11180,
+  "paidAt": 10481,
+  "maxTested": 12578
  },
  "noah": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 600,
-  "freeFrom": 10400,
-  "paidAt": 10600,
-  "maxTested": 12800
+  "freeFrom": 5200,
+  "paidAt": 5400,
+  "maxTested": 6400
+ },
+ "nourishedlife": {
+  "at": "2026-11-15",
+  "to": "Sydney",
+  "fee": 995,
+  "freeFrom": 9085,
+  "paidAt": 9685,
+  "maxTested": 9685
  },
  "oakandtonic": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 800,
   "freeFrom": 3600,
@@ -736,7 +776,7 @@
   "maxTested": 4800
  },
  "oakcha": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 599,
   "freeFrom": 8000,
@@ -744,7 +784,7 @@
   "maxTested": 8000
  },
  "oasisperfumesusa": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 650,
   "freeFrom": null,
@@ -752,23 +792,23 @@
   "maxTested": 25987
  },
  "olfactoryfactoryllc": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 1000,
-  "freeFrom": 7581,
-  "paidAt": 8182,
-  "maxTested": 8379
+  "fee": 0,
+  "freeFrom": 14900,
+  "paidAt": 0,
+  "maxTested": 14900
  },
  "ontrendbeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 895,
   "freeFrom": null,
-  "paidAt": 25294,
-  "maxTested": 25294
+  "paidAt": 25395,
+  "maxTested": 25395
  },
  "opulensi": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 299,
   "freeFrom": 3548,
@@ -776,7 +816,7 @@
   "maxTested": 3548
  },
  "orientalstyle": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 380,
   "freeFrom": 6000,
@@ -784,12 +824,12 @@
   "maxTested": 9600
  },
  "oudcollection": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 700,
-  "freeFrom": 8400,
+  "freeFrom": 8320,
   "paidAt": 8700,
-  "maxTested": 12800
+  "maxTested": 10240
  },
  "parfumexquis": {
   "at": "2026-11-08",
@@ -799,8 +839,16 @@
   "paidAt": 5100,
   "maxTested": 5100
  },
+ "parfumgroup": {
+  "at": "2026-11-15",
+  "to": "Berlin",
+  "fee": 490,
+  "freeFrom": 12511,
+  "paidAt": 11102,
+  "maxTested": 13920
+ },
  "parfumslubner": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 600,
   "freeFrom": 5600,
@@ -808,12 +856,12 @@
   "maxTested": 5600
  },
  "parfumswinkel": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Amsterdam",
   "fee": 495,
-  "freeFrom": 5369,
-  "paidAt": 3563,
-  "maxTested": 5369
+  "freeFrom": 4053,
+  "paidAt": 3806,
+  "maxTested": 6279
  },
  "peleven": {
   "at": "2026-11-08",
@@ -824,7 +872,7 @@
   "maxTested": 11184
  },
  "perfumania": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 750,
   "freeFrom": 5975,
@@ -832,9 +880,9 @@
   "maxTested": 9560
  },
  "perfumarie": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 782,
+  "fee": 774,
   "freeFrom": null,
   "paidAt": 25200,
   "maxTested": 25200
@@ -848,7 +896,7 @@
   "maxTested": 11451
  },
  "perfumeboutique": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 1195,
   "freeFrom": 9950,
@@ -856,7 +904,7 @@
   "maxTested": 15920
  },
  "perfumebox": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 895,
   "freeFrom": 6000,
@@ -864,7 +912,7 @@
   "maxTested": 6145
  },
  "perfumecentre": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 0,
   "freeFrom": 370,
@@ -872,7 +920,7 @@
   "maxTested": 370
  },
  "perfumecity": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 490,
   "freeFrom": 5997,
@@ -880,23 +928,23 @@
   "maxTested": 5997
  },
  "perfumeclearancecentre": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 1095,
-  "freeFrom": 10865,
-  "paidAt": 10365,
-  "maxTested": 10865
+  "freeFrom": 10465,
+  "paidAt": 8570,
+  "maxTested": 10465
  },
  "perfumedefrance": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 799,
-  "freeFrom": 7990,
-  "paidAt": 7990,
-  "maxTested": 7990
+  "freeFrom": 8190,
+  "paidAt": 7191,
+  "maxTested": 8190
  },
  "perfumedirect": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 299,
   "freeFrom": 5187,
@@ -904,15 +952,15 @@
   "maxTested": 6384
  },
  "perfumeempire": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
-  "freeFrom": 904,
+  "freeFrom": 994,
   "paidAt": 0,
-  "maxTested": 904
+  "maxTested": 994
  },
  "perfumefactory": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 1095,
   "freeFrom": null,
@@ -920,15 +968,15 @@
   "maxTested": 25035
  },
  "perfumeforever": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 999,
-  "freeFrom": 20700,
-  "paidAt": 14799,
-  "maxTested": 27600
+  "freeFrom": 16200,
+  "paidAt": 11799,
+  "maxTested": 21600
  },
  "perfumeheaven": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 499,
   "freeFrom": 4788,
@@ -936,7 +984,7 @@
   "maxTested": 5586
  },
  "perfumem": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 2061,
   "freeFrom": null,
@@ -944,7 +992,7 @@
   "maxTested": 25431
  },
  "perfumeoasis": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 99,
   "freeFrom": 1599,
@@ -952,7 +1000,7 @@
   "maxTested": 2099
  },
  "perfumeonline": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 995,
   "freeFrom": 14972,
@@ -960,7 +1008,7 @@
   "maxTested": 24428
  },
  "perfumeoutlet": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 500,
   "freeFrom": 4860,
@@ -968,7 +1016,7 @@
   "maxTested": 8640
  },
  "perfumeparadise": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 799,
   "freeFrom": 16194,
@@ -976,12 +1024,12 @@
   "maxTested": 16692
  },
  "perfumeplusoutlet": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 695,
-  "freeFrom": 6500,
-  "paidAt": 3600,
-  "maxTested": 6500
+  "freeFrom": 7000,
+  "paidAt": 6000,
+  "maxTested": 8000
  },
  "perfumes": {
   "at": "2026-11-08",
@@ -992,15 +1040,15 @@
   "maxTested": 11189
  },
  "perfumesamerica": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 595,
   "freeFrom": null,
-  "paidAt": 25455,
-  "maxTested": 25455
+  "paidAt": 25491,
+  "maxTested": 25491
  },
  "perfumescents": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 495,
   "freeFrom": 4770,
@@ -1008,15 +1056,15 @@
   "maxTested": 6360
  },
  "perfumology": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 500,
   "freeFrom": 4000,
   "paidAt": 3200,
-  "maxTested": 6400
+  "maxTested": 4000
  },
  "perfumora": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
   "freeFrom": 1500,
@@ -1024,7 +1072,7 @@
   "maxTested": 1500
  },
  "premiereavenue": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Paris",
   "fee": 1200,
   "freeFrom": 13100,
@@ -1032,7 +1080,7 @@
   "maxTested": 13100
  },
  "priceritemart": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 950,
   "freeFrom": 10900,
@@ -1040,7 +1088,7 @@
   "maxTested": 17440
  },
  "privateblends": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 600,
   "freeFrom": 7700,
@@ -1048,7 +1096,7 @@
   "maxTested": 8800
  },
  "profumidinicchia": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Berlin",
   "fee": 1499,
   "freeFrom": null,
@@ -1056,7 +1104,7 @@
   "maxTested": 25699
  },
  "pulseofperfumery": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 600,
   "freeFrom": null,
@@ -1064,7 +1112,7 @@
   "maxTested": 25200
  },
  "redlabeloutlet": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 0,
   "freeFrom": 500,
@@ -1072,7 +1120,7 @@
   "maxTested": 500
  },
  "roullierwhite": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 300,
   "freeFrom": 21075,
@@ -1080,7 +1128,7 @@
   "maxTested": 21075
  },
  "scentbeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 895,
   "freeFrom": 9564,
@@ -1088,7 +1136,7 @@
   "maxTested": 12752
  },
  "scentrabbit": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
   "freeFrom": 4500,
@@ -1096,7 +1144,7 @@
   "maxTested": 4500
  },
  "scentrique": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 300,
   "freeFrom": 3000,
@@ -1104,7 +1152,7 @@
   "maxTested": 4000
  },
  "scentrushfragrances": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 499,
   "freeFrom": 10000,
@@ -1112,7 +1160,7 @@
   "maxTested": 16000
  },
  "scentsangel": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 500,
   "freeFrom": 5400,
@@ -1120,7 +1168,7 @@
   "maxTested": 7200
  },
  "scentsyndicate": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 799,
   "freeFrom": 7998,
@@ -1128,15 +1176,15 @@
   "maxTested": 7998
  },
  "sensabeauty": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 0,
-  "freeFrom": 2298,
+  "freeFrom": 2497,
   "paidAt": 0,
-  "maxTested": 2298
+  "maxTested": 2497
  },
  "sensoriam": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 1800,
   "freeFrom": 8200,
@@ -1144,23 +1192,31 @@
   "maxTested": 8800
  },
  "shoprescuespa": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 657,
-  "freeFrom": 5400,
-  "paidAt": 4500,
-  "maxTested": 6300
+  "fee": 760,
+  "freeFrom": 5700,
+  "paidAt": 5200,
+  "maxTested": 5700
  },
  "signelocal": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 2000,
-  "freeFrom": 10179,
-  "paidAt": 9580,
-  "maxTested": 14372
+  "freeFrom": 10379,
+  "paidAt": 9780,
+  "maxTested": 13973
+ },
+ "snud": {
+  "at": "2026-11-15",
+  "to": "Vienna",
+  "fee": 480,
+  "freeFrom": 4410,
+  "paidAt": 4400,
+  "maxTested": 4410
  },
  "soavantgarde": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 1000,
   "freeFrom": 7665,
@@ -1168,7 +1224,7 @@
   "maxTested": 11680
  },
  "soghaat": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 499,
   "freeFrom": 5994,
@@ -1176,7 +1232,7 @@
   "maxTested": 5994
  },
  "spadezstore": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 599,
   "freeFrom": 7182,
@@ -1184,7 +1240,7 @@
   "maxTested": 12768
  },
  "sprayonyx": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 795,
   "freeFrom": 5985,
@@ -1192,23 +1248,23 @@
   "maxTested": 6384
  },
  "sugapash": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 1000,
-  "freeFrom": 15200,
-  "paidAt": 14300,
-  "maxTested": 15200
+  "freeFrom": 15597,
+  "paidAt": 11398,
+  "maxTested": 20796
  },
  "sunnamusk": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 395,
-  "freeFrom": 6631,
+  "freeFrom": 6890,
   "paidAt": 5591,
-  "maxTested": 8709
+  "maxTested": 10787
  },
  "thebeautystore": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 295,
   "freeFrom": 5168,
@@ -1216,7 +1272,7 @@
   "maxTested": 5472
  },
  "thedetoxmarket": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Toronto",
   "fee": 999,
   "freeFrom": 7188,
@@ -1224,7 +1280,7 @@
   "maxTested": 9584
  },
  "thedetoxmarketus": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 599,
   "freeFrom": 5391,
@@ -1232,9 +1288,9 @@
   "maxTested": 9584
  },
  "thedsshop": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 933,
+  "fee": 941,
   "freeFrom": 5397,
   "paidAt": 3598,
   "maxTested": 5397
@@ -1248,7 +1304,7 @@
   "maxTested": 3200
  },
  "theperfumeshopusa": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 599,
   "freeFrom": 7743,
@@ -1256,23 +1312,23 @@
   "maxTested": 7743
  },
  "theperfumewarehouse": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 990,
   "freeFrom": null,
-  "paidAt": 25490,
-  "maxTested": 25490
+  "paidAt": 30490,
+  "maxTested": 30490
  },
  "thescentvault": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Dublin",
   "fee": 495,
-  "freeFrom": 6000,
-  "paidAt": 3000,
-  "maxTested": 6000
+  "freeFrom": 7200,
+  "paidAt": 5295,
+  "maxTested": 7200
  },
  "tjhughes": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "London",
   "fee": 499,
   "freeFrom": null,
@@ -1280,20 +1336,20 @@
   "maxTested": 25200
  },
  "tripletraders": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
-  "fee": 645,
+  "fee": 668,
   "freeFrom": null,
   "paidAt": 25164,
   "maxTested": 25164
  },
  "twistedlily": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 850,
-  "freeFrom": 15000,
-  "paidAt": 13000,
-  "maxTested": 15000
+  "freeFrom": 16600,
+  "paidAt": 14200,
+  "maxTested": 16600
  },
  "vanitystock": {
   "at": "2026-11-08",
@@ -1304,15 +1360,23 @@
   "maxTested": 21000
  },
  "violetgrey": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 800,
-  "freeFrom": 6500,
-  "paidAt": 6300,
-  "maxTested": 7500
+  "freeFrom": 6000,
+  "paidAt": 5800,
+  "maxTested": 7000
+ },
+ "westernperfumes": {
+  "at": "2026-11-15",
+  "to": "Toronto",
+  "fee": 1099,
+  "freeFrom": null,
+  "paidAt": 27599,
+  "maxTested": 27599
  },
  "whelehans": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Dublin",
   "fee": 1000,
   "freeFrom": 5500,
@@ -1320,15 +1384,15 @@
   "maxTested": 6050
  },
  "witr": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Sydney",
   "fee": 799,
   "freeFrom": 10000,
   "paidAt": 9799,
-  "maxTested": 11000
+  "maxTested": 10000
  },
  "worldbrand": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "Auckland",
   "fee": 1000,
   "freeFrom": 22600,
@@ -1336,11 +1400,11 @@
   "maxTested": 26200
  },
  "zgoperfumery": {
-  "at": "2026-11-08",
+  "at": "2026-11-15",
   "to": "New York",
   "fee": 895,
   "freeFrom": 10000,
   "paidAt": 9500,
-  "maxTested": 16000
+  "maxTested": 13000
  }
 }
