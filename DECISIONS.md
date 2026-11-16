@@ -1637,3 +1637,10 @@ the per-ml saving before the overlap, and a product page computes only its own r
 `lib/data.ts` also append in place instead of copying the list on every product. A cold product page now spends ~0.5 s
 here; the `/smells-like` pages and every product's link are byte-identical to before (checked against the full output).
 `tests/smells-like.test.ts` fails if the product lookup calls the full index again.
+
+## 2026-11-16: A small unpriced "Also on Amazon" line under each region's price table
+
+The 2026-11-12/13 rule (Amazon row only with a real price) took Amazon buy clicks to zero on every site from 13 Nov (Amazon's own reports fell
+with them), because almost no row has a live API price. Not a row: `AmazonAlso`, one line under a region's table on the product page, only where
+Amazon's own listing was matched to this exact barcode (committed ASINs), unpriced, labelled paid, hidden when the priced row shows, never the
+quick view, never ranked, best, a deal or an alert. Placement `also_amazon`. Read Amazon clicks per day against 7-12 Nov.
