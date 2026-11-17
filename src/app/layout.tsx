@@ -63,6 +63,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: MOTION_BOOT }} />
         {/* Impact (affiliate network) site check, in the exact form Impact gives: a `value` attribute. */}
         <meta {...({ name: "impact-site-verification", value: "59ec5beb-7403-4ebf-8dc5-d42ff5b432ce" } as object)} />
+        {/* This site's own Impact property (account 7385758, 2026-11-17). */}
+        <meta {...({ name: "impact-site-verification", value: "b378dac2-0f2f-42a5-8b29-43c8999ee529" } as object)} />
       </head>
       <body className="min-h-screen font-sans antialiased">
         <IconSprite />
