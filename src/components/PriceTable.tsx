@@ -72,7 +72,9 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
       // A priced eBay row works like a store row (owner, 2026-11-06): in stock, thumbs and the cart list.
       status: ebay ? "in" : null,
       href: ebayUrl,
-      ...(ebay ? { vote: ebay.u, cart: { title: cartTitle, image: f.img, priceCents: ebay.p, currency: r.currency } } : {}),
+      // Every price row has an Add to cart (owner, 2026-11-17): the search row's line opens this tagged link and says "See today's price".
+      ...(ebay ? { vote: ebay.u } : {}),
+      cart: { title: cartTitle, image: f.img, priceCents: ebay ? ebay.p : 0, currency: r.currency },
       paid: true,
       event: { source: "ebay", region, placement: `${placement}_pinned`, ean: f.ean },
     });
@@ -102,7 +104,7 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
   const fedRow = (p: (typeof PARTNERS)[number]): RowData | null => {
     const fed = p.feedEnv ? partnerPriceIn(feeds, p.key, region, f.ean) : null;
     const href = fed && partnerProductUrl(p, fed.u, sub);
-    return fed && href ? { name: p.name, sub: `${p.note}, this exact barcode`, price: money(fed.p, region), status: "in", href, paid: true, offer: offersNote(partnerAwinId(p), region), event: { source: p.key, region, placement: `${placement}_pinned`, ean: f.ean } } : null;
+    return fed && href ? { name: p.name, sub: `${p.note}, this exact barcode`, price: money(fed.p, region), status: "in", href, paid: true, offer: offersNote(partnerAwinId(p), region), cart: { title: cartTitle, image: f.img, priceCents: fed.p, currency: r.currency }, event: { source: p.key, region, placement: `${placement}_pinned`, ean: f.ean } } : null;
   };
   for (const p of PARTNERS.filter((x) => x.feedOnly && x.regions.includes(region))) {
     const row = fedRow(p);
@@ -112,7 +114,7 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
   for (const { p, href, paid } of partnersFor(region, q, sub)) {
     const row = paid ? fedRow(p) : null;
     if (row) pinned.push({ ...row, paid: true });
-    else overseas.push({ name: p.name, sub: p.note, price: null, status: null, href, paid, offer: paid ? offersNote(partnerAwinId(p), region) : null, event: { source: p.key, region, placement: `${placement}_overseas`, ean: f.ean } });
+    else overseas.push({ name: p.name, sub: p.note, price: null, status: null, href, paid, offer: paid ? offersNote(partnerAwinId(p), region) : null, cart: { title: cartTitle, image: f.img, priceCents: 0, currency: r.currency }, event: { source: p.key, region, placement: `${placement}_overseas`, ean: f.ean } });
   }
   const ship = getShipping();
   const promos = getPromos();
@@ -159,6 +161,7 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
         status: null,
         href,
         paid: true,
+        cart: { title: cartTitle, image: f.img, priceCents: 0, currency: r.currency },
         event: { source: "amazon", region, placement: "check_amazon", ean: f.ean },
       });
   }
