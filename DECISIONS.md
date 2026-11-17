@@ -1661,3 +1661,10 @@ Owner: "even if there are no Amazon prices available, we should have an option t
 Amazon price `priceRows` adds an unpriced Amazon row (brand amazon, `check`: the item's own page where the daily ASIN pass matched this
 barcode, else the tagged search) at the END of the store rows, on the product page and in the quick view. Never pinned, ranked, the best
 price, a deal or an alert; a priced Amazon row still pins. It replaces the 2026-11-16 line under the table (`AmazonAlso`, removed).
+
+## 2026-11-17: URL freeze, and no surprise navigation
+
+Owner, from the Grok growth report (item 5): URLs are frozen and nothing navigates a visitor unasked. A repo-wide check found no
+pop-under, no `window.open` on load, no cross-host redirect and no interstitial here. Rule added to CLAUDE.md: no mass path change
+without a redirect map that 301s every old URL, agents never flip hosts (the one change in force is DexCompare to dexcompare.io), and
+the only automatic navigation is a same-host market choice.
