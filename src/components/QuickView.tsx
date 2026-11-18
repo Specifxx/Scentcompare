@@ -24,6 +24,8 @@ interface Data {
   rows: Record<RegionCode, RowsData | null>;
   /** the share message per region (lib/share-texts.ts) */
   share?: Partial<Record<string, string>>;
+  /** "bergamot + jasmine + vanilla": the notes stores agree on (lib/notes.ts), when any list them */
+  smells?: string;
 }
 
 const cache = new Map<string, Promise<Data | null>>();
@@ -137,6 +139,11 @@ export function QuickView() {
             {head.brand && <p className="eyebrow truncate">{head.brand}</p>}
             <h2 className="h-display mt-0.5 text-lg leading-snug">{short}</h2>
             {data && data !== "loading" && data.size && <p className="mt-1 text-xs text-soft">{data.size}</p>}
+            {data && data !== "loading" && data.smells && (
+              <p className="mt-1.5 text-[13px] leading-snug text-soft">
+                <span className="font-medium text-ink">Smells like</span> {data.smells}
+              </p>
+            )}
             {data && data !== "loading" && <ShareButton title={short} path={`/product/${head.slug}`} texts={data.share} className="mt-2" />}
           </div>
           <button ref={closeRef} type="button" onClick={close} aria-label="Close" className="-mr-1 -mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full text-soft hover:bg-subtle hover:text-ink">
