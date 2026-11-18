@@ -16,6 +16,7 @@ import type { PromoData } from "./promos";
 import { allNotes, NOTES, type NoteInfo, type NotesFile, type Pyramid } from "./notes";
 import { MIN_OVERLAP, MIN_SAVING, MIN_SHARED, noteOverlapSets, noteWeights, sharedNotes, sizeMl, SMELLS_LIKE_MAX, SMELLS_LIKE_MIN } from "./smells-like";
 import { slugify } from "./slug";
+import { asksToBeIndexed, prebuiltProducts } from "./index-tiers";
 
 // SC_DATA_DIR points local development and tests at a fixture; production
 // always reads the committed files.
@@ -518,4 +519,20 @@ export function smellsLikeForProduct(f: Product): string | null {
   const k = familyKey(f);
   const ri = smellsLikeCtx().all.slice(0, SMELLS_LIKE_REFS).findIndex((x) => x.key === k);
   return ri < 0 ? null : (smellsLikeFor(ri)?.ref.slug ?? null);
+}
+
+// The product pages that ask to be indexed (lib/index-tiers.ts asksToBeIndexed): the prebuilt core plus the slugs
+// Search Console shows people finding, which the daily import writes to search-demand.json.
+let indexCore: { core: Set<string>; demand: Set<string> } | null = null;
+export function productIndexed(f: Product): boolean {
+  if (!indexCore) {
+    let demand: string[] = [];
+    try {
+      demand = JSON.parse(fs.readFileSync(path.join(DIR, "search-demand.json"), "utf8")) as string[];
+    } catch {
+      demand = [];
+    }
+    indexCore = { core: new Set(prebuiltProducts(getProducts()).map((p) => p.slug)), demand: new Set(demand) };
+  }
+  return asksToBeIndexed(f, indexCore.core, indexCore.demand);
 }

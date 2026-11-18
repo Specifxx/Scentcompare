@@ -4,10 +4,10 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { culledTarget } from "@/lib/culled";
 import { CAT_BY_KEY, REGIONS, SITE, type RegionCode } from "@/site";
-import { smellsLikeForProduct, bestIn, familyKey, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productTitle, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
+import { productIndexed, smellsLikeForProduct, bestIn, familyKey, cheapestDelivered, getMeta, notesOf, brandPages, getEbay, getHistory, getProduct, getProducts, productTitle, productsOfBrand, productsOfCat, regionsOf, spreadIn, storeCount, storeName, variantLabel, variantLabels, variantsOf } from "@/lib/data";
 import { dayNumber, lowestOrderable } from "@/lib/history";
 import { decimal, money, niceDate, pct } from "@/lib/format";
-import { isIndexable, prebuiltProducts } from "@/lib/index-tiers";
+import { prebuiltProducts } from "@/lib/index-tiers";
 import { buyLink } from "@/lib/affiliate";
 import { ProductImage } from "@/components/ProductImage";
 import { popularity } from "@/lib/ratings";
@@ -74,7 +74,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title,
     description,
     alternates: { canonical: `/product/${f.slug}` },
-    robots: isIndexable(f) ? undefined : { index: false, follow: true },
+    robots: productIndexed(f) ? undefined : { index: false, follow: true },
     // A page's openGraph replaces the root's, so a product with no store photo keeps the site's own card.
     openGraph: { title: ogTitle, description, url: `/product/${f.slug}`, images: [{ url: f.img ?? "/opengraph-image" }] },
   };

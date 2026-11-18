@@ -18,6 +18,14 @@ export default function About() {
         <p>
           ScentCompare checks {STORES.length} real fragrance stores every day and shows every store&apos;s price for the same bottle, side by side, in your own currency: the US, UK, Canada, Australia, New Zealand and Europe.
         </p>
+        <h2>The two of us behind it</h2>
+        <p>
+          ScentCompare belongs to Bill and George, who run it together as co-founders. It exists because the same 100 ml bottle can cost wildly different amounts from one perfume shop to the next, and checking them all by hand takes an
+          evening. No fragrance house, retailer or distributor has a stake in the site, and none can buy a better spot in the price list.
+        </p>
+        <p>
+          AI tools help us write the code and the guides. The prices themselves are never written by anyone: they are read from each shop&apos;s own site on the day you see them.
+        </p>
         <h2>How a product is matched</h2>
         <p>
           Every boxed fragrance carries a 13-digit barcode (an EAN, or a 12-digit UPC in North America). We match store listings <strong>only</strong> by that barcode, bottle size by bottle size. A listing without one is left out rather than guessed from its title, because the 50 ml and the 100 ml, the eau de toilette and the eau de parfum, the old and new bottle and a tester all look alike in a title.
@@ -47,6 +55,11 @@ export default function About() {
         <p>
           ScentCompare is free and has no ads beside the prices. It is paid for by affiliate links: if you buy after clicking eBay or Amazon (and, once their programs accept us, the big fragrance retailers), we may earn a commission at no cost to you.
           Today none of the stores in the comparison pays us anything. Commission never changes the order: stores are always sorted by price. The details are in <a href="/disclosure">how we make money</a>. No sign-up, no accounts, no pop-ups.
+        </p>
+        <h2>Our running costs</h2>
+        <p>
+          Servers, the daily price reads, data and software for ScentCompare and our other price guides come to roughly A$790 a month (our books, 30 days to 15 November 2026). The commissions from labelled links pay for that, and when they
+          don&apos;t cover it we do.
         </p>
         <h2>Spotted a mistake? Want a store added?</h2>
         <p>

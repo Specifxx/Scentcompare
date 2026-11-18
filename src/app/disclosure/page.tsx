@@ -18,6 +18,11 @@ export default function Disclosure() {
       <PageHead title="How we make money" sub="The short version: some links can earn us a commission. They are labelled, and they never change the order of the prices." />
       <Prose>
         <p>ScentCompare is free to use, with no sign-up, no pop-ups and no floating ads. Below the page&apos;s content a small block labelled &ldquo;Ad&rdquo; shows eBay and Amazon listings. It is paid for by affiliate links: if you buy after following one, the retailer may pay us a commission. You pay the same price.</p>
+        <h2>Who is paid, and what it pays for</h2>
+        <p>
+          The commissions go to ScentCompare&apos;s co-founders, Bill and George; nobody else owns or sponsors the site. They cover about A$790 a month of servers, daily price reads, data and software across our price guides (30 days to
+          15 November 2026). <Link prefetch={false} href="/about">About us</Link>.
+        </p>
         <h2>Which links can earn us money</h2>
         <ul>
           <li><strong>eBay</strong> (eBay Partner Network): the eBay row above the stores on a product page.</li>
