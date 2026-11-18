@@ -1860,3 +1860,21 @@ sitting on top of it.
   `var(--bn-space)` + a small gap up, and the body's bottom padding follows it. Hidden, it slides fully off-screen (transform only, CLS 0).
 - **Measured** (local build, dock stacked): Pixel 7 412×915 nav + dock take 129px (14.1%); iPhone 15 393×852 with a 34px safe area
   143px (16.8%); iPhone SE 375×667 129px (19.3%); the old flush bar took about the same plus the full safe area.
+
+## 2026-11-19: Index only the core and what search already finds; fewer links on every page; who runs the site
+
+The November core update took ScentCompare from ~480 impressions a day to ~15 (12 Nov). 14,659 near-identical product pages
+asked Google to index them; in 56 days Google showed 651 and only 19 earned a click or 10+ impressions. Now a product page
+asks to be indexed only when it is in the prebuilt core (the 500 most widely stocked, `prebuiltProducts`) or Search Console
+shows people finding it (`data/public/search-demand.json`, written by the import from the `demand` branch's gsc-pages.json:
+a click or 10+ impressions in 56 days). Every other page stays live, linked and `noindex, follow` (`asksToBeIndexed`,
+`productIndexed`). A page that starts earning impressions returns on the next import.
+
+The footer listed every section, seasonal sale, blog post and side project on every page; it now lists nine links
+(who runs the site, how it is paid for, how we pick stores, stores, guides, blog, contact, privacy, terms). The header
+menus carry 8 houses and 8 notes (was 14 and 14).
+
+`/about` and `/disclosure` now say who runs ScentCompare (co-founders Bill and George, no outside owner or sponsor), that AI tools
+help write the code and guides from the day's store prices, and what the price guides cost to run (about A$790 a
+month, our own books, 30 days to 15 November 2026). Owner, 2026-11-19: "be very clear how we make money, how much the site
+costs us to run".
