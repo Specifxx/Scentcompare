@@ -1,1 +1,1 @@
-{"at":"2026-11-17T19:21:33.264Z","state":"ok","searched":231,"found":163,"known":1947,"waiting":9912}
+{"at":"2026-11-18T18:55:34.792Z","state":"refused","searched":0,"found":0,"known":1947,"waiting":9955,"note":"searchItems 429 {\"message\":\"Request rate limit exceeded. Learn more: https://affiliate-program.amazon.com/creatorsapi/docs/en-us/concepts/api-rates\",\"type\":\"Thr"}
