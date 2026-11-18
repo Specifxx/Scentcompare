@@ -1682,3 +1682,7 @@ Applied here (the full reasoning is in DexCompare's DECISIONS.md, same date):
 ## 2026-11-18: The quick view shows "Smells like"
 
 The quick view's static JSON (`/q/<slug>`) now carries `smells`, the headline notes in one line ("bergamot + jasmine + vanilla"), read from `notesOf` and `headlineNotes` (the same agreed notes as the product page's panel, so nothing is guessed or added from outside). The panel draws it under the name only when present. No new data, no new request, no paid row touched; the file stays a build-time static JSON. Site loop backlog item 3, first half (the note filter on section hubs is still unbuilt).
+
+## 2026-11-18: cart checkout opens every store or none (owner)
+
+Checkout (`openAll`, `src/lib/cart-checkout.ts`) opens one blank tab per store inside the click, and only when every one opens does it send each to its store's own tagged link. If the browser refuses any, it closes the ones that opened, visits nothing, and the drawer shows the allow-pop-ups steps and a "Try again" button. Before, the first store opened and the rest were refused, which left the visitor with one tab. Chrome 157 on dexcompare.io and on url-opener.com (the owner's model, which does the same close-and-ask) both give one tab until pop-ups are allowed for the site; with them allowed, all open. No browser API grants that permission from a click, so the steps stay.
