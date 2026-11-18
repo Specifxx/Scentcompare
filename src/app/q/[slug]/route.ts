@@ -3,7 +3,8 @@
 // from the CDN, never a function. Rows come from priceRows(), the same rows the
 // product page draws: eBay first, Amazon second, then the stores by price.
 import { REGIONS } from "@/site";
-import { getEbay, getProduct, getProducts, regionsOf } from "@/lib/data";
+import { getEbay, getProduct, getProducts, notesOf, regionsOf } from "@/lib/data";
+import { headlineNotes, smellsLikeText } from "@/lib/notes";
 import { priceRows } from "@/components/PriceTable";
 import { prebuiltProducts } from "@/lib/index-tiers";
 import { shareTexts } from "@/lib/share-texts";
@@ -23,5 +24,8 @@ export function GET(_req: Request, { params }: { params: { slug: string } }) {
   const sold = new Set(regionsOf(f));
   const rows = Object.fromEntries(REGIONS.map((r) => [r.code, sold.has(r.code) ? priceRows(f, r.code, ebay[r.code], "quickview") : null]));
   // The share messages per region (lib/share-texts.ts), written here at build like the rest.
-  return Response.json({ slug: f.slug, size: f.size, ean: f.ean, rows, share: shareTexts(f) });
+  // "Smells like" in one line, from the same agreed notes as the product page's panel; absent when no store lists notes.
+  const n = notesOf(f);
+  const smells = n ? smellsLikeText(headlineNotes(n)) : "";
+  return Response.json({ slug: f.slug, size: f.size, ean: f.ean, rows, share: shareTexts(f), ...(smells ? { smells } : {}) });
 }

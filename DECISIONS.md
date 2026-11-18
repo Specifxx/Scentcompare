@@ -1678,3 +1678,7 @@ Applied here (the full reasoning is in DexCompare's DECISIONS.md, same date):
   drawer); "Total before postage" became "Estimated total (before postage)"; the add button's tooltip says you pay at the store. The label stays
   "Add to cart" (owner, 2026-11-14: a literal "Add to cart" on every row).
 - **The quick view sets the tab title and description while it is open** and restores them on close (the tab used to keep the list's title).
+
+## 2026-11-18: The quick view shows "Smells like"
+
+The quick view's static JSON (`/q/<slug>`) now carries `smells`, the headline notes in one line ("bergamot + jasmine + vanilla"), read from `notesOf` and `headlineNotes` (the same agreed notes as the product page's panel, so nothing is guessed or added from outside). The panel draws it under the name only when present. No new data, no new request, no paid row touched; the file stays a build-time static JSON. Site loop backlog item 3, first half (the note filter on section hubs is still unbuilt).

@@ -31,3 +31,12 @@ test("no product link opens in a new tab or sets target (it would bypass the qui
   walk(new URL("../src", import.meta.url).pathname);
   assert.deepEqual(bad, []);
 });
+
+// Backlog item 3 (2026-11-18): the quick view shows the product's "Smells like" line, from the same notes as the page's panel.
+test("the quick view data carries the smells-like line and the panel draws it", () => {
+  const r = readFileSync(new URL("../src/app/q/[slug]/route.ts", import.meta.url), "utf8");
+  assert.match(r, /notesOf\(f\)/);
+  assert.match(r, /smellsLikeText\(headlineNotes\(/);
+  const q = readFileSync(new URL("../src/components/QuickView.tsx", import.meta.url), "utf8");
+  assert.match(q, /data\.smells/);
+});
