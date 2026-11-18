@@ -1808,6 +1808,16 @@ the region today, a rise of 1% to under 50% (a bigger jump is a store selling ou
 **Why.** Owner, 2026-11-18: one stable URL per site to post on Reddit once a week as a link and title (tagged
 `utm_source=reddit&utm_medium=social&utm_campaign=hot100-<site>-<date>`). Rides the daily release. `tests/hot100.test.ts`.
 
+## 2026-11-18: The product 301 map is sticky, so a product that leaves the catalogue never 404s
+
+Search Console listed 806 product URLs as "Not found (404)" on 18 Nov (crawled 14 Nov). They were products that fell out of
+the merge entirely (fewer than two stores anywhere), so they were neither listed nor in `culled.json`, which the import rewrote
+from today's merge only. That breaks the URL freeze ("an old URL never 404s") and throws away pages Google had indexed.
+`stickyCulled` (`lib/focus.ts`) now keeps a 301 target for every product URL ever published: today's culls, yesterday's map,
+yesterday's listed products that are gone, and every slug in `state/slugs.json`, its category read from the slug's own words
+(`categoryOf`). A product listed again leaves the map and is a live page at the same URL. The map grows from ~25,400 to ~27,400
+entries (1.7 MB). `tests/focus.test.ts`. Same change in KaeYoung.
+
 ## 2026-11-18: The dock A/B: the phone ad dock stays up above the bottom nav for half of the visitors
 
 Owner, 2026-11-18: "right above the nav bar, we should have those ads show up … very, very visible for mobile phone users." Since
