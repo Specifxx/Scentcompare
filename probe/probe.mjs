@@ -8,7 +8,7 @@ import fs from "node:fs";
 
 const SHARD = Number(process.env.SHARD ?? 0);
 const SHARDS = Number(process.env.SHARDS ?? 1);
-const PAGES = 8; // up to 2,000 products
+const PAGES = Number(process.env.PROBE_PAGES ?? 8); // 8 = up to 2,000 products; set PROBE_PAGES to read a big chemist in full
 const LOOKUPS = 40;
 const UA = "Mozilla/5.0 (compatible; CompareEmpireProbe/1.0; +https://compareempire.com)";
 const FRAG = /\b(eau de parfum|eau de toilette|eau de cologne|parfum|perfume|cologne|fragrance|extrait|edp|edt|edc|body mist|aftershave|after shave)\b/i;
