@@ -2012,3 +2012,18 @@ lorcanacompare.com and gundamcompare.com (both refused as "Low value content").
   CMP: no banner of our own). About says one labelled ad block sits below the content.
 - After approval: the ad unit goes INSIDE the one existing in-content block (`InlineAds`), loaded after idle, never a
   second block, never beside a buy button or above a price, never for Premium members (`data-adfree`).
+
+## 2026-11-19: Sign in is a filled button at every width, and the sign-in flow never names another site
+
+Owner, 2026-11-19: "there should be a login or sign up button, very visible for new … or non-logged in users … I don't want them to
+redirect. I don't want the [RiftCompare] logo to appear on any of the site signups."
+
+- Signed out, the header's account link is a filled button in the site's own colour reading "Sign in" from 340px wide (the icon alone
+  below that). Every header was measured at 360, 390, 430, 768, 1024, 1280, 1440 and 1536px: the button is on screen with no
+  sideways scroll at each. Where the row was full, other items stepped aside (the Premium pill, a sections row or a sponsored link
+  move to a wider breakpoint; the menu carries them), never Sign in.
+- Copy on the sign-in, account, Premium, watches, alert and privacy pages says "our shared alert service" and "all our price
+  comparison sites", never the name of the site that runs the shared account service.
+- `next.config.js` rewrites `/account-service/alerts/(confirm|manage|unsubscribe)` and `/account-service/oauth/(google|discord)[/callback]`
+  to the shared service, so alert emails and (once the owner registers the redirect addresses) Google and Discord sign-in keep the
+  visitor on this site's own address. A rewrite is not a redirect: the address bar never changes.
