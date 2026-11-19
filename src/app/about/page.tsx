@@ -53,8 +53,8 @@ export default function About() {
         </p>
         <h2>How the site is paid for</h2>
         <p>
-          ScentCompare is free and has no ads beside the prices. It is paid for by affiliate links: if you buy after clicking eBay or Amazon (and, once their programs accept us, the big fragrance retailers), we may earn a commission at no cost to you.
-          Today none of the stores in the comparison pays us anything. Commission never changes the order: stores are always sorted by price. The details are in <a href="/disclosure">how we make money</a>. No sign-up, no accounts, no pop-ups.
+          ScentCompare is free and has no ads beside the prices: one ad block sits below a page&apos;s content, labelled Ad (Google AdSense among them; see <a href="/privacy#ads">privacy</a>). It is mostly paid for by affiliate links: if you buy after clicking eBay or Amazon (and, once their programs accept us, the big fragrance retailers), we may earn a commission at no cost to you.
+          Today none of the stores in the comparison pays us anything. Commission never changes the order: stores are always sorted by price. The details are in <a href="/disclosure">how we make money</a>. No sign-up needed (accounts are optional, for alerts), and no pop-ups.
         </p>
         <h2>Our running costs</h2>
         <p>

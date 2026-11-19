@@ -2,6 +2,7 @@ import { SEASON_BOOT_SCRIPT } from "@/lib/season";
 import localFont from "next/font/local";
 import { MOTION_BOOT, MOTION_SCRIPT } from "@/lib/motion";
 import type { Metadata, Viewport } from "next";
+import { ADSENSE_CLIENT } from "@/lib/adsense";
 import { Analytics } from "@vercel/analytics/react";
 import { ShareArrival } from "@/components/ShareArrival";
 import "./globals.css";
@@ -79,6 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta {...({ name: "impact-site-verification", value: "59ec5beb-7403-4ebf-8dc5-d42ff5b432ce" } as object)} />
         {/* This site's own Impact property (account 7385758, 2026-11-17). */}
         <meta {...({ name: "impact-site-verification", value: "b378dac2-0f2f-42a5-8b29-43c8999ee529" } as object)} />
+        {/* Google AdSense site review (owner, 2026-11-19): the publisher meta only. No AdSense script loads until the site is
+            approved and a placement is decided (lib/adsense.ts; DECISIONS.md 2026-11-19), so page speed is unchanged. */}
+        <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
       </head>
       <body className="min-h-screen font-sans antialiased">
         <IconSprite />

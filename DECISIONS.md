@@ -1997,3 +1997,18 @@ the deals and everything". ScentCompare is the first site outside the card side 
 - **No other site named.** The pages, the privacy note and the alert emails say "our shared alert service", never the card site that
   runs it (ScentCompare is on the other side of the network).
 - Header: Sign in on phones too; day/night moved into the phone menu below `sm` so it fits beside the wordmark. Premium from `lg`.
+
+## 2026-11-19: Google AdSense site review
+
+Owner, 2026-11-19: "lets get scentcompare authorised for adsense as well". The owner's one AdSense account
+(pub-6842128782879909, the sister sites' too) already lists riftcompare.com (Ready), dexcompare.app (Getting ready) and
+lorcanacompare.com and gundamcompare.com (both refused as "Low value content").
+
+- For the review the site carries only the `google-adsense-account` meta in every page's head and `/ads.txt`
+  (`public/ads.txt`, `lib/adsense.ts`). **No AdSense script loads**: it is ~250 kB, and the sister sites had it removed for
+  speed on 2026-11-19. `tests/adsense.test.ts` fails if `adsbygoogle` appears in `src/` before a placement is decided.
+- The privacy page names Google's advertising cookies, Ads Settings, aboutads.info and Google's partner-sites page, and
+  says Google's own consent message asks first in the UK, EU and Switzerland (AdSense → Privacy & messaging, a certified
+  CMP: no banner of our own). About says one labelled ad block sits below the content.
+- After approval: the ad unit goes INSIDE the one existing in-content block (`InlineAds`), loaded after idle, never a
+  second block, never beside a buy button or above a price, never for Premium members (`data-adfree`).
