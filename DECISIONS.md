@@ -1957,3 +1957,18 @@ popular, deals and new), so it could differ from what visitors saw.
 - **Rate limit.** A 429 used to end the region for the run: on 18 Nov the US search stopped at its first call (the US
   credential is one request a second for every site's runs together). It now waits 3, 10 and 30 seconds and tries again
   before giving up (`RATE_LIMIT_WAITS`, `lib/amazon-creators.ts`).
+
+## 2026-11-19: eBay rows take overseas sellers who ship to the shopper
+
+Owner, 2026-11-19 (decision card: "Yes, every region"; "coverage is the most important"). Measured that day: every
+eligible (product, region) pair had been searched in the last 13 days, yet only 14% of searched pairs in Canada, 22% in
+Australia, 23% in the EU and 38% in the UK had a row, against 71% in the US. Homepage products: AU 7 of 25, CA 4 of 23, EU 2
+of 25. The limit was the local-sellers rule (2026-10-31, from WargameCompare visitors' complaint about overseas postage),
+not the 4,800 calls.
+
+`ebayPick` now keeps any seller the search returns (it already asks eBay for delivery to the region and prices in its
+currency), except China and Hong Kong, still only with postage eBay states and priced delivered, so the postage complaint
+is answered by the price itself. A seller outside the region is recorded (`EbayPick.c`) and the row says "New, ships from
+the US, incl. postage". Pairs searched empty on or before 18 Nov (`OVERSEAS_SELLERS_FROM`) are due again as the oldest
+checks, homepage products first: about 27,600 pairs at 4,800 calls a day, so roughly a week. Read the coverage per region
+on 26 Nov against the 19 Nov numbers above, and eBay clicks per region against 12 to 18 Nov.

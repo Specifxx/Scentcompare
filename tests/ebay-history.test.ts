@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { EBAY_REGION_DAILY_CAP, ebayPick, ebayQuotaDay, planEbay, regionAllowance, type EbayItem, type EbayPrio } from "@/lib/ebay";
+import { EBAY_REGION_DAILY_CAP, ebayPick, shipsFrom, ebayQuotaDay, planEbay, regionAllowance, type EbayItem, type EbayPrio } from "@/lib/ebay";
 import { dayNumber, priceOn, recordHistory } from "@/lib/history";
 import type { Offer, Product } from "@/lib/types";
 
@@ -22,10 +22,12 @@ test("eBay: counterfeit origins, too-cheap, testers and other currencies are out
   assert.equal(ebayPick([item({ price: { value: "20.00", currency: "AUD" } })], offers, "US"), null);
 });
 
-test("eBay: local sellers only, postage stated, priced and ranked delivered (visitor feedback 2026-10-31)", () => {
+test("eBay: any seller who ships here, postage stated, priced and ranked delivered (owner, 2026-11-19)", () => {
   const ship = (value: string, currency = "USD") => ({ shippingOptions: [{ shippingCost: { value, currency } }] });
-  assert.equal(ebayPick([item({ itemLocation: { country: "FR" } })], offers, "US"), null, "no home country for fragrance: a seller abroad is out, however genuine");
-  assert.equal(ebayPick([item({ itemLocation: { country: "GB" } })], offers, "US"), null, "a UK seller for a US buyer");
+  assert.equal(ebayPick([item({ itemLocation: { country: "GB" } })], offers, "US")?.c, "GB", "a UK seller who ships to the US is kept and named");
+  assert.equal(ebayPick([item({})], offers, "US")?.c, undefined, "a local seller is not labelled");
+  assert.equal(ebayPick([item({ itemLocation: { country: "HK" } })], offers, "US"), null, "never Hong Kong");
+  assert.equal(shipsFrom("GB"), "the UK");
   assert.equal(ebayPick([item({ shippingOptions: [{}] })], offers, "US"), null, "calculated postage");
   assert.equal(ebayPick([item({ shippingOptions: undefined })], offers, "US"), null, "no postage at all");
   assert.equal(ebayPick([item(ship("5.00", "KRW"))], offers, "US"), null, "postage in another currency");
@@ -35,7 +37,8 @@ test("eBay: local sellers only, postage stated, priced and ranked delivered (vis
   assert.equal(pick?.sh, 200);
   const eu = (country: string) => item({ price: { value: "20.00", currency: "EUR" }, itemLocation: { country }, ...ship("3.90", "EUR") });
   assert.ok(ebayPick([eu("NL")], offers, "EU"), "a Dutch seller for an EU buyer");
-  assert.equal(ebayPick([eu("GB")], offers, "EU"), null, "a UK seller is outside the EU");
+  assert.equal(ebayPick([eu("NL")], offers, "EU")?.c, undefined, "an EU seller is local to the EU");
+  assert.equal(ebayPick([eu("GB")], offers, "EU")?.c, "GB", "a UK seller is outside the EU: kept and named");
 });
 
 test("eBay: no store reference, no eBay row", () => {

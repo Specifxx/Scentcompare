@@ -18,16 +18,17 @@ export interface EbayItem {
 /** EU countries: an EU buyer's eBay row may come from a seller in any of them (no customs). */
 export const EU_COUNTRIES: ReadonlySet<string> = new Set(["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]);
 
-/** No home country for fragrance (it is bottled everywhere): only local sellers are kept. */
+/** No home country for fragrance (it is bottled everywhere): a seller outside the region is named on the row. */
 export const HOME_COUNTRY: string | null = null;
 
 /** eBay's two-letter country code for a region (the UK is GB on eBay). */
 export const EBAY_COUNTRY: Partial<Record<RegionCode, string>> = { US: "US", UK: "GB", CA: "CA", AU: "AU", EU: "DE" };
 
 /**
- * Is a seller local to the region? Visitor feedback (WargameCompare, 2026-10-31): overseas sellers' postage made eBay rows
- * "a lot of wasted clicks", so a region's row comes only from a seller in its own country (any EU country for the EU).
- * A listing that gives no location passes: the search itself asked for local sellers.
+ * Is a seller local to the region (its own country; any EU country for the EU)? Until 2026-11-19 only local sellers were
+ * kept (visitor feedback, WargameCompare, 2026-10-31: overseas postage made rows "a lot of wasted clicks"). Since then
+ * (owner, 2026-11-19) any seller who ships to the region with stated postage is kept, priced delivered, and a seller
+ * outside the region is named on the row ("ships from the US"); this decides that label.
  */
 export function localSeller(region: RegionCode, country: string | undefined): boolean {
   if (!country) return true;
@@ -53,9 +54,11 @@ const BOOTLEG_ORIGINS = new Set(["CN", "HK"]);
 /**
  * The cheapest believable listing: new, from outside the counterfeit origins, a
  * title that is still one product (no tester, bundle, short-dated stock),
- * in the region's currency, and within 60%–300% of the stores' median; from a
- * seller in the region (localSeller) with postage eBay states, priced delivered. No
- * store reference, no eBay row (family rule).
+ * in the region's currency, and within 60%–300% of the stores' median; from any seller
+ * who ships to the region (the search asks eBay for delivery there) with postage eBay
+ * states, priced delivered. A seller outside the region is kept since 2026-11-19 (owner:
+ * "coverage is the most important"; before, local sellers only) and the row says where it
+ * ships from (`c`). No store reference, no eBay row (family rule).
  */
 export function ebayPick(items: EbayItem[], storeOffers: Offer[], region: RegionCode): EbayPick | null {
   if (!storeOffers.length) return null;
@@ -66,14 +69,15 @@ export function ebayPick(items: EbayItem[], storeOffers: Offer[], region: Region
   for (const it of items) {
     if (!it.price || it.price.currency !== cur) continue;
     if (it.itemLocation?.country && BOOTLEG_ORIGINS.has(it.itemLocation.country)) continue;
-    if (!localSeller(region, it.itemLocation?.country)) continue;
     const sh = statedPostage(it, cur, minor);
     if (sh == null) continue;
     if ("refused" in readTitle(it.title)) continue;
     const p = Math.round(Number(it.price.value) * minor);
     if (!(p > 0) || p < ref * 0.6 || p > ref * 3) continue;
     // The row shows the DELIVERED price, and the cheapest delivered wins.
-    if (!best || p + sh < best.p) best = { p: p + sh, sh, u: it.itemWebUrl.split("?")[0], t: it.title.slice(0, 120), img: it.image?.imageUrl ?? null };
+    const from = it.itemLocation?.country;
+    const abroad = !!from && !localSeller(region, from);
+    if (!best || p + sh < best.p) best = { p: p + sh, sh, u: it.itemWebUrl.split("?")[0], t: it.title.slice(0, 120), img: it.image?.imageUrl ?? null, ...(abroad ? { c: from } : {}) };
   }
   return best;
 }
@@ -182,6 +186,17 @@ export function regionAllowance(spent: Partial<Record<RegionCode, number>> = {})
   for (const [r, cap] of Object.entries(EBAY_REGION_DAILY_CAP) as [RegionCode, number][]) left[r] = Math.max(0, cap - (spent[r] ?? 0));
   return left;
 }
+
+/** Empty pairs searched under the local-only rule (on or before this day) are searched again first (2026-11-19). */
+export const OVERSEAS_SELLERS_FROM = "2026-11-18";
+
+/** Where a seller ships from, for the row's "ships from …" line. */
+export const SHIPS_FROM: Record<string, string> = {
+  US: "the US", GB: "the UK", CA: "Canada", AU: "Australia", NZ: "New Zealand", DE: "Germany", FR: "France", IT: "Italy",
+  ES: "Spain", NL: "the Netherlands", BE: "Belgium", IE: "Ireland", AT: "Austria", PL: "Poland", JP: "Japan", KR: "Korea",
+  AE: "the UAE", SG: "Singapore", CH: "Switzerland", SE: "Sweden", DK: "Denmark", PT: "Portugal", IL: "Israel", IN: "India",
+};
+export const shipsFrom = (c: string): string => SHIPS_FROM[c] ?? c;
 
 /** eBay's call quota resets at midnight Pacific time: the day calls count against. */
 export function ebayQuotaDay(d: Date = new Date()): string {

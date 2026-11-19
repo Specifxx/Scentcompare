@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { REGIONS, type RegionCode } from "@/site";
 import { getProducts } from "@/lib/data";
-import { ebayPick, ebayQuotaDay, planEbay, regionAllowance, type EbayItem, type EbayPrio } from "@/lib/ebay";
+import { OVERSEAS_SELLERS_FROM, ebayPick, ebayQuotaDay, planEbay, regionAllowance, type EbayItem, type EbayPrio } from "@/lib/ebay";
 import { popularity, popularNow } from "@/lib/ratings";
 import { featuredIn, isFeatured } from "@/lib/featured";
 import { homeEans } from "@/lib/home-shelves";
@@ -23,10 +23,9 @@ const read = <T>(p: string, f: T): T => {
   }
 };
 
-// Local sellers only, priced with postage (visitor feedback, WargameCompare
-// 2026-10-31; owner, the same day): the search asks for delivery to the region, ebayPick keeps sellers in the region
-// (any EU country for the EU), and `zip`, a central postcode, lets eBay quote real postage; ebayPick keeps
-// no listing whose postage it does not state.
+// Any seller who ships to the region, priced with postage (owner, 2026-11-19; local sellers only from 2026-10-31):
+// the search asks for delivery to the region, `zip`, a central postcode, lets eBay quote real postage, and ebayPick
+// keeps no listing whose postage it does not state, nor any from China or Hong Kong.
 const MARKET: Partial<Record<RegionCode, { id: string; country: string; zip: string }>> = {
   US: { id: "EBAY_US", country: "US", zip: "64101" },
   UK: { id: "EBAY_GB", country: "GB", zip: "B1 1AA" },
@@ -70,6 +69,12 @@ async function main() {
   const data = read<EbayData>("public/ebay.json", {});
   // A row from before 2026-10-31 (any seller, postage unknown) is hidden until it is searched again: search it first.
   for (const [ean, by] of Object.entries(data)) for (const [region, pick] of Object.entries(by)) if (pick && pick.sh == null) delete checked[`${ean}:${region}`];
+  // Overseas sellers count since 2026-11-19 (owner): a pair searched empty under the local-only rule is due again now,
+  // as the oldest check (after never-searched pairs, homepage products first), so the old misses are retried within a week.
+  for (const [k, at] of Object.entries(checked)) {
+    const [ean, region] = k.split(":") as [string, RegionCode];
+    if (at <= OVERSEAS_SELLERS_FROM && !data[ean]?.[region]) checked[k] = "2026-01-01";
+  }
   const products = getProducts();
   const today = new Date().toISOString().slice(0, 10);
   const regions = Object.keys(MARKET) as RegionCode[];

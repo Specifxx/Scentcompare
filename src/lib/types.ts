@@ -86,6 +86,8 @@ export interface EbayPick {
   u: string;
   t: string;
   img: string | null;
+  /** the seller's country, set only when it is outside the region (since 2026-11-19: overseas sellers who ship here) */
+  c?: string;
 }
 export type EbayData = Record<string, Partial<Record<RegionCode, EbayPick>>>;
 
