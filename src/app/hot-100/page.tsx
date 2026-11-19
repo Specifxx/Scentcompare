@@ -1,3 +1,4 @@
+import { InlineAds } from "@/components/InlineAds";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { REGIONS } from "@/site";
@@ -66,6 +67,8 @@ export default function Hot100() {
           Today&apos;s deals →
         </Link>
       </p>
+      {/* The one ad block (owner, 2026-11-13; added here 2026-11-19): after the page's content. */}
+      <InlineAds page="hot-100" />
     </div>
   );
 }

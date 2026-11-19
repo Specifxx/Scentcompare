@@ -84,7 +84,7 @@ Previews build only with `[preview]`, when the owner asks. `claude/*` and `ccr-*
   columns must say in stock. None is
   ever counted as a store or "the cheapest"; commission never decides order. `tests/site.test.ts` pins it.
 - eBay listings come only from `scripts/ebay-import.ts` in GitHub Actions (Browse API by GTIN, new, Buy It Now,
-  local sellers only, never from CN/HK sellers, 60%–300% of the store median). ScentCompare has its OWN keyset
+  any seller who ships to the region with stated postage, named when abroad (owner, 2026-11-19; local only before), never from CN/HK sellers, 60%–300% of the store median). ScentCompare has its OWN keyset
   (owner, 2026-11-05): `EBAY_DAILY_CAP` is 4,800 (owner, 2026-11-10) and the pass is a no-op until `EBAY_CLIENT_ID`/`EBAY_CLIENT_SECRET`
   exist. Popular products first (the engine's tiers). Never point it at a sister's keyset or raise the cap without
   the owner.

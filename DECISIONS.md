@@ -1937,3 +1937,45 @@ content "spread across a large network of sites" and re-dating pages to look fre
   latest import: their words do not change with prices.
 
 Black Friday and Cyber Monday pages are unchanged (in season). Judge the effect on 1 to 8 Dec against 3 to 9 Nov.
+
+## 2026-11-19: Homepage products get eBay and Amazon first; Amazon waits out a rate limit
+
+Owner, 2026-11-19: "all the items on the homepage … they're the priority items and they must get eBay quota and they must
+have eBay prices and Amazon prices first." `lib/home-shelves.ts` is now the one list of what the homepage shows in a region
+(the hero's pair and the Popular, Biggest savings and New arrivals shelves); the page, the eBay plan, the Amazon ASIN search
+and the build's Amazon price fetch all read it. Before, the eBay plan's tier 0 rebuilt the shelves its own way (unranked
+popular, deals and new), so it could differ from what visitors saw.
+
+- **eBay.** Tier 0 is the homepage's own list, searched every day found or not (`EBAY_EMPTY_RECHECK_DAYS[0]` 2 → 1). About
+  120 pairs a day of 4,800. Measured 19 Nov: every homepage pair in every eBay region was already searched; local listings
+  exist for US 21 of 24, UK 13/25, AU 7/25, CA 4/23, EU 2/25. Coverage there is limited by local sellers, not calls: every
+  one of the 42,908 eligible pairs was searched in the last 13 days.
+- **Amazon ASINs.** Homepage products are searched first in each region, and a homepage miss is retried after 7 days
+  (`RECHECK_HOME_MISS_DAYS`), others after 30.
+- **Amazon prices at build.** Homepage products first, and `AMAZON_BUILD_CALLS` 30 → 60 (600 products a region, about 35
+  seconds more build a region with ASINs). US had 1,947 ASINs and priced only 300.
+- **Rate limit.** A 429 used to end the region for the run: on 18 Nov the US search stopped at its first call (the US
+  credential is one request a second for every site's runs together). It now waits 3, 10 and 30 seconds and tries again
+  before giving up (`RATE_LIMIT_WAITS`, `lib/amazon-creators.ts`).
+
+## 2026-11-19: eBay rows take overseas sellers who ship to the shopper
+
+Owner, 2026-11-19 (decision card: "Yes, every region"; "coverage is the most important"). Measured that day: every
+eligible (product, region) pair had been searched in the last 13 days, yet only 14% of searched pairs in Canada, 22% in
+Australia, 23% in the EU and 38% in the UK had a row, against 71% in the US. Homepage products: AU 7 of 25, CA 4 of 23, EU 2
+of 25. The limit was the local-sellers rule (2026-10-31, from WargameCompare visitors' complaint about overseas postage),
+not the 4,800 calls.
+
+`ebayPick` now keeps any seller the search returns (it already asks eBay for delivery to the region and prices in its
+currency), except China and Hong Kong, still only with postage eBay states and priced delivered, so the postage complaint
+is answered by the price itself. A seller outside the region is recorded (`EbayPick.c`) and the row says "New, ships from
+the US, incl. postage". Pairs searched empty on or before 18 Nov (`OVERSEAS_SELLERS_FROM`) are due again as the oldest
+checks, homepage products first: about 27,600 pairs at 4,800 calls a day, so roughly a week. Read the coverage per region
+on 26 Nov against the 19 Nov numbers above, and eBay clicks per region against 12 to 18 Nov.
+
+## 2026-11-19: The one ad block on the pages that had none
+
+Owner, 2026-11-19: ScentCompare is now the focus site, so monetise its traffic. The rules of 2026-11-13 stay (ONE native
+block per page, below the content, labelled Ad, never beside a buy button or above a price, browser only, height reserved).
+Search, Black Friday, notes, smells-like, Hot 100 and blog posts had no block. Each now carries `InlineAds` after its
+content, the same as the lists, guides and product pages. No new ad type, no second block, and no pop-ups.
