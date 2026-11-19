@@ -1979,3 +1979,21 @@ Owner, 2026-11-19: ScentCompare is now the focus site, so monetise its traffic. 
 block per page, below the content, labelled Ad, never beside a buy button or above a price, browser only, height reserved).
 Search, Black Friday, notes, smells-like, Hot 100 and blog posts had no block. Each now carries `InlineAds` after its
 content, the same as the lists, guides and product pages. No new ad type, no second block, and no pop-ups.
+## 2026-11-19 — Accounts, Premium and alerts
+
+**Owner (2026-11-19):** "we want accounts for every single one of our compare sites now", with a Premium "like Rift Compare … with
+the deals and everything". ScentCompare is the first site outside the card side to get them.
+
+- **One shared account service**, the one the card sites use: sign in on `/account` with Google, Discord or an emailed 20-minute
+  link (no password); the browser keeps one signed token in localStorage (`scent_premium_v1`, `lib/premium-member.ts`), never a cookie,
+  so every page stays one static file for everyone. Nothing about an account is stored here.
+- **Alerts for everyone, free**: "Email me when the price drops" and, where a region is sold out, "when it's back in stock", under each
+  region's price (`WatchPrice.tsx`). A visitor confirms an address once; a signed-in member's account names it. The service reads
+  `/alert-feed.json` (force-static, `lib/alert-feed.ts`) once a day: the barcode, the name, the path and the lowest IN-STOCK store price
+  per region (never eBay, Amazon, a partner row or a conversion), and the week's three biggest store gaps per region for the weekly email.
+- **Premium** (`/premium`, US$4.99 a month or US$39.99 a year, 14 days free, Stripe): no banner ads (the in-content block and the phone
+  dock, which is not even drawn), up to 200 alerts instead of 25, and the watch list at `/watches` on every device. The cheapest price,
+  every store row, their order and `/deals` stay free and unchanged.
+- **No other site named.** The pages, the privacy note and the alert emails say "our shared alert service", never the card site that
+  runs it (ScentCompare is on the other side of the network).
+- Header: Sign in on phones too; day/night moved into the phone menu below `sm` so it fits beside the wordmark. Premium from `lg`.
