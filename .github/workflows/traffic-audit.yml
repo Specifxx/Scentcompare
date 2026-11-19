@@ -1,0 +1,33 @@
+# Bot-or-human audit (boardroom, 2026-11-19; DECISIONS.md): once a day, read this site's traffic counts by referrer, country,
+# device, OS and browser, and its buy_click count, from RiftCompare's public /api/demand/sc?audit=1 (Vercel Web Analytics,
+# counts only), and print a short summary into the run log plus the JSON as a 30-day artifact. Nothing is committed and
+# nothing deploys. Temporary: remove after the gift test is read (15 Dec 2026).
+name: Traffic audit
+on:
+  schedule:
+    - cron: "40 16 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read the audit
+        run: |
+          set -uo pipefail
+          curl -fsS --max-time 120 -A "compare-empire-data-job" "https://riftcompare.com/api/demand/sc?audit=1" -o audit.json || { echo "::warning::audit endpoint did not answer"; exit 0; }
+          node -e '
+          const d=JSON.parse(require("fs").readFileSync("audit.json","utf8"));
+          console.log("status",d.status,d.detail||"","window",d.from28,"..",d.to,"errors",JSON.stringify(d.errors||[]));
+          if(!d.total){console.log("no audit section (endpoint not released yet?)");process.exit(0)}
+          console.log("total visitors/pageviews 28d",d.total.d28,"7d",d.total.d7,"buy_click events/visitors 28d",d.buyClicks.d28,"7d",d.buyClicks.d7);
+          for(const [dim,w] of Object.entries(d.by||{})){const rows=Object.entries(w.d7).sort((a,b)=>b[1][0]-a[1][0]).slice(0,15);console.log("== "+dim+" (7d, visitors/pageviews)");for(const [k,v] of rows)console.log("  ",k,v.join("/"))}
+          '
+      - uses: actions/upload-artifact@v4
+        with:
+          name: traffic-audit
+          path: audit.json
+          retention-days: 30
+          if-no-files-found: ignore
