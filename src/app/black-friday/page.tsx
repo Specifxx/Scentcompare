@@ -1,3 +1,4 @@
+import { InlineAds } from "@/components/InlineAds";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { POST_BY_SLUG } from "@/content/blog";
@@ -61,6 +62,8 @@ export default function BlackFriday() {
           </div>
         ))}
       </section>
+      {/* The one ad block (owner, 2026-11-13; added here 2026-11-19): after the page's content. */}
+      <InlineAds page="black-friday" />
     </div>
   );
 }

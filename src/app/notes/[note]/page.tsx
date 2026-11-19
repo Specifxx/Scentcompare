@@ -1,3 +1,4 @@
+import { InlineAds } from "@/components/InlineAds";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -80,6 +81,8 @@ export default function NotePage({ params }: { params: { note: string } }) {
           <TileGrid products={items.slice(0, PER_SECTION)} />
         </section>
       ))}
+      {/* The one ad block (owner, 2026-11-13; added here 2026-11-19): after the page's content. */}
+      <InlineAds page="note" />
     </div>
   );
 }

@@ -1972,3 +1972,10 @@ is answered by the price itself. A seller outside the region is recorded (`EbayP
 the US, incl. postage". Pairs searched empty on or before 18 Nov (`OVERSEAS_SELLERS_FROM`) are due again as the oldest
 checks, homepage products first: about 27,600 pairs at 4,800 calls a day, so roughly a week. Read the coverage per region
 on 26 Nov against the 19 Nov numbers above, and eBay clicks per region against 12 to 18 Nov.
+
+## 2026-11-19: The one ad block on the pages that had none
+
+Owner, 2026-11-19: ScentCompare is now the focus site, so monetise its traffic. The rules of 2026-11-13 stay (ONE native
+block per page, below the content, labelled Ad, never beside a buy button or above a price, browser only, height reserved).
+Search, Black Friday, notes, smells-like, Hot 100 and blog posts had no block. Each now carries `InlineAds` after its
+content, the same as the lists, guides and product pages. No new ad type, no second block, and no pop-ups.
