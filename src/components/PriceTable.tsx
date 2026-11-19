@@ -16,6 +16,7 @@ import { AMAZON_CLOCK, amazonLive } from "@/lib/amazon-live";
 import { readAsins, type AsinFile } from "@/lib/amazon-asins";
 import { deliveryNote } from "@/lib/shipping";
 import { money } from "@/lib/format";
+import { shipsFrom } from "@/lib/ebay";
 import type { EbayPick, Product } from "@/lib/types";
 import { orderRows } from "@/lib/row-order";
 import { bestPriceHint, isPlainBest } from "@/lib/best-tag";
@@ -68,8 +69,8 @@ export function priceRows(f: Product, region: RegionCode, ebay?: EbayPick, place
     pinned.push({
       // No listing priced: a standout "Also check on eBay" search row instead (owner, 2026-11-06).
       name: ebay ? "eBay" : "Also check on eBay",
-      // The cheapest new local listing the last search found, delivered: listings come and go, so "from".
-      sub: ebay ? `New, ${ebay.sh ? "incl. postage" : "free postage"}` : `New listings on ${ebayShopHost(region)?.replace("www.", "")}`,
+      // The cheapest new listing that ships here (named when it ships from abroad, 2026-11-19), delivered: listings come and go, so "from".
+      sub: ebay ? `New, ${ebay.c ? `ships from ${shipsFrom(ebay.c)}, ` : ""}${ebay.sh ? "incl. postage" : "free postage"}` : `New listings on ${ebayShopHost(region)?.replace("www.", "")}`,
       check: !ebay,
       brand: "ebay",
       price: ebay ? money(ebay.p, region) : null,

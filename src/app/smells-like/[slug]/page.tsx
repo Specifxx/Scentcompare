@@ -1,3 +1,4 @@
+import { InlineAds } from "@/components/InlineAds";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -92,6 +93,8 @@ export default function SmellsLikePage({ params }: { params: { slug: string } })
       </section>
       <h2 className="h-display mb-4 text-2xl">Closest notes, lower price per ml</h2>
       <AltCards {...altRows(alts)} refName={ref.name} />
+      {/* The one ad block (owner, 2026-11-13; added here 2026-11-19): after the page's content. */}
+      <InlineAds page="smells-like" />
     </div>
   );
 }

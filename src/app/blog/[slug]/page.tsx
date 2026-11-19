@@ -1,3 +1,4 @@
+import { InlineAds } from "@/components/InlineAds";
 import type { Metadata } from "next";
 import { fitDescription, fitTitle } from "@/lib/seo";
 import Link from "next/link";
@@ -332,6 +333,8 @@ function Advice({ sections }: { post: Post; sections: Section[] }) {
       <P>
         Picks are the products the most stores in your country stock, shown cheapest first, so the table changes as stores restock and reprice. How a fragrance smells on you is the one thing no price can tell you: wear a sample before you buy a big bottle. <A href="/blog">More from the blog</A>.
       </P>
+      {/* The one ad block (owner, 2026-11-13; added here 2026-11-19): after the page's content. */}
+      <InlineAds page="blog" />
     </>
   );
 }
