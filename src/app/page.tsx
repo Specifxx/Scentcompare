@@ -22,6 +22,7 @@ import { GUIDES } from "@/lib/guides";
 import { JsonLd, faqLd, siteLd } from "@/lib/seo";
 import { SiteReviews } from "@/components/site-reviews/SiteReviews";
 import { homeShelves } from "@/lib/home-shelves";
+import { peopleSectionsByDemand } from "@/lib/home-demand";
 
 export const metadata: Metadata = {
   // 60 characters, keyword first, brand last (SEO audit, 2026-11-03).
@@ -36,6 +37,8 @@ export const metadata: Metadata = {
  * nav and the sections' pages.
  */
 const HOME_STEPS: CatKey[] = ["women", "men", "unisex", "sets", "minis", "body"];
+/** The three people sections lead, ordered by this week's demand (lib/home-demand.ts); the extras keep their place. */
+const HOME_TILES: CatKey[] = [...peopleSectionsByDemand(HOME_STEPS.slice(0, 3)), ...HOME_STEPS.slice(3)];
 
 const FAQ: [string, string][] = [
   [
@@ -128,7 +131,7 @@ export default function Home() {
           <h2 data-reveal className="h-display mb-4 text-2xl">Shop by section</h2>
           <CategoryGrid
             rail
-            cards={HOME_STEPS.map((k) => CAT_BY_KEY[k])
+            cards={HOME_TILES.map((k) => CAT_BY_KEY[k])
               .filter((c) => counts[c.key] > 0)
               .map((c) => ({
                 href: `/${c.key}`,
