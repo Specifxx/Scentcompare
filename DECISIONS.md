@@ -2060,6 +2060,15 @@ US total at most about 3,600 calls a day (ScentCompare about 61%, ScentCompare a
 Here: `AMAZON_BUDGET` in `src/lib/amazon-asins.ts`; regions on separate accounts run side by side (`byAccount`), so
 the US's 2,000 searches fit the import and its 200 price calls (2,000 products, homepage first) take about four minutes of build.
 
+## 2026-11-20: the home page's people sections lead in this week's demand order (merch)
+
+"Shop by section" still leads with women's, men's and unisex (owner, 2026-11-05: every gender), but those three now
+follow their own pages' views in the last 7 days, then 28 (`peopleSectionsByDemand`, `lib/home-demand.ts`): this week
+/men had 54 of its 88 views against /women 18 of 39, and men's bottles (Stronger With You Intensely 44 of 48) lead the
+product pages, so men's cologne goes first for Black Friday. Ties keep the given order; under MIN_SIGNAL views in all,
+or with `NEXT_PUBLIC_HOME_RANK=off`, the order is the owner's. Read 27 Nov: views of /men and /women and buy clicks per
+home visitor against 11-18 Nov.
+
 ## 2026-11-20: A Santa hat on the logo and lights under the header
 
 **Owner, 2026-11-20:** "change the logo for all of our websites so that it's Christmas themed now. Put a Santa hat on top

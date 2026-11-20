@@ -7,6 +7,7 @@ import { STORES } from "@/content/stores";
 import { amazonSearchUrl, ebayAffiliateUrl, ebaySearchUrl, partnerUrl, PARTNERS, storeUrl, subId } from "@/lib/affiliate";
 import { judgeFreshness, judgeStores } from "../scripts/ops-monitor";
 import { money } from "@/lib/format";
+import { peopleSectionsByDemand } from "@/lib/home-demand";
 import { searchRows, type IndexRow } from "@/components/SearchBox";
 
 const walk = (d: string): string[] => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(`${d}/${e.name}`) : [`${d}/${e.name}`]));
@@ -122,6 +123,21 @@ test("the homepage's section tiles lead with women's, men's and unisex (owner, 2
   assert.ok(steps, "HOME_STEPS is listed in the homepage");
   assert.ok(steps[1].startsWith('"women", "men", "unisex"'));
   assert.ok(!/CATEGORIES\.(filter|map)/.test(src), "the homepage lists its own tiles, not every category");
+  assert.match(src, /HOME_TILES: CatKey\[\] = \[\.\.\.peopleSectionsByDemand\(HOME_STEPS\.slice\(0, 3\)\), \.\.\.HOME_STEPS\.slice\(3\)\]/);
+});
+
+test("the three people sections lead in this week's demand order, all three always first (merch, 2026-11-20)", () => {
+  const keys = ["women", "men", "unisex"] as const;
+  const d = (v: Record<string, [number, number]>) => ({ views: v });
+  // This week's real read: /men 54 of 88, /women 18 of 39, /unisex none.
+  assert.deepEqual(peopleSectionsByDemand(keys, d({ "/men": [88, 54], "/women": [39, 18] }), true), ["men", "women", "unisex"]);
+  // A 7-day tie goes to 28 days, then to the given order.
+  assert.deepEqual(peopleSectionsByDemand(keys, d({ "/men": [40, 10], "/women": [50, 10] }), true), ["women", "men", "unisex"]);
+  assert.deepEqual(peopleSectionsByDemand(keys, d({ "/men": [40, 10], "/unisex": [40, 10] }), true), ["men", "unisex", "women"]);
+  // Too little signal, an empty file, or the ranking off: the owner's order.
+  assert.deepEqual(peopleSectionsByDemand(keys, d({ "/men": [20, 20] }), true), ["women", "men", "unisex"]);
+  assert.deepEqual(peopleSectionsByDemand(keys, null, true), ["women", "men", "unisex"]);
+  assert.deepEqual(peopleSectionsByDemand(keys, d({ "/men": [88, 54], "/women": [39, 18] }), false), ["women", "men", "unisex"]);
 });
 
 test("the quick view's Amazon row is the tagged Amazon link itself, never Amazon's price (owner, 2026-11-06)", () => {
