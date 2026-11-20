@@ -17,7 +17,7 @@ import { amazonTag } from "../src/lib/affiliate";
 import { amazonBudget, byAccount, readAsins } from "../src/lib/amazon-asins";
 import { AmazonRefused, barcodeMatches, credentialsFor, creatorsClient, MARKETS, pickListing, PRICE_RESOURCES } from "../src/lib/amazon-creators";
 import { AMAZON_LIVE_DIR, type AmazonLiveFile } from "../src/lib/amazon-live";
-import { homeEans } from "../src/lib/home-shelves";
+import { priorityEans } from "../src/lib/home-shelves";
 import type { Product } from "../src/lib/types";
 import { REGIONS, type RegionCode } from "../src/site";
 
@@ -37,7 +37,7 @@ async function region(code: RegionCode, products: Product[]) {
   const creds = credentialsFor(code);
   if (!creds) return console.log(`Amazon prices ${code}: no AMAZON_CREATORS_* credentials, skipped.`);
   const asins = readAsins(code);
-  const home = homeEans(code, products);
+  const home = priorityEans(code, products);
   const inRegion = products
     .map((p) => ({ p, h: home.has(p.ean), asin: asins[p.ean]?.[0], offers: (p.offers[code] ?? []).filter((o) => o.st !== "out") }))
     .filter((x): x is typeof x & { asin: string } => !!x.asin && x.offers.length > 0)

@@ -17,7 +17,7 @@ import path from "node:path";
 import { amazonTag } from "../src/lib/affiliate";
 import { AmazonRefused, barcodeMatches, credentialsFor, creatorsClient, MARKETS } from "../src/lib/amazon-creators";
 import { AMAZON_DIR, amazonBudget, asinFile, byAccount, dueForSearch, readAsins, searchWords, statusFile, type AsinFile, type AsinStatus } from "../src/lib/amazon-asins";
-import { homeEans } from "../src/lib/home-shelves";
+import { priorityEans } from "../src/lib/home-shelves";
 import type { Product } from "../src/lib/types";
 import { REGIONS, type RegionCode } from "../src/site";
 
@@ -35,7 +35,7 @@ async function region(code: RegionCode, products: Product[]) {
   }
   const today = new Date().toISOString().slice(0, 10);
   const known: AsinFile = readAsins(code);
-  const home = homeEans(code, products);
+  const home = priorityEans(code, products);
   const inRegion = products
     .map((p) => ({ p, n: (p.offers[code] ?? []).length, h: home.has(p.ean) }))
     .filter((x) => x.n)

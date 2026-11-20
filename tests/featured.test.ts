@@ -36,11 +36,24 @@ test("the homepage rows read the featured list", () => {
   assert.match(src, /rankProducts\(popularNow\(region, 24, feat\), region\)\.slice\(0, 8\)/);
   // The page, the eBay plan and the Amazon search and fetch all read the same shelves (owner, 2026-11-19).
   assert.match(fs.readFileSync("src/app/page.tsx", "utf8"), /homeShelves\(r\.code, all\)/);
-  for (const f of ["scripts/ebay-import.ts", "scripts/amazon-asins.ts", "scripts/fetch-amazon-prices.ts"]) assert.match(fs.readFileSync(f, "utf8"), /homeEans\(/, f);
+  for (const f of ["scripts/ebay-import.ts", "scripts/amazon-asins.ts", "scripts/fetch-amazon-prices.ts"]) assert.match(fs.readFileSync(f, "utf8"), /priorityEans\(/, f);
 });
 
 test("the homepage floor is higher than the featured floor in every region", () => {
   for (const r of ["US", "UK", "CA", "AU", "NZ", "EU"] as const) if (homeMin(r) > 0) assert.ok(homeMin(r) >= featureMin(r), r);
   assert.ok(isHomeFeatured(prod("h", "US", [7500, 8000]), "US"));
   assert.ok(!isHomeFeatured(prod("l", "US", [7499, 8000]), "US"));
+});
+
+test("the gift test: the 20 most popular gift sets join the eBay and Amazon priority until 14 Dec, then nothing", async () => {
+  const { giftTestEans, priorityEans, GIFT_TEST_UNTIL, GIFT_TEST_SIZE } = await import("../src/lib/home-shelves");
+  assert.equal(GIFT_TEST_UNTIL, "2026-12-14");
+  assert.equal(GIFT_TEST_SIZE, 20);
+  const sets = Array.from({ length: 25 }, (_, i) => ({ ...prod(`set${i}`, "US", [9000 + i, 9500]), cat: "sets" }) as Product);
+  const other = prod("w", "US", [9000, 9500]);
+  const during = giftTestEans("US", [...sets, other], "2026-12-14");
+  assert.equal(during.size, 20);
+  assert.ok(!during.has("w"));
+  assert.equal(giftTestEans("US", sets, "2026-12-15").size, 0);
+  for (const e of during) assert.ok(priorityEans("US", [...sets, other], "2026-12-01").has(e));
 });

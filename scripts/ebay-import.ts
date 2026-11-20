@@ -11,7 +11,7 @@ import { getProducts } from "@/lib/data";
 import { OVERSEAS_SELLERS_FROM, ebayPick, ebayQuotaDay, planEbay, regionAllowance, type EbayItem, type EbayPrio } from "@/lib/ebay";
 import { popularity, popularNow } from "@/lib/ratings";
 import { featuredIn, isFeatured } from "@/lib/featured";
-import { homeEans } from "@/lib/home-shelves";
+import { priorityEans } from "@/lib/home-shelves";
 import type { EbayData, Meta } from "@/lib/types";
 
 const DATA = path.join(process.cwd(), "data");
@@ -86,7 +86,7 @@ async function main() {
   const hot = new Set<string>();
   for (const r of regions) {
     const feat = featuredIn(r, products);
-    for (const ean of homeEans(r, products)) home.add(`${ean}:${r}`);
+    for (const ean of priorityEans(r, products)) home.add(`${ean}:${r}`);
     for (const f of popularNow(r, 300, feat)) hot.add(`${f.ean}:${r}`);
   }
   const launch = products.reduce((m, f) => (f.first < m ? f.first : m), "9999");
