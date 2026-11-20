@@ -2101,3 +2101,17 @@ re-ranked, labelled "Paid link" like FragranceX.
 - Every partner feed row now goes through `readTitle` first (not only the by-name fallback): an open-box, unboxed, tester or
   pre-owned bottle shares the boxed bottle's barcode in some feeds and is never priced as the product.
 - KaeYoung: no fit (Korean skincare only).
+
+## The bot-or-human audit passed; the gift test runs to 14 December (boardroom, 2026-11-20)
+
+The boardroom (2026-11-19) made more Scent effort conditional on its traffic being mostly people. Vercel Web Analytics,
+7 days to 19 Nov, read through RiftCompare's `/api/demand/sc?audit=1` (`traffic-audit.yml`): 2,001 visitors, 76% from
+the US, Canada, the UK and Australia and 81% with NZ, IE and the EU added; 85% on phones, 68% on iOS; GNU/Linux
+(the usual headless crawler) 1.4%. Web Analytics only counts browsers that run its script, and this mix is a person's,
+so well over half is human. The referrer and buy-click queries were refused that run (the API wants a `by` on every
+query and has another name for the referrer); RiftCompare's endpoint is fixed so the 15 Dec read has both.
+
+So the gift test runs: `giftTestEans` (`lib/home-shelves.ts`) adds the 20 most popular gift sets per region to what
+eBay and Amazon search first (`priorityEans`, read by `ebay-import.ts`, `amazon-asins.ts`, `fetch-amazon-prices.ts`)
+until 14 Dec, inside the same eBay cap and Amazon budget. Read on 15 Dec: green at A$150+ or A$0.08+ per human visitor;
+red under A$40 and under A$0.03, which freezes Scent investment with no extension. After 14 Dec it adds nothing.
