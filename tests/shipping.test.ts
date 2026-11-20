@@ -68,7 +68,7 @@ test("FragranceX and FragranceNet always show, unpaid until their program accept
 
 test("Jomashop is a plain unpaid search link in the US only (Reddit, 2026-11-12)", () => {
   const us = partnersFor("US", "Tom Ford Black Orchid", "sc-us-t", {});
-  assert.deepEqual(us.map((x) => [x.p.key, x.paid]), [["fragrancex", false], ["fragrancenet", false], ["jomashop", false]]);
+  assert.deepEqual(us.map((x) => [x.p.key, x.paid]), [["fragrancex", false], ["fragrancenet", false], ["jomashop", false], ["hottperfume", true]]);
   assert.equal(us[2].href, "https://www.jomashop.com/search?q=Tom%20Ford%20Black%20Orchid");
   assert.ok(!partnersFor("UK", "Sauvage", "s", {}).some((x) => x.p.key === "jomashop"));
 });

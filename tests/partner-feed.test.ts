@@ -98,3 +98,20 @@ test("The Beauty Store UK: feed-only, Awin 116255, and a Google-format row (pric
   assert.deepEqual(keepRow(row, stores), { region: "UK", ean: EAN, p: 9000, u: "https://thebeautystore.com/products/x", by: "barcode" });
   assert.equal(keepRow({ ...row, stockStatus: "out_of_stock" }, stores), null);
 });
+
+test("HottPerfume (Awin 87957, 2026-11-20): a tracked US search row, its feed's open-box bottles refused", () => {
+  const hp = PARTNERS.find((p) => p.key === "hottperfume")!;
+  const row = partnersFor("US", "Dior Sauvage", "sc-us-table", {}).find((x) => x.p.key === "hottperfume");
+  assert.ok(row?.paid);
+  const u = new URL(row!.href);
+  assert.equal(u.host, "www.awin1.com");
+  assert.equal(u.searchParams.get("awinmid"), "87957");
+  assert.equal(u.searchParams.get("ued"), "https://hottperfume.com/search.php?search_query=Dior%20Sauvage");
+  assert.ok(!partnersFor("UK", "Dior Sauvage", "sc-uk-table", {}).some((x) => x.p.key === "hottperfume"), "US only");
+  assert.equal(hp.feedEnv, "AWIN_FEED_HOTTPERFUME");
+  const stores = (r: string, e: string) => (r === "US" && e === EAN ? [9000, 10000, 11000] : []);
+  const base = { ean: EAN, price: "95.00", currency: "USD", stock: "1", link: "https://hottperfume.com/dior-sauvage/" };
+  assert.equal(keepRow({ ...base, name: "Dior Sauvage Eau de toilette" }, stores)?.p, 9500);
+  assert.equal(keepRow({ ...base, name: "Sauvage By Dior for Men 3.4 oz Edp Spray ** Open Box **" }, stores), null);
+  assert.equal(keepRow({ ...base, name: "Dior Sauvage Elixir - 2 oz * No Box * * Final Sale *" }, stores), null);
+});

@@ -2083,3 +2083,21 @@ asked for hats and lights by name, so they come back after the 2026-11-08 tone-d
   but two class names, so titles, metadata and structured data are untouched. Favicons and share images are unchanged.
 - Off switch: `CHRISTMAS_FESTIVE_LAYER` (`lib/season.ts`, the `data-festive` attribute on `<html>`); the Christmas window
   also ends it on 27 December by itself. Remove after New Year: delete the block and the two classes.
+
+## 2026-11-20: HottPerfume joins as a US Awin partner (search row now, priced row with its feed)
+
+Awin accepted us on HottPerfume (advertiser 87957, US, USD; 12.5% a sale, 30-day cookie; applied 2026-11-19). Checked
+before wiring: the Awin API lists it as joined (compareempiretake2 `data/awin/programmes.json`, 2026-11-20 05:16 UTC), the
+store ships only within the US and Puerto Rico (ground US$5 + US$1 an extra item), runs BigCommerce (no `products.json`,
+no barcodes on its pages, so it cannot be a store row), and its prices are in line with the discounters (Dior Sauvage EDT
+from US$99.99). It sells open-box, no-box and tester bottles beside boxed ones, and a 2021 r/fragrance thread called it a
+seller of fakes against 4.4 stars on PissedConsumer: so it is a partner row, never a store, never the cheapest, never
+re-ranked, labelled "Paid link" like FragranceX.
+
+- US only: a tracked search (`hottperfume.com/search.php`) through `awinDeepLink(87957)`. A partner with an `awinMid` now
+  links through that id directly instead of waiting for the domain in the programmes list.
+- `AWIN_FEED_HOTTPERFUME` (the key-bearing Create-a-Feed CSV URL, GitHub secret only): once set, the row shows its own
+  price on bottles its feed lists by exact barcode, in stock, 60–160% of the US store median. Until then the step is a no-op.
+- Every partner feed row now goes through `readTitle` first (not only the by-name fallback): an open-box, unboxed, tester or
+  pre-owned bottle shares the boxed bottle's barcode in some feeds and is never priced as the product.
+- KaeYoung: no fit (Korean skincare only).

@@ -178,6 +178,9 @@ export function keepRow(
   byName?: NameIndex,
 ): { region: RegionCode; ean: string; p: number; u: string; by: "barcode" | "name" } | null {
   if (!rowInStock(r)) return null;
+  // The same title rules as a store listing: a tester, an open-box, unboxed or pre-owned bottle shares the boxed
+  // bottle's barcode in some feeds (HottPerfume's open-box listings), and is never priced as the product.
+  if (r.name && "refused" in readTitle(r.name)) return null;
   let ean = rowBarcode(r);
   let by: "barcode" | "name" = "barcode";
   // The fallback: only a row with no valid barcode at all, a name the title rules accept, and a unique exact key.

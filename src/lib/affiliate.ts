@@ -211,6 +211,11 @@ export const PARTNERS: Partner[] = [
   // The Beauty Store UK accepted us on Awin (2026-11-10): a UK perfume discounter (advertiser 116255, GBP). Feed-only
   // like Stylevana: a row only on the bottles its Google-format feed lists by barcode (DECISIONS.md 2026-11-10).
   { key: "beautystore", name: "The Beauty Store", envVar: "AFF_BEAUTYSTORE", regions: ["UK"], search: (q) => `https://thebeautystore.com/search?q=${q}`, note: "UK retailer", awinMid: 116255, feedEnv: "AWIN_FEED_BEAUTYSTORE", feedOnly: true },
+  // HottPerfume accepted us on Awin (2026-11-20; advertiser 87957, US, USD, 12.5% a sale, 30-day cookie). A US designer
+  // discounter (ships to the US and Puerto Rico only, ground US$5): a tracked search row in the US once the Awin programmes
+  // list carries hottperfume.com, and with its feed secret a priced row on the bottles its feed lists by exact barcode.
+  // Its open-box and no-box bottles are refused by the title rules (lib/partner-feed.ts keepRow). DECISIONS.md 2026-11-20.
+  { key: "hottperfume", name: "HottPerfume", envVar: "AFF_HOTTPERFUME", regions: ["US"], search: (q) => `https://hottperfume.com/search.php?search_query=${q}`, note: "US discounter, ships in the US only", awinMid: 87957, feedEnv: "AWIN_FEED_HOTTPERFUME" },
   { key: "yesstyle", name: "YesStyle", envVar: "AFF_YESSTYLE", regions: ["US", "UK", "CA", "AU", "NZ", "EU"], search: (q) => `https://www.yesstyle.com/en/list.html?q=${q}`, note: "ships from Hong Kong" },
 ];
 
@@ -219,7 +224,7 @@ export function partnerUrl(p: Partner, query: string, sub: string, env: Record<s
   const tpl = env[p.envVar];
   const q = encodeURIComponent(query);
   // No template of its own: a retailer that accepted us on Awin is its tracked deep link to the same search.
-  if (!tpl) return awinUrl(p.search(q), clickref(sub)) ?? null;
+  if (!tpl) return p.awinMid ? awinDeepLink(p.awinMid, p.search(q), clickref(sub)) : (awinUrl(p.search(q), clickref(sub)) ?? null);
   return tpl
     .replace("{url}", encodeURIComponent(p.search(q)))
     .replace("{q}", q)
@@ -230,7 +235,7 @@ export function partnerUrl(p: Partner, query: string, sub: string, env: Record<s
 export function partnerAwinId(p: Partner, env: Record<string, string | undefined> = process.env): number | null {
   const m = (env[p.envVar] ?? "").match(/awinmid=(\d+)/);
   if (m) return Number(m[1]);
-  return env[p.envVar] ? null : (awinProgrammeFor(p.search("x"))?.id ?? null);
+  return env[p.envVar] ? null : (p.awinMid ?? awinProgrammeFor(p.search("x"))?.id ?? null);
 }
 
 const bareHost = (u: string) => {
