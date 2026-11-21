@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "site": "scentcompare.app",
+ "at": "2026-11-21T19:51:05.012Z",
+ "overall": "warn",
+ "checks": [
+  {
+   "name": "Live site",
+   "status": "ok",
+   "detail": "HTTP 200"
+  },
+  {
+   "name": "Search index",
+   "status": "ok",
+   "detail": "14999 products live"
+  },
+  {
+   "name": "Daily price import",
+   "status": "ok",
+   "detail": "2.5h old"
+  },
+  {
+   "name": "Store imports",
+   "status": "warn",
+   "detail": "perfumarie: https://perfumarie.com/products.json?limit=250&page=1&country=US: HTTP 404 ; vanitystock: https://shop.vanitystock.com/products.json?limit=250&page=1&country=DE: HTTP 403 <!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/ht"
+  },
+  {
+   "name": "Catalogue",
+   "status": "ok",
+   "detail": "14999 products"
+  },
+  {
+   "name": "Data size",
+   "status": "warn",
+   "detail": "products.json is 21.4 MB: builds slow down; trim fields in src/lib/products-file.ts before raising minStoresPerRegion"
+  },
+  {
+   "name": "Smells like notes",
+   "status": "ok",
+   "detail": "12862 products (86%) have notes"
+  },
+  {
+   "name": "Ratings and reviews",
+   "status": "ok",
+   "detail": "0 products rated"
+  },
+  {
+   "name": "Delivery quotes",
+   "status": "ok",
+   "detail": "176 of 213 stores quoted"
+  },
+  {
+   "name": "Store deals",
+   "status": "ok",
+   "detail": "142 of 213 stores checked; 0 run multi-buys or gifts on 0 products"
+  },
+  {
+   "name": "Page readers",
+   "status": "warn",
+   "detail": "maisondesfragrances: not read since 2026-11-10"
+  },
+  {
+   "name": "Partner feeds",
+   "status": "ok",
+   "detail": "stylevana 7/43181, beautystore 1712/6012 prices kept"
+  },
+  {
+   "name": "Amazon ASINs",
+   "status": "ok",
+   "detail": "US 4564 ASINs (5537 waiting); UK 2135 ASINs (5561 waiting); CA 1114 ASINs (7438 waiting); EU waiting for Amazon API access; AU 1502 ASINs (11356 waiting)"
+  },
+  {
+   "name": "eBay listings",
+   "status": "ok",
+   "detail": "4800/4800 calls on 2026-11-21"
+  }
+ ]
+}
