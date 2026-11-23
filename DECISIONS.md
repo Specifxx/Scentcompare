@@ -2115,3 +2115,10 @@ So the gift test runs: `giftTestEans` (`lib/home-shelves.ts`) adds the 20 most p
 eBay and Amazon search first (`priorityEans`, read by `ebay-import.ts`, `amazon-asins.ts`, `fetch-amazon-prices.ts`)
 until 14 Dec, inside the same eBay cap and Amazon budget. Read on 15 Dec: green at A$150+ or A$0.08+ per human visitor;
 red under A$40 and under A$0.03, which freezes Scent investment with no extension. After 14 Dec it adds nothing.
+
+## 2026-11-23: A header dropdown's label is a link
+
+Owner, 2026-11-23: "every time I click on the drop downs, I expect it to be a link and … take me somewhere … when I click on
+one of the drop downs, it doesn't do anything. It just drops it down." Each label of `HeaderMenus.tsx` is now a `<Link>` to the menu's own "all" page (`m.all.href`, the link at the foot of its panel). Hover still opens the panel after the same
+intent delay; the chevron beside the label is now the button that toggles it (click, tap, Enter, Space, ArrowDown), with
+`aria-expanded` and its own label. The panels stay in the server HTML. `tests/nav.test.ts` pins it.
