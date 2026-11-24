@@ -2,6 +2,7 @@
 // outside the prebuilt top 500, once on its first visit (DECISIONS.md 2026-11-06);
 // after that a visit is a static file from Vercel's CDN, never a database read.
 import fs from "node:fs";
+import type { InrewardsFile } from "./inrewards";
 import path from "node:path";
 import { CATEGORIES, REGIONS, SITE, type CatKey, type RegionCode } from "@/site";
 import { productTitles, type PageTitle } from "./titles";
@@ -57,6 +58,8 @@ export const getEbay = (): EbayData => {
 };
 /** Weekly delivery quotes per store (scripts/shipping.ts; lib/shipping.ts). */
 export const getPartnerPrices = (): PartnerPricesFile | null => load<PartnerPricesFile | null>("partners.json", null);
+/** InRewards short links made by scripts/inrewards-links.ts (lib/inrewards.ts). */
+export const getInrewards = (): InrewardsFile | null => load<InrewardsFile | null>("inrewards.json", null);
 export const getShipping = (): ShippingData =>
   once("shipping", () => Object.fromEntries(Object.entries(load<ShippingData>("shipping.json", {})).filter(([, q]) => q.fee <= MAX_SMALL_ORDER_FEE)));
 

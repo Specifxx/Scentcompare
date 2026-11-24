@@ -90,6 +90,10 @@ jobs:
           AWIN_FEED_BEAUTYSTORE: ${{ secrets.AWIN_FEED_BEAUTYSTORE }}
           AWIN_FEED_HOTTPERFUME: ${{ secrets.AWIN_FEED_HOTTPERFUME }}
         run: npx tsx scripts/partner-feeds.ts
+      - name: InRewards links (Sephora in the US; a no-op until its secret exists)
+        env:
+          INREWARDS_API_KEY: ${{ secrets.INREWARDS_API_KEY }}
+        run: npx tsx scripts/inrewards-links.ts
       - name: eBay
         if: github.event_name != 'workflow_dispatch' || inputs.ebay
         env:

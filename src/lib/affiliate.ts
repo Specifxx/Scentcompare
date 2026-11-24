@@ -7,7 +7,8 @@
 import { REGION_BY_CODE, SITE, type RegionCode } from "@/site";
 import { awinDeepLink, awinProgrammeFor, awinUrl, clickref } from "./awin";
 import { STORE_BY_ID, STORES } from "@/content/stores";
-import type { Offer } from "./types";
+import type { Offer, Product } from "./types";
+import { inrewardsHref, type InrewardsFile } from "./inrewards";
 
 /** One EPN campaign for every site in the family, hard-coded (owner,
  *  2026-10-30); no variable overrides it. The customid tag (`sc-…`) tells the
@@ -185,6 +186,9 @@ export interface Partner {
   /** Shown ONLY where its feed lists this exact barcode, never as a search (a shop that sells few of our
    *  products, where a search would mostly come back empty). */
   feedOnly?: boolean;
+  /** Regions where its InRewards short link pays (lib/inrewards.ts). There the row shows only once the
+   *  import made that link, and it wins over any template. */
+  inrewards?: RegionCode[];
 }
 
 export const PARTNERS: Partner[] = [
@@ -195,7 +199,7 @@ export const PARTNERS: Partner[] = [
   // US, like the two above, so a visitor can check it in one click. No programme, no price, never a store row.
   { key: "jomashop", name: "Jomashop", envVar: "AFF_JOMASHOP", regions: ["US"], search: (q) => `https://www.jomashop.com/search?q=${q}`, note: "US discounter", always: true },
   { key: "perfumania", name: "Perfumania", envVar: "AFF_PERFUMANIA", regions: ["US"], search: (q) => `https://www.perfumania.com/search?q=${q}`, note: "US discounter" },
-  { key: "sephora", name: "Sephora", envVar: "AFF_SEPHORA", regions: ["US", "CA"], search: (q) => `https://www.sephora.com/search?keyword=${q}`, note: "US retailer" },
+  { key: "sephora", name: "Sephora", envVar: "AFF_SEPHORA", regions: ["US", "CA"], search: (q) => `https://www.sephora.com/search?keyword=${q}`, note: "US retailer", inrewards: ["US"] },
   { key: "notino-uk", name: "Notino", envVar: "AFF_NOTINO_UK", regions: ["UK"], search: (q) => `https://www.notino.co.uk/search/?q=${q}`, note: "UK discounter" },
   { key: "notino-eu", name: "Notino", envVar: "AFF_NOTINO_EU", regions: ["EU"], search: (q) => `https://www.notino.de/search/?q=${q}`, note: "European discounter" },
   { key: "scentstore", name: "The Scent Store", envVar: "AFF_SCENTSTORE", regions: ["UK"], search: (q) => `https://www.thescentstore.co.uk/search?q=${q}`, note: "UK discounter" },
@@ -253,8 +257,18 @@ export function isListedStore(p: Partner, region: RegionCode): boolean {
 
 /** The retailer rows a region shows today: those whose tracking template is
  *  set (paid), plus the `always` ones as plain search links (unpaid). */
-export function partnersFor(region: RegionCode, query: string, sub: string, env: Record<string, string | undefined> = process.env): { p: Partner; href: string; paid: boolean }[] {
+/** The search words a product's partner, eBay and Amazon search links use. */
+export function searchQuery(f: Pick<Product, "name">): string {
+  return f.name.replace(/[()]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** The exact retailer URL InRewards converts for a partner and query (the import and the page must agree). */
+export const inrewardsUrl = (p: Partner, query: string): string => p.search(encodeURIComponent(query));
+
+export function partnersFor(region: RegionCode, query: string, sub: string, env: Record<string, string | undefined> = process.env, inrewards: InrewardsFile | null = null): { p: Partner; href: string; paid: boolean }[] {
   return PARTNERS.filter((p) => p.regions.includes(region) && !p.feedOnly && !isListedStore(p, region)).flatMap((p): { p: Partner; href: string; paid: boolean }[] => {
+    const ir = inrewardsHref(inrewards, p.inrewards, region, inrewardsUrl(p, query));
+    if (ir) return [{ p, href: ir, paid: true }];
     const href = partnerUrl(p, query, sub, env);
     if (href) return [{ p, href, paid: true }];
     return p.always ? [{ p, href: p.search(encodeURIComponent(query)), paid: false }] : [];
