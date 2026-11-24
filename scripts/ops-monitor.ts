@@ -9,6 +9,7 @@ import type { Meta } from "@/lib/types";
 import type { ReviewsFile } from "@/lib/reviews";
 import { loadStore, reviewsConfigured } from "@/lib/reviews-store";
 import type { PartnerPricesFile } from "@/lib/partner-feed";
+import type { InrewardsFile } from "@/lib/inrewards";
 import { readAsinStatus, type AsinStatus } from "@/lib/amazon-asins";
 import type { RegionCode } from "@/site";
 
@@ -80,6 +81,16 @@ export function judgeReviews(
   const rated = Object.keys(file.products).length;
   if (file.held > 0 && new Date(now).getUTCHours() === 9) return { status: "warn", detail: `${file.held} review(s) waiting for you at /admin/reviews` };
   return { status: "ok", detail: `${rated} products rated${file.held ? `, ${file.held} held` : ""}` };
+}
+
+/** InRewards short links (scripts/inrewards-links.ts): quiet until the key exists, amber when the last run
+ *  stopped on an error or is two days old. */
+export function judgeInrewards(file: InrewardsFile | null, keySet: boolean, now = Date.now()): Omit<Result, "name"> {
+  if (!file?.run) return { status: "ok", detail: keySet ? "no InRewards run yet" : "INREWARDS_API_KEY not set yet (Sephora rows stay hidden)" };
+  const h = (now - Date.parse(file.run.at)) / 3_600_000;
+  if (file.run.error) return { status: "warn", detail: `InRewards stopped: ${file.run.error}` };
+  if (h > 54) return { status: "warn", detail: `InRewards links last made ${h.toFixed(0)}h ago` };
+  return { status: "ok", detail: `${Object.keys(file.links).length} links, ${file.run.made} made last run, ${file.run.pending} waiting` };
 }
 
 /** Partner product feeds (scripts/partner-feeds.ts): quiet until a feed secret exists, amber when its last
@@ -217,6 +228,10 @@ async function main() {
         ),
       ),
     ),
+    check("InRewards links", () => {
+      const f = path.join(DATA, "inrewards.json");
+      return judgeInrewards(fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, "utf8")) as InrewardsFile) : null, !!process.env.INREWARDS_API_KEY);
+    }),
     check("Partner feeds", () => {
       const f = path.join(DATA, "partners.json");
       return judgePartnerFeeds(fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, "utf8")) as PartnerPricesFile) : null);
