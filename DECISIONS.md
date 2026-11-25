@@ -2137,3 +2137,9 @@ body `originalUrl`, answer `data.shortLinks`), 60 requests a minute.
   both European, wait for that). Sephora's US row is the InRewards link once it exists, else as before; Canada unchanged.
 - Order is unchanged: partner rows stay in their own labelled group after eBay and Amazon, never ranked, never the best price.
   Ops monitor "InRewards links" is amber on a stopped run or a stale one; `tests/inrewards.test.ts`.
+
+## 2026-11-26: The header's string of Christmas lights is removed (owner)
+
+Owner, 2026-11-26: "I don't really like the Christmas lights on the very top." The string of lights hanging under the header
+(2026-11-20) is removed on every Compare site: the `.xmas-garland::after` rule is gone from the `xmas-logo` block in `globals.css`
+and the class is off the header. The Santa hat on the logo stays, and nothing else of the Christmas layer changes.
