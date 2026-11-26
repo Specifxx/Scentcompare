@@ -37,6 +37,13 @@ export function judgeFreshness(updatedAt: string, now = Date.now()): Omit<Result
   return { status: h < 54 ? "warn" : "fail", detail: `prices are ${h.toFixed(0)}h old: check the Import prices workflow` };
 }
 
+/** The /codes pages (lib/codes.ts): refreshed by every import; a stale file means codes that ended still show. */
+export function judgeCodes(updatedAt: string, live: number, now = Date.now()): Omit<Result, "name"> {
+  const h = (now - Date.parse(updatedAt)) / 3_600_000;
+  if (!(h < 54)) return { status: "warn", detail: `codes are ${h.toFixed(0)}h old: check the "Discount codes" step of Import prices` };
+  return live > 0 ? { status: "ok", detail: `${live} live codes and deals, ${h.toFixed(1)}h old` } : { status: "warn", detail: "no live codes at any store: is Compare Empire's Awin offers read running?" };
+}
+
 /** "Smells like" (lib/notes.ts): the import should find notes for a good share of the catalogue
  *  (about 30% on the 2026-11-06 probe). A sharp drop means the parser or the stores' copy changed. */
 export function judgeNotes(withNotes: number | null, products: number): Omit<Result, "name"> {
@@ -213,6 +220,13 @@ async function main() {
     check("Delivery quotes", () => {
       const f = path.join(DATA, "shipping.json");
       return judgeShipping(fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null, SHOPIFY_STORES.length);
+    }),
+    check("Discount codes", () => {
+      const file = path.join(DATA, "codes.json");
+      const f = fs.existsSync(file) ? (JSON.parse(fs.readFileSync(file, "utf8")) as { updatedAt?: string; stores?: Record<string, { live: unknown[] }> }) : null;
+      if (!f?.updatedAt) return { status: "warn", detail: "no data/public/codes.json yet: the next import writes it" };
+      const live = Object.values(f.stores ?? {}).reduce((a, s) => a + s.live.length, 0);
+      return judgeCodes(f.updatedAt, live);
     }),
     check("Store deals", () => {
       const f = path.join(DATA, "promos.json");

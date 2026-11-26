@@ -1,0 +1,422 @@
+{
+ "updatedAt": "2026-11-26T08:00:34.458Z",
+ "stores": {
+  "hottperfume": {
+   "live": [
+    {
+     "id": "aw-4168272",
+     "code": "GIFT26",
+     "title": "10% off orders of $50+",
+     "start": "2026-11-10T10:24:00.000Z",
+     "end": "2037-01-31T10:23:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3988167",
+     "code": "sum26",
+     "title": "10% off - Orders $50 and up",
+     "start": "2026-07-04T02:48:00.000Z",
+     "end": "2036-07-04T02:46:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3694738",
+     "code": "V26",
+     "title": "10% Off $50+ Valentine’s Day Perfume Sale",
+     "terms": "Get 10% off orders $50+ on authentic designer fragrances. Perfect Valentine’s Day gift. Limited time.",
+     "start": "2026-01-25T02:42:00.000Z",
+     "end": "2036-01-25T02:41:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3650664",
+     "code": "NEW25",
+     "title": "10% off $50+",
+     "start": "2025-12-27T03:15:00.000Z",
+     "end": "2035-12-27T03:14:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3626360",
+     "code": "1525",
+     "title": "$15 off Orders $100+",
+     "start": "2025-12-10T23:42:00.000Z",
+     "end": "2035-12-10T23:40:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3626358",
+     "code": "MERRY25",
+     "title": "10% off $50+",
+     "terms": "10% off Orders $50+",
+     "start": "2025-12-10T23:40:00.000Z",
+     "end": "2035-12-10T23:38:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3546222",
+     "code": "WEEK25",
+     "title": "Cyber Week — 10% Off",
+     "terms": "10% off $50+",
+     "start": "2025-11-10T04:27:00.000Z",
+     "end": "2035-11-10T04:26:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3546220",
+     "code": "CYBER25",
+     "title": "Cyber Monday — 10% Off",
+     "terms": "10% off $50+",
+     "start": "2025-11-10T04:26:00.000Z",
+     "end": "2035-11-10T04:25:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3546216",
+     "code": "FRIDAY25",
+     "title": "Black Friday — 10% Off",
+     "terms": "10% off $50+",
+     "start": "2025-11-10T04:24:00.000Z",
+     "end": "2037-01-10T04:16:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329363",
+     "code": "m24",
+     "title": "Early Black Friday Sale 5% off Orders",
+     "terms": "Early Black Friday Sale 5% off Any Order",
+     "start": "2024-10-29T04:00:00.000Z",
+     "end": "2029-11-30T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329183",
+     "code": "FLASH24",
+     "title": "FLASH SALE - 10% off",
+     "terms": "10% off orders $50 and up",
+     "start": "2024-08-16T04:00:00.000Z",
+     "end": "2029-09-30T04:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329257",
+     "code": "DAD24",
+     "title": "10% off Orders $50 and Up",
+     "start": "2024-05-18T04:00:00.000Z",
+     "end": "2029-06-30T04:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329365",
+     "code": "724",
+     "title": "$7 off Orders $60 and Up",
+     "start": "2024-03-15T04:00:00.000Z",
+     "end": "2029-04-14T04:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329293",
+     "code": "merry23",
+     "title": "Christmas Deals - 5% Off Any Order",
+     "start": "2023-12-03T05:00:00.000Z",
+     "end": "2029-01-31T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329291",
+     "code": "A23",
+     "title": "Free Shipping Orders $50 and Up",
+     "start": "2023-08-02T04:00:00.000Z",
+     "end": "2028-09-30T04:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329301",
+     "code": "ap23",
+     "title": "10% off Orders $50 and Up",
+     "start": "2023-03-23T04:00:00.000Z",
+     "end": "2028-04-30T04:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329327",
+     "code": "cw22",
+     "title": "$15 off Orders $100 and Up",
+     "start": "2022-11-17T05:00:00.000Z",
+     "end": "2027-12-31T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329181",
+     "code": "march22",
+     "title": "10% off Orders $50 and Up",
+     "start": "2022-02-24T05:00:00.000Z",
+     "end": "2032-03-31T04:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329141",
+     "code": "52CYBER",
+     "title": "$5 off Orders $50 and Up",
+     "start": "2021-11-13T05:00:00.000Z",
+     "end": "2026-12-31T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329097",
+     "code": "S7",
+     "title": "$7 Off Orders $60 and Up",
+     "start": "2020-02-26T05:00:00.000Z",
+     "end": "2050-12-31T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329205",
+     "code": "sas77",
+     "title": "Up to 70% Off Perfume Plus FREE SHIPPING",
+     "start": "2018-02-27T05:00:00.000Z",
+     "end": "2050-12-31T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3329025",
+     "code": "S101",
+     "title": "Get 10% Off Any Order Over $49",
+     "start": "2010-01-19T05:00:00.000Z",
+     "end": "2050-12-31T05:00:00.000Z",
+     "regions": [
+      "US"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3860665",
+     "title": "MOM26 — 10% Off $50+",
+     "start": "2026-04-29T05:26:00.000Z",
+     "end": "2036-04-29T05:25:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3860663",
+     "title": "MDAY26 — Free Shipping on $50+",
+     "start": "2026-04-29T05:25:00.000Z",
+     "end": "2036-04-29T05:24:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    }
+   ],
+   "ended": []
+  },
+  "fragrance-click": {
+   "live": [
+    {
+     "id": "aw-3754476",
+     "title": "Sign up for an extra 5% Off",
+     "start": "2026-02-26T08:39:00.000Z",
+     "end": "2026-12-31T08:38:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3754468",
+     "title": "Up to 50% Off on Gifts Sets",
+     "start": "2026-02-26T08:37:00.000Z",
+     "end": "2026-12-31T08:36:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3754454",
+     "title": "Men's Aftershave, up to 50%",
+     "start": "2026-02-26T08:30:00.000Z",
+     "end": "2026-12-31T08:25:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3754438",
+     "title": "Free Tracked Delivery on All Orders",
+     "start": "2026-02-26T08:25:00.000Z",
+     "end": "2026-12-31T08:23:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3754422",
+     "title": "Save up to 65% on Designer Fragrances",
+     "start": "2026-02-26T08:19:00.000Z",
+     "end": "2026-12-31T08:11:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    }
+   ],
+   "ended": []
+  },
+  "perfume-market": {
+   "live": [
+    {
+     "id": "aw-4135599",
+     "title": "Free tracked 48 delivery",
+     "start": "2026-10-08T08:09:00.000Z",
+     "end": "2027-12-31T09:08:00.000Z",
+     "regions": [
+      "GB"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-4135593",
+     "title": "Mens Fragrance, up to 60% off",
+     "start": "2026-10-08T08:05:00.000Z",
+     "end": "2027-01-31T09:03:00.000Z",
+     "regions": [
+      "GB"
+     ],
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-4135590",
+     "title": "Womens Perfume, up to 60% off",
+     "start": "2026-10-08T08:03:00.000Z",
+     "end": "2027-01-31T09:01:00.000Z",
+     "regions": [
+      "GB"
+     ],
+     "seen": "2026-11-26"
+    }
+   ],
+   "ended": []
+  },
+  "paco-perfumerias": {
+   "live": [
+    {
+     "id": "aw-4120931",
+     "title": "Bath and Body Collection",
+     "start": "2026-09-22T14:54:00.000Z",
+     "end": "2027-04-30T14:50:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-4120928",
+     "title": "Up to 65% off",
+     "start": "2026-09-22T14:49:00.000Z",
+     "end": "2026-12-31T20:59:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-4120921",
+     "title": "New Arrivals",
+     "start": "2026-09-22T14:42:00.000Z",
+     "end": "2027-04-30T20:59:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3672118",
+     "title": "Get up to 60% Off on Perfume Gift Sets",
+     "start": "2026-01-12T11:05:00.000Z",
+     "end": "2026-12-31T11:04:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-3580998",
+     "title": "Free Delivery Over £25",
+     "start": "2025-11-21T11:20:00.000Z",
+     "end": "2027-01-31T22:59:00.000Z",
+     "regions": [
+      "GB"
+     ],
+     "seen": "2026-11-26"
+    }
+   ],
+   "ended": []
+  },
+  "the-beauty-store": {
+   "live": [
+    {
+     "id": "aw-4171358",
+     "title": "Jessica Gift Sets 10 x Full Sized Varnish",
+     "terms": "Jessica Limited Gift Sets",
+     "start": "2026-11-11T21:42:00.000Z",
+     "end": "2026-11-30T21:41:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-4165924",
+     "title": "Bvlgari The Women's Gift Collection Miniature Perfume Gift Set 4 x 5ml",
+     "start": "2026-11-07T21:28:00.000Z",
+     "end": "2026-11-30T21:27:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    },
+    {
+     "id": "aw-4165923",
+     "title": "Vera Wang Lovestruck Eau de Parfum Spray 100ml",
+     "start": "2026-11-07T21:26:00.000Z",
+     "end": "2026-11-30T21:23:00.000Z",
+     "regions": "all",
+     "seen": "2026-11-26"
+    }
+   ],
+   "ended": []
+  },
+  "opulensi": {
+   "live": [],
+   "ended": []
+  },
+  "my-perfume-shop": {
+   "live": [],
+   "ended": []
+  }
+ }
+}
