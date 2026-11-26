@@ -2165,7 +2165,7 @@ The questions stay open: collapsing them would change the HTML at every width.
 
 **Read:** phone bounce and buy clickers per 100 on the home page, the week after release against the week before.
 
-## 2026-11-26 — Discount-code pages for the stores that pay us, with "worked / didn't" votes
+## 2026-11-26: discount-code pages for the stores that pay us, with "worked / didn't" votes
 
 **Asked:** the OzBargain study's move 3, approved by the owner ("implemented ASAP … designed in a very, very nice way …
 tested"): a page of discount codes per store that pays us commission, where shoppers say whether each code worked.
