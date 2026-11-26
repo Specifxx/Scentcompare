@@ -174,7 +174,7 @@ function CodeCard({
   onCopy: () => void;
   onVote: (a: "worked" | "failed" | "expired") => Promise<boolean>;
 }) {
-  const tag = valueTag(c.title);
+  const tag = valueTag(`${c.title} ${c.terms ?? ""}`);
   const end = endLabel(c, now);
   const ended = Date.parse(c.end) <= now;
   const soon = !ended && Date.parse(c.end) - now < 3 * 86_400_000;
@@ -192,6 +192,7 @@ function CodeCard({
           aria-hidden
           className={`relative row-span-2 flex aspect-square flex-col items-center justify-center rounded-xl text-center sm:row-span-1 ${isCode ? "bg-accent-pale text-accent-deep" : "tint-mint text-save"}`}
         >
+          {tag.pre && <span className="mb-0.5 text-[9.5px] font-semibold uppercase tracking-[0.08em] opacity-80">{tag.pre}</span>}
           <span className="font-display text-[1.35rem] font-semibold leading-none tracking-tight sm:text-[1.6rem]">{tag.big}</span>
           {tag.small && <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.08em] opacity-80">{tag.small}</span>}
           <span className="absolute -right-[7px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full bg-card sm:hidden" />

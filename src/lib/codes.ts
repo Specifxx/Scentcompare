@@ -243,12 +243,12 @@ export function ago(iso: string, now: number): string {
 }
 
 /** The short face of a code's ticket, read from its own title: "10%", "$15", "Free delivery", or "Deal". Display only. */
-export function valueTag(title: string): { big: string; small: string } {
+export function valueTag(title: string): { pre?: string; big: string; small: string } {
   const t = title.toLowerCase();
   const pct = /(\d{1,2})\s?%/.exec(title);
   const cash = /([$£€]\s?\d{1,4})(?![\d%])/.exec(title);
   const upTo = /\bup\s?to\b/i.test(title);
-  if (pct && (!cash || title.indexOf(pct[0]) < title.indexOf(cash[0]))) return { big: `${pct[1]}%`, small: upTo ? "up to, off" : "off" };
+  if (pct && (!cash || title.indexOf(pct[0]) < title.indexOf(cash[0]))) return { ...(upTo ? { pre: "up to" } : {}), big: `${pct[1]}%`, small: "off" };
   if (cash && /\boff\b/i.test(t)) return { big: cash[1].replace(/\s/, ""), small: "off" };
   if (/free (tracked )?(shipping|delivery)/.test(t)) return { big: "Free", small: "delivery" };
   if (/gift/.test(t)) return { big: "Gift", small: "with order" };

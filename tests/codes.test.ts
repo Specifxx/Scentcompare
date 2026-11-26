@@ -57,7 +57,7 @@ test("labels read like a person wrote them", () => {
   assert.deepEqual(valueTag("10% off orders of $50+"), { big: "10%", small: "off" });
   assert.deepEqual(valueTag("$15 off Orders $100+"), { big: "$15", small: "off" });
   assert.deepEqual(valueTag("Free Tracked Delivery on All Orders"), { big: "Free", small: "delivery" });
-  assert.deepEqual(valueTag("Up to 70% Off Perfume"), { big: "70%", small: "up to, off" });
+  assert.deepEqual(valueTag("Up to 70% Off Perfume"), { pre: "up to", big: "70%", small: "off" });
 });
 
 test("code store slugs are unique and kept; the pages are static and votes go to RiftCompare", () => {
