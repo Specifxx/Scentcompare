@@ -44,3 +44,28 @@ export function peopleSectionsByDemand<K extends string>(keys: readonly K[], dem
     .sort((a, b) => b.v[1] - a.v[1] || b.v[0] - a.v[0] || a.i - b.i)
     .map((x) => x.k);
 }
+
+/** A brand page needs this many views in the last 7 days to lead the home page's "Popular brands" chips. */
+export const BRAND_RISER_MIN = 10;
+/** At most this many risers lead; the rest of the row keeps its product-count order. */
+export const BRAND_RISERS_MAX = 4;
+
+/**
+ * The home page's "Popular brands" chips (merch, 2026-11-28): brands whose own page took BRAND_RISER_MIN+ views this week
+ * lead, most viewed first (at most BRAND_RISERS_MAX), then the rest in the given order (product count), `limit` in all.
+ * On a phone the row scrolls sideways, so a riser must lead to be seen (YSL, 17th by product count, had 37 of 37 views in
+ * 7 days; Tom Ford, 22nd, 12 of 12). Under the floor, or with the ranking off, the given order stands.
+ */
+export function brandsByDemand<B extends { slug: string }>(brands: readonly B[], limit: number, demand: DemandFile | null | undefined = HOME_DEMAND, enabled = homeRankOn()): B[] {
+  if (!enabled) return brands.slice(0, limit);
+  const views = demand?.views ?? {};
+  const week = (b: B) => (views[`/brands/${b.slug}`] ?? [0, 0])[1];
+  const risers = brands
+    .map((b, i) => ({ b, i, v: week(b) }))
+    .filter((x) => x.v >= BRAND_RISER_MIN)
+    .sort((a, b) => b.v - a.v || a.i - b.i)
+    .slice(0, BRAND_RISERS_MAX)
+    .map((x) => x.b);
+  const lead = new Set(risers);
+  return [...risers, ...brands.filter((b) => !lead.has(b))].slice(0, limit);
+}

@@ -7,7 +7,7 @@ import { STORES } from "@/content/stores";
 import { amazonSearchUrl, ebayAffiliateUrl, ebaySearchUrl, partnerUrl, PARTNERS, storeUrl, subId } from "@/lib/affiliate";
 import { judgeFreshness, judgeStores } from "../scripts/ops-monitor";
 import { money } from "@/lib/format";
-import { peopleSectionsByDemand } from "@/lib/home-demand";
+import { brandsByDemand, peopleSectionsByDemand } from "@/lib/home-demand";
 import { searchRows, type IndexRow } from "@/components/SearchBox";
 
 const walk = (d: string): string[] => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(`${d}/${e.name}`) : [`${d}/${e.name}`]));
@@ -146,4 +146,23 @@ test("the quick view's Amazon row is the tagged Amazon link itself, never Amazon
   assert.match(table, /const amazonUrl = liveUrl \?\? amazonSearchUrl\(q, region, sub\);/);
   assert.match(table, /const live = quick \? null : found;/);
   assert.doesNotMatch(table, /internal: true/, "no quick view row sends an Amazon click to our own page");
+});
+
+test("the home page's brand chips: this week's risers lead, the rest keep product-count order (merch, 2026-11-28)", () => {
+  const src = fs.readFileSync("src/app/page.tsx", "utf8");
+  assert.match(src, /const brands = brandsByDemand\(getBrands\(\), 16\);/);
+  const b = (...s: string[]) => s.map((slug) => ({ slug }));
+  const slugs = (x: { slug: string }[]) => x.map((y) => y.slug);
+  const all = b("lattafa", "armaf", "dior", "rasasi", "yves-saint-laurent", "tom-ford");
+  const d = (v: Record<string, [number, number]>) => ({ views: v });
+  // The 28 Nov read: YSL 37 of 37 in 7 days, Tom Ford 12 of 12, Armaf 11, Dior 7 (under the floor).
+  const week = d({ "/brands/yves-saint-laurent": [37, 37], "/brands/tom-ford": [12, 12], "/brands/armaf": [17, 11], "/brands/dior": [9, 7] });
+  assert.deepEqual(slugs(brandsByDemand(all, 4, week, true)), ["yves-saint-laurent", "tom-ford", "armaf", "lattafa"]);
+  // At most four risers lead; a 7-day tie keeps the given order.
+  const many = d(Object.fromEntries(all.map((x) => [`/brands/${x.slug}`, [20, 20]])));
+  assert.deepEqual(slugs(brandsByDemand(all, 6, many, true)), ["lattafa", "armaf", "dior", "rasasi", "yves-saint-laurent", "tom-ford"]);
+  // 28-day views alone do not lift a brand; no file or the ranking off keeps the order.
+  assert.deepEqual(slugs(brandsByDemand(all, 3, d({ "/brands/tom-ford": [90, 0] }), true)), ["lattafa", "armaf", "dior"]);
+  assert.deepEqual(slugs(brandsByDemand(all, 3, null, true)), ["lattafa", "armaf", "dior"]);
+  assert.deepEqual(slugs(brandsByDemand(all, 3, week, false)), ["lattafa", "armaf", "dior"]);
 });
