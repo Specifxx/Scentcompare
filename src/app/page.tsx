@@ -22,7 +22,7 @@ import { GUIDES } from "@/lib/guides";
 import { JsonLd, faqLd, siteLd } from "@/lib/seo";
 import { SiteReviews } from "@/components/site-reviews/SiteReviews";
 import { homeShelves } from "@/lib/home-shelves";
-import { peopleSectionsByDemand } from "@/lib/home-demand";
+import { brandsByDemand, peopleSectionsByDemand } from "@/lib/home-demand";
 
 export const metadata: Metadata = {
   // 60 characters, keyword first, brand last (SEO audit, 2026-11-03).
@@ -69,7 +69,7 @@ export default function Home() {
   const total = all.length;
   const stores = Object.keys(activeStores()).length;
   const counts = catCounts();
-  const brands = getBrands().slice(0, 16);
+  const brands = brandsByDemand(getBrands(), 16);
   // The Holiday Edit line goes to the gift sets post once it is live (it is dated), else to the gift sets section.
   const giftHref = POST_BY_SLUG["fragrance-gift-sets-priced"] ? "/blog/fragrance-gift-sets-priced" : "/sets";
   return (
